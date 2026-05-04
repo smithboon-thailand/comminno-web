@@ -1,13 +1,36 @@
+/**
+ * Comm.Inno · Global stylesheet
+ *
+ * Import order matters:
+ *   1. Brand tokens (single source of truth from brand_book/tokens.css — DO NOT EDIT)
+ *   2. Self-hosted Google fonts via @fontsource (offline-friendly, no FOIT)
+ *   3. Tailwind v4 + tw-animate
+ *   4. Theme tokens that bridge brand tokens → shadcn/ui semantic tokens
+ */
+
+/* 1. Brand tokens — verbatim copy of brand_book/tokens.css. Treat as immutable. */
+@import "./styles/tokens.css";
+
+/* 2. Fonts (self-hosted via Fontsource → no third-party requests, better Lighthouse).
+ *    Only ship the weights the MVP actually uses (400 body, 600 semibold). Heavier
+ *    weights (500/700) and JetBrains Mono are added back when content pages need them. */
+@import "@fontsource/dm-serif-display/400.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/ibm-plex-sans-thai-looped/400.css";
+@import "@fontsource/ibm-plex-sans-thai-looped/600.css";
+
+/* 3. Tailwind v4 */
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
+/* 4. Bridge brand tokens → shadcn/ui semantic tokens.
+ *    Brand tokens (--brand-red, --brand-paper, --ink, …) are the SOURCE OF TRUTH.
+ *    The shadcn semantic vars below alias them so existing UI primitives keep working
+ *    while every visible color traces back to the brand book. */
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -27,11 +50,6 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -40,86 +58,118 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+
+  /* Brand color utilities (e.g. bg-brand-red, text-brand-blue, border-brand-yellow) */
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-red:    var(--brand-red);
+  --color-brand-blue:   var(--brand-blue);
+  --color-brand-green:  var(--brand-green);
+  --color-brand-paper:  var(--brand-paper);
+  --color-brand-cream:  var(--brand-cream);
+  --color-ink:          var(--ink);
+  --color-slate-ink:    var(--slate);
+  --color-mist:         var(--mist);
+
+  /* Font family utilities (font-display, font-sans, font-thai, font-mono) */
+  --font-display: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --font-sans:    "Inter", "IBM Plex Sans Thai Looped", system-ui, -apple-system, sans-serif;
+  --font-thai:    "IBM Plex Sans Thai Looped", "Inter", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
-}
+  /* Map shadcn semantic tokens onto brand tokens */
+  --background:           var(--brand-paper);
+  --foreground:           var(--ink);
+  --card:                 #ffffff;
+  --card-foreground:      var(--ink);
+  --popover:              #ffffff;
+  --popover-foreground:   var(--ink);
+  --primary:              var(--brand-red);          /* CTA color */
+  --primary-foreground:   #ffffff;
+  --secondary:            var(--brand-cream);
+  --secondary-foreground: var(--ink);
+  --muted:                #F0EDE3;
+  --muted-foreground:     var(--slate);
+  --accent:               var(--brand-blue);
+  --accent-foreground:    #ffffff;
+  --destructive:          var(--error);
+  --destructive-foreground: #ffffff;
+  --border:               var(--mist);
+  --input:                var(--mist);
+  --ring:                 var(--brand-red);
 
-.dark {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-500);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.85 0.005 65);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.85 0.005 65);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.85 0.005 65);
-  --secondary: oklch(0.24 0.006 286.033);
-  --secondary-foreground: oklch(0.7 0.005 65);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground:  oklch(0.92 0.005 65);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.488 0.243 264.376);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.85 0.005 65);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground:  oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.488 0.243 264.376);
+  --sidebar:                       #ffffff;
+  --sidebar-foreground:            var(--ink);
+  --sidebar-primary:               var(--brand-red);
+  --sidebar-primary-foreground:    #ffffff;
+  --sidebar-accent:                var(--brand-cream);
+  --sidebar-accent-foreground:     var(--ink);
+  --sidebar-border:                var(--mist);
+  --sidebar-ring:                  var(--brand-red);
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+  *,
+  *::before,
+  *::after {
+    border-color: var(--border);
   }
+
+  html {
+    background-color: var(--brand-paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Belt-and-braces guard: nothing should ever bleed past the viewport on mobile. */
+    overflow-x: hidden;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--brand-paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    overflow-x: hidden;
   }
+
+  /* When the active locale is Thai, prefer the looped Thai face for body copy */
+  html[lang="th"] body {
+    font-family: var(--font-thai);
+    line-height: var(--leading-thai);
+  }
+
+  /* Display utility for hero headlines */
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* In Thai mode the brand book pairs DM Serif Display with the Thai face for the secondary line.
+   * Display headings keep DM Serif Display for Latin glyphs; Thai glyphs fall back to IBM Plex automatically. */
+  html[lang="th"] .font-display {
+    font-family: var(--font-display), var(--font-thai);
+    line-height: 1.2;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--brand-red);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: var(--brand-red);
+    color: #ffffff;
+  }
+
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),
@@ -129,30 +179,17 @@
   select:not(:disabled),
   input[type="checkbox"]:not(:disabled),
   input[type="radio"]:not(:disabled) {
-    @apply cursor-pointer;
+    cursor: pointer;
   }
 }
 
 @layer components {
-  /**
-   * Custom container utility that centers content and adds responsive padding.
-   *
-   * This overrides Tailwind's default container behavior to:
-   * - Auto-center content (mx-auto)
-   * - Add responsive horizontal padding
-   * - Set max-width for large screens
-   *
-   * Usage: <div className="container">...</div>
-   *
-   * For custom widths, use max-w-* utilities directly:
-   * <div className="max-w-6xl mx-auto px-4">...</div>
-   */
   .container {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem; /* 16px - mobile padding */
-    padding-right: 1rem;
+    padding-left: 20px;     /* margin-mobile from tokens */
+    padding-right: 20px;
   }
 
   .flex {
@@ -162,16 +199,47 @@
 
   @media (min-width: 640px) {
     .container {
-      padding-left: 1.5rem; /* 24px - tablet padding */
-      padding-right: 1.5rem;
+      padding-left: 32px;   /* margin-tablet */
+      padding-right: 32px;
     }
   }
 
   @media (min-width: 1024px) {
     .container {
-      padding-left: 2rem; /* 32px - desktop padding */
-      padding-right: 2rem;
-      max-width: 1280px; /* Standard content width */
+      padding-left: 80px;   /* margin-desktop */
+      padding-right: 80px;
+      max-width: 1440px;    /* container-bleed from tokens */
     }
+  }
+
+  /* Visually hidden but readable by screen readers (WCAG 1.3.1 supplement). */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Skip link — WCAG 2.1 AA: keyboard users must be able to skip past the header. */
+  .skip-link {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    transform: translateY(-200%);
+    padding: 10px 16px;
+    background: var(--ink);
+    color: #ffffff;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    z-index: 100;
+    transition: transform 180ms var(--ease-out);
+  }
+  .skip-link:focus {
+    transform: translateY(0);
   }
 }

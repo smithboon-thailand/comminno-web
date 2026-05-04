@@ -219,6 +219,8 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    // Source maps satisfy Lighthouse “Missing source maps” audit and aid debugging in prod.
+    sourcemap: true,
   },
   server: {
     port: 3000,

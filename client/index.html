@@ -1,17 +1,36 @@
 <!doctype html>
-<html lang="en">
+<!--
+  Comm.Inno — Center of Excellence in Communication Innovation
+  Faculty of Communication Arts · Chulalongkorn University
 
+  Default lang is "th"; LocaleProvider rewrites this attribute on mount
+  based on the URL prefix (/th or /en).
+-->
+<html lang="th">
   <head>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Comm.Inno — Center of Excellence in Communication Innovation</title>    
-    <!-- THIS IS THE START OF A COMMENT BLOCK, BLOCK TO BE DELETED: Google Fonts here, example:
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    THIS IS THE END OF A COMMENT BLOCK, BLOCK TO BE DELETED -->
+      content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+    <title>Comm.Inno · Center of Excellence in Communication Innovation · Chulalongkorn University</title>
+
+    <!-- Manually written meta description (per writing rules — never auto-generate). -->
+    <meta
+      name="description"
+      content="Comm.Inno คือศูนย์ความเป็นเลิศด้านนวัตกรรมการสื่อสาร คณะนิเทศศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย ที่เปลี่ยนงานวิจัยให้กลายเป็นเครื่องมือ หลักสูตรอบรม และแคมเปญที่ยกระดับคุณภาพชีวิตและความยั่งยืน" />
+
+    <!-- Brand colour for mobile browser chrome -->
+    <meta name="theme-color" content="#BD212D" />
+
+    <!-- Favicon: reuse the official logo SVG (the brand book endorses this). -->
+    <link rel="icon" type="image/svg+xml" href="/logo-official.svg" />
+
+    <!-- Open Graph (basic, manually authored) -->
+    <meta property="og:title" content="Comm.Inno · Center of Excellence in Communication Innovation" />
+    <meta property="og:description" content="Communication that listens. Innovation that improves life." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/logo-official.svg" />
   </head>
 
   <body>
@@ -22,5 +41,4 @@
       src="%VITE_ANALYTICS_ENDPOINT%/umami"
       data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
   </body>
-
 </html>

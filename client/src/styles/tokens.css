@@ -1,0 +1,140 @@
+/**
+ * Comm.Inno Brand Tokens · v3.0
+ * Brand identity comes from the official logo (4 colors).
+ * SDG palette is retained as a secondary tagging system for content categorization.
+ */
+
+:root {
+  /* ─── Primary brand colors (sampled from official logo) ────── */
+  --brand-yellow: #F1A61D;  /* the gold/yellow wing of the mark */
+  --brand-red:    #BD212D;  /* the red wing of the mark */
+  --brand-blue:   #279ED6;  /* the blue wing of the mark */
+  --brand-green:  #8DC63F;  /* the green wing (with arrow tail) */
+
+  /* Brand color tints */
+  --brand-yellow-50:  #FEF6E0;
+  --brand-yellow-300: #F5C667;
+  --brand-yellow-700: #B07A0C;
+  --brand-red-50:     #FBE3E5;
+  --brand-red-300:    #E17078;
+  --brand-red-700:    #8A1722;
+  --brand-blue-50:    #E1F2FB;
+  --brand-blue-300:   #71BFE5;
+  --brand-blue-700:   #1B709A;
+  --brand-green-50:   #EFF8DD;
+  --brand-green-300:  #B5DA7C;
+  --brand-green-700:  #648E2D;
+
+  /* Anchor color (used for headings, primary buttons, body links) */
+  --brand-primary: #BD212D;  /* Brand Red — strongest contrast on white */
+  --brand-accent:  #279ED6;  /* Brand Blue — secondary action */
+
+  /* ─── 17 UN SDG colors (secondary system, for service/content tagging) ─── */
+  --sdg-1:  #E5243B;  --sdg-2:  #DDA63A;  --sdg-3:  #4C9F38;
+  --sdg-4:  #C5192D;  --sdg-5:  #FF3A21;  --sdg-6:  #26BDE2;
+  --sdg-7:  #FCC30B;  --sdg-8:  #A21942;  --sdg-9:  #FD6925;
+  --sdg-10: #DD1367;  --sdg-11: #FD9D24;  --sdg-12: #BF8B2E;
+  --sdg-13: #3F7E44;  --sdg-14: #0A97D9;  --sdg-15: #56C02B;
+  --sdg-16: #00689D;  --sdg-17: #19486A;
+
+  /* ─── Surfaces & neutrals ───────────────────────────────────── */
+  --brand-paper: #FAFAF8;
+  --brand-cream: #F5F1E8;
+
+  --ink:   #0F1419;
+  --slate: #4A5568;
+  --mist:  #E2E8F0;
+
+  /* ─── Semantic states (separate from brand & SDG) ───────────── */
+  --success: #16A34A;
+  --warning: #F59E0B;
+  --error:   #DC2626;
+  --info:    #0EA5E9;
+
+  /* ─── Typography ────────────────────────────────────────────── */
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-sans:    "Inter", "IBM Plex Sans Thai Looped", system-ui, sans-serif;
+  --font-thai:    "IBM Plex Sans Thai Looped", "Inter", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+  --text-xs:      12px;  --text-sm:      14px;  --text-base:    16px;
+  --text-lg:      18px;  --text-xl:      20px;  --text-2xl:     24px;
+  --text-3xl:     28px;  --text-4xl:     32px;  --text-5xl:     40px;
+  --text-6xl:     56px;  --text-display: 84px;
+
+  --leading-tight:   1.25;
+  --leading-snug:    1.4;
+  --leading-normal:  1.55;
+  --leading-thai:    1.65;
+  --leading-relaxed: 1.75;
+
+  /* ─── Spacing (4px base) ────────────────────────────────────── */
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
+  --space-6: 24px;  --space-8: 32px;  --space-12: 48px; --space-16: 64px;
+  --space-24: 96px; --space-32: 128px;
+
+  /* ─── Radius ────────────────────────────────────────────────── */
+  --radius-sm:    8px;
+  --radius-md:   14px;
+  --radius-lg:   20px;
+  --radius-pill: 9999px;
+
+  /* ─── Motion ────────────────────────────────────────────────── */
+  --ease-out:        cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out:     cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast:   180ms;
+  --duration-normal: 240ms;
+  --duration-slow:   360ms;
+
+  /* ─── Layout ────────────────────────────────────────────────── */
+  --container-max:   1280px;
+  --container-bleed: 1440px;
+  --gutter:          24px;
+  --margin-desktop:  80px;
+  --margin-tablet:   32px;
+  --margin-mobile:   20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast:   0ms;
+    --duration-normal: 0ms;
+    --duration-slow:   0ms;
+  }
+}
+
+.dark {
+  --brand-paper: #0F1419;
+  --brand-cream: #1A1F2A;
+  --ink:         #F5F1E8;
+  --slate:       #C2D0E0;
+  --mist:        #2D3748;
+  --brand-primary: #E17078;  /* lighter red for dark bg */
+}
+
+/* ─── Utility classes ───────────────────────────────────────── */
+
+/* Brand color tags (4 colors) */
+.tag-brand-yellow { background: var(--brand-yellow); color: #0F1419; }
+.tag-brand-red    { background: var(--brand-red);    color: #FAFAF8; }
+.tag-brand-blue   { background: var(--brand-blue);   color: #FAFAF8; }
+.tag-brand-green  { background: var(--brand-green);  color: #0F1419; }
+
+/* SDG color tags (17 colors) */
+.tag-sdg-1  { background: var(--sdg-1);  color: #FAFAF8; }
+.tag-sdg-2  { background: var(--sdg-2);  color: #0F1419; }
+.tag-sdg-3  { background: var(--sdg-3);  color: #FAFAF8; }
+.tag-sdg-4  { background: var(--sdg-4);  color: #FAFAF8; }
+.tag-sdg-5  { background: var(--sdg-5);  color: #FAFAF8; }
+.tag-sdg-6  { background: var(--sdg-6);  color: #0F1419; }
+.tag-sdg-7  { background: var(--sdg-7);  color: #0F1419; }
+.tag-sdg-8  { background: var(--sdg-8);  color: #FAFAF8; }
+.tag-sdg-9  { background: var(--sdg-9);  color: #FAFAF8; }
+.tag-sdg-10 { background: var(--sdg-10); color: #FAFAF8; }
+.tag-sdg-11 { background: var(--sdg-11); color: #0F1419; }
+.tag-sdg-12 { background: var(--sdg-12); color: #FAFAF8; }
+.tag-sdg-13 { background: var(--sdg-13); color: #FAFAF8; }
+.tag-sdg-14 { background: var(--sdg-14); color: #FAFAF8; }
+.tag-sdg-15 { background: var(--sdg-15); color: #0F1419; }
+.tag-sdg-16 { background: var(--sdg-16); color: #FAFAF8; }
+.tag-sdg-17 { background: var(--sdg-17); color: #FAFAF8; }

@@ -1,18 +1,22 @@
-import { useTheme } from "next-themes";
+/**
+ * Toaster wrapper — Comm.Inno
+ *
+ * The scaffold's original wrapper imported `useTheme` from `next-themes`, which
+ * we don't ship. Hard-code the light brand theme so toasts always read against
+ * the cream/paper palette.
+ */
 import { Toaster as Sonner, type ToasterProps } from "sonner";
 
-const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme();
-
+const Toaster = (props: ToasterProps) => {
   return (
     <Sonner
-      theme={theme as ToasterProps["theme"]}
+      theme="light"
       className="toaster group"
       style={
         {
-          "--normal-bg": "var(--popover)",
-          "--normal-text": "var(--popover-foreground)",
-          "--normal-border": "var(--border)",
+          "--normal-bg": "var(--brand-paper)",
+          "--normal-text": "var(--ink)",
+          "--normal-border": "var(--mist)",
         } as React.CSSProperties
       }
       {...props}

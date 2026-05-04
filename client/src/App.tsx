@@ -1,6 +1,10 @@
 /**
  * App — Comm.Inno
  *
+ * Lean by design: this static MVP renders one page in two locales, so we strip
+ * the template's Toaster / TooltipProvider / ErrorBoundary trees that would
+ * otherwise drag ~50 KB of unused Radix/Sonner code into the main bundle.
+ *
  * Routing model:
  *   /            → LocaleProvider redirects to /<detected-locale>
  *   /th, /en     → Home page (localized)
@@ -10,10 +14,7 @@
  * but outside the Switch so message catalogs are mounted before children render.
  */
 
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch } from "wouter";
-import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LocaleProvider } from "./i18n/LocaleProvider";
 import { SiteShell } from "./components/layout/SiteShell";
@@ -23,14 +24,9 @@ import NotFound from "./pages/NotFound";
 function Router() {
   return (
     <Switch>
-      {/* Locale-prefixed home routes */}
       <Route path="/th" component={Home} />
       <Route path="/en" component={Home} />
-
-      {/* Bare root → LocaleProvider redirects (still needs a route to render) */}
       <Route path="/" component={Home} />
-
-      {/* Localized 404 catch-all */}
       <Route component={NotFound} />
     </Switch>
   );
@@ -38,18 +34,13 @@ function Router() {
 
 function App() {
   return (
-    <ErrorBoundary>
-      <ThemeProvider defaultTheme="light">
-        <LocaleProvider>
-          <TooltipProvider>
-            <Toaster />
-            <SiteShell>
-              <Router />
-            </SiteShell>
-          </TooltipProvider>
-        </LocaleProvider>
-      </ThemeProvider>
-    </ErrorBoundary>
+    <ThemeProvider defaultTheme="light">
+      <LocaleProvider>
+        <SiteShell>
+          <Router />
+        </SiteShell>
+      </LocaleProvider>
+    </ThemeProvider>
   );
 }
 

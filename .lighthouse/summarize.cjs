@@ -1,5 +1,5 @@
 const path = require("path");
-const files = ["en-mobile-prod", "en-desktop-prod", "th-mobile-prod", "th-desktop-prod"];
+const files = ["en-mobile-clean", "en-desktop-clean", "th-mobile-clean", "th-desktop-clean"];
 for (const f of files) {
   const r = require(path.join(__dirname, f + ".json"));
   console.log("\n=== " + f + " ===");

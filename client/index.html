@@ -26,6 +26,18 @@
     <!-- Favicon: reuse the official logo SVG (the brand book endorses this). -->
     <link rel="icon" type="image/svg+xml" href="/logo-official.svg" />
 
+    <!--
+      Preload the two faces visible above the fold.
+      • DM Serif Display: hero headline (LCP element on /en).
+      • IBM Plex Sans Thai Looped: body copy on /th (the default locale).
+      Inter and the 600-weight faces are loaded normally; their absence below
+      the fold doesn't slow LCP.
+    -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="/fonts/dm-serif-display-latin-400.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="/fonts/plex-sans-thai-looped-thai-400.woff2" />
+
     <!-- Open Graph (basic, manually authored) -->
     <meta property="og:title" content="Comm.Inno · Center of Excellence in Communication Innovation" />
     <meta property="og:description" content="Communication that listens. Innovation that improves life." />
@@ -36,9 +48,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script
-      defer
-      src="%VITE_ANALYTICS_ENDPOINT%/umami"
-      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
   </body>
 </html>

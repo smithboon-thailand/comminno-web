@@ -4,10 +4,17 @@
  * focusable element.
  */
 
-import type { ReactNode } from "react";
+import { lazy, Suspense, type ReactNode } from "react";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { Header } from "./Header";
-import { Footer } from "./Footer";
+import { AnnouncerHost } from "@/components/InlineAnnouncer";
+
+/* Footer is below the fold on every page — ship it as a separate chunk
+ * so it doesn't block initial paint or compete with the hero font for
+ * download bandwidth. */
+const Footer = lazy(() =>
+  import("./Footer").then((m) => ({ default: m.Footer })),
+);
 
 interface Props {
   children: ReactNode;
@@ -25,7 +32,10 @@ export function SiteShell({ children }: Props) {
       <main id="main" className="flex-1">
         {children}
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
+      <AnnouncerHost />
     </div>
   );
 }

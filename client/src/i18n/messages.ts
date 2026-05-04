@@ -57,6 +57,9 @@ export const messages: Record<Locale, Messages> = {
     "footer.copyright":
       "© {year} Center of Excellence in Communication Innovation, Chulalongkorn University. All rights reserved.",
     "footer.legacy": "Replacing the legacy site at cominnocenter.com.",
+    "footer.privacy": "Privacy notice",
+    "footer.cookieSettings": "Cookie settings",
+    "footer.utility.label": "Site utility links",
 
     "notfound.title": "Page not found",
     "notfound.body": "Sorry, the page you are looking for doesn't exist or has moved.",
@@ -104,6 +107,9 @@ export const messages: Record<Locale, Messages> = {
     "footer.copyright":
       "© {year} ศูนย์ความเป็นเลิศด้านนวัตกรรมการสื่อสาร จุฬาลงกรณ์มหาวิทยาลัย สงวนลิขสิทธิ์",
     "footer.legacy": "เว็บไซต์ใหม่ทดแทน cominnocenter.com",
+    "footer.privacy": "นโยบายความเป็นส่วนตัว",
+    "footer.cookieSettings": "ตั้งค่าคุกกี้",
+    "footer.utility.label": "ลิงก์เสริมของเว็บไซต์",
 
     "notfound.title": "ไม่พบหน้าที่คุณค้นหา",
     "notfound.body": "ขออภัย หน้าที่คุณกำลังมองหาไม่มีอยู่หรืออาจถูกย้ายไปแล้ว",

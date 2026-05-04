@@ -1,12 +1,23 @@
 /**
  * ServiceDetail — /th/services/:slug & /en/services/:slug
  *
- * Renders one service shell. Until services_copy.md is spliced in, the
- * description / deliverables / audience sections show "Copy pending" tags;
- * structure (SDG chip, breadcrumbs, related insights, CTA) is fully usable.
+ * Renders one of the 9 canonical services. Source of truth for body copy:
+ * client/src/content/services.ts (spliced from comminno_phase2_copy/services_copy.md).
+ *
+ * Sections:
+ *   1. Hero (PageHeader) — sentence-case title, breadcrumbs, SDG chip,
+ *                          subtitle as lede.
+ *   2. Description       — multi-paragraph body (splits on "\n\n").
+ *   3. Deliverables      — 6–8 concrete outputs as a 2-column card grid.
+ *   4. Related insights  — pulled from service.relatedSlugs first, then
+ *                          falls back to posts tagged with the service slug.
+ *   5. CTA               — service-specific button copy + back-to-hub.
+ *
+ * The legacy "audience" section was removed because canonical copy frames
+ * each service through deliverables, not audience.
  */
 import { useRoute } from "wouter";
-import { servicesBySlug } from "@/content/services";
+import { servicesBySlug, type ServiceWithCopy } from "@/content/services";
 import { posts } from "@/content/posts";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { usePageMeta } from "@/i18n/PageMeta";
@@ -20,53 +31,72 @@ const COPY = {
   th: {
     crumbHome: "หน้าแรก",
     crumbHub: "บริการ",
-    pendingCopy: "เนื้อหารายละเอียดอยู่ระหว่างจัดทำ — ฉบับสมบูรณ์จะอัปโหลดเมื่อทีมศูนย์ฯ ส่งสำเนามา",
     descTitle: "เกี่ยวกับบริการนี้",
     deliverablesTitle: "ผลงานที่ส่งมอบ",
-    audienceTitle: "เหมาะสำหรับ",
     relatedTitle: "บทความและกรณีศึกษาที่เกี่ยวข้อง",
     noRelated: "ยังไม่มีบทความในหมวดนี้",
     ctaTitle: "อยากร่วมงานกับเรา?",
     ctaLede: "บอกโจทย์ของคุณผ่านหน้าติดต่อ ทีมเราจะตอบกลับภายใน 5 วันทำการ",
-    ctaButton: "ติดต่อศูนย์ฯ",
     backToHub: "ดูบริการทั้งหมด",
   },
   en: {
     crumbHome: "Home",
     crumbHub: "Services",
-    pendingCopy:
-      "Detailed copy is pending — the full description will be added once the center sends final wording.",
     descTitle: "About this service",
     deliverablesTitle: "What we deliver",
-    audienceTitle: "Who it's for",
     relatedTitle: "Related insights and case studies",
     noRelated: "No insights tagged with this service yet.",
     ctaTitle: "Want to work with us?",
-    ctaLede: "Tell us what you need on the contact page — we reply within five working days.",
-    ctaButton: "Contact the center",
+    ctaLede:
+      "Tell us what you need on the contact page — we reply within five working days.",
     backToHub: "All services",
   },
 } as const;
 
+/**
+ * Pick the first ≤160 chars of the description for the meta tag, collapsing
+ * paragraph breaks. Mirrors the "never auto-generate" rule by deriving from
+ * canonical copy only.
+ */
+function buildMetaDescription(
+  service: ServiceWithCopy,
+  locale: "th" | "en",
+): string {
+  const desc = locale === "th" ? service.descriptionTh : service.descriptionEn;
+  if (!desc) return "";
+  const flat = desc.replace(/\s+/g, " ").trim();
+  if (flat.length <= 160) return flat;
+  const cut = flat.slice(0, 157);
+  const lastSpace = cut.lastIndexOf(" ");
+  return `${cut.slice(0, lastSpace > 120 ? lastSpace : 157)}…`;
+}
+
 export default function ServiceDetail() {
-  const [, params] = useRoute<{ locale: string; slug: string }>("/:locale/services/:slug");
+  const [, params] = useRoute<{ locale: string; slug: string }>(
+    "/:locale/services/:slug",
+  );
   const slug = params?.slug;
   const { locale } = useLocale();
   const t = COPY[locale];
-
   const service = slug ? servicesBySlug.get(slug) : undefined;
 
-  // Always call the meta hook so React's hook order is stable, even when service is missing.
+  // Stable hook order: derive everything for the meta hook before the
+  // NotFound branch so React sees the same hooks on every render.
   const safeTitle: string = service
-    ? (locale === "th" ? (service.titleTh ?? service.titleEn) : service.titleEn)
+    ? locale === "th"
+      ? service.titleTh ?? service.titleEn
+      : service.titleEn
     : "Service not found";
-  const description: string | null =
-    (service?.[locale === "th" ? "descriptionTh" : "descriptionEn"]) ?? null;
-  const metaDesc: string =
-    description ??
-    (locale === "th"
-      ? `บริการ ${safeTitle} จากศูนย์ความเป็นเลิศด้านนวัตกรรมการสื่อสาร จุฬาลงกรณ์มหาวิทยาลัย — รายละเอียดเพิ่มเติมเร็ว ๆ นี้`
-      : `Comm.Inno service · ${safeTitle}. Full description coming soon as the center confirms canonical copy.`);
+  const subtitle: string | null = service
+    ? locale === "th"
+      ? service.subtitleTh
+      : service.subtitleEn
+    : null;
+  const metaDesc: string = service
+    ? buildMetaDescription(service, locale)
+    : locale === "th"
+    ? "ไม่พบหน้าบริการที่คุณกำลังมองหา"
+    : "The service page you are looking for could not be found.";
 
   usePageMeta({
     title: safeTitle,
@@ -77,9 +107,11 @@ export default function ServiceDetail() {
           "@context": "https://schema.org",
           "@type": "Service",
           name: safeTitle,
+          description: metaDesc,
           provider: {
             "@type": "Organization",
             name: "Comm.Inno",
+            url: "https://comminno.center",
           },
         }
       : undefined,
@@ -89,11 +121,33 @@ export default function ServiceDetail() {
     return <NotFound />;
   }
 
-  // Cross-link any insights tagged with this service slug.
-  const related = posts.filter((p) => p.tags.includes(service.slug)).slice(0, 4);
+  // Resolve related insights: explicit slugs from the canonical copy take
+  // precedence over tag-based discovery so we honour the editorial mapping
+  // exactly. Fall back to tag-matching when the explicit list is short.
+  const explicitRelated = service.relatedSlugs
+    .map((relSlug) => posts.find((p) => p.slug === relSlug))
+    .filter((p): p is (typeof posts)[number] => Boolean(p));
+  const fallbackRelated = posts.filter((p) =>
+    p.tags.includes(service.slug),
+  );
+  const seen = new Set<string>();
+  const related = [...explicitRelated, ...fallbackRelated]
+    .filter((p) => {
+      if (seen.has(p.slug)) return false;
+      seen.add(p.slug);
+      return true;
+    })
+    .slice(0, 4);
+
+  const description =
+    locale === "th" ? service.descriptionTh : service.descriptionEn;
+  const descParagraphs = (description ?? "")
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter(Boolean);
   const deliverables =
     locale === "th" ? service.deliverablesTh : service.deliverablesEn;
-  const audience = locale === "th" ? service.audienceTh : service.audienceEn;
+  const ctaButton = locale === "th" ? service.ctaTh : service.ctaEn;
 
   return (
     <>
@@ -104,51 +158,49 @@ export default function ServiceDetail() {
           { label: safeTitle },
         ]}
         title={safeTitle}
-        meta={
-          <SdgChip
-            sdg={service.sdgNumber as SdgNumber}
-            size="md"
-          />
-        }
+        lede={subtitle ?? undefined}
+        meta={<SdgChip sdg={service.sdgNumber as SdgNumber} size="md" />}
       />
 
       <article className="container py-12 md:py-16">
         {/* Description */}
         <section className="grid gap-8 md:grid-cols-12 mb-14">
           <header className="md:col-span-4">
-            <h2 className="font-display text-xl md:text-2xl" style={{ color: "var(--ink)" }}>
+            <h2
+              className="font-display text-xl md:text-2xl"
+              style={{ color: "var(--ink)" }}
+            >
               {t.descTitle}
             </h2>
           </header>
-          <div className="md:col-span-8">
-            {description ? (
-              <p style={{ fontSize: "1.0625rem", lineHeight: 1.6, color: "var(--ink)" }}>
-                {description}
-              </p>
-            ) : (
+          <div className="md:col-span-8 space-y-4">
+            {descParagraphs.map((para, i) => (
               <p
-                className="rounded-lg border p-4 text-sm"
+                key={i}
                 style={{
-                  borderColor: "color-mix(in srgb, var(--warning) 35%, #fff)",
-                  backgroundColor: "color-mix(in srgb, var(--warning) 8%, #fff)",
+                  fontSize: "1.0625rem",
+                  lineHeight: 1.65,
                   color: "var(--ink)",
                 }}
               >
-                {t.pendingCopy}
+                {para}
               </p>
-            )}
+            ))}
           </div>
         </section>
 
         {/* Deliverables */}
-        <section className="grid gap-8 md:grid-cols-12 mb-14">
-          <header className="md:col-span-4">
-            <h2 className="font-display text-xl md:text-2xl" style={{ color: "var(--ink)" }}>
-              {t.deliverablesTitle}
-            </h2>
-          </header>
-          <div className="md:col-span-8">
-            {deliverables && deliverables.length > 0 ? (
+        {deliverables && deliverables.length > 0 && (
+          <section className="grid gap-8 md:grid-cols-12 mb-14">
+            <header className="md:col-span-4">
+              <h2
+                className="font-display text-xl md:text-2xl"
+                style={{ color: "var(--ink)" }}
+              >
+                {t.deliverablesTitle}
+              </h2>
+            </header>
+            <div className="md:col-span-8">
               <ul className="grid gap-3 sm:grid-cols-2">
                 {deliverables.map((d, i) => (
                   <li
@@ -158,48 +210,27 @@ export default function ServiceDetail() {
                       borderColor: "var(--mist)",
                       backgroundColor: "#fff",
                       color: "var(--ink)",
+                      lineHeight: 1.5,
                     }}
                   >
                     {d}
                   </li>
                 ))}
               </ul>
-            ) : (
-              <p
-                className="text-sm"
-                style={{ color: "var(--ink-muted)", fontStyle: "italic" }}
-              >
-                {t.pendingCopy}
-              </p>
-            )}
-          </div>
-        </section>
-
-        {/* Audience */}
-        <section className="grid gap-8 md:grid-cols-12 mb-14">
-          <header className="md:col-span-4">
-            <h2 className="font-display text-xl md:text-2xl" style={{ color: "var(--ink)" }}>
-              {t.audienceTitle}
-            </h2>
-          </header>
-          <div className="md:col-span-8">
-            {audience ? (
-              <p style={{ lineHeight: 1.6, color: "var(--ink)" }}>{audience}</p>
-            ) : (
-              <p
-                className="text-sm"
-                style={{ color: "var(--ink-muted)", fontStyle: "italic" }}
-              >
-                {t.pendingCopy}
-              </p>
-            )}
-          </div>
-        </section>
+            </div>
+          </section>
+        )}
 
         {/* Related insights */}
-        <section className="border-t pt-10 mb-14" style={{ borderTopColor: "var(--mist)" }}>
+        <section
+          className="border-t pt-10 mb-14"
+          style={{ borderTopColor: "var(--mist)" }}
+        >
           <header className="mb-6">
-            <h2 className="font-display text-xl md:text-2xl" style={{ color: "var(--ink)" }}>
+            <h2
+              className="font-display text-xl md:text-2xl"
+              style={{ color: "var(--ink)" }}
+            >
               {t.relatedTitle}
             </h2>
           </header>
@@ -210,15 +241,26 @@ export default function ServiceDetail() {
                   <LocaleLink
                     href={`/insights/${p.slug}`}
                     className="block h-full rounded-lg border p-4 transition-colors"
-                    style={{ borderColor: "var(--mist)", backgroundColor: "#fff" }}
+                    style={{
+                      borderColor: "var(--mist)",
+                      backgroundColor: "#fff",
+                    }}
                   >
                     <p
                       className="text-xs uppercase tracking-wide font-semibold mb-1"
                       style={{ color: "var(--brand-red)" }}
                     >
-                      {p.date ? new Date(p.date).toLocaleDateString(locale === "th" ? "th-TH" : "en-US", { year: "numeric", month: "short" }) : ""}
+                      {p.date
+                        ? new Date(p.date).toLocaleDateString(
+                            locale === "th" ? "th-TH" : "en-US",
+                            { year: "numeric", month: "short" },
+                          )
+                        : ""}
                     </p>
-                    <h3 className="font-display text-lg" style={{ color: "var(--ink)", lineHeight: 1.25 }}>
+                    <h3
+                      className="font-display text-lg"
+                      style={{ color: "var(--ink)", lineHeight: 1.25 }}
+                    >
                       {p.title}
                     </h3>
                     <p
@@ -253,16 +295,19 @@ export default function ServiceDetail() {
           >
             {t.ctaTitle}
           </h2>
-          <p className="mb-6" style={{ color: "var(--ink-muted)", maxWidth: "44ch" }}>
+          <p
+            className="mb-6"
+            style={{ color: "var(--ink-muted)", maxWidth: "44ch" }}
+          >
             {t.ctaLede}
           </p>
           <div className="flex flex-wrap gap-3">
             <LocaleLink
-              href="/contact"
+              href={`/contact?service=${encodeURIComponent(service.slug)}`}
               className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
               style={{ backgroundColor: "var(--brand-red)" }}
             >
-              {t.ctaButton} <ArrowRight size={16} aria-hidden="true" />
+              {ctaButton} <ArrowRight size={16} aria-hidden="true" />
             </LocaleLink>
             <LocaleLink
               href="/services"

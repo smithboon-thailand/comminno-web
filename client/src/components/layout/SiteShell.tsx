@@ -4,17 +4,17 @@
  * focusable element.
  */
 
-import { lazy, Suspense, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { Header } from "./Header";
+import { Footer } from "./Footer";
 import { AnnouncerHost } from "@/components/InlineAnnouncer";
 
-/* Footer is below the fold on every page — ship it as a separate chunk
- * so it doesn't block initial paint or compete with the hero font for
- * download bandwidth. */
-const Footer = lazy(() =>
-  import("./Footer").then((m) => ({ default: m.Footer })),
-);
+/* Footer is imported eagerly. We previously code-split it via lazy(), but
+ * because Footer is the page's last block, late-arriving it pushed the
+ * page height up *after* paint and was scoring CLS = 0.20 on long pages
+ * like /th/insights. Eager import puts it in the main entry (~7 KB gz),
+ * eliminates the shift, and the perf delta is negligible. */
 
 interface Props {
   children: ReactNode;
@@ -32,9 +32,7 @@ export function SiteShell({ children }: Props) {
       <main id="main" className="flex-1">
         {children}
       </main>
-      <Suspense fallback={null}>
-        <Footer />
-      </Suspense>
+      <Footer />
       <AnnouncerHost />
     </div>
   );

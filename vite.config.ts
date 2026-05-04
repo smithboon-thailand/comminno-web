@@ -221,6 +221,22 @@ export default defineConfig({
     emptyOutDir: true,
     // Source maps satisfy Lighthouse “Missing source maps” audit and aid debugging in prod.
     sourcemap: true,
+    // Conservative manualChunks split: ONLY isolate the deferred-load deps.
+    // We avoid splitting React/react-dom/wouter/radix because Rollup's hoisting
+    // can split shared modules across chunks and break ESM identity (one
+    // version of React renders, another is `useState`'d => null root). Keeping
+    // them in the main entry preserves a single React instance. The big win
+    // comes from stripping the Manus dev-runtime at audit time, not from chunking.
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return undefined;
+          if (id.includes("vanilla-cookieconsent")) return "vendor-consent";
+          if (id.includes("lucide-react")) return "vendor-icons";
+          return undefined;
+        },
+      },
+    },
   },
   server: {
     port: 3000,

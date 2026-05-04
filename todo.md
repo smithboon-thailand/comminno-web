@@ -60,3 +60,45 @@
 ### Phase 6 — Deliver
 - [ ] Save checkpoint
 - [ ] Final report: published URL, 8-route Lighthouse table, content-gap list, slug map
+
+---
+
+## Task 3 — Phase-2 splice + consent + Formspree (current)
+
+### 3.1 Locate phase-2 zip & inventory scaffold
+- [ ] Confirm comminno_phase2_copy.zip in project files
+- [ ] Extract services_copy.md + privacy_policy.md
+- [ ] Inventory ServiceDetail, /privacy page, ContactForm, Footer, messages.ts
+
+### 3.2 Splice canonical TH/EN copy
+- [ ] Map services_copy.md → 9 service slugs; flag any missing TH/EN
+- [ ] Splice into service content module (keep markdown rendering)
+- [ ] Splice privacy_policy.md into /privacy (TH+EN)
+- [ ] Apply NAME_FIXES (Boonchutima); grep for stale spellings
+- [ ] Hand-written meta description per service page (TH+EN, ≤160 chars)
+
+### 3.3 vanilla-cookieconsent v3 + Plausible gate
+- [ ] pnpm add vanilla-cookieconsent
+- [ ] Init with categories: necessary (locked) + analytics (default off)
+- [ ] Bilingual TH+EN banner copy from privacy_policy.md
+- [ ] cookie.expiresAfterDays: 365 (12-month)
+- [ ] Footer 'Cookie settings / ตั้งค่าคุกกี้' → CC.showPreferences()
+- [ ] Plausible loads ONLY when CC.acceptedCategory('analytics')
+- [ ] Listen for cc:onChange to load/unload Plausible
+
+### 3.4 Contact form → Formspree
+- [ ] VITE_CONTACT_ENDPOINT (default https://formspree.io/f/PLACEHOLDER)
+- [ ] Required: name, email, organization, service (9-option select), message, pdpa
+- [ ] Honeypot 'company_url' (display:none, must be empty)
+- [ ] Client-side rate limit (localStorage; 30s cooldown, 5/hour)
+- [ ] Inline success state (replaces form) + inline error state (no toast)
+- [ ] aria-live polite status
+
+### 3.5 Clean Lighthouse audit (8 routes, mobile)
+- [ ] /th, /en, /th/about, /th/services, /th/services/training,
+      /th/insights, /th/insights/chula-zero-waste, /th/contact
+- [ ] Capture P/A/BP/SEO per route; note any < 90 with failing audit
+
+### 3.6 Deliver
+- [ ] webdev_save_checkpoint
+- [ ] Preview URL + score table + gaps list to user

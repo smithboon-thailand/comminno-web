@@ -13,6 +13,7 @@
 import { FormattedMessage } from "react-intl";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { LocaleLink } from "@/i18n/LocaleLink";
+import { openCookieSettings } from "@/components/consent/CookieConsentProvider";
 
 export function Footer() {
   const { t } = useLocale();
@@ -70,7 +71,7 @@ export function Footer() {
       </div>
 
       <div
-        className="container py-5 flex flex-col gap-2 md:flex-row md:items-center md:justify-between text-xs"
+        className="container py-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between text-xs"
         style={{
           borderTop: "1px solid color-mix(in srgb, var(--ink) 8%, transparent)",
           color: "var(--slate)",
@@ -82,7 +83,34 @@ export function Footer() {
             values={{ year }}
           />
         </div>
-        <div><FormattedMessage id="footer.legacy" /></div>
+        <nav
+          aria-label={t("footer.utility.label")}
+          className="flex flex-wrap items-center gap-x-5 gap-y-1"
+        >
+          <LocaleLink
+            href="/privacy"
+            className="hover:underline"
+            style={{ color: "var(--slate)" }}
+          >
+            <FormattedMessage id="footer.privacy" />
+          </LocaleLink>
+          <button
+            type="button"
+            onClick={openCookieSettings}
+            className="hover:underline"
+            style={{
+              color: "var(--slate)",
+              background: "none",
+              border: 0,
+              padding: 0,
+              font: "inherit",
+              cursor: "pointer",
+            }}
+          >
+            <FormattedMessage id="footer.cookieSettings" />
+          </button>
+          <span><FormattedMessage id="footer.legacy" /></span>
+        </nav>
       </div>
     </footer>
   );

@@ -14,23 +14,29 @@
  *   /post/:slug etc. (legacy) → RedirectHandler → /:locale/insights/:slug
  *   anything else            → localized NotFound
  */
-import { lazy, Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import { Route, Switch, useLocation } from "wouter";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LocaleProvider, useLocale, withLocale } from "./i18n/LocaleProvider";
 import { SiteShell } from "./components/layout/SiteShell";
+import { CookieConsentProvider } from "./components/consent/CookieConsentProvider";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import { redirects } from "./content/redirects";
 
-// Heavy(ish) detail and form pages are code-split — Home stays in the main chunk.
-const About = lazy(() => import("./pages/About"));
-const Services = lazy(() => import("./pages/Services"));
-const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
-const Insights = lazy(() => import("./pages/Insights"));
-const InsightDetail = lazy(() => import("./pages/InsightDetail"));
-const Contact = lazy(() => import("./pages/Contact"));
-const Privacy = lazy(() => import("./pages/Privacy"));
+// Routes are eagerly imported. We previously code-split each route via
+// lazy() + a min-h-60vh PageFallback, but on every navigation the fallback
+// painted, then the route arrived and pushed the (eager) Footer down by
+// thousands of pixels — scoring CLS ≈ 0.20 on every non-/th route.
+// All route bundles together are < 200 KB minified, well within the perf
+// budget for a static marketing site.
+import About from "./pages/About";
+import Services from "./pages/Services";
+import ServiceDetail from "./pages/ServiceDetail";
+import Insights from "./pages/Insights";
+import InsightDetail from "./pages/InsightDetail";
+import Contact from "./pages/Contact";
+import Privacy from "./pages/Privacy";
 
 const REDIRECT_MAP: Record<string, string> = Object.fromEntries(
   redirects.map((r) => [r.from.replace(/\/+$/, "") || "/", r.to]),
@@ -56,20 +62,9 @@ function RedirectHandler() {
   return <NotFound />;
 }
 
-function PageFallback() {
-  return (
-    <div
-      aria-busy="true"
-      aria-label="Loading"
-      style={{ minHeight: "60vh" }}
-    />
-  );
-}
-
 function Router() {
   return (
-    <Suspense fallback={<PageFallback />}>
-      <Switch>
+    <Switch>
         {/* Localized routes — TH and EN share the same component, locale comes from URL */}
         <Route path="/:locale/about">
           {(params) =>
@@ -116,7 +111,6 @@ function Router() {
         {/* Anything else: try the redirect map first, fall through to NotFound */}
         <Route component={RedirectHandler} />
       </Switch>
-    </Suspense>
   );
 }
 
@@ -124,9 +118,11 @@ function App() {
   return (
     <ThemeProvider defaultTheme="light">
       <LocaleProvider>
-        <SiteShell>
-          <Router />
-        </SiteShell>
+        <CookieConsentProvider>
+          <SiteShell>
+            <Router />
+          </SiteShell>
+        </CookieConsentProvider>
       </LocaleProvider>
     </ThemeProvider>
   );

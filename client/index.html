@@ -23,6 +23,16 @@
     <!-- Brand colour for mobile browser chrome -->
     <meta name="theme-color" content="#BD212D" />
 
+    <!--
+      Baseline canonical — the SPA's usePageMeta hook overrides this per-page on mount.
+      Set to the TH home (default locale) so Lighthouse sees a valid canonical before
+      JS executes. hreflang alternates declare both language versions.
+    -->
+    <link rel="canonical" href="https://comminno-go6lmsuy.manus.space/th" />
+    <link rel="alternate" hreflang="th" href="https://comminno-go6lmsuy.manus.space/th" />
+    <link rel="alternate" hreflang="en" href="https://comminno-go6lmsuy.manus.space/en" />
+    <link rel="alternate" hreflang="x-default" href="https://comminno-go6lmsuy.manus.space/th" />
+
     <!-- Favicon: reuse the official logo SVG (the brand book endorses this). -->
     <link rel="icon" type="image/svg+xml" href="/logo-official.svg" />
 
@@ -43,6 +53,36 @@
     <meta property="og:description" content="Communication that listens. Innovation that improves life." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/logo-official.svg" />
+
+    <!--
+      Site-wide Organization JSON-LD (page-specific JSON-LD is added via
+      usePageMeta).  Hand-written; do not auto-generate.
+    -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Comm.Inno",
+      "alternateName": "Center of Excellence in Communication Innovation",
+      "url": "https://comminno-go6lmsuy.manus.space",
+      "logo": "https://comminno-go6lmsuy.manus.space/logo-official.svg",
+      "parentOrganization": {
+        "@type": "CollegeOrUniversity",
+        "name": "Faculty of Communication Arts, Chulalongkorn University",
+        "url": "https://www.commarts.chula.ac.th"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Mongkut Sammitr Building, 254 Phaya Thai Road",
+        "addressLocality": "Wang Mai, Pathum Wan",
+        "addressRegion": "Bangkok",
+        "postalCode": "10330",
+        "addressCountry": "TH"
+      },
+      "email": "comminno@chula.ac.th",
+      "telephone": "+66-2-218-2215"
+    }
+    </script>
   </head>
 
   <body>

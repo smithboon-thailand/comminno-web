@@ -3,10 +3,9 @@
  *
  * Sticky top bar.
  *   • Left:   official logo (40px tall) → links to current-locale home
- *   • Center: five placeholder nav items (About / Services / Insights / Team / Contact).
- *             Real pages don't exist yet, so clicks emit a Sonner toast with localized
- *             "coming in next sprint" copy. The buttons remain keyboard-reachable
- *             with proper focus rings to satisfy WCAG.
+ *   • Center: five real nav links (About / Services / Insights / Team / Contact).
+ *             Each is a LocaleLink that prefixes /th or /en automatically.
+ *             "Team" goes to /about#team (no separate /team page in MVP).
  *   • Right:  EN/TH language switcher (segmented control). Persists via LocaleProvider.
  *   • Mobile: nav collapses behind a hamburger.
  *
@@ -16,27 +15,41 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { FormattedMessage } from "react-intl";
-import { toast } from "sonner";
+import { useLocation } from "wouter";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { LocaleLink } from "@/i18n/LocaleLink";
 
-const NAV_KEYS = [
-  "nav.about",
-  "nav.services",
-  "nav.insights",
-  "nav.team",
-  "nav.contact",
+interface NavItem {
+  key: string;
+  /** Logical (locale-less) destination. "#team" anchors live on /about. */
+  href: string;
+}
+
+const NAV_ITEMS: readonly NavItem[] = [
+  { key: "nav.about", href: "/about" },
+  { key: "nav.services", href: "/services" },
+  { key: "nav.insights", href: "/insights" },
+  { key: "nav.team", href: "/about#team" },
+  { key: "nav.contact", href: "/contact" },
 ] as const;
 
 export function Header() {
   const { locale, setLocale, t } = useLocale();
+  const [path] = useLocation();
   const [open, setOpen] = useState(false);
 
-  // Close mobile menu when locale changes (since the page re-mounts the nav).
-  useEffect(() => setOpen(false), [locale]);
+  // Close mobile menu when locale or route changes.
+  useEffect(() => setOpen(false), [locale, path]);
 
-  const onPlaceholderClick = () => {
-    toast(t("nav.placeholder.toast"));
+  const isActive = (logicalHref: string): boolean => {
+    // Strip locale + anchor → compare top-level section.
+    const top = path.replace(/^\/(th|en)/, "") || "/";
+    const target = logicalHref.split("#")[0];
+    if (target === "/about") return top.startsWith("/about");
+    if (target === "/services") return top.startsWith("/services");
+    if (target === "/insights") return top.startsWith("/insights");
+    if (target === "/contact") return top.startsWith("/contact");
+    return false;
   };
 
   return (
@@ -73,21 +86,22 @@ export function Header() {
           aria-label="Primary"
           className="hidden md:flex items-center gap-1"
         >
-          {NAV_KEYS.map((key) => (
-            <button
-              key={key}
-              type="button"
-              onClick={onPlaceholderClick}
-              className="rounded-md px-3 py-2 text-sm font-medium transition-colors"
-              style={{ color: "var(--ink)" }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.color = "var(--brand-red)")
-              }
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--ink)")}
-            >
-              <FormattedMessage id={key} />
-            </button>
-          ))}
+          {NAV_ITEMS.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <LocaleLink
+                key={item.key}
+                href={item.href}
+                aria-current={active ? "page" : undefined}
+                className="rounded-md px-3 py-2 text-sm font-medium transition-colors"
+                style={{
+                  color: active ? "var(--brand-red)" : "var(--ink)",
+                }}
+              >
+                <FormattedMessage id={item.key} />
+              </LocaleLink>
+            );
+          })}
         </nav>
 
         {/* Right cluster: lang switcher + mobile menu trigger */}
@@ -117,21 +131,23 @@ export function Header() {
           style={{ borderTop: "1px solid var(--mist)" }}
         >
           <ul className="container flex flex-col py-3">
-            {NAV_KEYS.map((key) => (
-              <li key={key}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setOpen(false);
-                    onPlaceholderClick();
-                  }}
-                  className="w-full text-left rounded-md px-3 py-3 text-base font-medium"
-                  style={{ color: "var(--ink)" }}
-                >
-                  <FormattedMessage id={key} />
-                </button>
-              </li>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <li key={item.key}>
+                  <LocaleLink
+                    href={item.href}
+                    aria-current={active ? "page" : undefined}
+                    className="block w-full text-left rounded-md px-3 py-3 text-base font-medium"
+                    style={{
+                      color: active ? "var(--brand-red)" : "var(--ink)",
+                    }}
+                  >
+                    <FormattedMessage id={item.key} />
+                  </LocaleLink>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       )}

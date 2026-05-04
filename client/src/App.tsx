@@ -1,34 +1,122 @@
 /**
  * App — Comm.Inno
  *
- * Lean by design: this static MVP renders one page in two locales, so we strip
- * the template's Toaster / TooltipProvider / ErrorBoundary trees that would
- * otherwise drag ~50 KB of unused Radix/Sonner code into the main bundle.
- *
- * Routing model:
- *   /            → LocaleProvider redirects to /<detected-locale>
- *   /th, /en     → Home page (localized)
- *   anything else → localized NotFound
- *
- * The LocaleProvider sits inside the Router so it can read & update the URL,
- * but outside the Switch so message catalogs are mounted before children render.
+ * Locale-prefixed routing model:
+ *   /                → LocaleProvider → /<detected-locale>
+ *   /:locale         → Home
+ *   /:locale/about           → About
+ *   /:locale/services        → Services hub
+ *   /:locale/services/:slug  → ServiceDetail
+ *   /:locale/insights        → Insights index (?category= optional)
+ *   /:locale/insights/:slug  → InsightDetail
+ *   /:locale/contact         → Contact
+ *   /:locale/privacy         → Privacy
+ *   /post/:slug etc. (legacy) → RedirectHandler → /:locale/insights/:slug
+ *   anything else            → localized NotFound
  */
-
-import { Route, Switch } from "wouter";
+import { lazy, Suspense, useEffect } from "react";
+import { Route, Switch, useLocation } from "wouter";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import { LocaleProvider } from "./i18n/LocaleProvider";
+import { LocaleProvider, useLocale, withLocale } from "./i18n/LocaleProvider";
 import { SiteShell } from "./components/layout/SiteShell";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import { redirects } from "./content/redirects";
+
+// Heavy(ish) detail and form pages are code-split — Home stays in the main chunk.
+const About = lazy(() => import("./pages/About"));
+const Services = lazy(() => import("./pages/Services"));
+const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
+const Insights = lazy(() => import("./pages/Insights"));
+const InsightDetail = lazy(() => import("./pages/InsightDetail"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+
+const REDIRECT_MAP: Record<string, string> = Object.fromEntries(
+  redirects.map((r) => [r.from.replace(/\/+$/, "") || "/", r.to]),
+);
+
+/** Catch legacy Wix paths (no locale prefix) and 301 to the new equivalent. */
+function RedirectHandler() {
+  const [path, navigate] = useLocation();
+  const { locale } = useLocale();
+
+  useEffect(() => {
+    const stripped = path.replace(/\/+$/, "") || "/";
+    const target = REDIRECT_MAP[stripped];
+    if (target) {
+      navigate(withLocale(target, locale), { replace: true });
+    }
+  }, [path, locale, navigate]);
+
+  // If we have a known redirect we're navigating away — render nothing.
+  // Otherwise, fall through to NotFound.
+  const stripped = path.replace(/\/+$/, "") || "/";
+  if (REDIRECT_MAP[stripped]) return null;
+  return <NotFound />;
+}
+
+function PageFallback() {
+  return (
+    <div
+      aria-busy="true"
+      aria-label="Loading"
+      style={{ minHeight: "60vh" }}
+    />
+  );
+}
 
 function Router() {
   return (
-    <Switch>
-      <Route path="/th" component={Home} />
-      <Route path="/en" component={Home} />
-      <Route path="/" component={Home} />
-      <Route component={NotFound} />
-    </Switch>
+    <Suspense fallback={<PageFallback />}>
+      <Switch>
+        {/* Localized routes — TH and EN share the same component, locale comes from URL */}
+        <Route path="/:locale/about">
+          {(params) =>
+            params.locale === "th" || params.locale === "en" ? <About /> : <NotFound />
+          }
+        </Route>
+        <Route path="/:locale/services">
+          {(params) =>
+            params.locale === "th" || params.locale === "en" ? <Services /> : <NotFound />
+          }
+        </Route>
+        <Route path="/:locale/services/:slug">
+          {(params) =>
+            params.locale === "th" || params.locale === "en" ? <ServiceDetail /> : <NotFound />
+          }
+        </Route>
+        <Route path="/:locale/insights">
+          {(params) =>
+            params.locale === "th" || params.locale === "en" ? <Insights /> : <NotFound />
+          }
+        </Route>
+        <Route path="/:locale/insights/:slug">
+          {(params) =>
+            params.locale === "th" || params.locale === "en" ? <InsightDetail /> : <NotFound />
+          }
+        </Route>
+        <Route path="/:locale/contact">
+          {(params) =>
+            params.locale === "th" || params.locale === "en" ? <Contact /> : <NotFound />
+          }
+        </Route>
+        <Route path="/:locale/privacy">
+          {(params) =>
+            params.locale === "th" || params.locale === "en" ? <Privacy /> : <NotFound />
+          }
+        </Route>
+        <Route path="/:locale">
+          {(params) =>
+            params.locale === "th" || params.locale === "en" ? <Home /> : <RedirectHandler />
+          }
+        </Route>
+        {/* Root → LocaleProvider already redirects to /<locale> */}
+        <Route path="/" component={Home} />
+        {/* Anything else: try the redirect map first, fall through to NotFound */}
+        <Route component={RedirectHandler} />
+      </Switch>
+    </Suspense>
   );
 }
 
@@ -43,5 +131,4 @@ function App() {
     </ThemeProvider>
   );
 }
-
 export default App;

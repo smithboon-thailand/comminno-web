@@ -1,0 +1,199 @@
+{
+  "redirects": [
+    {
+      "source": "/about/teerada-ne",
+      "destination": "/about#teerada",
+      "permanent": true
+    },
+    {
+      "source": "/blank",
+      "destination": "/about#smith",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/book-printing",
+      "destination": "/services/book-and-printing",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/campaign-manage",
+      "destination": "/services/campaign-manage",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/communication-design",
+      "destination": "/services/communication-design",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/highlights",
+      "destination": "/insights?category=highlights",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/innovation-technology",
+      "destination": "/insights?category=innovation-technology",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/marketing-event",
+      "destination": "/services/marketing-event",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/motion-effect-ar",
+      "destination": "/services/motion-effect-ar",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/research-evaluation",
+      "destination": "/services/research-and-evaluation",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/school",
+      "destination": "/insights?category=school",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/seminar",
+      "destination": "/services/seminar",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/training",
+      "destination": "/services/training",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/video-production",
+      "destination": "/services/video-production",
+      "permanent": true
+    },
+    {
+      "source": "/post/__itd",
+      "destination": "/insights/itd",
+      "permanent": true
+    },
+    {
+      "source": "/post/asean-university-network",
+      "destination": "/insights/asean-university-network",
+      "permanent": true
+    },
+    {
+      "source": "/post/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank",
+      "destination": "/insights/associate-professor-dr-smith-boonchutima-delivers-leadership-training-at-krungthai-bank",
+      "permanent": true
+    },
+    {
+      "source": "/post/associate-professor-dr-smith-boonchutima-delivers-special-lecture-at-professional-treasury-officer",
+      "destination": "/insights/associate-professor-dr-smith-boonchutima-delivers-special-lecture-at-professional-treasury-officer",
+      "permanent": true
+    },
+    {
+      "source": "/post/center-of-excellence-head-invited-to-lead-executive-crisis-communication-training",
+      "destination": "/insights/center-of-excellence-head-invited-to-lead-executive-crisis-communication-training",
+      "permanent": true
+    },
+    {
+      "source": "/post/center-of-excellence-in-communication-innovation-launches-groundbreaking-online-course-for-digital-n",
+      "destination": "/insights/center-of-excellence-in-communication-innovation-launches-groundbreaking-online-course-for-digital-n",
+      "permanent": true
+    },
+    {
+      "source": "/post/chula-communication-arts-strengthens-academic-collaboration-with-keio-university-and-bunkyo-universi",
+      "destination": "/insights/chula-communication-arts-strengthens-academic-collaboration-with-keio-university-and-bunkyo-universi",
+      "permanent": true
+    },
+    {
+      "source": "/post/chula-zero-waste",
+      "destination": "/insights/chula-zero-waste",
+      "permanent": true
+    },
+    {
+      "source": "/post/comm-art-chula-ce-drives-national-drug-safety-awareness-at-fda-summit",
+      "destination": "/insights/comm-art-chula-ce-drives-national-drug-safety-awareness-at-fda-summit",
+      "permanent": true
+    },
+    {
+      "source": "/post/creative-tourism-development-project-in-nan-province",
+      "destination": "/insights/creative-tourism-development-project-in-nan-province",
+      "permanent": true
+    },
+    {
+      "source": "/post/department-of-disease-control",
+      "destination": "/insights/department-of-disease-control",
+      "permanent": true
+    },
+    {
+      "source": "/post/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-t%C3%BCrkiye-for-the-wo",
+      "destination": "/insights/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-t%C3%BCrkiye-for-the-wo",
+      "permanent": true
+    },
+    {
+      "source": "/post/empowering-youth-leaders",
+      "destination": "/insights/empowering-youth-leaders",
+      "permanent": true
+    },
+    {
+      "source": "/post/international-labour-organization",
+      "destination": "/insights/international-labour-organization",
+      "permanent": true
+    },
+    {
+      "source": "/post/ministry-of-natural-resources-and-environment",
+      "destination": "/insights/ministry-of-natural-resources-and-environment",
+      "permanent": true
+    },
+    {
+      "source": "/post/nbtc-encyclopedia",
+      "destination": "/insights/nbtc-encyclopedia",
+      "permanent": true
+    },
+    {
+      "source": "/post/nia-100-faces",
+      "destination": "/insights/nia-100-faces",
+      "permanent": true
+    },
+    {
+      "source": "/post/nia-media-innovation",
+      "destination": "/insights/nia-media-innovation",
+      "permanent": true
+    },
+    {
+      "source": "/post/nia-satisfaction-survey-2020",
+      "destination": "/insights/nia-satisfaction-survey-2020",
+      "permanent": true
+    },
+    {
+      "source": "/post/pid-thong-lang-phra-foundation",
+      "destination": "/insights/pid-thong-lang-phra-foundation",
+      "permanent": true
+    },
+    {
+      "source": "/post/seeds-for-cu-sustainability",
+      "destination": "/insights/seeds-for-cu-sustainability",
+      "permanent": true
+    },
+    {
+      "source": "/post/sri-trang-agro-industry",
+      "destination": "/insights/sri-trang-agro-industry",
+      "permanent": true
+    },
+    {
+      "source": "/post/thai-health-promotion-foundation-organises-simple-drug-communication-as-daily-routine-training-by",
+      "destination": "/insights/thai-health-promotion-foundation-organises-simple-drug-communication-as-daily-routine-training-by",
+      "permanent": true
+    },
+    {
+      "source": "/post/the-training-program-for-driving-public-and-social-communication-care-d-plus",
+      "destination": "/insights/the-training-program-for-driving-public-and-social-communication-care-d-plus",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy",
+      "permanent": true
+    }
+  ]
+}

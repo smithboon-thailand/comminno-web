@@ -102,3 +102,39 @@
 ### 3.6 Deliver
 - [ ] webdev_save_checkpoint
 - [ ] Preview URL + score table + gaps list to user
+
+---
+
+## Task 2.5 — /about rebuild with verified faculty data (current)
+
+### 2.5.1 Source canonical data
+- [ ] Unzip comminno_faculty_data.zip → CIC_Faculty_for_Manus.md
+- [ ] Read full markdown; note ORCID IDs, DOIs, role labels, TH/EN spellings
+
+### 2.5.2 Critical spelling corrections (sitewide)
+- [ ] Wassayut Kongjan → Watsayut Kongchan
+- [ ] Wai Phan Chansem → REMOVE from team; Partner only (Asst. Prof. Waiphot Chansem)
+- [ ] Atchara Boonchum → Achara Bunchum / อัจฉรา บุญชุ่ม
+- [ ] Ekasit Sumana → Akasit Sumana / เอกสิทธิ์ สุมานะ
+
+### 2.5.3 Team data module (typed)
+- [ ] Tier 1 — Leadership × 3: Smith, Teerada, Pavel (TH/EN bio + role + ORCID + Scholar + 5 recent pubs w/ DOI)
+- [ ] Tier 2 — Faculty × 1: Watsayut Kongchan (TH/EN + role + ORCID)
+- [ ] Tier 3 — Research team × 8 (TH primary + EN transliteration + role)
+- [ ] Partners: TNSU Samut Sakhon Campus + Waiphot Chansem
+
+### 2.5.4 /about rebuild
+- [ ] Hero with locale-aware copy
+- [ ] Leadership section — 3 hero cards (bio + ORCID/Scholar icon-buttons + 5 pubs w/ DOI)
+- [ ] Faculty section — 1 secondary card
+- [ ] Research team grid — 8 cards (TH primary on /th, EN transliteration secondary)
+- [ ] Partners section/page (TNSU)
+- [ ] "ORCID coming soon" pattern for missing IDs
+- [ ] Hand-written meta description (TH + EN)
+
+### 2.5.5 Build & audit
+- [ ] pnpm build clean
+- [ ] Strip Manus runtime, serve clean build
+- [ ] Lighthouse on /th/about and /en/about (mobile, simulated)
+- [ ] webdev_save_checkpoint
+- [ ] Deliver /th/about + /en/about preview URLs to user

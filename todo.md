@@ -153,3 +153,9 @@ User reports the recent-publications block has inaccuracies. Verified source:
 - [ ] (2025) Advertising fights back against negative online reviews — verify venue (Cogent Social Sciences), DOI
 - [ ] (2025) Mazahir / Boonchutima (Corresponding) / Yaseen — Thailand image on YouTube post-cannabis — PLOS ONE 20(2):e0317506
 - [ ] Type-check + checkpoint
+
+
+## Task 5 — Anime paper canonical citation (2026-05-05)
+
+- [ ] Replace 2026 Cogent A&H entry with: Krongbooncho, C., Boonchutima, S., & Mazahir, I. (2026). From stigma to mainstream: a multi-stakeholder thematic analysis of anime consumption and community-driven communication in Thai Generation Z. Cogent Arts & Humanities, 13(1). https://doi.org/10.1080/23311983.2026.2647143
+- [ ] Type-check + checkpoint

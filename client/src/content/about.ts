@@ -71,9 +71,9 @@ export const about: About = {
         },
         {
           year: 2026,
-          venue: "Cogent Arts and Humanities (Taylor & Francis)",
+          venue: "Cogent Arts & Humanities (Taylor & Francis)",
           citationEn:
-            "Boonchutima, S. et al. (2026, March). How Thai Gen Z turned anime from a stigma into a mainstream identity and cultural force. Cogent Arts and Humanities (Taylor & Francis).",
+            "Krongbooncho, C., Boonchutima, S., & Mazahir, I. (2026). From stigma to mainstream: a multi-stakeholder thematic analysis of anime consumption and community-driven communication in Thai Generation Z. Cogent Arts & Humanities, 13(1).",
           doi: "https://doi.org/10.1080/23311983.2026.2647143",
         },
         {

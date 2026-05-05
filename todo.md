@@ -138,3 +138,18 @@
 - [ ] Lighthouse on /th/about and /en/about (mobile, simulated)
 - [ ] webdev_save_checkpoint
 - [ ] Deliver /th/about + /en/about preview URLs to user
+
+
+---
+
+## Task 4 — Smith publications fix (2026-05-05)
+
+User reports the recent-publications block has inaccuracies. Verified source:
+`/home/ubuntu/manus-final-batch/docs/CIC_Faculty_data.md`.
+
+- [ ] (2026) Myanmar migrant workers co-designed health study — verify venue, DOI, authors
+- [ ] (2026) Thai Gen Z anime — verify venue (Cogent Arts & Humanities), DOI
+- [ ] (2026) Disease stigma in Thailand (MSM + Myanmar migrants) — verify venue (Wellcome Open Research), DOI
+- [ ] (2025) Advertising fights back against negative online reviews — verify venue (Cogent Social Sciences), DOI
+- [ ] (2025) Mazahir / Boonchutima (Corresponding) / Yaseen — Thailand image on YouTube post-cannabis — PLOS ONE 20(2):e0317506
+- [ ] Type-check + checkpoint

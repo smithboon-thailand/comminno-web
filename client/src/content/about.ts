@@ -64,30 +64,30 @@ export const about: About = {
       publications: [
         {
           year: 2026,
-          venue: "Research Involvement and Engagement, Springer",
+          venue: "Research Involvement and Engagement (Springer)",
           citationEn:
-            "Boonchutima, S. et al. (2026). Myanmar migrant workers co-designed a health study for their workplace pain. Research Involvement and Engagement (Springer).",
+            "Hlaing, P.H., Cheah, P.Y., Myint, S.T., …, Boonchutima, S. (Corresponding author). (2026). Co-designing a study on a health intervention with Myanmar migrant workers to address work-related musculoskeletal disorders in Thailand’s seafood industry. Research Involvement and Engagement.",
           doi: "https://doi.org/10.1186/s40900-026-00891-8",
         },
         {
           year: 2026,
           venue: "Cogent Arts and Humanities (Taylor & Francis)",
           citationEn:
-            "Boonchutima, S. et al. (2026). How Thai Gen Z turned anime from a stigma into a mainstream identity and cultural force. Cogent Arts and Humanities.",
+            "Boonchutima, S. et al. (2026, March). How Thai Gen Z turned anime from a stigma into a mainstream identity and cultural force. Cogent Arts and Humanities (Taylor & Francis).",
           doi: "https://doi.org/10.1080/23311983.2026.2647143",
         },
         {
           year: 2026,
           venue: "Wellcome Open Research",
           citationEn:
-            "Boonchutima, S. et al. (2026). Measuring disease stigma in Thailand: adapting new tools for MSM and Myanmar migrant communities. Wellcome Open Research.",
+            "Hlaing, P.H., Cheah, P.Y., Poomchaichote, T., …, Boonchutima, S. (2026). Adapting and validating the (Re)-emerging and ePidemic Infectious Diseases (RAPID) Community and Self Stigma Scales for Thai MSM and Myanmar migrant communities: A study protocol. Wellcome Open Research.",
           doi: "https://doi.org/10.12688/wellcomeopenres.26014.1",
         },
         {
           year: 2025,
           venue: "Cogent Social Sciences (Taylor & Francis)",
           citationEn:
-            "Boonchutima, S. et al. (2025). How advertising can fight back against negative online reviews. Cogent Social Sciences.",
+            "Yaseen, S., Boonchutima, S., & Mazahir, I. (2025). Impact of negative word of mouth on consumers’ attitude: Moderating role of advertising under cognitive involvement conditions. Cogent Social Sciences, 11(1): 2526800.",
           doi: "https://doi.org/10.1080/23311886.2025.2526800",
         },
         {

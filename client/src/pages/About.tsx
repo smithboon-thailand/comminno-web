@@ -241,6 +241,54 @@ function BioParagraphs({ text }: { text: string }) {
   );
 }
 
+/**
+ * Square portrait with webp source + jpg fallback (<picture> element).
+ * When neither source is provided, renders a brand-gradient placeholder div
+ * so the layout stays stable. Always sets explicit width/height to avoid CLS.
+ */
+function Portrait({
+  webp,
+  jpg,
+  alt,
+  size,
+  className,
+  gradient,
+}: {
+  webp?: string | null;
+  jpg?: string | null;
+  alt: string;
+  size: number;
+  className: string;
+  gradient: string;
+}) {
+  const fallback = jpg ?? webp ?? null;
+  if (!fallback) {
+    return (
+      <div
+        role="img"
+        aria-label={alt}
+        className={className}
+        style={{ background: gradient }}
+      />
+    );
+  }
+  return (
+    <picture>
+      {webp && <source srcSet={webp} type="image/webp" />}
+      <img
+        src={fallback}
+        alt={alt}
+        width={size}
+        height={size}
+        loading="lazy"
+        decoding="async"
+        className={`${className} object-cover`}
+        style={{ backgroundColor: "var(--brand-paper)" }}
+      />
+    </picture>
+  );
+}
+
 /** A leadership / faculty hero card. */
 function PersonCard({
   member,
@@ -269,29 +317,14 @@ function PersonCard({
       style={{ borderColor: "var(--mist)" }}
     >
       <div className="flex flex-col gap-5 md:flex-row md:gap-7">
-        {/* Portrait — real photo when available, gradient placeholder otherwise. */}
-        {member.photo ? (
-          <img
-            src={member.photo}
-            alt={member.photoAlt ?? member.nameEn}
-            width={isHero ? 480 : 352}
-            height={isHero ? 480 : 352}
-            loading="lazy"
-            decoding="async"
-            className="aspect-square w-full flex-none rounded-lg object-cover md:w-44"
-            style={{ backgroundColor: "var(--brand-paper)" }}
-          />
-        ) : (
-          <div
-            role="img"
-            aria-label={`Portrait of ${member.nameEn}`}
-            className="aspect-[4/5] w-full flex-none rounded-lg md:w-44"
-            style={{
-              background:
-                "linear-gradient(135deg, color-mix(in srgb, var(--brand-yellow) 22%, var(--brand-paper)), color-mix(in srgb, var(--brand-blue) 22%, var(--brand-paper)))",
-            }}
-          />
-        )}
+        <Portrait
+          webp={member.photo}
+          jpg={member.photoFallback}
+          alt={member.photoAlt ?? member.nameEn}
+          size={isHero ? 480 : 352}
+          className="aspect-square w-full flex-none rounded-lg md:w-44"
+          gradient="linear-gradient(135deg, color-mix(in srgb, var(--brand-yellow) 22%, var(--brand-paper)), color-mix(in srgb, var(--brand-blue) 22%, var(--brand-paper)))"
+        />
         <div className="min-w-0 flex-1">
           <h3
             className={`font-display ${isHero ? "text-2xl md:text-3xl" : "text-xl md:text-2xl"}`}
@@ -431,14 +464,13 @@ function ResearchTeamCard({
       className="rounded-lg border bg-white p-4"
       style={{ borderColor: "var(--mist)" }}
     >
-      <div
-        role="img"
-        aria-label={`Portrait of ${member.nameEn}`}
+      <Portrait
+        webp={member.photo}
+        jpg={member.photoFallback}
+        alt={member.photoAlt ?? member.nameEn}
+        size={200}
         className="mb-3 aspect-square w-full rounded-md"
-        style={{
-          background:
-            "linear-gradient(135deg, color-mix(in srgb, var(--brand-green) 18%, var(--brand-paper)), color-mix(in srgb, var(--brand-blue) 18%, var(--brand-paper)))",
-        }}
+        gradient="linear-gradient(135deg, color-mix(in srgb, var(--brand-green) 18%, var(--brand-paper)), color-mix(in srgb, var(--brand-blue) 18%, var(--brand-paper)))"
       />
       <p className="font-semibold" style={{ color: "var(--ink)" }}>
         {primary}
@@ -490,18 +522,30 @@ function PartnerCard({
         {altOrg}
       </p>
       {contactName && (
-        <div className="mt-4">
-          <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--ink-muted)" }}>
-            {t.contactLabel}
-          </p>
-          <p className="mt-1 font-semibold" style={{ color: "var(--ink)" }}>
-            {contactName}
-          </p>
-          {contactRole && (
-            <p className="text-sm" style={{ color: "var(--ink-muted)" }}>
-              {contactRole}
-            </p>
+        <div className="mt-4 flex items-start gap-4">
+          {(partner.contactPhoto || partner.contactPhotoFallback) && (
+            <Portrait
+              webp={partner.contactPhoto}
+              jpg={partner.contactPhotoFallback}
+              alt={partner.contactPhotoAlt ?? partner.contactNameEn ?? "Partner contact"}
+              size={96}
+              className="h-20 w-20 flex-none rounded-full"
+              gradient="linear-gradient(135deg, color-mix(in srgb, var(--brand-blue) 22%, var(--brand-paper)), color-mix(in srgb, var(--brand-yellow) 22%, var(--brand-paper)))"
+            />
           )}
+          <div className="min-w-0 flex-1">
+            <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--ink-muted)" }}>
+              {t.contactLabel}
+            </p>
+            <p className="mt-1 font-semibold" style={{ color: "var(--ink)" }}>
+              {contactName}
+            </p>
+            {contactRole && (
+              <p className="text-sm" style={{ color: "var(--ink-muted)" }}>
+                {contactRole}
+              </p>
+            )}
+          </div>
         </div>
       )}
       <div className="mt-4">

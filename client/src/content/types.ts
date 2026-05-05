@@ -88,10 +88,13 @@ export interface TeamMember {
   centerRoleTh: string;
   centerRoleEn: string;
   /**
-   * Square portrait URL (≥ 800×800 webp recommended). When omitted, the card
-   * renders an initials avatar fallback. Use absolute manus-storage paths.
+   * Square portrait URL (preferred format — webp, ≥ 800×800). When omitted,
+   * the card renders a brand-gradient placeholder. Use absolute
+   * manus-storage paths.
    */
   photo?: string | null;
+  /** Fallback portrait URL for browsers without webp (jpg, ≥ 800×800). */
+  photoFallback?: string | null;
   /** Alt text for the portrait — short, descriptive, no "Photo of" prefix. */
   photoAlt?: string | null;
   /** Faculty / departmental role, bilingual; nullable. */
@@ -119,6 +122,11 @@ export interface ResearchStaff {
   nameEn: string;
   roleTh: string;
   roleEn: string;
+  /** Square portrait URL (webp). */
+  photo?: string | null;
+  /** Fallback portrait URL (jpg). */
+  photoFallback?: string | null;
+  photoAlt?: string | null;
   /** True when the Thai spelling is auto-transliterated and pending verification by the center. */
   thaiSpellingPending?: boolean;
 }
@@ -133,6 +141,11 @@ export interface Partner {
   contactNameEn?: string | null;
   contactRoleTh?: string | null;
   contactRoleEn?: string | null;
+  /** Square portrait of the bridge contact (webp). */
+  contactPhoto?: string | null;
+  /** JPG fallback for the contact portrait. */
+  contactPhotoFallback?: string | null;
+  contactPhotoAlt?: string | null;
   /** What links us — short bilingual paragraph. */
   synergyTh: string;
   synergyEn: string;

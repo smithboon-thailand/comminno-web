@@ -39,6 +39,8 @@ export const about: About = {
       slug: "smith",
       nameTh: "รศ. ดร. สมิทธิ์ บุญชุติมา",
       nameEn: "Assoc. Prof. Smith Boonchutima, Ph.D.",
+      photo: "/manus-storage/comminno-portrait-smith_de4d4f18.webp",
+      photoAlt: "Smith Boonchutima",
       centerRoleTh: "หัวหน้าศูนย์ / หัวหน้าหน่วยปฏิบัติการวิจัย",
       centerRoleEn: "Head of Center · Head of Research Operations Unit",
       facultyRoleTh:
@@ -108,6 +110,8 @@ export const about: About = {
       slug: "teerada",
       nameTh: "ผศ. ดร. ธีรดา จงกลรัตนาภรณ์",
       nameEn: "Asst. Prof. Teerada Chongkolrattanaporn, Ph.D.",
+      photo: "/manus-storage/comminno-portrait-teerada_9eecf3b6.webp",
+      photoAlt: "Teerada Chongkolrattanaporn",
       centerRoleTh: "รองหัวหน้าศูนย์คนที่ 1 / รองหัวหน้าหน่วยปฏิบัติการวิจัย",
       centerRoleEn: "Deputy Head of Center · Deputy Head of Research Operations Unit",
       facultyRoleTh:
@@ -170,6 +174,8 @@ export const about: About = {
       slug: "pavel",
       nameTh: "รศ. ดร. ปาเวล สลุตสกี้",
       nameEn: "Assoc. Prof. Pavel Slutskiy, Ph.D.",
+      photo: "/manus-storage/comminno-portrait-pavel_b4387e3c.webp",
+      photoAlt: "Pavel Slutskiy",
       centerRoleTh: "รองหัวหน้าศูนย์คนที่ 2 / รองหัวหน้าหน่วยปฏิบัติการวิจัย",
       centerRoleEn: "Deputy Head of Center · Deputy Head of Research Operations Unit",
       facultyRoleTh:

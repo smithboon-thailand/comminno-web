@@ -87,6 +87,13 @@ export interface TeamMember {
   /** Center role (Tier 1/2 label), bilingual. */
   centerRoleTh: string;
   centerRoleEn: string;
+  /**
+   * Square portrait URL (≥ 800×800 webp recommended). When omitted, the card
+   * renders an initials avatar fallback. Use absolute manus-storage paths.
+   */
+  photo?: string | null;
+  /** Alt text for the portrait — short, descriptive, no "Photo of" prefix. */
+  photoAlt?: string | null;
   /** Faculty / departmental role, bilingual; nullable. */
   facultyRoleTh?: string | null;
   facultyRoleEn?: string | null;

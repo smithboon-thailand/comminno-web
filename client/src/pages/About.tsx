@@ -269,16 +269,29 @@ function PersonCard({
       style={{ borderColor: "var(--mist)" }}
     >
       <div className="flex flex-col gap-5 md:flex-row md:gap-7">
-        {/* Portrait placeholder (4:5) — real images arrive in next batch */}
-        <div
-          role="img"
-          aria-label={`Portrait of ${member.nameEn}`}
-          className="aspect-[4/5] w-full flex-none rounded-lg md:w-44"
-          style={{
-            background:
-              "linear-gradient(135deg, color-mix(in srgb, var(--brand-yellow) 22%, var(--brand-paper)), color-mix(in srgb, var(--brand-blue) 22%, var(--brand-paper)))",
-          }}
-        />
+        {/* Portrait — real photo when available, gradient placeholder otherwise. */}
+        {member.photo ? (
+          <img
+            src={member.photo}
+            alt={member.photoAlt ?? member.nameEn}
+            width={isHero ? 480 : 352}
+            height={isHero ? 480 : 352}
+            loading="lazy"
+            decoding="async"
+            className="aspect-square w-full flex-none rounded-lg object-cover md:w-44"
+            style={{ backgroundColor: "var(--brand-paper)" }}
+          />
+        ) : (
+          <div
+            role="img"
+            aria-label={`Portrait of ${member.nameEn}`}
+            className="aspect-[4/5] w-full flex-none rounded-lg md:w-44"
+            style={{
+              background:
+                "linear-gradient(135deg, color-mix(in srgb, var(--brand-yellow) 22%, var(--brand-paper)), color-mix(in srgb, var(--brand-blue) 22%, var(--brand-paper)))",
+            }}
+          />
+        )}
         <div className="min-w-0 flex-1">
           <h3
             className={`font-display ${isHero ? "text-2xl md:text-3xl" : "text-xl md:text-2xl"}`}

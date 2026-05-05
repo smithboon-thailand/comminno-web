@@ -56,7 +56,7 @@ type AboutCopy = {
 const COPY: Record<"th" | "en", AboutCopy> = {
   th: {
     title: "เกี่ยวกับเรา",
-    lede: "ศูนย์ความเป็นเลิศด้านนวัตกรรมการสื่อสาร คณะนิเทศศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย",
+    lede: "ศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน คณะนิเทศศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย",
     crumbHome: "หน้าแรก",
     crumbSelf: "เกี่ยวกับเรา",
     missionTitle: "พันธกิจ",
@@ -83,11 +83,11 @@ const COPY: Record<"th" | "en", AboutCopy> = {
     scholarPending: "Google Scholar เร็วๆ นี้",
     spellingPending: "การสะกดภาษาไทยอยู่ระหว่างยืนยัน",
     metaDesc:
-      "Comm.Inno คือศูนย์ความเป็นเลิศด้านนวัตกรรมการสื่อสาร คณะนิเทศศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย พบทีมผู้บริหาร 3 ท่าน อาจารย์ประจำศูนย์ ทีมวิจัย 8 ท่าน และพันธมิตรเชิงยุทธศาสตร์",
+      "Comm.Inno คือศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน คณะนิเทศศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย พบทีมผู้บริหาร 3 ท่าน อาจารย์ประจำศูนย์ ทีมวิจัย 8 ท่าน และพันธมิตรเชิงยุทธศาสตร์",
   },
   en: {
     title: "About Comm.Inno",
-    lede: "Center of Excellence in Communication Innovation, Faculty of Communication Arts, Chulalongkorn University.",
+    lede: "Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability · Faculty of Communication Arts, Chulalongkorn University.",
     crumbHome: "Home",
     crumbSelf: "About",
     missionTitle: "Mission",
@@ -115,7 +115,7 @@ const COPY: Record<"th" | "en", AboutCopy> = {
     scholarPending: "Scholar coming soon",
     spellingPending: "Thai spelling pending verification",
     metaDesc:
-      "Comm.Inno is the Center of Excellence in Communication Innovation at the Faculty of Communication Arts, Chulalongkorn University — meet the three center leaders, faculty, an eight-person research team, and strategic partners.",
+      "Comm.Inno is the Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability at the Faculty of Communication Arts, Chulalongkorn University — meet the three center leaders, faculty, an eight-person research team, and strategic partners.",
   },
 } as const;
 
@@ -604,7 +604,7 @@ export default function About() {
       name: t.title,
       mainEntity: {
         "@type": "Organization",
-        name: "Center of Excellence in Communication Innovation",
+        name: "Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability",
         alternateName: "Comm.Inno",
         parentOrganization: {
           "@type": "EducationalOrganization",

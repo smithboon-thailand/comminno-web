@@ -14,6 +14,15 @@ export interface PostMeta {
   tags: string[];
   /** Original Wix-side image filename (binaries arrive in comminno_images.zip). */
   coverFilename: string | null;
+  /**
+   * Curated cover image for posts that originally lacked one. WebP preferred;
+   * paired with `coverJpg` for fallback and `coverAltEn`/`coverAltTh` for a11y.
+   * When set, takes precedence over `coverFilename` at render time.
+   */
+  coverWebp?: string | null;
+  coverJpg?: string | null;
+  coverAltEn?: string | null;
+  coverAltTh?: string | null;
   /** Long-form OG description from the original site, sentence-cased. */
   ogDescription: string;
 }

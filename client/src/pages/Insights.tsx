@@ -26,7 +26,7 @@ const COPY = {
     bilingualNotice:
       "ขณะนี้บทความยังเป็นภาษาอังกฤษเป็นหลัก ฉบับแปลภาษาไทยอยู่ระหว่างจัดทำ",
     metaDesc:
-      "บทความและกรณีศึกษาจากศูนย์ความเป็นเลิศด้านนวัตกรรมการสื่อสาร จุฬาลงกรณ์มหาวิทยาลัย — งานวิจัยและโครงการสื่อสารเพื่อความยั่งยืน 24 ชิ้น",
+      "บทความและกรณีศึกษาจาก Comm.Inno (ศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน) จุฬาลงกรณ์มหาวิทยาลัย — งานวิจัยและโครงการสื่อสารเพื่อความยั่งยืน 24 ชิ้น",
     countLabel: (n: number) => `${n} บทความ`,
   },
   en: {
@@ -38,7 +38,7 @@ const COPY = {
     filterAll: "All",
     bilingualNotice: "",
     metaDesc:
-      "Research and case studies from Comm.Inno (Center of Excellence in Communication Innovation, Chulalongkorn University) — 24 articles on sustainability communication.",
+      "Research and case studies from Comm.Inno (Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability, Chulalongkorn University) — 24 articles on sustainability communication.",
     countLabel: (n: number) => `${n} ${n === 1 ? "article" : "articles"}`,
   },
 } as const;
@@ -168,15 +168,41 @@ export default function Insights() {
                   backgroundColor: "#fff",
                 }}
               >
-                {/* Cover-image placeholder — real images arrive in comminno_images.zip */}
-                <div
-                  aria-hidden="true"
-                  className="aspect-[16/9] w-full rounded-lg"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, color-mix(in srgb, var(--brand-blue) 18%, var(--brand-paper)), color-mix(in srgb, var(--brand-yellow) 18%, var(--brand-paper)))",
-                  }}
-                />
+                {/* Cover image — webp preferred, jpg fallback. */}
+                {p.coverWebp || p.coverJpg ? (
+                  <div
+                    className="relative aspect-[16/9] w-full overflow-hidden rounded-lg"
+                    style={{ backgroundColor: "var(--mist)" }}
+                  >
+                    <picture>
+                      {p.coverWebp && (
+                        <source srcSet={p.coverWebp} type="image/webp" />
+                      )}
+                      <img
+                        src={p.coverJpg ?? p.coverWebp ?? ""}
+                        alt={
+                          locale === "th"
+                            ? p.coverAltTh ?? p.title
+                            : p.coverAltEn ?? p.title
+                        }
+                        loading="lazy"
+                        decoding="async"
+                        width={1200}
+                        height={675}
+                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      />
+                    </picture>
+                  </div>
+                ) : (
+                  <div
+                    aria-hidden="true"
+                    className="aspect-[16/9] w-full rounded-lg"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, color-mix(in srgb, var(--brand-blue) 18%, var(--brand-paper)), color-mix(in srgb, var(--brand-yellow) 18%, var(--brand-paper)))",
+                    }}
+                  />
+                )}
                 <div className="flex items-center gap-2 text-xs">
                   {p.date && (
                     <time

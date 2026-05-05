@@ -89,7 +89,7 @@ const COPY = {
     crumbHome: "หน้าแรก",
     crumbSelf: "ติดต่อ",
     addrTitle: "ที่ตั้งสำนักงาน",
-    addr1: "ศูนย์ความเป็นเลิศด้านนวัตกรรมการสื่อสาร",
+    addr1: "ศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน (Comm.Inno)",
     addr2: "อาคารมงกุฎสมมติ ชั้น 2 คณะนิเทศศาสตร์",
     addr3: "จุฬาลงกรณ์มหาวิทยาลัย แขวงวังใหม่ เขตปทุมวัน",
     addr4: "กรุงเทพฯ 10330",
@@ -118,7 +118,7 @@ const COPY = {
     errorPlaceholder:
       "ปลายทางฟอร์ม (Formspree) ยังไม่ถูกตั้งค่า — ฝ่ายเทคนิคกำลังเชื่อมต่อ ในระหว่างนี้กรุณาส่งอีเมลถึง comminno@chula.ac.th",
     metaDesc:
-      "ติดต่อศูนย์ความเป็นเลิศด้านนวัตกรรมการสื่อสาร จุฬาลงกรณ์มหาวิทยาลัย — อาคารมงกุฎสมมติ คณะนิเทศศาสตร์ ปทุมวัน กรุงเทพฯ 10330",
+      "ติดต่อ Comm.Inno (ศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน) จุฬาลงกรณ์มหาวิทยาลัย — อาคารมงกุฎสมมติ คณะนิเทศศาสตร์ ปทุมวัน กรุงเทพฯ 10330",
   },
   en: {
     title: "Contact us",
@@ -127,7 +127,7 @@ const COPY = {
     crumbHome: "Home",
     crumbSelf: "Contact",
     addrTitle: "Where to find us",
-    addr1: "Center of Excellence in Communication Innovation",
+    addr1: "Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability (Comm.Inno)",
     addr2: "Mongkut Sammitr Building, 2nd floor",
     addr3: "Faculty of Communication Arts, Chulalongkorn University",
     addr4: "Pathumwan, Bangkok 10330, Thailand",
@@ -156,7 +156,7 @@ const COPY = {
     errorPlaceholder:
       "The form endpoint (Formspree) hasn't been wired up yet — engineering is on it. Meanwhile please email comminno@chula.ac.th.",
     metaDesc:
-      "Reach the Center of Excellence in Communication Innovation, Faculty of Communication Arts, Chulalongkorn University. Mongkut Sammitr Building, Pathumwan, Bangkok 10330.",
+      "Reach Comm.Inno — the Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability, Faculty of Communication Arts, Chulalongkorn University. Mongkut Sammitr Building, Pathumwan, Bangkok 10330.",
   },
 } as const;
 

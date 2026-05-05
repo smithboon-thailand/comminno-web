@@ -31,6 +31,13 @@ export interface ServiceWithCopy extends Service {
   relatedSlugs: string[];
   ctaEn: string;
   ctaTh: string;
+  /** WebP hero image URL (preferred). */
+  heroImage: string;
+  /** JPG fallback for browsers that can't decode webp. */
+  heroImageFallback: string;
+  /** Bilingual alt text — English form is canonical, Thai mirrors at render. */
+  heroAltEn: string;
+  heroAltTh: string;
 }
 
 export const services: readonly ServiceWithCopy[] = [
@@ -70,6 +77,10 @@ export const services: readonly ServiceWithCopy[] = [
     ],
     ctaEn: "Request a publishing consultation",
     ctaTh: "ขอคำปรึกษาด้านสิ่งพิมพ์",
+    heroImage: "/manus-storage/book-and-printing_1a9fea16.webp",
+    heroImageFallback: "/manus-storage/book-and-printing_288d717f.jpg",
+    heroAltEn: "Open book on a desk with research notes and pens — books and printed media service",
+    heroAltTh: "หนังสือเปิดบนโต๊ะทำงานพร้อมบันทึกงานวิจัย — บริการหนังสือและสิ่งพิมพ์",
   },
   {
     slug: "motion-effect-ar",
@@ -103,6 +114,10 @@ export const services: readonly ServiceWithCopy[] = [
     relatedSlugs: ["nia-media-innovation"],
     ctaEn: "Bring my asset to life",
     ctaTh: "ขอเริ่มโปรเจกต์ AR",
+    heroImage: "/manus-storage/motion-effect-ar_2cfedca5.webp",
+    heroImageFallback: "/manus-storage/motion-effect-ar_2909163e.jpg",
+    heroAltEn: "Phone scanning a printed page with augmented reality content layered above it",
+    heroAltTh: "โทรศัพท์สแกนหน้าหนังสือและแสดงเนื้อหา AR ซ้อนขึ้นมา",
   },
   {
     slug: "video-production",
@@ -139,6 +154,10 @@ export const services: readonly ServiceWithCopy[] = [
     ],
     ctaEn: "Brief your video project",
     ctaTh: "เล่าโปรเจกต์วิดีโอของคุณ",
+    heroImage: "/manus-storage/video-production_fb851bf5.webp",
+    heroImageFallback: "/manus-storage/video-production_9db62e70.jpg",
+    heroAltEn: "Cinema camera and lighting on a video production set",
+    heroAltTh: "กล้องถ่ายและไฟถ่ายบนกองถ่ายผลิตวิดีโอ",
   },
   {
     slug: "training",
@@ -179,6 +198,10 @@ export const services: readonly ServiceWithCopy[] = [
     ],
     ctaEn: "Discuss a custom program",
     ctaTh: "ปรึกษาออกแบบหลักสูตร",
+    heroImage: "/manus-storage/training_7628348e.webp",
+    heroImageFallback: "/manus-storage/training_ca450ecf.jpg",
+    heroAltEn: "Trainer at a whiteboard leading a workshop with engaged participants",
+    heroAltTh: "วิทยากรบรรยายหน้ากระดาน มีผู้เข้าร่วมอบรมตั้งใจฟัง",
   },
   {
     slug: "research-and-evaluation",
@@ -217,6 +240,10 @@ export const services: readonly ServiceWithCopy[] = [
     ],
     ctaEn: "Scope a research project",
     ctaTh: "ปรึกษาออกแบบงานวิจัย",
+    heroImage: "/manus-storage/research-and-evaluation_3b72bbd4.webp",
+    heroImageFallback: "/manus-storage/research-and-evaluation_49e70898.jpg",
+    heroAltEn: "Notebook with charts and a laptop showing data analysis — research and evaluation",
+    heroAltTh: "สมุดบันทึกข้อมูลพร้อมแล็ปทอปแสดงผลวิเคราะห์ข้อมูล — งานวิจัยและประเมินผล",
   },
   {
     slug: "communication-design",
@@ -255,6 +282,10 @@ export const services: readonly ServiceWithCopy[] = [
     ],
     ctaEn: "Get a design review",
     ctaTh: "ขอรีวิวงานออกแบบ",
+    heroImage: "/manus-storage/communication-design_b380f7f3.webp",
+    heroImageFallback: "/manus-storage/communication-design_26d3b5af.jpg",
+    heroAltEn: "Designer's desk with sketches, swatches, and posters — communication design",
+    heroAltTh: "โต๊ะนักออกแบบมีภาพร่าง ตัวอย่างสี และโปสเตอร์ — การออกแบบการสื่อสาร",
   },
   {
     slug: "campaign-manage",
@@ -298,6 +329,10 @@ export const services: readonly ServiceWithCopy[] = [
     ],
     ctaEn: "Plan your campaign",
     ctaTh: "เริ่มวางแผนแคมเปญ",
+    heroImage: "/manus-storage/campaign-manage_b1a25bb9.webp",
+    heroImageFallback: "/manus-storage/campaign-manage_738b129e.jpg",
+    heroAltEn: "Strategy whiteboard with sticky notes and team collaborating on a campaign",
+    heroAltTh: "กระดานวางแผนกลยุทธ์พร้อมโปสตอิตและทีมงานร่วมระดมสมอง",
   },
   {
     slug: "seminar",
@@ -337,6 +372,10 @@ export const services: readonly ServiceWithCopy[] = [
     ],
     ctaEn: "Plan a seminar",
     ctaTh: "วางแผนการประชุม",
+    heroImage: "/manus-storage/seminar_b515ff4d.webp",
+    heroImageFallback: "/manus-storage/seminar_a00951f6.jpg",
+    heroAltEn: "Audience listening to a panel of speakers at a seminar",
+    heroAltTh: "ผู้เข้าร่วมฟังวิทยากรบนเวทีสัมมนา",
   },
   {
     slug: "marketing-event",
@@ -377,6 +416,10 @@ export const services: readonly ServiceWithCopy[] = [
     ],
     ctaEn: "Design my event",
     ctaTh: "ออกแบบอีเวนต์ของคุณ",
+    heroImage: "/manus-storage/marketing-event_f76cd29d.webp",
+    heroImageFallback: "/manus-storage/marketing-event_1a55c27d.jpg",
+    heroAltEn: "Stage lights and crowd at a public-facing marketing event",
+    heroAltTh: "ไฟเวทีและผู้ชมในงานการตลาดแบบพบผู้ชมจริง",
   },
 ];
 

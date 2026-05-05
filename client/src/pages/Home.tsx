@@ -32,12 +32,12 @@ export default function Home() {
   // Sentence-case page title — manually crafted, never auto-generated.
   const pageTitle =
     locale === "th"
-      ? "Comm.Inno — ศูนย์ความเป็นเลิศด้านนวัตกรรมการสื่อสาร จุฬาฯ"
-      : "Comm.Inno — Center of Excellence in Communication Innovation";
+      ? "Comm.Inno · ศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน จุฬาฯ"
+      : "Comm.Inno · Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability";
   const pageDescription =
     locale === "th"
-      ? "ศูนย์ความเป็นเลิศด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน คณะนิเทศศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย"
-      : "Research, training, and design from the Center of Excellence in Communication Innovation at the Faculty of Communication Arts, Chulalongkorn University.";
+      ? "ศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน คณะนิเทศศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย"
+      : "Research, training, and design from Comm.Inno — the Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability at the Faculty of Communication Arts, Chulalongkorn University.";
 
   // 3 featured services for the "What we do" block (curated, not most-recent).
   const featuredServices = FEATURED_SERVICE_SLUGS.map((slug) =>

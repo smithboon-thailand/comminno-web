@@ -162,7 +162,36 @@ export default function ServiceDetail() {
         meta={<SdgChip sdg={service.sdgNumber as SdgNumber} size="md" />}
       />
 
-      <article className="container py-12 md:py-16">
+      {/* Hero image band — 16:9 with subtle gradient base for visual depth. */}
+      <div className="container -mt-2 mb-10 md:mb-14">
+        <figure
+          className="relative overflow-hidden rounded-xl border"
+          style={{ borderColor: "var(--mist)", aspectRatio: "16 / 9" }}
+        >
+          <picture>
+            <source srcSet={service.heroImage} type="image/webp" />
+            <img
+              src={service.heroImageFallback}
+              alt={locale === "th" ? service.heroAltTh : service.heroAltEn}
+              loading="eager"
+              decoding="async"
+              width={1600}
+              height={900}
+              className="h-full w-full object-cover"
+            />
+          </picture>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.18) 100%)",
+            }}
+          />
+        </figure>
+      </div>
+
+      <article className="container pb-12 md:pb-16">
         {/* Description */}
         <section className="grid gap-8 md:grid-cols-12 mb-14">
           <header className="md:col-span-4">

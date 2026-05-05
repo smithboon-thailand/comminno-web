@@ -52,8 +52,8 @@ export default function InsightDetail() {
     description:
       post?.ogDescription || summary ||
       (locale === "th"
-        ? "บทความและกรณีศึกษาจากศูนย์ความเป็นเลิศด้านนวัตกรรมการสื่อสาร"
-        : "Insights and case studies from the Center of Excellence in Communication Innovation."),
+        ? "บทความและกรณีศึกษาจาก Comm.Inno (ศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน)"
+        : "Insights and case studies from Comm.Inno — the Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability."),
     path: post ? `/${locale}/insights/${post.slug}` : undefined,
     jsonLd: post
       ? {
@@ -137,15 +137,41 @@ export default function InsightDetail() {
           </p>
         )}
 
-        {/* Cover */}
-        <div
-          aria-hidden="true"
-          className="aspect-[16/9] w-full rounded-xl mb-10"
-          style={{
-            background:
-              "linear-gradient(135deg, color-mix(in srgb, var(--brand-blue) 22%, var(--brand-paper)), color-mix(in srgb, var(--brand-red) 18%, var(--brand-paper)))",
-          }}
-        />
+        {/* Cover — webp preferred, jpg fallback. Falls back to brand gradient when neither is set. */}
+        {post.coverWebp || post.coverJpg ? (
+          <figure
+            className="relative aspect-[16/9] w-full overflow-hidden rounded-xl mb-10 border"
+            style={{ borderColor: "var(--mist)" }}
+          >
+            <picture>
+              {post.coverWebp && (
+                <source srcSet={post.coverWebp} type="image/webp" />
+              )}
+              <img
+                src={post.coverJpg ?? post.coverWebp ?? ""}
+                alt={
+                  locale === "th"
+                    ? post.coverAltTh ?? post.title
+                    : post.coverAltEn ?? post.title
+                }
+                loading="eager"
+                decoding="async"
+                width={1200}
+                height={675}
+                className="h-full w-full object-cover"
+              />
+            </picture>
+          </figure>
+        ) : (
+          <div
+            aria-hidden="true"
+            className="aspect-[16/9] w-full rounded-xl mb-10"
+            style={{
+              background:
+                "linear-gradient(135deg, color-mix(in srgb, var(--brand-blue) 22%, var(--brand-paper)), color-mix(in srgb, var(--brand-red) 18%, var(--brand-paper)))",
+            }}
+          />
+        )}
 
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-8">

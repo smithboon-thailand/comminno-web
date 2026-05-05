@@ -36,10 +36,10 @@ export const messages: Record<Locale, Messages> = {
     "lang.switch.shortEN": "EN",
     "lang.switch.shortTH": "TH",
 
-    "hero.eyebrow": "Center of Excellence · Chulalongkorn University",
+    "hero.eyebrow": "Comm.Inno · Chulalongkorn University",
     "hero.headline": "Communication that listens. Innovation that improves life.",
     "hero.lede":
-      "Comm.Inno is the Center of Excellence in Communication Innovation at the Faculty of Communication Arts, Chulalongkorn University. We turn communication research into tools, training, and campaigns that improve quality of life and advance sustainability.",
+      "Comm.Inno is the Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability at the Faculty of Communication Arts, Chulalongkorn University. We turn communication research into tools, training, and campaigns that improve quality of life and advance sustainability.",
     "hero.cta.primary": "Explore our work",
     "hero.cta.secondary": "Book a training",
 
@@ -55,7 +55,7 @@ export const messages: Record<Locale, Messages> = {
     "footer.address.line2": "Chulalongkorn University, 254 Phaya Thai Road",
     "footer.address.line3": "Wang Mai, Pathum Wan, Bangkok 10330",
     "footer.copyright":
-      "© {year} Center of Excellence in Communication Innovation, Chulalongkorn University. All rights reserved.",
+      "© {year} Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability, Chulalongkorn University. All rights reserved.",
     "footer.legacy": "Replacing the legacy site at cominnocenter.com.",
     "footer.privacy": "Privacy notice",
     "footer.cookieSettings": "Cookie settings",
@@ -86,10 +86,10 @@ export const messages: Record<Locale, Messages> = {
     "lang.switch.shortEN": "EN",
     "lang.switch.shortTH": "TH",
 
-    "hero.eyebrow": "ศูนย์ความเป็นเลิศ · จุฬาลงกรณ์มหาวิทยาลัย",
+    "hero.eyebrow": "ศูนย์ฯ คอมอินโน · จุฬาลงกรณ์มหาวิทยาลัย",
     "hero.headline": "นวัตกรรมการสื่อสารเพื่อชีวิตที่ดีกว่า",
     "hero.lede":
-      "Comm.Inno คือศูนย์ความเป็นเลิศด้านนวัตกรรมการสื่อสาร คณะนิเทศศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย ที่เปลี่ยนงานวิจัยการสื่อสารให้กลายเป็นเครื่องมือ หลักสูตรอบรม และแคมเปญที่ยกระดับคุณภาพชีวิตและขับเคลื่อนความยั่งยืน",
+      "Comm.Inno คือศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน คณะนิเทศศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย ที่เปลี่ยนงานวิจัยการสื่อสารให้กลายเป็นเครื่องมือ หลักสูตรอบรม และแคมเปญที่ยกระดับคุณภาพชีวิตและขับเคลื่อนความยั่งยืน",
     "hero.cta.primary": "ดูผลงาน",
     "hero.cta.secondary": "อบรมกับเรา",
 
@@ -105,7 +105,7 @@ export const messages: Record<Locale, Messages> = {
     "footer.address.line2": "จุฬาลงกรณ์มหาวิทยาลัย 254 ถนนพญาไท",
     "footer.address.line3": "แขวงวังใหม่ เขตปทุมวัน กรุงเทพมหานคร 10330",
     "footer.copyright":
-      "© {year} ศูนย์ความเป็นเลิศด้านนวัตกรรมการสื่อสาร จุฬาลงกรณ์มหาวิทยาลัย สงวนลิขสิทธิ์",
+      "© {year} ศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน จุฬาลงกรณ์มหาวิทยาลัย สงวนลิขสิทธิ์",
     "footer.legacy": "เว็บไซต์ใหม่ทดแทน cominnocenter.com",
     "footer.privacy": "นโยบายความเป็นส่วนตัว",
     "footer.cookieSettings": "ตั้งค่าคุกกี้",
@@ -125,6 +125,6 @@ export const localeTag: Record<Locale, string> = {
 
 /** Per-locale meta description (manually written — never auto-generated). */
 export const metaDescription: Record<Locale, string> = {
-  en: "Comm.Inno is the Center of Excellence in Communication Innovation at Chulalongkorn University's Faculty of Communication Arts — communication research turned into tools, training, and campaigns that improve quality of life and sustainability.",
-  th: "Comm.Inno คือศูนย์ความเป็นเลิศด้านนวัตกรรมการสื่อสาร คณะนิเทศศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย ที่เปลี่ยนงานวิจัยให้กลายเป็นเครื่องมือ หลักสูตรอบรม และแคมเปญที่ยกระดับคุณภาพชีวิตและความยั่งยืน",
+  en: "Comm.Inno is the Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability, based at Chulalongkorn University's Faculty of Communication Arts — communication research turned into tools, training, and campaigns that improve quality of life and sustainability.",
+  th: "Comm.Inno คือศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน คณะนิเทศศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย ที่เปลี่ยนงานวิจัยให้กลายเป็นเครื่องมือ หลักสูตรอบรม และแคมเปญที่ยกระดับคุณภาพชีวิตและความยั่งยืน",
 };

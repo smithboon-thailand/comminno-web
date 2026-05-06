@@ -1,0 +1,43 @@
+# =============================================================================
+# Comm.Inno CMS · Phase 2 commit #0 smoke-test config
+# =============================================================================
+# This is a minimal Sveltia/Decap config used ONLY on branch
+# `cms/smoke-test-fallback` to prove that swapping the CMS engine in
+# /admin/index.html (Sveltia ↔ Decap) requires no config changes.
+#
+# Both engines read this exact file. Do not merge this file to `main` as-is —
+# the production config (commit #6) will replace it with the full schema.
+# -----------------------------------------------------------------------------
+
+backend:
+  name: github
+  repo: smithboon-thailand/comminno-web
+  branch: cms/smoke-test-fallback              # writes stay on the smoke-test branch
+  base_url: https://sveltia-cms-auth.smith-boon.workers.dev
+  auth_endpoint: oauth/auth                    # Sveltia + Decap default
+
+site_url: https://comminno-web.vercel.app
+display_url: https://comminno-web.vercel.app
+logo_url: https://comminno-web.vercel.app/logo-official.svg
+
+publish_mode: simple                           # smoke test only — full editorial_workflow comes in commit #6
+
+# Local media path used only if Cloudinary is rejected later. For the smoke
+# test we just want the upload widget to render; we won't actually upload.
+media_folder: content/uploads
+public_folder: /uploads
+
+# A single, deliberately tiny collection. The point of the smoke test is to
+# prove the round-trip works at all — not to test schema fidelity.
+collections:
+  - name: smoke_test
+    label: Smoke test posts
+    label_singular: Smoke test post
+    folder: content/smoke-test
+    create: true
+    delete: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - { name: title, widget: string, label: Title }
+      - { name: date, widget: datetime, label: Date }
+      - { name: body, widget: markdown, label: Body }

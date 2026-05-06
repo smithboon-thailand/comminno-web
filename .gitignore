@@ -116,3 +116,9 @@ client/public/__manus__/version.json
 
 # Local working notes (not part of source)
 todo.md
+
+# Phase 2 image-migration originals (kept on sandbox only as 30-day safety net)
+.migration/
+
+# Phase 2 plan document (kept locally; not part of public source)
+PHASE2_PLAN.md

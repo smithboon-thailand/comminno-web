@@ -6,34 +6,24 @@
     <meta name="robots" content="noindex, nofollow" />
     <title>Comm.Inno CMS · smoke test</title>
     <link rel="icon" type="image/svg+xml" href="/logo-official.svg" />
-    <style>
-      body { font-family: ui-sans-serif, system-ui, sans-serif; margin: 0; }
-      #cms-root { min-height: 100vh; }
-      .cms-fallback {
-        display: flex; flex-direction: column; align-items: center;
-        justify-content: center; min-height: 100vh; padding: 2rem;
-        text-align: center; color: #1f2937;
-      }
-      .cms-fallback h1 { color: #BD212D; font-size: 1.5rem; margin-bottom: .5rem; }
-      .cms-fallback p { max-width: 36rem; line-height: 1.6; }
-    </style>
   </head>
   <body>
-    <div id="cms-root">
-      <noscript>
-        <div class="cms-fallback">
-          <h1>JavaScript required</h1>
-          <p>The Comm.Inno CMS requires JavaScript to be enabled in your browser.</p>
-        </div>
-      </noscript>
-    </div>
-
     <!--
       Phase 2 commit #0 smoke test.
-      Active CMS engine controlled by ?engine=sveltia (default) or ?engine=decap.
-      Both engines read the same config.yml. This file proves the fallback claim
-      in PHASE2_PLAN.md §1: swapping CMS engines is a one-line script tag change
-      against an identical config.
+
+      Engine is selected by the ?engine= query string:
+        /admin               → Sveltia (default)
+        /admin?engine=decap  → Decap CMS
+
+      Both engines read the same config.yml in this folder. The point of the
+      smoke test is to prove that swapping engines is a one-line script-tag
+      change against an identical config — see PHASE2_PLAN.md §1, item D.
+
+      Pattern follows the official Sveltia "Manual Installation" guide
+      (https://sveltiacms.app/en/docs/start) and the official Decap install
+      guide (https://decapcms.org/docs/install-decap-cms/): a single classic
+      <script> tag pointing at unpkg, no module loader, no mount root — both
+      engines render into <body> themselves once the script evaluates.
     -->
     <script>
       (function () {
@@ -41,24 +31,19 @@
         var engine = params.get("engine") === "decap" ? "decap" : "sveltia";
         var src = engine === "decap"
           ? "https://unpkg.com/decap-cms@3.12.2/dist/decap-cms.js"
-          : "https://unpkg.com/@sveltia/cms@0.159.1/dist/sveltia-cms.mjs";
+          : "https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js";
         var script = document.createElement("script");
-        if (engine === "sveltia") {
-          script.type = "module";
-        }
         script.src = src;
         script.onerror = function () {
-          var root = document.getElementById("cms-root");
-          if (!root) return;
-          root.innerHTML =
-            '<div class="cms-fallback">' +
-              '<h1>CMS engine failed to load</h1>' +
-              '<p>Tried <code>' + src + '</code>. Check the network tab and try the alternate engine via <code>?engine=' +
+          document.body.innerHTML =
+            '<div style="font-family:system-ui;padding:2rem;text-align:center;color:#1f2937">' +
+              '<h1 style="color:#BD212D;font-size:1.5rem;margin-bottom:.5rem">CMS engine failed to load</h1>' +
+              '<p>Tried <code>' + src + '</code>.</p>' +
+              '<p>Check the Network tab and try the alternate engine via <code>?engine=' +
               (engine === "decap" ? "sveltia" : "decap") + '</code>.</p>' +
             '</div>';
         };
         document.body.appendChild(script);
-        // Surface which engine loaded for the smoke-test report.
         document.title = "Comm.Inno CMS · " + engine + " (smoke test)";
       })();
     </script>

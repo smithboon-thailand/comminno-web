@@ -116,3 +116,7 @@ client/public/__manus__/version.json
 
 # Local working notes (not part of source)
 todo.md
+
+# Phase-2 internal planning + image migration scratch (not part of source)
+PHASE2_PLAN.md
+.migration/

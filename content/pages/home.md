@@ -1,0 +1,84 @@
+# Communication Innovation | Center of Excellence | Training | Faculty of Communication Arts, Chulalongkorn University
+
+**Meta Description:** Explore 'Communication Innovation | Center of Excellence', cutting-edge communication strategies at our Center. We offer innovative training programs to enhance your professional skills in communication, crisis management, and leadership. Join us to transform your approach to modern communication challenges.
+
+## รูปภาพ
+
+- ![](../images/25218b_09d3aa3651324d6ea9ac6517691a0133-mv2.jpg)
+  - Original: `https://static.wixstatic.com/media/25218b_09d3aa3651324d6ea9ac6517691a0133~mv2.jpg`
+- ![](../images/25218b_29fe9e0604274e8ca688d464b9886448-mv2.png)
+  - Original: `https://static.wixstatic.com/media/25218b_29fe9e0604274e8ca688d464b9886448~mv2.png`
+- ![](../images/25218b_2c42e10ad4d749af861e0d4adfe81bd9-mv2.jpg)
+  - Original: `https://static.wixstatic.com/media/25218b_2c42e10ad4d749af861e0d4adfe81bd9~mv2.jpg`
+- ![](../images/25218b_4a7a9b23585c4d02bcc3566be8aadec2-mv2.jpg)
+  - Original: `https://static.wixstatic.com/media/25218b_4a7a9b23585c4d02bcc3566be8aadec2~mv2.jpg`
+- ![](../images/25218b_69ec4ffc21104682b88829948272062a-mv2.jpeg)
+  - Original: `https://static.wixstatic.com/media/25218b_69ec4ffc21104682b88829948272062a~mv2.jpeg`
+- ![](../images/25218b_6fb52303e3aa405885d9ea17064ada2a-mv2.png)
+  - Original: `https://static.wixstatic.com/media/25218b_6fb52303e3aa405885d9ea17064ada2a~mv2.png`
+- ![](../images/25218b_74e4631aa40447359c9ea699d7f83d8e-mv2.png)
+  - Original: `https://static.wixstatic.com/media/25218b_74e4631aa40447359c9ea699d7f83d8e~mv2.png`
+- ![](../images/25218b_78275b5fdfd343f2a4f5d7472302005b-mv2.jpg)
+  - Original: `https://static.wixstatic.com/media/25218b_78275b5fdfd343f2a4f5d7472302005b~mv2.jpg`
+- ![](../images/25218b_7f448316fd7c400c9ba761b49f0f7e46-mv2.png)
+  - Original: `https://static.wixstatic.com/media/25218b_7f448316fd7c400c9ba761b49f0f7e46~mv2.png`
+- ![](../images/25218b_8b92542621964f13a3e871bfc7fcdf17-mv2.jpg)
+  - Original: `https://static.wixstatic.com/media/25218b_8b92542621964f13a3e871bfc7fcdf17~mv2.jpg`
+- ![](../images/25218b_ad724f942c7a415d984c7f82029ffac8-mv2.jpg)
+  - Original: `https://static.wixstatic.com/media/25218b_ad724f942c7a415d984c7f82029ffac8~mv2.jpg`
+- ![](../images/25218b_be1e0d6f1491498a97ae09afc2d11e44-mv2.jpg)
+  - Original: `https://static.wixstatic.com/media/25218b_be1e0d6f1491498a97ae09afc2d11e44~mv2.jpg`
+- ![](../images/25218b_bfb45e4c56094da99ba6feba3b842fca-mv2.jpg)
+  - Original: `https://static.wixstatic.com/media/25218b_bfb45e4c56094da99ba6feba3b842fca~mv2.jpg`
+- ![](../images/25218b_c66f7b40623a4861a065e6ef8ac0aa79-mv2.jpg)
+  - Original: `https://static.wixstatic.com/media/25218b_c66f7b40623a4861a065e6ef8ac0aa79~mv2.jpg`
+- ![](../images/25218b_ce31058ea3674498810d31bf12729eac-mv2.jpg)
+  - Original: `https://static.wixstatic.com/media/25218b_ce31058ea3674498810d31bf12729eac~mv2.jpg`
+- ![](../images/25218b_f7cf6c636b1e466ea3848f53f62fc699-mv2.jpg)
+  - Original: `https://static.wixstatic.com/media/25218b_f7cf6c636b1e466ea3848f53f62fc699~mv2.jpg`
+- ![](../images/25218b_f9cc2a2218e0428bb5d13c02be940a08-mv2.jpg)
+  - Original: `https://static.wixstatic.com/media/25218b_f9cc2a2218e0428bb5d13c02be940a08~mv2.jpg`
+- ![](../images/25218b_faef8f20a3054774b7e143dd13330485-mv2.jpg)
+  - Original: `https://static.wixstatic.com/media/25218b_faef8f20a3054774b7e143dd13330485~mv2.jpg`
+- ![](../images/25218b_fc87e081e7bd4bdfa37bcab62e5a441c-mv2.jpg)
+  - Original: `https://static.wixstatic.com/media/25218b_fc87e081e7bd4bdfa37bcab62e5a441c~mv2.jpg`
+- ![](../images/34cff6_d5627d66314d465996d2c91b67087727-mv2.jpg)
+  - Original: `https://static.wixstatic.com/media/34cff6_d5627d66314d465996d2c91b67087727~mv2.jpg`
+- ![](../images/8e0d14_0564f38949dd4891a2359cb0daa61bb4-mv2.png)
+  - Original: `https://static.wixstatic.com/media/8e0d14_0564f38949dd4891a2359cb0daa61bb4~mv2.png`
+- ![](../images/8e0d14_07d77e4c55974103baf5a37fc3ab436d-mv2.webp)
+  - Original: `https://static.wixstatic.com/media/8e0d14_07d77e4c55974103baf5a37fc3ab436d~mv2.webp`
+- ![](../images/8e0d14_10e6565fdd5c448dbf343c856025455b-mv2.png)
+  - Original: `https://static.wixstatic.com/media/8e0d14_10e6565fdd5c448dbf343c856025455b~mv2.png`
+- ![](../images/8e0d14_13aece51caa141aab69e8f3e1e84be6a-mv2.webp)
+  - Original: `https://static.wixstatic.com/media/8e0d14_13aece51caa141aab69e8f3e1e84be6a~mv2.webp`
+- ![](../images/8e0d14_4fcaae20760240f6bdc8429b68f0e4e1-mv2.webp)
+  - Original: `https://static.wixstatic.com/media/8e0d14_4fcaae20760240f6bdc8429b68f0e4e1~mv2.webp`
+- ![](../images/8e0d14_60d01a5d5bf8446db71ad2fa60f2ec3b-mv2.webp)
+  - Original: `https://static.wixstatic.com/media/8e0d14_60d01a5d5bf8446db71ad2fa60f2ec3b~mv2.webp`
+- ![](../images/8e0d14_623cf5f862a547c8abce88126040570d-mv2.png)
+  - Original: `https://static.wixstatic.com/media/8e0d14_623cf5f862a547c8abce88126040570d~mv2.png`
+- ![](../images/8e0d14_7e421e1dfeed4e598f2348115e971574f000.jpg)
+  - Original: `https://static.wixstatic.com/media/8e0d14_7e421e1dfeed4e598f2348115e971574f000.jpg`
+- ![](../images/8e0d14_86fff6f9f948466aa185306d26c8c0b0-mv2.webp)
+  - Original: `https://static.wixstatic.com/media/8e0d14_86fff6f9f948466aa185306d26c8c0b0~mv2.webp`
+- ![](../images/8e0d14_8a893e0836d343e1bb1e73f6a367786b-mv2.webp)
+  - Original: `https://static.wixstatic.com/media/8e0d14_8a893e0836d343e1bb1e73f6a367786b~mv2.webp`
+- ![](../images/8e0d14_a7b7aa5e2a84481485784de0a4205fb6-mv2.webp)
+  - Original: `https://static.wixstatic.com/media/8e0d14_a7b7aa5e2a84481485784de0a4205fb6~mv2.webp`
+- ![](../images/8e0d14_b61b05ffe5f64eb799480701c3f7ef0e-mv2.webp)
+  - Original: `https://static.wixstatic.com/media/8e0d14_b61b05ffe5f64eb799480701c3f7ef0e~mv2.webp`
+- ![](../images/8e0d14_bae22b448ce84dde8018a07bf96a8b3d-mv2.webp)
+  - Original: `https://static.wixstatic.com/media/8e0d14_bae22b448ce84dde8018a07bf96a8b3d~mv2.webp`
+- ![](../images/8e0d14_ce5ceba6233d48f78847ba05d496e890-mv2.png)
+  - Original: `https://static.wixstatic.com/media/8e0d14_ce5ceba6233d48f78847ba05d496e890~mv2.png`
+- ![](../images/8e0d14_d55c7b55c0dd48ad96a78b7f263cffb9-mv2.webp)
+  - Original: `https://static.wixstatic.com/media/8e0d14_d55c7b55c0dd48ad96a78b7f263cffb9~mv2.webp`
+- ![](../images/8e0d14_dde36c281c0f418ca4fb69d7b4b43d79-mv2.webp)
+  - Original: `https://static.wixstatic.com/media/8e0d14_dde36c281c0f418ca4fb69d7b4b43d79~mv2.webp`
+- ![](../images/8e0d14_e11648244d1d445eb76d0ddaf0ba9923-mv2.png)
+  - Original: `https://static.wixstatic.com/media/8e0d14_e11648244d1d445eb76d0ddaf0ba9923~mv2.png`
+- ![](../images/8e0d14_f16700f65c7f45998a6dde15df536199-mv2.webp)
+  - Original: `https://static.wixstatic.com/media/8e0d14_f16700f65c7f45998a6dde15df536199~mv2.webp`
+- ![](../images/c837a6_3852ddf135a044d8abb5b899e429de06f000.png)
+  - Original: `https://static.wixstatic.com/media/c837a6_3852ddf135a044d8abb5b899e429de06f000.png`

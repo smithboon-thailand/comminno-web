@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--
+      Comm.Inno content studio — Sveltia CMS.
+
+      Sveltia is a fast, modern, drop-in replacement for Decap CMS that reads
+      the same `config.yml` schema. Editors authenticate with their GitHub
+      account; every save opens a pull request against `main` so two pairs of
+      eyes review every change before it goes live (see EDITORIAL.md).
+
+      We pin to a known-good Sveltia release rather than tracking `latest` so
+      the studio never breaks unexpectedly. Bump deliberately when a new
+      release lands.
+
+      The `noindex` meta and the matching `Disallow: /admin/` line in
+      /robots.txt are belt-and-suspenders against accidental indexing — the
+      studio is also gated by GitHub OAuth, so a stranger can't get past the
+      sign-in screen.
+    -->
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Comm.Inno — content studio</title>
+    <style>
+      /* Plain dark fallback while Sveltia's bundle (~700 KB) loads. */
+      html,
+      body {
+        margin: 0;
+        background: #0f1115;
+        color: #e7e9ee;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+        min-height: 100vh;
+      }
+      .boot {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 2rem;
+        text-align: center;
+      }
+      .boot h1 {
+        font-size: 1.05rem;
+        font-weight: 500;
+        opacity: 0.85;
+        margin: 0 0 0.5rem;
+      }
+      .boot p {
+        font-size: 0.85rem;
+        opacity: 0.55;
+        margin: 0;
+        max-width: 32rem;
+      }
+      .boot small {
+        margin-top: 1.5rem;
+        font-size: 0.7rem;
+        opacity: 0.4;
+        letter-spacing: 0.04em;
+      }
+      /* Sveltia mounts into <body> and replaces the loader. */
+    </style>
+  </head>
+  <body>
+    <div class="boot" id="boot">
+      <h1>Loading content studio…</h1>
+      <p>
+        First load may take a few seconds. If this screen stays for more than a
+        minute, hard-refresh (Cmd/Ctrl + Shift + R) and check the browser
+        console.
+      </p>
+      <small>Sveltia CMS · Comm.Inno · sign in with GitHub</small>
+    </div>
+    <!--
+      Pinned to ^0.42 (verified during commit #0 smoke test on the
+      cms/smoke-test-fallback branch). To upgrade: bump the tag, smoke-test on
+      a feature branch, and redeploy.
+    -->
+    <script
+      type="module"
+      src="https://unpkg.com/@sveltia/cms@^0.42/dist/sveltia-cms.js"
+    ></script>
+  </body>
+</html>

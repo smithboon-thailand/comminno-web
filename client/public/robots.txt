@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+# /admin/ is the Sveltia content studio. It is gated by GitHub OAuth and the
+# loader carries a noindex meta tag, but explicitly disallowing the path here
+# is a belt-and-suspenders guard against accidental indexing by misbehaving
+# crawlers.
+Disallow: /admin/
+
 Sitemap: https://comminno-go6lmsuy.manus.space/sitemap.xml

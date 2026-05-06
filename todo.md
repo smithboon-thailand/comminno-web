@@ -362,3 +362,24 @@ User reviewed plan, approved 95%; 4 structural fixes + 3 additions + 2 question 
 - [ ] Final report to user: 8 commits landed, /admin live on production, 31 images on Cloudinary, broken-images bug resolved, editor handbook published
 - [ ] Save checkpoint with full delta summary
 
+
+
+---
+
+## Task 9 — Phase 2 wrap-up (#7–#9, 2026-05-06)
+
+### Commit #7 — Sveltia /admin scaffold (in progress)
+- [ ] `client/public/admin/index.html` — Sveltia loader (pinned tag), `<meta name="robots" content="noindex,nofollow">`, plain dark fallback while JS loads
+- [ ] `client/public/admin/config.yml` — backend.github + base_url=https://sveltia-cms-auth-642.smith-boon.workers.dev, repo=smithboon-thailand/comminno-web, branch=main, publish_mode=editorial_workflow, media_library=cloudinary (placeholder `<CLOUDINARY_UPLOAD_PRESET>`), collections: posts (folder content/post-bodies + meta on posts.yml ref), services (file content/services.yml), about (file content/about.yml), categories (file content/categories.yml), redirects (file content/redirects.yml). Field descriptions cribbed from content/SCHEMA.md (per critique #1)
+- [ ] `client/public/robots.txt` — add `Disallow: /admin/`
+- [ ] vercel.json — confirm /admin/* rewrite exclusion still present (already added in commit #0 smoke test)
+- [ ] Local smoke test — open dev preview /admin and confirm loader screen renders + console clean
+- [ ] tsc + build clean
+- [ ] webdev_save_checkpoint
+- [ ] Hand preview URL to user for full login + draft + image upload smoke test
+
+### Commit #7-followup — Cloudinary preset swap
+- [ ] Replace `<CLOUDINARY_UPLOAD_PRESET>` placeholder with real preset name once user provides
+
+### Commit #8 — Vercel Speed Insights (pending #7 verify)
+### Commit #9 — EDITORIAL.md handbook (pending #8 verify)

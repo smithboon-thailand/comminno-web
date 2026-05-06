@@ -203,7 +203,54 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
+// Serve client/public/admin/* verbatim in dev so the Sveltia studio loads at
+// /admin without Vite's SPA fallback rewriting requests to the client
+// index.html. Vercel handles the same exclusion in production via
+// vercel.json `rewrites`.
+function vitePluginAdminStatic(): Plugin {
+  return {
+    name: "comminno-admin-static",
+    configureServer(server: ViteDevServer) {
+      const adminRoot = path.resolve(import.meta.dirname, "client", "public", "admin");
+      const mime: Record<string, string> = {
+        ".html": "text/html; charset=utf-8",
+        ".yml": "text/yaml; charset=utf-8",
+        ".yaml": "text/yaml; charset=utf-8",
+        ".js": "application/javascript; charset=utf-8",
+        ".mjs": "application/javascript; charset=utf-8",
+        ".css": "text/css; charset=utf-8",
+        ".svg": "image/svg+xml",
+        ".png": "image/png",
+        ".jpg": "image/jpeg",
+        ".jpeg": "image/jpeg",
+        ".webp": "image/webp",
+        ".ico": "image/x-icon",
+      };
+      server.middlewares.use((req, res, next) => {
+        if (!req.url || !req.url.startsWith("/admin")) return next();
+        try {
+          const url = new URL(req.url, "http://localhost");
+          let rel = url.pathname.replace(/^\/admin\/?/, "");
+          if (rel === "" || rel.endsWith("/")) rel += "index.html";
+          const filePath = path.resolve(adminRoot, rel);
+          if (!filePath.startsWith(adminRoot)) {
+            res.statusCode = 403;
+            return res.end("Forbidden");
+          }
+          if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) return next();
+          res.setHeader("Content-Type", mime[path.extname(filePath).toLowerCase()] ?? "application/octet-stream");
+          res.setHeader("X-Robots-Tag", "noindex,nofollow");
+          res.statusCode = 200;
+          fs.createReadStream(filePath).pipe(res);
+        } catch {
+          next();
+        }
+      });
+    },
+  };
+}
+
+const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy(), vitePluginAdminStatic()];
 
 export default defineConfig({
   plugins,

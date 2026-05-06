@@ -1,0 +1,391 @@
+# =============================================================================
+# Comm.Inno content studio — Sveltia CMS production config
+# =============================================================================
+# Sveltia reads this file when /admin/index.html boots. The schema mirrors
+# `content/SCHEMA.md` (single source of truth) so every editor field carries
+# the same guidance the developers see. When you change shape here, update
+# SCHEMA.md in the same commit.
+#
+# Editorial workflow: every save in /admin opens (or updates) a pull request
+# against `main`. A reviewer merges; Vercel auto-deploys. See EDITORIAL.md.
+# =============================================================================
+
+backend:
+  name: github
+  repo: smithboon-thailand/comminno-web
+  branch: main
+  base_url: https://sveltia-cms-auth-642.smith-boon.workers.dev
+  auth_endpoint: auth                     # Sveltia worker exposes /auth (not /oauth/auth)
+  # `cms/<collection>/<slug>` keeps PR branches predictable and lets reviewers
+  # spot the affected collection at a glance.
+  cms_label_prefix: 'cms/'
+  commit_messages:
+    create: 'content({{collection}}): create {{slug}}'
+    update: 'content({{collection}}): update {{slug}}'
+    delete: 'content({{collection}}): delete {{slug}}'
+    uploadMedia: 'media: upload {{path}}'
+    deleteMedia: 'media: delete {{path}}'
+    openAuthoring: '{{message}} (via /admin)'
+
+# Public site URLs — used for "View live" links inside the studio.
+site_url: https://comminno-go6lmsuy.manus.space
+display_url: https://comminno-go6lmsuy.manus.space
+logo_url: https://comminno-go6lmsuy.manus.space/logo-official.svg
+
+# editorial_workflow=branch routes every save through a PR. Combined with the
+# repo's required-review rule, no single editor can publish unilaterally.
+publish_mode: editorial_workflow
+
+# -----------------------------------------------------------------------------
+# Media library — Cloudinary unsigned upload
+# -----------------------------------------------------------------------------
+# Editors paste images straight into the markdown widget; Sveltia uploads to
+# the `comminno/uploads` folder using the unsigned preset. The preset enforces
+# allowed formats (jpg, jpeg, png, webp, gif) and folder isolation server-side
+# so a stolen browser session cannot dump arbitrary files.
+#
+# The preset name is swapped in via a tiny follow-up commit once Smith
+# finishes creating it in Cloudinary console.
+media_library:
+  name: cloudinary
+  output_filename_only: false             # store the full secure_url, not just the public_id
+  config:
+    cloud_name: dpzdw1bkr
+    upload_preset: <CLOUDINARY_UPLOAD_PRESET>
+    multiple: false
+    folder: comminno/uploads
+    use_filename: true
+    unique_filename: true
+    resource_type: image
+    client_allowed_formats:
+      - jpg
+      - jpeg
+      - png
+      - webp
+      - gif
+    max_file_size: 8000000                # 8 MB — anything larger should be optimised before upload
+
+# Default media_folder still required as a fallback when Cloudinary widget is
+# unavailable (e.g. preview iframe). Files land in-repo under content/uploads.
+media_folder: content/uploads
+public_folder: /uploads
+
+# =============================================================================
+# COLLECTIONS
+# =============================================================================
+# Each collection maps 1:1 onto a YAML file in `content/`. Field descriptions
+# are cribbed verbatim (translated for editor context) from content/SCHEMA.md.
+# =============================================================================
+collections:
+  # ---------------------------------------------------------------------------
+  # 1. Insights / news posts (24 entries)
+  # ---------------------------------------------------------------------------
+  # `posts.yml` carries metadata only. Bodies live in
+  # `content/post-bodies/<slug>.md` so each post diff is a single file change
+  # and two editors can edit different posts in parallel without merge pain.
+  #
+  # Sveltia natively supports this split via two collections that share a
+  # slug — `insights` for metadata and `insight-bodies` for the markdown.
+  - name: insights
+    label: Insights · บทความ
+    label_singular: Insight · บทความ
+    description: >
+      Long-form articles, case studies, and project write-ups. The metadata
+      lives here; the body markdown is edited in the "Insight bodies"
+      collection (linked by slug).
+    file: content/posts.yml
+    type: file_collection                 # Sveltia extension: edit one YAML file containing an array
+    format: yml
+    create: true
+    delete: true
+    fields:
+      - name: posts
+        label: Posts
+        widget: list
+        # Use slug as the visible label so the editor sees a meaningful list.
+        summary: '{{fields.title}} ({{fields.slug}})'
+        fields:
+          - { name: slug, label: 'Slug · ตัวระบุใน URL', widget: string, hint: 'kebab-case; also the filename for the body markdown. Do not change after publish.' }
+          - { name: title, label: 'Title (EN) · หัวข้อ (อังกฤษ)', widget: string, hint: 'Required. Sentence case. Used in cards and nav.' }
+          - { name: titleTh, label: 'Title (TH) · หัวข้อ (ไทย)', widget: string, required: false, hint: 'Optional but recommended. Falls back to the EN title when missing.' }
+          - { name: summary, label: 'Summary · สรุปสั้น', widget: text, hint: 'Required. One sentence shown on cards. TH-first audience.' }
+          - { name: date, label: 'Date · วันที่เผยแพร่', widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD', required: false, hint: 'ISO date YYYY-MM-DD. Leave blank if unknown.' }
+          - { name: tags, label: 'Tags · หมวดหมู่', widget: list, default: [], hint: 'Category slugs from the Categories collection (e.g. campaign, sustainability).' }
+          - { name: coverFilename, label: 'Legacy Wix filename', widget: string, required: false, hint: 'Leave blank for new posts. Kept only for posts migrated from the old Wix site.' }
+          - { name: coverImage, label: 'Cover image · ภาพหน้าปก', widget: image, required: false, hint: 'Cloudinary URL or public_id (e.g. comminno/insights/<slug>). Cloudinary auto-negotiates webp/jpg/avif per client.' }
+          - { name: coverAltEn, label: 'Cover alt text (EN) · คำอธิบายภาพ (อังกฤษ)', widget: string, required: false, hint: 'Short, descriptive. No "Photo of" prefix. Required for accessibility.' }
+          - { name: coverAltTh, label: 'Cover alt text (TH) · คำอธิบายภาพ (ไทย)', widget: string, required: false, hint: 'Required for accessibility on Thai routes.' }
+          - { name: ogDescription, label: 'OG description · คำอธิบายสำหรับโซเชียล', widget: text, hint: '2–3 sentences shown when the post is shared on Facebook/Twitter. Sentence case, never auto-generated.' }
+
+  # ---------------------------------------------------------------------------
+  # 2. Insight bodies — one markdown file per post
+  # ---------------------------------------------------------------------------
+  # Folder collection so editors get Sveltia's full-screen markdown widget
+  # (preview pane + image embed). Filename = post slug; this is the contract
+  # `scripts/build-content.mjs` enforces when joining bodies to posts.yml.
+  - name: insight-bodies
+    label: Insight bodies · เนื้อหาบทความ
+    label_singular: Insight body · เนื้อหาบทความ
+    description: >
+      Long-form markdown body for each insight post. The filename MUST match
+      the slug in the Insights collection.
+    folder: content/post-bodies
+    extension: md
+    format: frontmatter                   # body content lives below an empty frontmatter block
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    identifier_field: slug
+    fields:
+      - { name: slug, label: 'Slug · ตัวระบุใน URL', widget: string, hint: 'Must match an existing entry in the Insights collection.' }
+      - { name: body, label: 'Body · เนื้อหา', widget: markdown, hint: 'Full article body. Use ## for section headings; the H1 is rendered automatically from the post title.' }
+
+  # ---------------------------------------------------------------------------
+  # 3. Services (9 entries)
+  # ---------------------------------------------------------------------------
+  - name: services
+    label: Services · บริการ
+    label_singular: Service · บริการ
+    description: >
+      The 9 service-catalogue entries shown on /services and /services/<slug>.
+      Each service has a primary UN SDG goal that drives its chip colour.
+    file: content/services.yml
+    type: file_collection
+    format: yml
+    create: false
+    delete: false                         # the count is a deliberate editorial decision
+    fields:
+      - name: services
+        label: Services
+        widget: list
+        summary: '{{fields.titleEn}} (SDG {{fields.sdgNumber}})'
+        fields:
+          - { name: slug, label: 'Slug', widget: string, hint: 'kebab-case; appears in URL.' }
+          - { name: titleEn, label: 'Title (EN)', widget: string, hint: 'Sentence case.' }
+          - { name: titleTh, label: 'Title (TH)', widget: string, required: false }
+          - { name: subtitleEn, label: 'Subtitle (EN)', widget: text, required: false, hint: 'One-line tagline shown under the title on cards and detail pages.' }
+          - { name: subtitleTh, label: 'Subtitle (TH)', widget: text, required: false }
+          - { name: sdgNumber, label: 'UN SDG goal · เป้าหมาย SDG', widget: number, value_type: int, min: 1, max: 17, hint: '1–17. Drives the SDG chip colour (matches --sdg-{n} in tokens.css).' }
+          - { name: descriptionEn, label: 'Description (EN) · คำอธิบาย', widget: markdown, hint: 'Multi-paragraph long-form copy. Rendered as <p> blocks split on blank lines.' }
+          - { name: descriptionTh, label: 'Description (TH) · คำอธิบาย (ไทย)', widget: markdown }
+          - { name: deliverablesEn, label: 'Deliverables (EN) · ผลงานที่ส่งมอบ', widget: list, field: { name: item, label: Item, widget: string }, hint: 'Bullet list of concrete outputs (typically 4–8 items).' }
+          - { name: deliverablesTh, label: 'Deliverables (TH) · ผลงานที่ส่งมอบ', widget: list, field: { name: item, label: Item, widget: string } }
+          - { name: audienceEn, label: 'Audience (EN)', widget: text, required: false, hint: 'Currently null for MVP — we frame services through deliverables, not audience.' }
+          - { name: audienceTh, label: 'Audience (TH)', widget: text, required: false }
+          - { name: ctaEn, label: 'CTA button (EN) · ปุ่มเชิญชวน', widget: string, required: false, hint: 'Service-specific CTA copy (e.g. "Talk to us about your book").' }
+          - { name: ctaTh, label: 'CTA button (TH) · ปุ่มเชิญชวน', widget: string, required: false }
+          - { name: relatedSlugs, label: 'Related insight slugs · บทความที่เกี่ยวข้อง', widget: list, default: [], required: false, field: { name: slug, label: Slug, widget: string }, hint: 'Insight-post slugs to surface as case studies on this service detail page.' }
+          - { name: heroImage, label: 'Hero image · ภาพหลัก', widget: image, required: false, hint: 'Cloudinary URL or public_id (e.g. comminno/services/<slug>).' }
+          - { name: heroAltEn, label: 'Hero alt (EN)', widget: string, required: false, hint: 'Required for accessibility.' }
+          - { name: heroAltTh, label: 'Hero alt (TH)', widget: string, required: false }
+
+  # ---------------------------------------------------------------------------
+  # 4. About — single-file collection
+  # ---------------------------------------------------------------------------
+  # Mission, pillars, three team tiers, and partners all live in one file
+  # because they're rendered together on /about. Tier 1 (leadership) is the
+  # only tier with full bios + publications.
+  - name: about
+    label: About page · หน้าแนะนำศูนย์
+    description: >
+      Mission, pillars, leadership tiers, and partners. The about page is
+      bilingual end-to-end — every TH field has an EN counterpart.
+    files:
+      - name: about
+        label: About content
+        file: content/about.yml
+        format: yml
+        fields:
+          - { name: missionEn, label: 'Mission (EN)', widget: text }
+          - { name: missionTh, label: 'Mission (TH)', widget: text }
+          - { name: pillarsEn, label: 'Pillars (EN)', widget: list, field: { name: pillar, label: Pillar, widget: string }, hint: 'Ordered list of 3–4 strategic pillars.' }
+          - { name: pillarsTh, label: 'Pillars (TH)', widget: list, field: { name: pillar, label: Pillar, widget: string } }
+
+          # Tier 1 — full bilingual cards w/ bios + publications
+          - name: leadership
+            label: 'Leadership (Tier 1) · ผู้นำศูนย์'
+            widget: list
+            summary: '{{fields.nameEn}} · {{fields.centerRoleEn}}'
+            hint: 'Hero cards on /about. Each entry should carry a full bio and ≥ 5 recent publications.'
+            fields:
+              - { name: slug, widget: string, label: 'Slug', hint: 'kebab-case; stable identifier.' }
+              - { name: nameTh, widget: string, label: 'Name (TH)', hint: 'Includes academic title prefix, e.g. "รศ. ดร. สมิทธิ์ บุญชุติมา".' }
+              - { name: nameEn, widget: string, label: 'Name (EN)', hint: 'Includes academic title prefix, e.g. "Assoc. Prof. Smith Boonchutima, Ph.D.".' }
+              - { name: centerRoleTh, widget: string, label: 'Center role (TH)' }
+              - { name: centerRoleEn, widget: string, label: 'Center role (EN)' }
+              - { name: photo, widget: image, required: false, label: 'Portrait', hint: 'Square ≥ 800×800. Webp preferred.' }
+              - { name: photoFallback, widget: image, required: false, label: 'Portrait fallback (jpg)' }
+              - { name: photoAlt, widget: string, required: false, label: 'Portrait alt text', hint: 'Short, descriptive. No "Photo of" prefix.' }
+              - { name: facultyRoleTh, widget: string, required: false, label: 'Faculty role (TH)' }
+              - { name: facultyRoleEn, widget: string, required: false, label: 'Faculty role (EN)' }
+              - { name: internationalRoleTh, widget: string, required: false, label: 'International role (TH)' }
+              - { name: internationalRoleEn, widget: string, required: false, label: 'International role (EN)' }
+              - { name: email, widget: string, required: false, label: 'Email' }
+              - { name: bioTh, widget: text, label: 'Bio (TH)', hint: 'Multi-paragraph; rendered as <p> blocks.' }
+              - { name: bioEn, widget: text, label: 'Bio (EN)' }
+              - { name: expertiseTh, widget: string, required: false, label: 'Expertise (TH)', hint: 'Comma-separated list, locale-formatted.' }
+              - { name: expertiseEn, widget: string, required: false, label: 'Expertise (EN)' }
+              - name: publications
+                label: 'Publications · ผลงานวิจัย'
+                widget: list
+                required: false
+                summary: '{{fields.year}} · {{fields.venue}}'
+                hint: 'Tier 1 should carry ≥ 5 entries. Sorted by year (most recent first) at render time.'
+                fields:
+                  - { name: citationEn, widget: text, label: 'Citation (EN)', hint: 'APA-ish, already TH/EN aware.' }
+                  - { name: citationTh, widget: text, required: false, label: 'Citation (TH)' }
+                  - { name: year, widget: number, value_type: int, label: 'Year' }
+                  - { name: venue, widget: string, label: 'Venue', hint: 'Journal / publisher / book series.' }
+                  - { name: doi, widget: string, required: false, label: 'DOI', hint: 'Full https://doi.org/… URL.' }
+                  - { name: url, widget: string, required: false, label: 'Open-access URL', hint: 'Use when no DOI is available.' }
+              - name: links
+                label: 'Profile links'
+                widget: object
+                hint: 'External research/scholar profile URLs — rendered as icon buttons under the name.'
+                fields:
+                  - { name: orcid, widget: string, required: false, label: 'ORCID URL' }
+                  - { name: scholar, widget: string, required: false, label: 'Google Scholar URL' }
+                  - { name: researchgate, widget: string, required: false, label: 'ResearchGate URL' }
+                  - { name: scopus, widget: string, required: false, label: 'Scopus URL' }
+                  - { name: linkedin, widget: string, required: false, label: 'LinkedIn URL' }
+                  - { name: webOfScience, widget: string, required: false, label: 'Web of Science URL' }
+                  - { name: orcidPending, widget: boolean, required: false, default: false, label: 'ORCID pending', hint: 'Renders a "coming soon" placeholder pill instead of hiding the slot.' }
+                  - { name: scholarPending, widget: boolean, required: false, default: false, label: 'Scholar pending' }
+
+          # Tier 2 — same shape as leadership (currently 1 entry)
+          - name: faculty2
+            label: 'Faculty (Tier 2) · คณะศูนย์'
+            widget: list
+            summary: '{{fields.nameEn}} · {{fields.centerRoleEn}}'
+            hint: 'Same shape as Leadership. Use for senior faculty without a Tier 1 leadership role.'
+            fields:
+              - { name: slug, widget: string, label: 'Slug' }
+              - { name: nameTh, widget: string, label: 'Name (TH)' }
+              - { name: nameEn, widget: string, label: 'Name (EN)' }
+              - { name: centerRoleTh, widget: string, label: 'Center role (TH)' }
+              - { name: centerRoleEn, widget: string, label: 'Center role (EN)' }
+              - { name: photo, widget: image, required: false, label: 'Portrait' }
+              - { name: photoFallback, widget: image, required: false, label: 'Portrait fallback' }
+              - { name: photoAlt, widget: string, required: false, label: 'Portrait alt text' }
+              - { name: facultyRoleTh, widget: string, required: false, label: 'Faculty role (TH)' }
+              - { name: facultyRoleEn, widget: string, required: false, label: 'Faculty role (EN)' }
+              - { name: internationalRoleTh, widget: string, required: false, label: 'International role (TH)' }
+              - { name: internationalRoleEn, widget: string, required: false, label: 'International role (EN)' }
+              - { name: email, widget: string, required: false, label: 'Email' }
+              - { name: bioTh, widget: text, label: 'Bio (TH)' }
+              - { name: bioEn, widget: text, label: 'Bio (EN)' }
+              - { name: expertiseTh, widget: string, required: false, label: 'Expertise (TH)' }
+              - { name: expertiseEn, widget: string, required: false, label: 'Expertise (EN)' }
+              - name: links
+                label: 'Profile links'
+                widget: object
+                fields:
+                  - { name: orcid, widget: string, required: false, label: 'ORCID URL' }
+                  - { name: scholar, widget: string, required: false, label: 'Scholar URL' }
+                  - { name: researchgate, widget: string, required: false, label: 'ResearchGate URL' }
+                  - { name: scopus, widget: string, required: false, label: 'Scopus URL' }
+                  - { name: linkedin, widget: string, required: false, label: 'LinkedIn URL' }
+                  - { name: webOfScience, widget: string, required: false, label: 'Web of Science URL' }
+                  - { name: orcidPending, widget: boolean, required: false, default: false, label: 'ORCID pending' }
+                  - { name: scholarPending, widget: boolean, required: false, default: false, label: 'Scholar pending' }
+
+          # Tier 3 — lightweight grid card
+          - name: researchTeam
+            label: 'Research team (Tier 3) · ทีมวิจัย'
+            widget: list
+            summary: '{{fields.nameEn}} · {{fields.roleEn}}'
+            hint: 'Lightweight grid cards (no bio/pubs). TH primary on /th, EN transliteration secondary.'
+            fields:
+              - { name: slug, widget: string, label: 'Slug' }
+              - { name: nameTh, widget: string, label: 'Name (TH)' }
+              - { name: nameEn, widget: string, label: 'Name (EN)' }
+              - { name: roleTh, widget: string, label: 'Role (TH)' }
+              - { name: roleEn, widget: string, label: 'Role (EN)' }
+              - { name: photo, widget: image, required: false, label: 'Portrait' }
+              - { name: photoFallback, widget: image, required: false, label: 'Portrait fallback' }
+              - { name: photoAlt, widget: string, required: false, label: 'Portrait alt text' }
+              - { name: thaiSpellingPending, widget: boolean, required: false, default: false, label: 'Thai spelling pending review', hint: 'Set to true when the Thai spelling is auto-transliterated and pending verification by the center.' }
+
+          # Strategic / institutional partners
+          - name: partners
+            label: 'Partners · พันธมิตร'
+            widget: list
+            summary: '{{fields.organizationEn}}'
+            fields:
+              - { name: slug, widget: string, label: 'Slug' }
+              - { name: organizationTh, widget: string, label: 'Organization (TH)' }
+              - { name: organizationEn, widget: string, label: 'Organization (EN)' }
+              - { name: contactNameTh, widget: string, required: false, label: 'Contact name (TH)' }
+              - { name: contactNameEn, widget: string, required: false, label: 'Contact name (EN)' }
+              - { name: contactRoleTh, widget: string, required: false, label: 'Contact role (TH)' }
+              - { name: contactRoleEn, widget: string, required: false, label: 'Contact role (EN)' }
+              - { name: contactPhoto, widget: image, required: false, label: 'Contact portrait' }
+              - { name: contactPhotoFallback, widget: image, required: false, label: 'Contact portrait fallback' }
+              - { name: contactPhotoAlt, widget: string, required: false, label: 'Contact portrait alt' }
+              - { name: synergyTh, widget: text, label: 'Synergy (TH)', hint: 'Short paragraph — what links us with this partner.' }
+              - { name: synergyEn, widget: text, label: 'Synergy (EN)' }
+              - { name: websiteUrl, widget: string, required: false, label: 'Website URL' }
+
+          # Legacy fields kept for JSON-LD compatibility (do not edit unless
+          # you understand the SEO implications).
+          - name: faculty
+            label: 'Legacy faculty (JSON-LD members)'
+            widget: list
+            hint: 'Used by the schema.org JSON-LD on /about. Keep until SEO refactor; do not delete.'
+            fields:
+              - { name: slug, widget: string, label: 'Slug' }
+              - { name: name, widget: string, label: 'Name' }
+              - { name: role, widget: string, label: 'Role' }
+          - name: widerTeam
+            label: 'Legacy wider team list'
+            widget: list
+            field: { name: name, widget: string, label: 'Name' }
+            hint: 'Plain bilingual name list. Kept until UI refactor.'
+
+  # ---------------------------------------------------------------------------
+  # 5. Categories (12 entries)
+  # ---------------------------------------------------------------------------
+  - name: categories
+    label: Categories · หมวดหมู่
+    label_singular: Category · หมวดหมู่
+    description: >
+      Post taxonomy. The `isService` flag distinguishes service categories
+      from editorial ones at render time.
+    file: content/categories.yml
+    type: file_collection
+    format: yml
+    create: true
+    delete: true
+    fields:
+      - name: categories
+        label: Categories
+        widget: list
+        summary: '{{fields.titleEn}} ({{fields.slug}})'
+        fields:
+          - { name: slug, widget: string, label: 'Slug', hint: 'kebab-case; matches the tag values used in posts.' }
+          - { name: titleEn, widget: string, label: 'Title (EN)' }
+          - { name: titleTh, widget: string, required: false, label: 'Title (TH)' }
+          - { name: isService, widget: boolean, default: false, label: 'Is a service?', hint: 'True for the 9 service categories; false for editorial taxonomies (highlights, school, etc.).' }
+
+  # ---------------------------------------------------------------------------
+  # 6. Redirects (39 entries)
+  # ---------------------------------------------------------------------------
+  - name: redirects
+    label: Redirects · เปลี่ยนเส้นทาง URL
+    label_singular: Redirect · เปลี่ยนเส้นทาง URL
+    description: >
+      Old Wix paths → new paths. Consumed by vercel.json so legacy bookmarks
+      and external backlinks keep working.
+    file: content/redirects.yml
+    type: file_collection
+    format: yml
+    create: true
+    delete: true
+    fields:
+      - name: redirects
+        label: Redirects
+        widget: list
+        summary: '{{fields.from}} → {{fields.to}}'
+        fields:
+          - { name: from, widget: string, label: 'From (legacy path)', hint: 'Path on the old Wix site, e.g. /post/chula-zero-waste.' }
+          - { name: to, widget: string, label: 'To (new path)', hint: 'Path on the new site, e.g. /insights/chula-zero-waste.' }

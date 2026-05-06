@@ -27,4 +27,3 @@ export const postBodies: Record<string, string> = {
   "sri-trang-agro-industry": "",
   "thai-health-promotion-foundation-organises-simple-drug-communication-as-daily-routine-training-by": ""
 };
-

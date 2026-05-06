@@ -88,9 +88,7 @@ export default function ServiceDetail() {
       : service.titleEn
     : "Service not found";
   const subtitle: string | null = service
-    ? locale === "th"
-      ? service.subtitleTh
-      : service.subtitleEn
+    ? (locale === "th" ? service.subtitleTh : service.subtitleEn) ?? null
     : null;
   const metaDesc: string = service
     ? buildMetaDescription(service, locale)

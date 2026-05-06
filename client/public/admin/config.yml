@@ -51,7 +51,7 @@ media_library:
   output_filename_only: false             # store the full secure_url, not just the public_id
   config:
     cloud_name: dpzdw1bkr
-    upload_preset: <CLOUDINARY_UPLOAD_PRESET>
+    upload_preset: comminno-cms-uploads     # unsigned preset; restricted to comminno/uploads + jpg/jpeg/png/webp/gif
     multiple: false
     folder: comminno/uploads
     use_filename: true

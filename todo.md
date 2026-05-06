@@ -159,3 +159,23 @@ User reports the recent-publications block has inaccuracies. Verified source:
 
 - [ ] Replace 2026 Cogent A&H entry with: Krongbooncho, C., Boonchutima, S., & Mazahir, I. (2026). From stigma to mainstream: a multi-stakeholder thematic analysis of anime consumption and community-driven communication in Thai Generation Z. Cogent Arts & Humanities, 13(1). https://doi.org/10.1080/23311983.2026.2647143
 - [ ] Type-check + checkpoint
+
+
+---
+
+## Task 6 — CMS migration Phase 1: GitHub + Vercel auto-deploy (2026-05-05)
+
+Goal: move source to a public GitHub repo under the user's account, hook it to Vercel for auto-deploy on push to `main`. Keep `comminno-go6lmsuy.manus.space` live and untouched. Pure infra — zero visible content/behavior changes.
+
+- [ ] Confirm with user: GitHub username, repo name (`cominnocenter-website` or `comminno-web`), MIT license OK, GitHub access token availability, Vercel account exists
+- [ ] Compose project README (overview, stack, local dev), MIT LICENSE, comprehensive .gitignore
+- [ ] Initialize git, single comprehensive commit, create public repo via `gh`, push `main`
+- [ ] User connects Vercel → GitHub repo (Vite preset, build `pnpm run build`, output `dist`, install `pnpm install`); trigger first deploy
+- [ ] Round-trip test: append `Last verified deploy: <date>` to README, push, confirm Vercel rebuilds in ~60s
+- [ ] Deliver GitHub URL + Vercel URL; confirm Manus deployment still works
+
+Out of scope (Phase 1):
+- [ ] CMS, admin login (Phase 2)
+- [ ] OpenAI / Facebook integration / secrets (Phase 3+/5)
+- [ ] DNS cutover for cominnocenter.com (later)
+- [ ] Touching the Manus deployment

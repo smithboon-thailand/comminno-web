@@ -110,3 +110,9 @@ temp/
 
 # Manus version file (auto-generated, not part of source)
 client/public/__manus__/version.json
+
+# Manus dev-server logs (not part of source)
+.manus-logs/
+
+# Local working notes (not part of source)
+todo.md

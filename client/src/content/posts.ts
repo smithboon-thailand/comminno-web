@@ -12,8 +12,8 @@ export const posts: readonly PostMeta[] = [
       "training"
     ],
     "coverFilename": null,
-    "coverWebp": "/manus-storage/treasury_130c92a4.webp",
-    "coverJpg": "/manus-storage/treasury_71351244.jpg",
+    "coverWebp": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/treasury",
+    "coverJpg": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/treasury",
     "coverAltEn": "Speaker addressing executive treasury officers in a formal seminar setting",
     "coverAltTh": "วิทยากรบรรยายผู้บริหารสายการคลังในงานสัมมนาเชิงบริหาร",
     "ogDescription": "Today (August 6, 2025), Associate Professor Dr. Smith Boonchutima from the Faculty of Communication Arts, Chulalongkorn University, delivered a special lecture on \"Communication Techniques for Administration and Public Relations\" at the 15th Professional Treasury Officer Program, organized by the Fiscal Policy Research Institute Foundation.The lecture covered key topics including communication strategy in government organizations, information management in the digital age, crisis communication,"
@@ -27,8 +27,8 @@ export const posts: readonly PostMeta[] = [
       "training"
     ],
     "coverFilename": null,
-    "coverWebp": "/manus-storage/krungthai_8398673b.webp",
-    "coverJpg": "/manus-storage/krungthai_f707edab.jpg",
+    "coverWebp": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/krungthai",
+    "coverJpg": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/krungthai",
     "coverAltEn": "Banking executives in a leadership training workshop",
     "coverAltTh": "ผู้บริหารธนาคารร่วมอบรมภาวะผู้นำ",
     "ogDescription": "Today (July 23, 2025), Associate Professor Dr. Smith Boonchutima served as a keynote speaker for the Leadership Acceleration Program, designed to enhance management skills for middle-level executives at Krungthai Bank Public Company Limited. The training focused on \"The Art of Communication & Influencing.\"The comprehensive program covered organizational communication, information management, informal communication channels (word-of-mouth and rumors), presentation skills, conflict management, and"
@@ -42,8 +42,8 @@ export const posts: readonly PostMeta[] = [
       "innovation-technology"
     ],
     "coverFilename": null,
-    "coverWebp": "/manus-storage/fda_fc63db9a.webp",
-    "coverJpg": "/manus-storage/fda_2837f95b.jpg",
+    "coverWebp": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/fda",
+    "coverJpg": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/fda",
     "coverAltEn": "FDA national drug-safety summit exhibition booth and visitors",
     "coverAltTh": "บูธนิทรรศการประชุมระดับชาติเรื่องความปลอดภัยของอย.",
     "ogDescription": "Communication Innovation Center Drives National Drug Safety Awareness at FDA SummitAssistant Professor Dr. Teerada Chongkolrattanaporn and Dr. Kamonrat Kitrungpaisan from our Public Relations Department collaborated with the Food and Drug Administration (FDA) and Thai Health Promotion Foundation to present an interactive exhibition \"กินยาสมเหตุ หายโรคสมผล ทุกคนสมใจ\" at Thailand's First National Forum on Rational Drug Use.The event took place July 8-9,"
@@ -57,8 +57,8 @@ export const posts: readonly PostMeta[] = [
       "training"
     ],
     "coverFilename": null,
-    "coverWebp": "/manus-storage/turkiye_c79b75be.webp",
-    "coverJpg": "/manus-storage/turkiye_89d6234d.jpg",
+    "coverWebp": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/turkiye",
+    "coverJpg": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/turkiye",
     "coverAltEn": "Workshop participants and speaker in Istanbul preparing Thai students for the workforce",
     "coverAltTh": "ผู้เข้าร่วมปฏิบัติการในเวิร์กช็อปที่อิสตันบูลเตรียมความพร้อมสู่ตลาดแรงงานของนักศึกษาไทย",
     "ogDescription": "On 4 - 5 July 2025, Assistant Professor Dr. Teerada Chongkolrattanaporn, Head of the Department of Public Relations, Faculty of Communication Arts, Chulalongkorn University, honored an event in Istanbul as the key speaker for the project, “Preparing Thai Students in Türkiye to the World of Work.”Dr. Teerada shared her expertise and essential skills to empower Thai students nearing graduation for a confident transition into the professional world. Her lecture covered crucial topics such as basic"
@@ -197,8 +197,8 @@ export const posts: readonly PostMeta[] = [
       "school"
     ],
     "coverFilename": null,
-    "coverWebp": "/manus-storage/crisis-comm_1dff980e.webp",
-    "coverJpg": "/manus-storage/crisis-comm_f8f68eaf.jpg",
+    "coverWebp": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/crisis-comm",
+    "coverJpg": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/crisis-comm",
     "coverAltEn": "Executive briefing in a crisis communication training session",
     "coverAltTh": "ห้องบรรยายสรุปสถานการณ์ในการอบรมการสื่อสารภาวะวิกฤตระดับผู้บริหาร",
     "ogDescription": "The head of Comm.Inno is invited to lead executive crisis communication training. One-day course equips C-suite leaders with vital skills for managing corporate image and personal conduct in crises."
@@ -274,8 +274,8 @@ export const posts: readonly PostMeta[] = [
       "campaign-manage"
     ],
     "coverFilename": null,
-    "coverWebp": "/manus-storage/care-d-plus_a991466b.webp",
-    "coverJpg": "/manus-storage/care-d-plus_ae733832.jpg",
+    "coverWebp": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/care-d-plus",
+    "coverJpg": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/care-d-plus",
     "coverAltEn": "Healthcare workers in a Care D+ communication training programme",
     "coverAltTh": "บุคลากรสาธารณสุขร่วมอบรมหลักสูตร Care D+ ด้านการสื่อสาร",
     "ogDescription": "Chulalongkorn University, in collaboration with the Ministry of Public Health, organizes the launch event for the training program for driving public and social communication (Care D+).Based on the government's policy aiming to provide all Thai people with equitable access to quality healthcare services, the Ministry of Public Health has established 13 operational priorities. These priorities are designed to develop a healthcare system that addresses problem-solving, strengthens foundational sys"
@@ -289,8 +289,8 @@ export const posts: readonly PostMeta[] = [
       "school"
     ],
     "coverFilename": null,
-    "coverWebp": "/manus-storage/chula-keio-bunkyo_55189304.webp",
-    "coverJpg": "/manus-storage/chula-keio-bunkyo_df7b8678.jpg",
+    "coverWebp": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/chula-keio-bunkyo",
+    "coverJpg": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/chula-keio-bunkyo",
     "coverAltEn": "Delegation from Chulalongkorn University meeting Japanese academic partners in Tokyo",
     "coverAltTh": "คณะผู้แทนจุฬาลงกรณ์มหาวิทยาลัยพบปะพันธมิตรทางวิชาการญี่ปุ่น",
     "ogDescription": "TOKYO – Faculty members and students from Chulalongkorn University’s Department of Public Relations visited leading institutions in Japan to strengthen international academic ties and foster innovative communication practices.Keio University: Peace Playground Workshop On March 11, 2026, the delegation visited Keio University’s Graduate School of Media Design (KMD). Welcomed by Dean Masa Inakage, the group hosted the “Peace Playground: A Workshop on Metaphor & Art” led by Asst. Prof. Dr. Teerada"
@@ -302,8 +302,8 @@ export const posts: readonly PostMeta[] = [
     "date": null,
     "tags": [],
     "coverFilename": null,
-    "coverWebp": "/manus-storage/sri-trang_b35a94ba.webp",
-    "coverJpg": "/manus-storage/sri-trang_1e5a342a.jpg",
+    "coverWebp": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/sri-trang",
+    "coverJpg": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/sri-trang",
     "coverAltEn": "Corporate employees in an online-content creation workshop",
     "coverAltTh": "พนักงานบริษัทร่วมอบรมการผลิตคอนเทนต์ออนไลน์",
     "ogDescription": "Training course: Creating Online ContentThe team has been invited to attend a training course on online content creation for the employees of Sri Trang Agro-Industry Public Company Limited, in order to enable them to create video media, screen recordings, for ongoing organizational learning. The training is organized by the Sirindhorn Thai Language Institute, Chulalongkorn University, on July 20-21, 2022, at the Burisriphu Convention Center, Hat Yai Province."
@@ -318,8 +318,8 @@ export const posts: readonly PostMeta[] = [
       "campaign-manage"
     ],
     "coverFilename": null,
-    "coverWebp": "/manus-storage/thpf-drug_f3e59472.webp",
-    "coverJpg": "/manus-storage/thpf-drug_7351b738.jpg",
+    "coverWebp": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/thpf-drug",
+    "coverJpg": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/thpf-drug",
     "coverAltEn": "Pharmacist and patient discussing medication — simple drug communication training",
     "coverAltTh": "เภสัชกรอธิบายยาแบบเข้าใจง่ายให้ผู้ป่วย — อบรมสื่อสารยาแบบเข้าใจง่าย",
     "ogDescription": "Thai Health Promotion Foundation partners with Comm.Inno to deliver the 'Simple drug communication as daily routine' training for healthcare communicators."

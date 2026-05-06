@@ -119,4 +119,9 @@ todo.md
 
 # Phase-2 internal planning + image migration scratch (not part of source)
 PHASE2_PLAN.md
+PHASE2_PLAN_r2_archive.md
 .migration/
+# …except the Cloudinary mapping (audit trail + reproducibility, r3 §3)
+!.migration/
+.migration/*
+!.migration/cloudinary-map.json

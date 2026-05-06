@@ -1,0 +1,349 @@
+{
+  "generated_at": "2026-05-06T14:30:44.014Z",
+  "cloud_name": "dpzdw1bkr",
+  "byManusPath": {
+    "/manus-storage/achara_7259abb3.jpg": "comminno/team/achara",
+    "/manus-storage/achara_762bd5af.webp": "comminno/team/achara",
+    "/manus-storage/akasit_094e337b.jpg": "comminno/team/akasit",
+    "/manus-storage/akasit_5072d12c.webp": "comminno/team/akasit",
+    "/manus-storage/book-and-printing_1a9fea16.webp": "comminno/services/book-and-printing",
+    "/manus-storage/book-and-printing_288d717f.jpg": "comminno/services/book-and-printing",
+    "/manus-storage/campaign-manage_738b129e.jpg": "comminno/services/campaign-manage",
+    "/manus-storage/campaign-manage_b1a25bb9.webp": "comminno/services/campaign-manage",
+    "/manus-storage/care-d-plus_a991466b.webp": "comminno/insights/care-d-plus",
+    "/manus-storage/care-d-plus_ae733832.jpg": "comminno/insights/care-d-plus",
+    "/manus-storage/chanapa_1024a5ca.webp": "comminno/team/chanapa",
+    "/manus-storage/chanapa_7c4d6515.jpg": "comminno/team/chanapa",
+    "/manus-storage/chula-keio-bunkyo_55189304.webp": "comminno/insights/chula-keio-bunkyo",
+    "/manus-storage/chula-keio-bunkyo_df7b8678.jpg": "comminno/insights/chula-keio-bunkyo",
+    "/manus-storage/communication-design_26d3b5af.jpg": "comminno/services/communication-design",
+    "/manus-storage/communication-design_b380f7f3.webp": "comminno/services/communication-design",
+    "/manus-storage/crisis-comm_1dff980e.webp": "comminno/insights/crisis-comm",
+    "/manus-storage/crisis-comm_f8f68eaf.jpg": "comminno/insights/crisis-comm",
+    "/manus-storage/fda_2837f95b.jpg": "comminno/insights/fda",
+    "/manus-storage/fda_fc63db9a.webp": "comminno/insights/fda",
+    "/manus-storage/hrut_4e58f6d4.webp": "comminno/team/hrut",
+    "/manus-storage/hrut_9546697b.jpg": "comminno/team/hrut",
+    "/manus-storage/krungthai_8398673b.webp": "comminno/insights/krungthai",
+    "/manus-storage/krungthai_f707edab.jpg": "comminno/insights/krungthai",
+    "/manus-storage/marketing-event_1a55c27d.jpg": "comminno/services/marketing-event",
+    "/manus-storage/marketing-event_f76cd29d.webp": "comminno/services/marketing-event",
+    "/manus-storage/motion-effect-ar_2909163e.jpg": "comminno/services/motion-effect-ar",
+    "/manus-storage/motion-effect-ar_2cfedca5.webp": "comminno/services/motion-effect-ar",
+    "/manus-storage/pavel_0e5bf6f4.webp": "comminno/team/pavel",
+    "/manus-storage/pavel_cb13a2e9.jpg": "comminno/team/pavel",
+    "/manus-storage/pornpavee_86be2540.webp": "comminno/team/pornpavee",
+    "/manus-storage/pornpavee_942e2343.jpg": "comminno/team/pornpavee",
+    "/manus-storage/research-and-evaluation_3b72bbd4.webp": "comminno/services/research-and-evaluation",
+    "/manus-storage/research-and-evaluation_49e70898.jpg": "comminno/services/research-and-evaluation",
+    "/manus-storage/seminar_a00951f6.jpg": "comminno/services/seminar",
+    "/manus-storage/seminar_b515ff4d.webp": "comminno/services/seminar",
+    "/manus-storage/smith_ac844165.webp": "comminno/team/smith",
+    "/manus-storage/smith_e8a04452.jpg": "comminno/team/smith",
+    "/manus-storage/sri-trang_1e5a342a.jpg": "comminno/insights/sri-trang",
+    "/manus-storage/sri-trang_b35a94ba.webp": "comminno/insights/sri-trang",
+    "/manus-storage/supatra_66f8dd74.jpg": "comminno/team/supatra",
+    "/manus-storage/supatra_a5d080ba.webp": "comminno/team/supatra",
+    "/manus-storage/teerada_a956201a.jpg": "comminno/team/teerada",
+    "/manus-storage/teerada_dad815b3.webp": "comminno/team/teerada",
+    "/manus-storage/thavin_4815a8b6.webp": "comminno/team/thavin",
+    "/manus-storage/thavin_7de0abc7.jpg": "comminno/team/thavin",
+    "/manus-storage/thpf-drug_7351b738.jpg": "comminno/insights/thpf-drug",
+    "/manus-storage/thpf-drug_f3e59472.webp": "comminno/insights/thpf-drug",
+    "/manus-storage/training_7628348e.webp": "comminno/services/training",
+    "/manus-storage/training_ca450ecf.jpg": "comminno/services/training",
+    "/manus-storage/treasury_130c92a4.webp": "comminno/insights/treasury",
+    "/manus-storage/treasury_71351244.jpg": "comminno/insights/treasury",
+    "/manus-storage/turkiye_89d6234d.jpg": "comminno/insights/turkiye",
+    "/manus-storage/turkiye_c79b75be.webp": "comminno/insights/turkiye",
+    "/manus-storage/video-production_9db62e70.jpg": "comminno/services/video-production",
+    "/manus-storage/video-production_fb851bf5.webp": "comminno/services/video-production",
+    "/manus-storage/waiphot_4680d95b.jpg": "comminno/team/waiphot",
+    "/manus-storage/waiphot_5bbdf9aa.webp": "comminno/team/waiphot",
+    "/manus-storage/wanwisa_06bd7a76.webp": "comminno/team/wanwisa",
+    "/manus-storage/wanwisa_7477999f.jpg": "comminno/team/wanwisa",
+    "/manus-storage/watsayut_3b7c28de.jpg": "comminno/team/watsayut",
+    "/manus-storage/watsayut_ee0cba78.webp": "comminno/team/watsayut"
+  },
+  "bySubject": [
+    {
+      "scope": "insights",
+      "subject": "care-d-plus",
+      "public_id": "comminno/insights/care-d-plus",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077846/comminno/insights/care-d-plus.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077848/comminno/insights/care-d-plus-jpg.jpg",
+      "bytes_webp": 49282,
+      "bytes_jpg": 101812
+    },
+    {
+      "scope": "insights",
+      "subject": "chula-keio-bunkyo",
+      "public_id": "comminno/insights/chula-keio-bunkyo",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077850/comminno/insights/chula-keio-bunkyo.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077852/comminno/insights/chula-keio-bunkyo-jpg.jpg",
+      "bytes_webp": 71650,
+      "bytes_jpg": 133108
+    },
+    {
+      "scope": "insights",
+      "subject": "crisis-comm",
+      "public_id": "comminno/insights/crisis-comm",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077854/comminno/insights/crisis-comm.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077856/comminno/insights/crisis-comm-jpg.jpg",
+      "bytes_webp": 50360,
+      "bytes_jpg": 103011
+    },
+    {
+      "scope": "insights",
+      "subject": "fda",
+      "public_id": "comminno/insights/fda",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077858/comminno/insights/fda.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077859/comminno/insights/fda-jpg.jpg",
+      "bytes_webp": 41146,
+      "bytes_jpg": 87742
+    },
+    {
+      "scope": "insights",
+      "subject": "krungthai",
+      "public_id": "comminno/insights/krungthai",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077861/comminno/insights/krungthai.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077863/comminno/insights/krungthai-jpg.jpg",
+      "bytes_webp": 57814,
+      "bytes_jpg": 117278
+    },
+    {
+      "scope": "insights",
+      "subject": "sri-trang",
+      "public_id": "comminno/insights/sri-trang",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077864/comminno/insights/sri-trang.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077866/comminno/insights/sri-trang-jpg.jpg",
+      "bytes_webp": 87778,
+      "bytes_jpg": 140151
+    },
+    {
+      "scope": "insights",
+      "subject": "thpf-drug",
+      "public_id": "comminno/insights/thpf-drug",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077868/comminno/insights/thpf-drug.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077870/comminno/insights/thpf-drug-jpg.jpg",
+      "bytes_webp": 30694,
+      "bytes_jpg": 80278
+    },
+    {
+      "scope": "insights",
+      "subject": "treasury",
+      "public_id": "comminno/insights/treasury",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077871/comminno/insights/treasury.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077873/comminno/insights/treasury-jpg.jpg",
+      "bytes_webp": 44690,
+      "bytes_jpg": 95870
+    },
+    {
+      "scope": "insights",
+      "subject": "turkiye",
+      "public_id": "comminno/insights/turkiye",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077876/comminno/insights/turkiye.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077878/comminno/insights/turkiye-jpg.jpg",
+      "bytes_webp": 104016,
+      "bytes_jpg": 157018
+    },
+    {
+      "scope": "services",
+      "subject": "book-and-printing",
+      "public_id": "comminno/services/book-and-printing",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077880/comminno/services/book-and-printing.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077882/comminno/services/book-and-printing-jpg.jpg",
+      "bytes_webp": 93760,
+      "bytes_jpg": 202537
+    },
+    {
+      "scope": "services",
+      "subject": "campaign-manage",
+      "public_id": "comminno/services/campaign-manage",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077884/comminno/services/campaign-manage.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077886/comminno/services/campaign-manage-jpg.jpg",
+      "bytes_webp": 92786,
+      "bytes_jpg": 180910
+    },
+    {
+      "scope": "services",
+      "subject": "communication-design",
+      "public_id": "comminno/services/communication-design",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077888/comminno/services/communication-design.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077891/comminno/services/communication-design-jpg.jpg",
+      "bytes_webp": 122490,
+      "bytes_jpg": 222674
+    },
+    {
+      "scope": "services",
+      "subject": "marketing-event",
+      "public_id": "comminno/services/marketing-event",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077893/comminno/services/marketing-event.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077896/comminno/services/marketing-event-jpg.jpg",
+      "bytes_webp": 175454,
+      "bytes_jpg": 288647
+    },
+    {
+      "scope": "services",
+      "subject": "motion-effect-ar",
+      "public_id": "comminno/services/motion-effect-ar",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077898/comminno/services/motion-effect-ar.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077900/comminno/services/motion-effect-ar-jpg.jpg",
+      "bytes_webp": 98156,
+      "bytes_jpg": 189413
+    },
+    {
+      "scope": "services",
+      "subject": "research-and-evaluation",
+      "public_id": "comminno/services/research-and-evaluation",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077902/comminno/services/research-and-evaluation.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077904/comminno/services/research-and-evaluation-jpg.jpg",
+      "bytes_webp": 53238,
+      "bytes_jpg": 126878
+    },
+    {
+      "scope": "services",
+      "subject": "seminar",
+      "public_id": "comminno/services/seminar",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077906/comminno/services/seminar.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077907/comminno/services/seminar-jpg.jpg",
+      "bytes_webp": 126834,
+      "bytes_jpg": 221953
+    },
+    {
+      "scope": "services",
+      "subject": "training",
+      "public_id": "comminno/services/training",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077909/comminno/services/training.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077911/comminno/services/training-jpg.jpg",
+      "bytes_webp": 95722,
+      "bytes_jpg": 196688
+    },
+    {
+      "scope": "services",
+      "subject": "video-production",
+      "public_id": "comminno/services/video-production",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077913/comminno/services/video-production.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077915/comminno/services/video-production-jpg.jpg",
+      "bytes_webp": 220140,
+      "bytes_jpg": 331080
+    },
+    {
+      "scope": "team",
+      "subject": "achara",
+      "public_id": "comminno/team/achara",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077918/comminno/team/achara.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077919/comminno/team/achara-jpg.jpg",
+      "bytes_webp": 28066,
+      "bytes_jpg": 67647
+    },
+    {
+      "scope": "team",
+      "subject": "akasit",
+      "public_id": "comminno/team/akasit",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077920/comminno/team/akasit.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077922/comminno/team/akasit-jpg.jpg",
+      "bytes_webp": 69988,
+      "bytes_jpg": 120288
+    },
+    {
+      "scope": "team",
+      "subject": "chanapa",
+      "public_id": "comminno/team/chanapa",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077924/comminno/team/chanapa.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077925/comminno/team/chanapa-jpg.jpg",
+      "bytes_webp": 28336,
+      "bytes_jpg": 66673
+    },
+    {
+      "scope": "team",
+      "subject": "hrut",
+      "public_id": "comminno/team/hrut",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077927/comminno/team/hrut.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077929/comminno/team/hrut-jpg.jpg",
+      "bytes_webp": 33932,
+      "bytes_jpg": 73945
+    },
+    {
+      "scope": "team",
+      "subject": "pavel",
+      "public_id": "comminno/team/pavel",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077930/comminno/team/pavel.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077932/comminno/team/pavel-jpg.jpg",
+      "bytes_webp": 16964,
+      "bytes_jpg": 43653
+    },
+    {
+      "scope": "team",
+      "subject": "pornpavee",
+      "public_id": "comminno/team/pornpavee",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077933/comminno/team/pornpavee.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077935/comminno/team/pornpavee-jpg.jpg",
+      "bytes_webp": 59254,
+      "bytes_jpg": 103524
+    },
+    {
+      "scope": "team",
+      "subject": "smith",
+      "public_id": "comminno/team/smith",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077937/comminno/team/smith.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077938/comminno/team/smith-jpg.jpg",
+      "bytes_webp": 17206,
+      "bytes_jpg": 45397
+    },
+    {
+      "scope": "team",
+      "subject": "supatra",
+      "public_id": "comminno/team/supatra",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077941/comminno/team/supatra.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077943/comminno/team/supatra-jpg.jpg",
+      "bytes_webp": 25472,
+      "bytes_jpg": 68460
+    },
+    {
+      "scope": "team",
+      "subject": "teerada",
+      "public_id": "comminno/team/teerada",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077945/comminno/team/teerada.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077947/comminno/team/teerada-jpg.jpg",
+      "bytes_webp": 29634,
+      "bytes_jpg": 64150
+    },
+    {
+      "scope": "team",
+      "subject": "thavin",
+      "public_id": "comminno/team/thavin",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077949/comminno/team/thavin.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077950/comminno/team/thavin-jpg.jpg",
+      "bytes_webp": 16480,
+      "bytes_jpg": 42715
+    },
+    {
+      "scope": "team",
+      "subject": "waiphot",
+      "public_id": "comminno/team/waiphot",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077952/comminno/team/waiphot.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077954/comminno/team/waiphot-jpg.jpg",
+      "bytes_webp": 32102,
+      "bytes_jpg": 73221
+    },
+    {
+      "scope": "team",
+      "subject": "wanwisa",
+      "public_id": "comminno/team/wanwisa",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077955/comminno/team/wanwisa.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077957/comminno/team/wanwisa-jpg.jpg",
+      "bytes_webp": 34784,
+      "bytes_jpg": 76282
+    },
+    {
+      "scope": "team",
+      "subject": "watsayut",
+      "public_id": "comminno/team/watsayut",
+      "webp_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077958/comminno/team/watsayut.webp",
+      "jpg_secure_url": "https://res.cloudinary.com/dpzdw1bkr/image/upload/v1778077960/comminno/team/watsayut-jpg.jpg",
+      "bytes_webp": 21270,
+      "bytes_jpg": 42250
+    }
+  ]
+}

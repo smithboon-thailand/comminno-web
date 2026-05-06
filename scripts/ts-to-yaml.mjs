@@ -73,6 +73,28 @@ function normalize(value) {
   return value;
 }
 
+/**
+ * Collapse paired image fields into a single canonical field (#5b).
+ *   coverWebp + coverJpg     → coverImage
+ *   heroImage + heroImageFallback → heroImage
+ * Cloudinary `f_auto,q_auto` negotiates webp/jpg/avif per client, so we no
+ * longer need a separate fallback URL. Preference order on read:
+ *   1. existing single field (coverImage / heroImage)
+ *   2. webp variant
+ *   3. jpg variant
+ */
+function collapsePostImages(post) {
+  const { coverWebp, coverJpg, ...rest } = post;
+  const coverImage = rest.coverImage ?? coverWebp ?? coverJpg ?? null;
+  return { ...rest, coverImage };
+}
+function collapseServiceImages(svc) {
+  const { heroImageFallback, ...rest } = svc;
+  // heroImage already exists on the source — prefer it; fall back to the legacy alias.
+  const heroImage = rest.heroImage ?? heroImageFallback ?? null;
+  return { ...rest, heroImage };
+}
+
 async function ensureDir(dir) {
   await mkdir(dir, { recursive: true });
 }
@@ -94,11 +116,13 @@ async function main() {
 
   let totalBytes = 0;
 
-  // 1. posts.yml — metadata only, body lives separately
+  // 1. posts.yml — metadata only, body lives separately. Collapse paired
+  //    cover image fields into a single coverImage (#5b).
+  const postsCollapsed = posts.map(collapsePostImages);
   const postsBytes = await writeYaml(
     path.join(CONTENT_DIR, "posts.yml"),
     "Insights / news posts (metadata only — body in content/post-bodies/<slug>.md).",
-    posts
+    postsCollapsed
   );
   totalBytes += postsBytes;
 
@@ -118,11 +142,12 @@ async function main() {
     bodyCount += 1;
   }
 
-  // 3. services.yml
+  // 3. services.yml — collapse heroImage + heroImageFallback into one (#5b).
+  const servicesCollapsed = services.map(collapseServiceImages);
   totalBytes += await writeYaml(
     path.join(CONTENT_DIR, "services.yml"),
     "Service catalogue (9 entries). Each entry's `descriptionEn` / `descriptionTh` is markdown-safe.",
-    services
+    servicesCollapsed
   );
 
   // 4. about.yml — deeply nested (leadership / faculty2 / researchTeam / partners)

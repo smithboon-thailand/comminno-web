@@ -33,7 +33,6 @@
   ctaEn: Request a publishing consultation
   ctaTh: ขอคำปรึกษาด้านสิ่งพิมพ์
   heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/book-and-printing
-  heroImageFallback: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/book-and-printing
   heroAltEn: Open book on a desk with research notes and pens — books and printed media service
   heroAltTh: หนังสือเปิดบนโต๊ะทำงานพร้อมบันทึกงานวิจัย — บริการหนังสือและสิ่งพิมพ์
 - slug: motion-effect-ar
@@ -65,7 +64,6 @@
   ctaEn: Bring my asset to life
   ctaTh: ขอเริ่มโปรเจกต์ AR
   heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/motion-effect-ar
-  heroImageFallback: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/motion-effect-ar
   heroAltEn: Phone scanning a printed page with augmented reality content layered above it
   heroAltTh: โทรศัพท์สแกนหน้าหนังสือและแสดงเนื้อหา AR ซ้อนขึ้นมา
 - slug: video-production
@@ -98,7 +96,6 @@
   ctaEn: Brief your video project
   ctaTh: เล่าโปรเจกต์วิดีโอของคุณ
   heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/video-production
-  heroImageFallback: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/video-production
   heroAltEn: Cinema camera and lighting on a video production set
   heroAltTh: กล้องถ่ายและไฟถ่ายบนกองถ่ายผลิตวิดีโอ
 - slug: training
@@ -133,7 +130,6 @@
   ctaEn: Discuss a custom program
   ctaTh: ปรึกษาออกแบบหลักสูตร
   heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/training
-  heroImageFallback: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/training
   heroAltEn: Trainer at a whiteboard leading a workshop with engaged participants
   heroAltTh: วิทยากรบรรยายหน้ากระดาน มีผู้เข้าร่วมอบรมตั้งใจฟัง
 - slug: research-and-evaluation
@@ -167,7 +163,6 @@
   ctaEn: Scope a research project
   ctaTh: ปรึกษาออกแบบงานวิจัย
   heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/research-and-evaluation
-  heroImageFallback: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/research-and-evaluation
   heroAltEn: Notebook with charts and a laptop showing data analysis — research and evaluation
   heroAltTh: สมุดบันทึกข้อมูลพร้อมแล็ปทอปแสดงผลวิเคราะห์ข้อมูล — งานวิจัยและประเมินผล
 - slug: communication-design
@@ -207,7 +202,6 @@
   ctaEn: Get a design review
   ctaTh: ขอรีวิวงานออกแบบ
   heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/communication-design
-  heroImageFallback: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/communication-design
   heroAltEn: Designer's desk with sketches, swatches, and posters — communication design
   heroAltTh: โต๊ะนักออกแบบมีภาพร่าง ตัวอย่างสี และโปสเตอร์ — การออกแบบการสื่อสาร
 - slug: campaign-manage
@@ -252,7 +246,6 @@
   ctaEn: Plan your campaign
   ctaTh: เริ่มวางแผนแคมเปญ
   heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/campaign-manage
-  heroImageFallback: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/campaign-manage
   heroAltEn: Strategy whiteboard with sticky notes and team collaborating on a campaign
   heroAltTh: กระดานวางแผนกลยุทธ์พร้อมโปสตอิตและทีมงานร่วมระดมสมอง
 - slug: seminar
@@ -294,7 +287,6 @@
   ctaEn: Plan a seminar
   ctaTh: วางแผนการประชุม
   heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/seminar
-  heroImageFallback: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/seminar
   heroAltEn: Audience listening to a panel of speakers at a seminar
   heroAltTh: ผู้เข้าร่วมฟังวิทยากรบนเวทีสัมมนา
 - slug: marketing-event
@@ -336,6 +328,5 @@
   ctaEn: Design my event
   ctaTh: ออกแบบอีเวนต์ของคุณ
   heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/marketing-event
-  heroImageFallback: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/marketing-event
   heroAltEn: Stage lights and crowd at a public-facing marketing event
   heroAltTh: ไฟเวทีและผู้ชมในงานการตลาดแบบพบผู้ชมจริง

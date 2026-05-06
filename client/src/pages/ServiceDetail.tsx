@@ -168,18 +168,15 @@ export default function ServiceDetail() {
           className="relative overflow-hidden rounded-xl border"
           style={{ borderColor: "var(--mist)", aspectRatio: "16 / 9" }}
         >
-          <picture>
-            <source srcSet={service.heroImage ?? undefined} type="image/webp" />
-            <img
-              src={service.heroImageFallback ?? service.heroImage ?? undefined}
-              alt={(locale === "th" ? service.heroAltTh : service.heroAltEn) ?? ""}
-              loading="eager"
-              decoding="async"
-              width={1600}
-              height={900}
-              className="h-full w-full object-cover"
-            />
-          </picture>
+          <img
+            src={service.heroImage ?? service.heroImageFallback ?? undefined}
+            alt={(locale === "th" ? service.heroAltTh : service.heroAltEn) ?? ""}
+            loading="eager"
+            decoding="async"
+            width={1600}
+            height={900}
+            className="h-full w-full object-cover"
+          />
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0"

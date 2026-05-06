@@ -168,32 +168,29 @@ export default function Insights() {
                   backgroundColor: "#fff",
                 }}
               >
-                {/* Cover image — webp preferred, jpg fallback. */}
-                {p.coverWebp || p.coverJpg ? (
+                {/* Cover image — single Cloudinary URL (f_auto handles format). */}
+                {(() => {
+                  const cover = p.coverImage ?? p.coverWebp ?? p.coverJpg;
+                  return cover ? (
                   <div
                     className="relative aspect-[16/9] w-full overflow-hidden rounded-lg"
                     style={{ backgroundColor: "var(--mist)" }}
                   >
-                    <picture>
-                      {p.coverWebp && (
-                        <source srcSet={p.coverWebp} type="image/webp" />
-                      )}
-                      <img
-                        src={p.coverJpg ?? p.coverWebp ?? ""}
-                        alt={
-                          locale === "th"
-                            ? p.coverAltTh ?? p.title
-                            : p.coverAltEn ?? p.title
-                        }
-                        loading="lazy"
-                        decoding="async"
-                        width={1200}
-                        height={675}
-                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                      />
-                    </picture>
+                    <img
+                      src={cover}
+                      alt={
+                        locale === "th"
+                          ? p.coverAltTh ?? p.title
+                          : p.coverAltEn ?? p.title
+                      }
+                      loading="lazy"
+                      decoding="async"
+                      width={1200}
+                      height={675}
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    />
                   </div>
-                ) : (
+                  ) : (
                   <div
                     aria-hidden="true"
                     className="aspect-[16/9] w-full rounded-lg"
@@ -202,7 +199,8 @@ export default function Insights() {
                         "linear-gradient(135deg, color-mix(in srgb, var(--brand-blue) 18%, var(--brand-paper)), color-mix(in srgb, var(--brand-yellow) 18%, var(--brand-paper)))",
                     }}
                   />
-                )}
+                  );
+                })()}
                 <div className="flex items-center gap-2 text-xs">
                   {p.date && (
                     <time

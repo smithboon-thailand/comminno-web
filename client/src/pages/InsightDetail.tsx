@@ -137,32 +137,29 @@ export default function InsightDetail() {
           </p>
         )}
 
-        {/* Cover — webp preferred, jpg fallback. Falls back to brand gradient when neither is set. */}
-        {post.coverWebp || post.coverJpg ? (
+        {/* Cover — single Cloudinary URL (f_auto handles format). Falls back to brand gradient when no image is set. */}
+        {(() => {
+          const cover = post.coverImage ?? post.coverWebp ?? post.coverJpg;
+          return cover ? (
           <figure
             className="relative aspect-[16/9] w-full overflow-hidden rounded-xl mb-10 border"
             style={{ borderColor: "var(--mist)" }}
           >
-            <picture>
-              {post.coverWebp && (
-                <source srcSet={post.coverWebp} type="image/webp" />
-              )}
-              <img
-                src={post.coverJpg ?? post.coverWebp ?? ""}
-                alt={
-                  locale === "th"
-                    ? post.coverAltTh ?? post.title
-                    : post.coverAltEn ?? post.title
-                }
-                loading="eager"
-                decoding="async"
-                width={1200}
-                height={675}
-                className="h-full w-full object-cover"
-              />
-            </picture>
+            <img
+              src={cover}
+              alt={
+                locale === "th"
+                  ? post.coverAltTh ?? post.title
+                  : post.coverAltEn ?? post.title
+              }
+              loading="eager"
+              decoding="async"
+              width={1200}
+              height={675}
+              className="h-full w-full object-cover"
+            />
           </figure>
-        ) : (
+          ) : (
           <div
             aria-hidden="true"
             className="aspect-[16/9] w-full rounded-xl mb-10"
@@ -171,7 +168,8 @@ export default function InsightDetail() {
                 "linear-gradient(135deg, color-mix(in srgb, var(--brand-blue) 22%, var(--brand-paper)), color-mix(in srgb, var(--brand-red) 18%, var(--brand-paper)))",
             }}
           />
-        )}
+          );
+        })()}
 
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-8">

@@ -44,11 +44,18 @@ All image references point at **Cloudinary** (commit #4). Either store the full 
 
 ```yaml
 # both of these resolve to the same image at render time
-coverWebp: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/treasury
-coverWebp: comminno/insights/treasury
+coverImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/treasury
+coverImage: comminno/insights/treasury
 ```
 
-> **Future simplification (commit #5b):** the paired `coverWebp` + `coverJpg` fields on posts and the paired `heroImage` + `heroImageFallback` fields on services will collapse into a single `coverImage` / `heroImage`. `f_auto` already negotiates the format per client.
+As of commit **#5b**, image fields are **single canonical URLs**:
+
+| Collection | Field | Replaces |
+| --- | --- | --- |
+| `posts.yml` | `coverImage` | legacy `coverWebp` + `coverJpg` |
+| `services.yml` | `heroImage` | legacy `heroImage` + `heroImageFallback` |
+
+Cloudinary's `f_auto,q_auto` transform negotiates webp / jpg / avif per client at request time, so a separate fallback URL is no longer needed. Components still read the legacy fields as a transitional fallback (`coverImage ?? coverWebp ?? coverJpg`), so older snapshots and external integrations continue to render.
 
 ---
 
@@ -62,8 +69,7 @@ coverWebp: comminno/insights/treasury
   date: "2024-03-15"                   # ISO date YYYY-MM-DD or null
   tags: [campaign, sustainability]     # array of category slugs (see categories.yml)
   coverFilename: null                  # legacy Wix filename — leave null for new posts
-  coverWebp: comminno/insights/<slug>  # Cloudinary public_id (preferred)
-  coverJpg:  comminno/insights/<slug>  # JPG fallback (until commit #5b collapses this)
+  coverImage: comminno/insights/<slug> # Cloudinary public_id (single field, #5b)
   coverAltEn: Conference room…         # short alt text (no "Photo of" prefix)
   coverAltTh: ห้องประชุม…              # required for accessibility
   ogDescription: |                     # 2–3 sentences for OG/Twitter cards
@@ -98,13 +104,12 @@ The body lives at `content/post-bodies/<slug>.md` as plain markdown. Editors use
   ctaEn: Talk to us about your book
   ctaTh: พูดคุยเรื่องหนังสือของคุณ
   relatedSlugs: [chula-zero-waste]   # post slugs to surface as case studies on detail page
-  heroImage: comminno/services/book-and-printing
-  heroImageFallback: comminno/services/book-and-printing
+  heroImage: comminno/services/book-and-printing  # single Cloudinary URL (#5b)
   heroAltEn: Stack of academic books on a desk
   heroAltTh: หนังสือวิชาการวางซ้อนบนโต๊ะ
 ```
 
-> **Schema cleanup note (commit #5a):** `subtitle*`, `relatedSlugs`, `cta*`, and `heroImage*` will be folded into the base `Service` interface in `client/src/content/types.ts`. They are already required in practice across all 9 services.
+> **Schema history:** as of commit **#5a** `subtitle*`, `relatedSlugs`, `cta*`, and `hero*` live on the base `Service` interface in `client/src/content/types.ts`. As of commit **#5b** the paired `heroImage` + `heroImageFallback` and `coverWebp` + `coverJpg` fields collapse into single canonical `heroImage` / `coverImage` URLs.
 
 ---
 

@@ -15,11 +15,14 @@ export interface PostMeta {
   /** Original Wix-side image filename (binaries arrive in comminno_images.zip). */
   coverFilename: string | null;
   /**
-   * Curated cover image for posts that originally lacked one. WebP preferred;
-   * paired with `coverJpg` for fallback and `coverAltEn`/`coverAltTh` for a11y.
+   * Curated cover image URL (Cloudinary `f_auto,q_auto` preferred — the CDN
+   * negotiates webp / jpg / avif per client, so a single field is enough).
    * When set, takes precedence over `coverFilename` at render time.
    */
+  coverImage?: string | null;
+  /** @deprecated since #5b — use `coverImage`. Kept for transitional reads. */
   coverWebp?: string | null;
+  /** @deprecated since #5b — use `coverImage`. Kept for transitional reads. */
   coverJpg?: string | null;
   coverAltEn?: string | null;
   coverAltTh?: string | null;
@@ -63,12 +66,11 @@ export interface Service {
   /** Insight-post slugs to surface as related case studies on the detail page. */
   relatedSlugs?: string[] | null;
   /**
-   * Hero image URL (Cloudinary `f_auto,q_auto` preferred; one URL handles
-   * webp / jpg negotiation per client). Pre-#5b sources may store the same
-   * URL twice (heroImage + heroImageFallback) — both are accepted.
+   * Hero image URL (Cloudinary `f_auto,q_auto` preferred — the CDN negotiates
+   * webp / jpg / avif per client, so a single field is enough).
    */
   heroImage?: string | null;
-  /** Legacy alias of heroImage; #5b collapses these to a single field. */
+  /** @deprecated since #5b — use `heroImage`. Kept for transitional reads. */
   heroImageFallback?: string | null;
   /** Bilingual alt text — required for accessibility. */
   heroAltEn?: string | null;

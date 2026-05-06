@@ -206,3 +206,17 @@ Fix: switch to the documented two-rule SPA pattern: keep static asset paths verb
 - [ ] Commit + save checkpoint (Manus auto-pushes to GitHub `main`)
 - [ ] User: refresh `/en/about` and `/th/insights/the-training-program-for-driving-public-and-social-communication-care-d-plus` to confirm
 - [ ] Use this same push as Phase-1 Step C round-trip evidence (no separate README ping needed)
+
+
+## Task 6 — Phase 1 close-out (2026-05-06)
+
+User-side actions (cannot be done by Manus):
+- [ ] Flip repo visibility to public (Settings → Danger Zone → Change visibility)
+- [ ] Enable Vercel Speed Insights (one-click in Vercel project)
+
+Manus-side actions:
+- [ ] Add `.github/workflows/check.yml` with pnpm check + vite build on PR + push:main
+- [ ] Pin Node 22 + pnpm 9 to match local dev
+- [ ] Use actions/checkout v4 + pnpm/action-setup v4 + actions/setup-node v4 with pnpm cache
+- [ ] Commit + checkpoint + verify Manus pushes to GitHub
+- [ ] Confirm Actions tab shows green check on the workflow run

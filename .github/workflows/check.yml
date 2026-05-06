@@ -1,0 +1,58 @@
+name: Check
+
+# Validate that the codebase still type-checks and produces a clean Vite build
+# before changes reach Vercel. Runs on every PR targeting main and on every
+# push to main (push:main is essentially a post-merge sanity check).
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+# Cancel in-progress runs of the same workflow on the same ref so a fast
+# follow-up commit doesn't queue behind a stale build.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Type-check + build
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          # Pin to the exact pnpm version locked by package.json#packageManager
+          # in the working tree. This avoids any "Multiple lockfile found"
+          # warnings between dev and CI.
+          version: 10.4.1
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Type-check
+        run: pnpm exec tsc --noEmit
+
+      - name: Build (Vite SPA only)
+        run: pnpm exec vite build
+
+      - name: Verify build output
+        run: |
+          test -f dist/public/index.html
+          test -d dist/public/assets
+          echo "OK: dist/public/index.html present, /assets present"

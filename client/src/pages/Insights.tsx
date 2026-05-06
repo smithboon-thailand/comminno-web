@@ -170,7 +170,7 @@ export default function Insights() {
               >
                 {/* Cover image — single Cloudinary URL (f_auto handles format). */}
                 {(() => {
-                  const cover = p.coverImage ?? p.coverWebp ?? p.coverJpg;
+                  const cover = p.coverImage;
                   return cover ? (
                   <div
                     className="relative aspect-[16/9] w-full overflow-hidden rounded-lg"

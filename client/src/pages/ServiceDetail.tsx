@@ -167,7 +167,7 @@ export default function ServiceDetail() {
           style={{ borderColor: "var(--mist)", aspectRatio: "16 / 9" }}
         >
           <img
-            src={service.heroImage ?? service.heroImageFallback ?? undefined}
+            src={service.heroImage ?? undefined}
             alt={(locale === "th" ? service.heroAltTh : service.heroAltEn) ?? ""}
             loading="eager"
             decoding="async"

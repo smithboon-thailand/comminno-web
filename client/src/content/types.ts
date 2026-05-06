@@ -20,10 +20,6 @@ export interface PostMeta {
    * When set, takes precedence over `coverFilename` at render time.
    */
   coverImage?: string | null;
-  /** @deprecated since #5b — use `coverImage`. Kept for transitional reads. */
-  coverWebp?: string | null;
-  /** @deprecated since #5b — use `coverImage`. Kept for transitional reads. */
-  coverJpg?: string | null;
   coverAltEn?: string | null;
   coverAltTh?: string | null;
   /** Long-form OG description from the original site, sentence-cased. */
@@ -70,8 +66,6 @@ export interface Service {
    * webp / jpg / avif per client, so a single field is enough).
    */
   heroImage?: string | null;
-  /** @deprecated since #5b — use `heroImage`. Kept for transitional reads. */
-  heroImageFallback?: string | null;
   /** Bilingual alt text — required for accessibility. */
   heroAltEn?: string | null;
   heroAltTh?: string | null;

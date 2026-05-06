@@ -55,7 +55,7 @@ As of commit **#5b**, image fields are **single canonical URLs**:
 | `posts.yml` | `coverImage` | legacy `coverWebp` + `coverJpg` |
 | `services.yml` | `heroImage` | legacy `heroImage` + `heroImageFallback` |
 
-Cloudinary's `f_auto,q_auto` transform negotiates webp / jpg / avif per client at request time, so a separate fallback URL is no longer needed. Components still read the legacy fields as a transitional fallback (`coverImage ?? coverWebp ?? coverJpg`), so older snapshots and external integrations continue to render.
+Cloudinary's `f_auto,q_auto` transform negotiates webp / jpg / avif per client at request time, so a separate fallback URL is no longer needed. As of commit **#6.5** the transitional `@deprecated` aliases (`coverWebp` / `coverJpg` / `heroImageFallback`) have been removed from `client/src/content/types.ts` and from all component readers — the schema is now strictly single-field.
 
 ---
 
@@ -109,7 +109,7 @@ The body lives at `content/post-bodies/<slug>.md` as plain markdown. Editors use
   heroAltTh: หนังสือวิชาการวางซ้อนบนโต๊ะ
 ```
 
-> **Schema history:** as of commit **#5a** `subtitle*`, `relatedSlugs`, `cta*`, and `hero*` live on the base `Service` interface in `client/src/content/types.ts`. As of commit **#5b** the paired `heroImage` + `heroImageFallback` and `coverWebp` + `coverJpg` fields collapse into single canonical `heroImage` / `coverImage` URLs.
+> **Schema history:** as of commit **#5a** `subtitle*`, `relatedSlugs`, `cta*`, and `hero*` live on the base `Service` interface in `client/src/content/types.ts`. As of commit **#5b** the paired `heroImage` + `heroImageFallback` and `coverWebp` + `coverJpg` fields collapse into single canonical `heroImage` / `coverImage` URLs. As of commit **#6.5** the legacy aliases are removed entirely.
 
 ---
 

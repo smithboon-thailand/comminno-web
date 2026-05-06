@@ -139,7 +139,7 @@ export default function InsightDetail() {
 
         {/* Cover — single Cloudinary URL (f_auto handles format). Falls back to brand gradient when no image is set. */}
         {(() => {
-          const cover = post.coverImage ?? post.coverWebp ?? post.coverJpg;
+          const cover = post.coverImage;
           return cover ? (
           <figure
             className="relative aspect-[16/9] w-full overflow-hidden rounded-xl mb-10 border"

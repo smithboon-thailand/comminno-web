@@ -124,7 +124,7 @@ export default function ServiceDetail() {
   // Resolve related insights: explicit slugs from the canonical copy take
   // precedence over tag-based discovery so we honour the editorial mapping
   // exactly. Fall back to tag-matching when the explicit list is short.
-  const explicitRelated = service.relatedSlugs
+  const explicitRelated = (service.relatedSlugs ?? [])
     .map((relSlug) => posts.find((p) => p.slug === relSlug))
     .filter((p): p is (typeof posts)[number] => Boolean(p));
   const fallbackRelated = posts.filter((p) =>
@@ -169,10 +169,10 @@ export default function ServiceDetail() {
           style={{ borderColor: "var(--mist)", aspectRatio: "16 / 9" }}
         >
           <picture>
-            <source srcSet={service.heroImage} type="image/webp" />
+            <source srcSet={service.heroImage ?? undefined} type="image/webp" />
             <img
-              src={service.heroImageFallback}
-              alt={locale === "th" ? service.heroAltTh : service.heroAltEn}
+              src={service.heroImageFallback ?? service.heroImage ?? undefined}
+              alt={(locale === "th" ? service.heroAltTh : service.heroAltEn) ?? ""}
               loading="eager"
               decoding="async"
               width={1600}

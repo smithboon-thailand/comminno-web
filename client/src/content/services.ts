@@ -24,21 +24,28 @@
  */
 import type { Service } from "./types";
 
-/** Extension fields added in this splice (kept loose to avoid touching types.ts). */
-export interface ServiceWithCopy extends Service {
-  subtitleEn: string;
-  subtitleTh: string;
-  relatedSlugs: string[];
-  ctaEn: string;
-  ctaTh: string;
-  /** WebP hero image URL (preferred). */
-  heroImage: string;
-  /** JPG fallback for browsers that can't decode webp. */
-  heroImageFallback: string;
-  /** Bilingual alt text — English form is canonical, Thai mirrors at render. */
-  heroAltEn: string;
-  heroAltTh: string;
-}
+/**
+ * Backward-compat alias — historically `ServiceWithCopy` carried subtitle /
+ * relatedSlugs / cta / hero* fields that were missing from the base `Service`
+ * interface. As of commit #5a these fields live on `Service` itself, so this
+ * alias is purely for source compatibility with older imports. Callers may
+ * migrate to `Service` directly.
+ */
+export type ServiceWithCopy = Required<
+  Pick<
+    Service,
+    | "subtitleEn"
+    | "subtitleTh"
+    | "relatedSlugs"
+    | "ctaEn"
+    | "ctaTh"
+    | "heroImage"
+    | "heroImageFallback"
+    | "heroAltEn"
+    | "heroAltTh"
+  >
+> &
+  Service;
 
 export const services: readonly ServiceWithCopy[] = [
   {

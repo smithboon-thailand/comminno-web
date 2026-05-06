@@ -45,17 +45,34 @@ export interface Service {
   titleTh: string | null;
   /** UN SDG goal number (1-17) — matches --sdg-{n} in tokens.css. */
   sdgNumber: number | null;
+  /** Single-line tagline shown under the title on cards and detail pages. */
   subtitleEn?: string | null;
   subtitleTh?: string | null;
+  /** Long-form body copy (paragraphs split on "\n\n"). */
   descriptionEn: string | null;
   descriptionTh: string | null;
+  /** Bullet list of concrete outputs. */
   deliverablesEn: string[] | null;
   deliverablesTh: string[] | null;
+  /** Left null for MVP — the brief frames services through deliverables. */
   audienceEn: string | null;
   audienceTh: string | null;
+  /** Service-specific CTA copy. */
   ctaEn?: string | null;
   ctaTh?: string | null;
+  /** Insight-post slugs to surface as related case studies on the detail page. */
   relatedSlugs?: string[] | null;
+  /**
+   * Hero image URL (Cloudinary `f_auto,q_auto` preferred; one URL handles
+   * webp / jpg negotiation per client). Pre-#5b sources may store the same
+   * URL twice (heroImage + heroImageFallback) — both are accepted.
+   */
+  heroImage?: string | null;
+  /** Legacy alias of heroImage; #5b collapses these to a single field. */
+  heroImageFallback?: string | null;
+  /** Bilingual alt text — required for accessibility. */
+  heroAltEn?: string | null;
+  heroAltTh?: string | null;
 }
 
 /** A single peer-reviewed publication with DOI link. */

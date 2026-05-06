@@ -4,9 +4,12 @@
 > for the Development of Quality of Life and Sustainability,
 > Faculty of Communication Arts, **Chulalongkorn University**.
 
-[![Live](https://img.shields.io/badge/live-comminno--go6lmsuy.manus.space-BD212D)](https://comminno-go6lmsuy.manus.space)
-[![License: MIT](https://img.shields.io/badge/license-MIT-279ED6)](LICENSE)
-[![Bilingual](https://img.shields.io/badge/bilingual-TH%20%2F%20EN-8DC63F)](#languages)
+[![Production](https://img.shields.io/badge/production-comminno--web.vercel.app-BD212D)](https://comminno-web.vercel.app)
+[![Staging](https://img.shields.io/badge/staging-comminno--go6lmsuy.manus.space-279ED6)](https://comminno-go6lmsuy.manus.space)
+[![License: MIT](https://img.shields.io/badge/license-MIT-8DC63F)](LICENSE)
+[![Bilingual](https://img.shields.io/badge/bilingual-TH%20%2F%20EN-F1A61D)](#languages)
+
+_Last verified deploy: 2026-05-06 — first end-to-end Manus → GitHub → Vercel auto-deploy round-trip; SPA rewrite simplified to the single-rule pattern recommended by Vercel docs._
 
 This repository hosts the bilingual (Thai / English) website that replaces
 the legacy Wix property at `cominnocenter.com`. The site is a static React

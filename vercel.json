@@ -4,13 +4,9 @@
   "buildCommand": "pnpm exec vite build",
   "outputDirectory": "dist/public",
   "installCommand": "pnpm install --frozen-lockfile",
-  "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    {
-      "source": "/((?!api/|_next/|_vercel/|.*\\..*).*)",
-      "destination": "/index.html"
-    }
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
     {

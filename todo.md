@@ -179,3 +179,30 @@ Out of scope (Phase 1):
 - [ ] OpenAI / Facebook integration / secrets (Phase 3+/5)
 - [ ] DNS cutover for cominnocenter.com (later)
 - [ ] Touching the Manus deployment
+
+
+## Task 6 — Phase 1 confirmed inputs (2026-05-06)
+
+- GitHub username: `smithboon-thailand` (personal; will move to center org later)
+- Repo name: `comminno-web` · MIT license · CC BY-NC 4.0 noted for content (later phase)
+- GitHub connector: enabled in Manus
+- Vercel account: ready (Sign in with GitHub, same `smithboon-thailand`)
+
+Step-by-step (user-driven where Manus/Vercel require browser action):
+
+- [ ] Step A: User opens Management UI → Settings → GitHub → "Export to a new repository"; account `smithboon-thailand`, name `comminno-web`, public, default branch `main`. Confirm export success.
+- [ ] Step B: User opens https://vercel.com/new → "Import Git Repository" → pick `smithboon-thailand/comminno-web` → keep auto-detected settings (vercel.json drives them) → Deploy. Confirm production URL works.
+- [ ] Step C: I append `_Last verified deploy: <date>_` to README via Manus workspace → user pushes (or Manus push, if connector permits) → Vercel auto-deploys in ~60s → user pastes the new Vercel URL/screenshot.
+- [ ] Step D: I report final URLs and the round-trip confirmation; staging at comminno-go6lmsuy.manus.space remains untouched.
+
+
+## Task 6 — Phase 1 SPA-rewrite fix (2026-05-06)
+
+Symptom: /en/about → 404 NOT_FOUND on Vercel hard-refresh; / and /en (root) work; deep links inside /en/* and /th/* fail.
+Cause: rewrite regex `/((?!api/|_next/|_vercel/|.*\\..*).*)` did not match Vercel's v2 path-to-regexp; `cleanUrls: true` may also strip extension-less paths and confuse the SPA fallback.
+Fix: switch to the documented two-rule SPA pattern: keep static asset paths verbatim, then catch-all `/(.*)` → `/index.html`. Drop `cleanUrls`.
+
+- [ ] Replace rewrites/cleanUrls in vercel.json
+- [ ] Commit + save checkpoint (Manus auto-pushes to GitHub `main`)
+- [ ] User: refresh `/en/about` and `/th/insights/the-training-program-for-driving-public-and-social-communication-care-d-plus` to confirm
+- [ ] Use this same push as Phase-1 Step C round-trip evidence (no separate README ping needed)

@@ -29,12 +29,11 @@ jobs:
           fetch-depth: 1
 
       - name: Set up pnpm
+        # No `version:` here — pnpm/action-setup@v4 reads the exact pnpm
+        # version from package.json#packageManager, which is the project's
+        # single source of truth (currently pnpm@10.4.1). Specifying both
+        # raises ERR_PNPM_BAD_PM_VERSION even if the numbers match.
         uses: pnpm/action-setup@v4
-        with:
-          # Pin to the exact pnpm version locked by package.json#packageManager
-          # in the working tree. This avoids any "Multiple lockfile found"
-          # warnings between dev and CI.
-          version: 10.4.1
 
       - name: Set up Node
         uses: actions/setup-node@v4

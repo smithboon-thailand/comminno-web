@@ -13,7 +13,7 @@ backend:
   name: github
   repo: smithboon-thailand/comminno-web
   branch: cms/smoke-test-fallback              # writes stay on the smoke-test branch
-  base_url: https://sveltia-cms-auth.smith-boon.workers.dev
+  base_url: https://sveltia-cms-auth-642.smith-boon.workers.dev
   auth_endpoint: oauth/auth                    # Sveltia + Decap default
 
 site_url: https://comminno-web.vercel.app

@@ -220,3 +220,145 @@ Manus-side actions:
 - [ ] Use actions/checkout v4 + pnpm/action-setup v4 + actions/setup-node v4 with pnpm cache
 - [ ] Commit + checkpoint + verify Manus pushes to GitHub
 - [ ] Confirm Actions tab shows green check on the workflow run
+
+
+---
+
+## Task 7 — PHASE2_PLAN.md amendments (2026-05-06)
+
+User reviewed plan, approved 95%; 4 structural fixes + 3 additions + 2 question amendments before code starts.
+
+- [ ] A. §3 schema: add Tier-2 (faculty) collection — `content/team` filtered by `tier=2`
+- [ ] B. §3 + Q1: drop `pages` collection (contact/privacy) entirely; About becomes a single-file collection
+- [ ] C. §4 media: change recommendation to **migrate all 36 existing images to Cloudinary in Phase 2** (clean cutover)
+- [ ] D. §1 Sveltia fallback: add commit #0 = smoke-test Sveltia↔Decap config.yml swap on a feature branch BEFORE merge
+- [ ] +1 Editor handbook: TH primary / EN secondary
+- [ ] +2 Reserve AI fields in frontmatter: `ai_caption: null`, `ai_meta: null`, `ai_translate_en: null`
+- [ ] +3 Insert "commit #0 smoke test" before existing #1 in §10
+- [ ] Q4: document collaborator-invitation + config.yml update procedure in handbook
+- [ ] Q5: `secondary[]` items must include `caption` and `credit`
+- [ ] Recompute approval-checklist line count (was 17, now ~20)
+- [ ] Re-deliver revised plan; await final approval before commit #0
+
+
+---
+
+## Task 8 — Phase 2 execution (2026-05-06)
+
+### Track A — Smoke-test branch (commit #0)
+- [ ] Create branch `cms/smoke-test-fallback` from `main`
+- [ ] Add `client/public/admin/index.html` with Sveltia CMS pinned tag
+- [ ] Add `client/public/admin/config.yml` minimal: 1 collection (smoke_test), GitHub backend, base_url=https://sveltia-cms-auth.smith-boon.workers.dev
+- [ ] Push branch → Vercel preview URL
+- [ ] User logs in to /admin on preview, creates 1 draft post → verify commit lands on branch
+- [ ] Swap script tag to `decap-cms@^3` in same file → push
+- [ ] User logs in again → verify same draft round-trip works
+- [ ] Document result in `PHASE2_PLAN.md` (smoke-test report appendix)
+- [ ] Delete branch (squash-merged or simply deleted)
+
+### Track B — Image migration prep
+- [ ] Grep all manus-storage URLs in posts.ts / services.ts / about.ts / categories.ts
+- [ ] Build canonical inventory CSV: namespace / slug / role (cover/hero/portrait/ambient) / src URL / alt text
+- [ ] Create `.migration/originals/` (gitignored)
+- [ ] Download all 36 originals via curl
+- [ ] Verify byte counts + image dimensions
+- [ ] Save inventory to `.migration/inventory.csv` for commit #4 reuse
+
+### Verification
+- [ ] All preview deploys load without console errors
+- [ ] No accidental write to `main` from smoke-test branch
+- [ ] tsc --noEmit still green on main (untouched)
+
+
+### Smoke-test bug 1 — vercel.json SPA rewrite swallows /admin
+- [ ] Add explicit `/admin/(.*)` rewrite (no-op or destination=/admin/$1) before catch-all
+- [ ] Confirm Vite default publicDir copies admin/ → dist/public/admin/ (already verified)
+- [ ] Push fix to cms/smoke-test-fallback; user re-tests Sveltia + Decap round-trip
+
+
+---
+
+## Task 8 — Phase 2 CMS execution (2026-05-06)
+
+### Smoke test (commit #0) — DONE ✅
+- [x] Branch `cms/smoke-test-fallback` created + pushed
+- [x] `/admin/index.html` scaffold (Sveltia + Decap fallback toggle)
+- [x] `vercel.json` `/admin` rewrite exclusion
+- [x] Cloudflare Worker `sveltia-cms-auth-642` deployed (smith.boon@gmail.com Cloudflare account)
+- [x] GitHub OAuth app `Ov23liul1Vd2Zm4We8UN` registered
+- [x] Worker secrets `GITHUB_CLIENT_ID` + `GITHUB_CLIENT_SECRET` re-typed clean (Worker version `ad4fbee4`)
+- [x] Sveltia round-trip verified — commit `c7bda22` on smoke branch (markdown + uploaded image)
+- [x] Smoke-test results documented in PHASE2_PLAN.md Appendix A
+
+### Decap fallback test — DEFERRED
+- [ ] Re-run only if Sveltia loses a needed widget or stalls
+
+### Cleanup (do after commit #3 lands on main)
+- [ ] Delete branch `cms/smoke-test-fallback` locally (`git branch -D cms/smoke-test-fallback`)
+- [ ] Delete branch `cms/smoke-test-fallback` on origin (`git push origin --delete cms/smoke-test-fallback`)
+- [ ] Optionally delete the smoke-test commit `c7bda22` artifacts (`content/smoke-test/*` + `content/uploads/<screenshot>.png`) when they're no longer needed for evidence
+
+### Commit #1 — chore(content): import markdown source into repo at /content
+- [ ] `cp -r /home/ubuntu/comminno_assets/content /home/ubuntu/comminno-web/content` (mirror current source-of-truth into repo)
+- [ ] Merge `vercel.json` `/admin` rewrite exclusion from smoke branch into `main`
+- [ ] Verify build still passes (no path drift yet — `scripts/build-content.mjs` still points to `/home/ubuntu/comminno_assets/content`)
+- [ ] Commit + push to `main`
+
+### Commit #2 — build(content): point build-content.mjs at in-repo /content
+- [ ] Patch `scripts/build-content.mjs`: change `CONTENT_DIR = '/home/ubuntu/comminno_assets/content'` → `path.join(ROOT, 'content')`
+- [ ] Re-run build script → regenerate `client/src/content/{posts,services,about,categories}.ts`
+- [ ] Diff regenerated TS modules — should be byte-identical (proves the relocation was lossless)
+- [ ] Commit + push
+
+### Commit #3 — chore(cms): scaffold /admin SPA (Sveltia, full schema)
+- [ ] Replace smoke-test `client/public/admin/index.html` with production version (Sveltia only; no engine switcher)
+- [ ] Replace smoke-test `client/public/admin/config.yml` with full schema:
+  - `about` — single-file collection
+  - `insights` — folder collection (24 entries) with TH/EN i18n
+  - `services` — folder collection (9 entries) with TH/EN i18n
+  - `team` — folder collection split by tier (1/2/3) — filtered views
+  - Reserve hidden AI fields: `ai_caption`, `ai_meta`, `ai_translate_en` (default null)
+  - Image `secondary[]` shape: `{ src, alt, caption, credit }`
+  - `publish_mode: simple` for now (editorial workflow lands in commit #6)
+- [ ] Commit + push, verify `/admin` loads on Vercel production (main branch)
+
+### Commit #4 — feat(media): migrate 31 images to Cloudinary (URGENT — fixes broken images on Vercel)
+**Blocked on Cloudinary credentials from user**
+- [ ] User creates Cloudinary free-tier account at https://cloudinary.com/users/register_free
+- [ ] User provides: Cloud name + API Key + API Secret (via secret/private channel)
+- [ ] Upload all 62 originals from `.migration/originals/` to Cloudinary, namespaced as `comminno/{namespace}/{stem}` (matches inventory.csv `proposed_cloudinary_path`)
+- [ ] Replace all 31 image URL pairs in `client/src/content/{posts,services,about}.ts` with Cloudinary `f_auto,q_auto` URLs
+- [ ] Visual parity check on Vercel preview (compare against staging Manus URL)
+- [ ] Commit + push to `main`
+
+### Commit #5 — feat(cms): wire OAuth proxy backend (final config)
+- [ ] Confirm production `config.yml` `backend.base_url` = `https://sveltia-cms-auth-642.smith-boon.workers.dev`
+- [ ] Confirm `branch: main` in production config (was `cms/smoke-test-fallback`)
+- [ ] Smoke-test on production `/admin` (Vercel main) — login + create dummy entry + delete
+- [ ] Commit + push
+
+### Commit #6 — feat(cms): enable editorial workflow + final field schema
+- [ ] Switch `publish_mode: editorial_workflow`
+- [ ] Verify draft/PR creation flow on Sveltia
+- [ ] Confirm admin-only publish (only `smithboon-thailand` can merge)
+- [ ] Document workflow in PHASE2_PLAN.md
+- [ ] Commit + push
+
+### Commit #7 — chore(perf): add @vercel/speed-insights
+- [ ] `pnpm add @vercel/speed-insights`
+- [ ] Mount `<SpeedInsights />` in `client/src/main.tsx` behind cookie-consent gate (only fires when `analytics` consented)
+- [ ] Verify in Vercel dashboard → Speed Insights tab populates within 24h
+- [ ] Commit + push
+
+### Commit #8 — docs(cms): editor handbook (TH primary, EN secondary)
+- [ ] Create `docs/cms-handbook-th.md` (primary) — login flow, create/edit insight, create/edit service, edit about, image upload, draft → publish, troubleshooting
+- [ ] Create `docs/cms-handbook-en.md` (secondary, faithful translation)
+- [ ] Include collaborator-invitation procedure (GitHub repo invite + Sveltia auto-recognizes)
+- [ ] Include the smoke-test procedure for future engine swaps (Sveltia ↔ Decap)
+- [ ] Link both from README
+- [ ] Commit + push
+
+### Phase 2 close-out
+- [ ] Final report to user: 8 commits landed, /admin live on production, 31 images on Cloudinary, broken-images bug resolved, editor handbook published
+- [ ] Save checkpoint with full delta summary
+

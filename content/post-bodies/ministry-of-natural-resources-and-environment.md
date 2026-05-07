@@ -1,4 +1,5 @@
 ---
+slug: ministry-of-natural-resources-and-environment
 ---
 
 Personnel Development Training Program

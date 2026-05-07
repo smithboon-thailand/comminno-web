@@ -1,4 +1,5 @@
 ---
+slug: department-of-disease-control
 ---
 
 Workshop on Service Process Design

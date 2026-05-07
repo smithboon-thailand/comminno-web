@@ -1,4 +1,5 @@
 ---
+slug: nia-media-innovation
 ---
 
 Report on the Research of the Meaning of “Media Innovation” and Small Projection Mapping Display

@@ -1,4 +1,5 @@
 ---
+slug: nia-satisfaction-survey-2020
 ---
 
 Customer Satisfaction Survey Using Mixed Methods

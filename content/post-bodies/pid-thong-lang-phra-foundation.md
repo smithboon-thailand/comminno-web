@@ -1,4 +1,5 @@
 ---
+slug: pid-thong-lang-phra-foundation
 ---
 
 Continuing the royal initiativeOnline media production training Persuasion techniques and personality development

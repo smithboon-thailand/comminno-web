@@ -1,4 +1,5 @@
 ---
+slug: dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-türkiye-for-the-wo
 ---
 
 On 4 - 5 July 2025,

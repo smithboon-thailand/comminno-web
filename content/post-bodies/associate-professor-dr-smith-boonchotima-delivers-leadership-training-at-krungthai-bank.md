@@ -1,4 +1,5 @@
 ---
+slug: associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank
 ---
 
 Associate Professor Dr. Smith Boonchutima Delivers Leadership Training at Krungthai Bank

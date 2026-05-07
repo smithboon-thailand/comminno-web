@@ -1,4 +1,5 @@
 ---
+slug: asean-university-network
 ---
 
 We created the Annual Report for ASEAN University Network for the years 2016-2019.

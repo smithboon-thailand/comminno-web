@@ -1,4 +1,5 @@
 ---
+slug: empowering-youth-leaders
 ---
 
 Empowering Youth Leaders : A Look Back at Our Recent Workshop

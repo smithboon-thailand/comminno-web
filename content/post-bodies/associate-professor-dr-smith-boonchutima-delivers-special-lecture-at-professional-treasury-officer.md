@@ -1,4 +1,5 @@
 ---
+slug: associate-professor-dr-smith-boonchutima-delivers-special-lecture-at-professional-treasury-officer
 ---
 
 Today (August 6, 2025), Associate Professor Dr. Smith Boonchutima from the Faculty of Communication Arts, Chulalongkorn University, delivered a special lecture on "Communication Techniques for Administration and Public Relations" at the 15th Professional Treasury Officer Program, organized by the Fiscal Policy Research Institute Foundation.

@@ -1,4 +1,5 @@
 ---
+slug: the-training-program-for-driving-public-and-social-communication-care-d-plus
 ---
 
 Chulalongkorn University, in collaboration with the Ministry of Public Health, organizes the launch event for the training program for driving public and social communication (Care D+).

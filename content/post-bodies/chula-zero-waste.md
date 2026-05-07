@@ -1,4 +1,5 @@
 ---
+slug: chula-zero-waste
 ---
 
 Create a Campaign Prototype for Reducing Waste in the University Led by Students, Emphasizing Fun, Brightness, Simplicity, and Practicality.

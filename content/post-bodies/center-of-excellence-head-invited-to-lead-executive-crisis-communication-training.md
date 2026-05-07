@@ -1,4 +1,5 @@
 ---
+slug: center-of-excellence-head-invited-to-lead-executive-crisis-communication-training
 ---
 
 We are pleased to announce that

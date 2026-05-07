@@ -1,4 +1,5 @@
 ---
+slug: nbtc-encyclopedia
 ---
 
 This encyclopedia compiles important topics, creates connections, explains in language that the younger generation can easily understand, and uses engaging illustrations.

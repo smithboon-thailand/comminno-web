@@ -1,4 +1,5 @@
 ---
+slug: international-labour-organization
 ---
 
 United Nations Workshop

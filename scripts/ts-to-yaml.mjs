@@ -130,11 +130,13 @@ async function main() {
     const bodyFile = path.join(bodiesDir, `${post.slug}.md`);
     // Ensure trailing newline (POSIX).
     const bodyWithNewline = body.endsWith("\n") ? body : body + "\n";
-    // Prepend an empty YAML front matter block so Sveltia's default
+    // Prepend a YAML front matter block with the slug so Sveltia's default
     // `yaml-frontmatter` parser (folder collection) accepts each file.
+    // Sveltia rejects empty frontmatter blocks (#7.3 fix), so we surface
+    // `slug` (the identifier) as a stable, non-empty stub.
     // build-content.mjs strips this back out on the way to TS so the
-    // embedded string remains body-only (#7.2).
-    const text = `---\n---\n\n${bodyWithNewline}`;
+    // embedded string remains body-only.
+    const text = `---\nslug: ${post.slug}\n---\n\n${bodyWithNewline}`;
     await writeFile(bodyFile, text, "utf8");
     totalBytes += text.length;
     bodyCount += 1;

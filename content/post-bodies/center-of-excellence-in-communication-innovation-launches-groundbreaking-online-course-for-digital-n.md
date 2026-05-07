@@ -1,4 +1,5 @@
 ---
+slug: center-of-excellence-in-communication-innovation-launches-groundbreaking-online-course-for-digital-n
 ---
 
 Comm.Inno — the Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability, Faculty of Communication Arts, Chulalongkorn University — is proud to announce the launch of "Media & Communication for Transnational Citizens," an innovative online course designed for digital nomads and global talents in Thailand.

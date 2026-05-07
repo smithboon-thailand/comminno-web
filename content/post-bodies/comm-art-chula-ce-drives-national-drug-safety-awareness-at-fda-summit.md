@@ -1,4 +1,5 @@
 ---
+slug: comm-art-chula-ce-drives-national-drug-safety-awareness-at-fda-summit
 ---
 
 Communication Innovation Center Drives National Drug Safety Awareness at FDA Summit

@@ -1,4 +1,5 @@
 ---
+slug: creative-tourism-development-project-in-nan-province
 ---
 
 We organized a workshop to enhance communication skills, starting with registration open to all interested residents of Nan. The event took place at the Namthong Nan Hotel, where we prepared photography and video equipment, decorative props, and lighting to help participants create more engaging images. The training included both theoretical and practical sessions, ensuring that all attendees gained valuable knowledge.

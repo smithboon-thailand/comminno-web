@@ -1,4 +1,5 @@
 ---
+slug: chula-communication-arts-strengthens-academic-collaboration-with-keio-university-and-bunkyo-universi
 ---
 
 Mar 15

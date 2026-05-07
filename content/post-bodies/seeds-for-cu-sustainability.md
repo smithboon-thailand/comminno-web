@@ -1,4 +1,5 @@
 ---
+slug: seeds-for-cu-sustainability
 ---
 
 Creating Project Presentation Videos in Bangkok and Other Provinces

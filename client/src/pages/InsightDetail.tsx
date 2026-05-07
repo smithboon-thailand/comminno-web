@@ -15,6 +15,7 @@ import { LocaleLink } from "@/i18n/LocaleLink";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { SdgChip, type SdgNumber } from "@/components/SdgChip";
 import { ArrowRight } from "lucide-react";
+import { cloudinarySized, cloudinarySrcSet } from "@/lib/cloudinary";
 import NotFound from "./NotFound";
 
 const COPY = {
@@ -146,7 +147,9 @@ export default function InsightDetail() {
             style={{ borderColor: "var(--mist)" }}
           >
             <img
-              src={cover}
+              src={cloudinarySized(cover, 800)}
+              srcSet={cloudinarySrcSet(cover, [400, 800, 1200])}
+              sizes="(min-width: 1024px) 800px, 100vw"
               alt={
                 locale === "th"
                   ? post.coverAltTh ?? post.title

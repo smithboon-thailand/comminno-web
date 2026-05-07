@@ -25,6 +25,7 @@ import { LocaleLink } from "@/i18n/LocaleLink";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { SdgChip, type SdgNumber } from "@/components/SdgChip";
 import { ArrowRight } from "lucide-react";
+import { cloudinarySized, cloudinarySrcSet } from "@/lib/cloudinary";
 import NotFound from "./NotFound";
 
 const COPY = {
@@ -167,7 +168,9 @@ export default function ServiceDetail() {
           style={{ borderColor: "var(--mist)", aspectRatio: "16 / 9" }}
         >
           <img
-            src={service.heroImage ?? undefined}
+            src={cloudinarySized(service.heroImage, 800)}
+            srcSet={cloudinarySrcSet(service.heroImage, [400, 800, 1200, 1600])}
+            sizes="(min-width: 1024px) 800px, 100vw"
             alt={(locale === "th" ? service.heroAltTh : service.heroAltEn) ?? ""}
             loading="eager"
             decoding="async"

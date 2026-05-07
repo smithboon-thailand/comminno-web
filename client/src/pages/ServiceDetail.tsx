@@ -171,6 +171,8 @@ export default function ServiceDetail() {
             alt={(locale === "th" ? service.heroAltTh : service.heroAltEn) ?? ""}
             loading="eager"
             decoding="async"
+            // fetchpriority hint upgrades this LCP candidate above sibling network requests; React 19 forwards the lowercase attr.
+            fetchPriority="high"
             width={1600}
             height={900}
             className="h-full w-full object-cover"

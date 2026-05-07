@@ -250,9 +250,24 @@ function vitePluginAdminStatic(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy(), vitePluginAdminStatic()];
-
-export default defineConfig({
+// `vite-plugin-manus-runtime` injects a ~360 KB visual-editor runtime into
+// `index.html`. The runtime registers an `unload` event listener (deprecated
+// per https://chromestatus.com/feature/5579556305502208), which costs us 18
+// Lighthouse Best-Practices points on every page. The editor only matters
+// inside the Manus management UI iframe (dev preview), so we strip it from
+// `vite build` (production) and keep it for `vite serve` (dev).
+export default defineConfig(({ command }) => {
+  const isProdBuild = command === "build";
+  const plugins = [
+    react(),
+    tailwindcss(),
+    jsxLocPlugin(),
+    ...(isProdBuild ? [] : [vitePluginManusRuntime()]),
+    vitePluginManusDebugCollector(),
+    vitePluginStorageProxy(),
+    vitePluginAdminStatic(),
+  ];
+  return {
   plugins,
   resolve: {
     alias: {
@@ -303,4 +318,5 @@ export default defineConfig({
       deny: ["**/.*"],
     },
   },
+  };
 });

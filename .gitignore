@@ -125,3 +125,4 @@ PHASE2_PLAN_r2_archive.md
 !.migration/
 .migration/*
 !.migration/cloudinary-map.json
+.lighthouse-reports/

@@ -447,3 +447,82 @@ single-file (no per-entry editorial workflow).
 - [ ] TH copy primary, EN secondary
 - [ ] Link from README
 - [ ] Commit + checkpoint
+
+
+---
+
+## Task 9 status — #7.5 split ✅ shipped (checkpoint dccc31af)
+- [x] Split `content/posts.yml` → `content/posts/<slug>.yml` (24 files)
+- [x] Split `content/services.yml` → `content/services/<slug>.yml` (9 files)
+- [x] Split `content/categories.yml` → `content/categories/<slug>.yml` (12 files)
+- [x] Update `build-content.mjs` with `readYamlFolder` helper
+- [x] Update `ts-to-yaml.mjs` with `writeYamlFolder` helper
+- [x] Convert config.yml insights/services/categories to folder collections
+- [x] Idempotency byte-exact (sha256 d2aed0fd...)
+- [x] tsc + build clean
+- [x] User confirmed /admin shows Insights·24, Services·9, Categories·12, Insight bodies·24, About·1, Redirects·1
+
+## Task 10 status — #8 Vercel Speed Insights ✅ shipped (checkpoint 1b977f19)
+- [x] `pnpm add @vercel/speed-insights` (v2.0.0, MIT)
+- [x] `SpeedInsightsGated` component listens to `comminno:consent-change` event
+- [x] `beforeSend` filter strips `/admin/` (Sveltia) sessions
+- [x] Banner copy updated EN+TH (CookieConsentProvider)
+- [x] Privacy.tsx subprocessor + cookies sections updated EN+TH
+- [x] Mount inside `<CookieConsentProvider>` so consent state initialises first
+- [x] tsc + build + content idempotency clean
+
+## Task 11 status — #9 EDITORIAL.md ✅ shipped (checkpoint 40d70115)
+- [x] EDITORIAL.md TH-primary 6 sections (architecture, login + GH invite, collections, Cloudinary upload, publishing flow, best practices)
+- [x] SCHEMA.md updated to reflect #7.5 folder split (file layout, bilingual table, image fields table, posts/services/categories headings)
+
+---
+
+## Task 12 — #10 Lighthouse audit + fix (Rule #10: ≥90 all categories every page)
+
+### Pages to audit (all on prod or staging)
+- [ ] `/th` (Home)
+- [ ] `/en` (Home)
+- [ ] `/th/about` + `/en/about`
+- [ ] `/th/services` + `/en/services`
+- [ ] `/th/services/<sample-slug>` + `/en/services/<sample-slug>` (1 slug)
+- [ ] `/th/insights` + `/en/insights`
+- [ ] `/th/insights/<sample-slug>` + `/en/insights/<sample-slug>` (1 slug)
+- [ ] `/th/contact` + `/en/contact`
+- [ ] `/th/privacy` + `/en/privacy`
+
+### Approach
+- [ ] Use Lighthouse CLI in headless Chrome against the staging URL (Manus webdev domain)
+- [ ] Mobile profile (default) since it's the harsher test; capture desktop only if mobile passes
+- [ ] Run with `--only-categories=performance,accessibility,best-practices,seo` to skip PWA noise
+- [ ] Save JSON reports under `.lighthouse-reports/` (gitignored)
+- [ ] Build a markdown table of scores per page
+
+### Fix protocol
+- [ ] For any score <90: identify failing audits, fix smallest-impact-first
+- [ ] Common suspects: image LCP, render-blocking CSS/fonts, unused JS, ARIA labels, contrast ratios, meta description length
+- [ ] Re-audit after each batch of fixes
+- [ ] Stop when every page hits ≥90 in all four categories
+
+### Commit + checkpoint
+- [ ] Commit #10 with audit table embedded in commit message
+- [ ] `webdev_save_checkpoint` with score summary
+
+---
+
+## Task 13 — Smoke-test kit for editorial dry run (after #10)
+
+- [ ] Draft `EDITORIAL_SMOKE_TEST.md` with step-by-step test procedure
+- [ ] Pre-write a test Insight (slug like `smoke-test-2026-05`) so the editor has concrete content to type
+- [ ] Reviewer checklist: PR title format, slug match between insights+insight-bodies, Cloudinary URL valid, build green
+- [ ] Define rollback procedure if test PR introduces a regression
+- [ ] User invites real editor as GitHub collaborator → editor runs the kit → returns friction-points list
+- [ ] (User-blocked step — we hand off the kit and wait for feedback)
+
+---
+
+## Task 14 — Start Phase 2 (after #13 kit handed off)
+
+- [ ] Re-read `PHASE2_PLAN.md` to refresh the priority order (members area / publications DB / AR demos)
+- [ ] Pick the first Phase 2 feature with the user
+- [ ] Scope its commit plan (sub-tasks, schema changes, new collections, new routes)
+- [ ] Execute commit-by-commit with checkpoints

@@ -154,6 +154,8 @@ export default function InsightDetail() {
               }
               loading="eager"
               decoding="async"
+              // fetchpriority hint promotes this LCP image above analytics/bundle network requests.
+              fetchPriority="high"
               width={1200}
               height={675}
               className="h-full w-full object-cover"

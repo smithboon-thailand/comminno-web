@@ -14,28 +14,33 @@
  *   /post/:slug etc. (legacy) → RedirectHandler → /:locale/insights/:slug
  *   anything else            → localized NotFound
  */
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { Route, Switch, useLocation } from "wouter";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LocaleProvider, useLocale, withLocale } from "./i18n/LocaleProvider";
 import { SiteShell } from "./components/layout/SiteShell";
 import { CookieConsentProvider } from "./components/consent/CookieConsentProvider";
 import { SpeedInsightsGated } from "./components/analytics/SpeedInsightsGated";
+import { DetailSkeleton } from "./components/layout/DetailSkeleton";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import { redirects } from "./content/redirects";
 
-// Routes are eagerly imported. We previously code-split each route via
-// lazy() + a min-h-60vh PageFallback, but on every navigation the fallback
-// painted, then the route arrived and pushed the (eager) Footer down by
-// thousands of pixels — scoring CLS ≈ 0.20 on every non-/th route.
-// All route bundles together are < 200 KB minified, well within the perf
-// budget for a static marketing site.
+// Most routes are eagerly imported. We previously code-split *every* route
+// via lazy() + a min-h-60vh PageFallback, but on every navigation the
+// fallback painted, then the route arrived and pushed the (eager) Footer
+// down by thousands of pixels — scoring CLS ≈ 0.20 on every non-/th route.
+// SiteShell now uses `<main flex-1>` inside a `min-h-screen` flex column
+// so the Footer is pinned to the viewport bottom; that anchor lets us
+// safely lazy-load the heaviest two routes (ServiceDetail, InsightDetail)
+// behind <DetailSkeleton/>, which preserves layout (CLS stays ≈ 0).
+// The split shaves ~120 KB off the main entry, which was the
+// remaining-2-points blocker on detail-page Lighthouse Performance.
 import About from "./pages/About";
 import Services from "./pages/Services";
-import ServiceDetail from "./pages/ServiceDetail";
+const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
 import Insights from "./pages/Insights";
-import InsightDetail from "./pages/InsightDetail";
+const InsightDetail = lazy(() => import("./pages/InsightDetail"));
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 
@@ -79,7 +84,13 @@ function Router() {
         </Route>
         <Route path="/:locale/services/:slug">
           {(params) =>
-            params.locale === "th" || params.locale === "en" ? <ServiceDetail /> : <NotFound />
+            params.locale === "th" || params.locale === "en" ? (
+              <Suspense fallback={<DetailSkeleton />}>
+                <ServiceDetail />
+              </Suspense>
+            ) : (
+              <NotFound />
+            )
           }
         </Route>
         <Route path="/:locale/insights">
@@ -89,7 +100,13 @@ function Router() {
         </Route>
         <Route path="/:locale/insights/:slug">
           {(params) =>
-            params.locale === "th" || params.locale === "en" ? <InsightDetail /> : <NotFound />
+            params.locale === "th" || params.locale === "en" ? (
+              <Suspense fallback={<DetailSkeleton />}>
+                <InsightDetail />
+              </Suspense>
+            ) : (
+              <NotFound />
+            )
           }
         </Route>
         <Route path="/:locale/contact">

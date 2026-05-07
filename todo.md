@@ -526,3 +526,30 @@ single-file (no per-entry editorial workflow).
 - [ ] Pick the first Phase 2 feature with the user
 - [ ] Scope its commit plan (sub-tasks, schema changes, new collections, new routes)
 - [ ] Execute commit-by-commit with checkpoints
+
+
+---
+
+## Task 12.5 — #10 Round 5: Y → Z to push service-detail ≥ 90
+
+After #10d (code-split + DetailSkeleton), insight-detail medians = 96 ✓ (CLS=0).
+service-detail still 88-89 with one 70 outlier in run 1 — likely Lighthouse cold-cache
+variance, not a real regression.
+
+### Y — 5x median (no code change)
+- [ ] Re-run service-detail TH + EN with **5 runs each** to filter the cold-cache outlier
+- [ ] Capture per-run perf/LCP/CLS; report sorted medians
+- [ ] If median ≥ 90 on both → skip Z, go straight to commit #10e
+
+### Z — only if Y still <90 (apply both micro-fixes)
+- [ ] Inject `<link rel="modulepreload" href="/assets/ServiceDetail-*.js">` in `client/index.html`
+      (uses Vite's manifest at build time; the chunk fetches in parallel with main bundle parse → -200-400 ms LCP)
+- [ ] `ServiceDetail.tsx` — render related-services list lazily via IntersectionObserver
+      (mounts only when scrolled into view → -50 ms main-thread work during LCP window)
+- [ ] Re-run 5x median → confirm ≥ 90
+
+### Final commit #10e
+- [ ] Re-run full 16-page audit (1 run each — sanity check)
+- [ ] Write `LIGHTHOUSE.md` with per-page median table + per-page LCP/CLS/TBT
+- [ ] Commit message includes the table inline
+- [ ] `webdev_save_checkpoint` with summary

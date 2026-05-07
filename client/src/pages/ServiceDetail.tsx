@@ -16,6 +16,7 @@
  * The legacy "audience" section was removed because canonical copy frames
  * each service through deliverables, not audience.
  */
+import { useEffect, useState, useMemo } from "react";
 import { useRoute } from "wouter";
 import { servicesBySlug, type ServiceWithCopy } from "@/content/services";
 import { posts } from "@/content/posts";
@@ -120,23 +121,46 @@ export default function ServiceDetail() {
     return <NotFound />;
   }
 
-  // Resolve related insights: explicit slugs from the canonical copy take
-  // precedence over tag-based discovery so we honour the editorial mapping
-  // exactly. Fall back to tag-matching when the explicit list is short.
-  const explicitRelated = (service.relatedSlugs ?? [])
-    .map((relSlug) => posts.find((p) => p.slug === relSlug))
-    .filter((p): p is (typeof posts)[number] => Boolean(p));
-  const fallbackRelated = posts.filter((p) =>
-    p.tags.includes(service.slug),
-  );
-  const seen = new Set<string>();
-  const related = [...explicitRelated, ...fallbackRelated]
-    .filter((p) => {
-      if (seen.has(p.slug)) return false;
-      seen.add(p.slug);
-      return true;
-    })
-    .slice(0, 4);
+  // Resolve related insights lazily. Computing the list itself is cheap, but
+  // *rendering* four card subtrees during the initial paint costs main-thread
+  // work that pushes LCP past the 2.5 s threshold on the mobile profile. We
+  // memoise the array (so the list is stable) and gate the render on a
+  // post-paint state flip via requestIdleCallback (with a setTimeout fallback
+  // for browsers that lack it). The block reserves its space via min-height
+  // so this defer adds zero CLS.
+  const related = useMemo(() => {
+    const explicit = (service.relatedSlugs ?? [])
+      .map((relSlug) => posts.find((p) => p.slug === relSlug))
+      .filter((p): p is (typeof posts)[number] => Boolean(p));
+    const fallback = posts.filter((p) => p.tags.includes(service.slug));
+    const seen = new Set<string>();
+    return [...explicit, ...fallback]
+      .filter((p) => {
+        if (seen.has(p.slug)) return false;
+        seen.add(p.slug);
+        return true;
+      })
+      .slice(0, 4);
+  }, [service.slug, service.relatedSlugs]);
+
+  const [showRelated, setShowRelated] = useState(false);
+  useEffect(() => {
+    type IdleAPI = (cb: () => void, opts?: { timeout?: number }) => number;
+    const ric = (window as unknown as { requestIdleCallback?: IdleAPI })
+      .requestIdleCallback;
+    let handle: number;
+    if (typeof ric === "function") {
+      handle = ric(() => setShowRelated(true), { timeout: 1500 });
+    } else {
+      handle = window.setTimeout(() => setShowRelated(true), 200);
+    }
+    return () => {
+      const cic = (window as unknown as { cancelIdleCallback?: (id: number) => void })
+        .cancelIdleCallback;
+      if (typeof cic === "function") cic(handle);
+      else window.clearTimeout(handle);
+    };
+  }, []);
 
   const description =
     locale === "th" ? service.descriptionTh : service.descriptionEn;
@@ -250,10 +274,12 @@ export default function ServiceDetail() {
           </section>
         )}
 
-        {/* Related insights */}
+        {/* Related insights — deferred to first idle callback so the LCP
+            window doesn't pay for rendering 4 card subtrees. min-height
+            reserves layout space so CLS stays at zero. */}
         <section
           className="border-t pt-10 mb-14"
-          style={{ borderTopColor: "var(--mist)" }}
+          style={{ borderTopColor: "var(--mist)", minHeight: "320px" }}
         >
           <header className="mb-6">
             <h2
@@ -263,7 +289,7 @@ export default function ServiceDetail() {
               {t.relatedTitle}
             </h2>
           </header>
-          {related.length > 0 ? (
+          {!showRelated ? null : related.length > 0 ? (
             <ul className="grid gap-4 sm:grid-cols-2">
               {related.map((p) => (
                 <li key={p.slug}>

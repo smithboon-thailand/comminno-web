@@ -256,6 +256,46 @@ function vitePluginAdminStatic(): Plugin {
 // Lighthouse Best-Practices points on every page. The editor only matters
 // inside the Manus management UI iframe (dev preview), so we strip it from
 // `vite build` (production) and keep it for `vite serve` (dev).
+
+// `preloadDetailChunks` injects `<link rel="modulepreload">` for the two
+// route chunks that App.tsx loads via React.lazy() (ServiceDetail,
+// InsightDetail). Vite's automatic modulepreload only covers chunks that the
+// entry imports synchronously — lazy imports are intentionally skipped so
+// they remain on-demand. But on a static SPA with one shared `index.html`,
+// every page may resolve to one of those routes, and waiting for the main
+// bundle to finish parsing before *starting* the chunk fetch costs ~200-400
+// ms of LCP on the slowest device profile. Preloading does not execute the
+// chunk; it only fetches it in parallel so it is in the cache the moment
+// React's <Suspense> tree asks for it. Bundle size impact is zero (already
+// emitted), perceived perf gain is concrete on detail pages.
+function preloadDetailChunks(): Plugin {
+  return {
+    name: "comminno-preload-detail-chunks",
+    apply: "build",
+    transformIndexHtml: {
+      order: "post",
+      handler(html, ctx) {
+        if (!ctx.bundle) return html;
+        const targets = ["ServiceDetail", "InsightDetail"];
+        const tags: string[] = [];
+        for (const fileName of Object.keys(ctx.bundle)) {
+          const base = fileName.split("/").pop() ?? "";
+          if (
+            targets.some((t) => base.startsWith(t)) &&
+            base.endsWith(".js")
+          ) {
+            tags.push(
+              `    <link rel="modulepreload" crossorigin href="/${fileName}">`,
+            );
+          }
+        }
+        if (tags.length === 0) return html;
+        return html.replace("</head>", `${tags.join("\n")}\n  </head>`);
+      },
+    },
+  };
+}
+
 export default defineConfig(({ command }) => {
   const isProdBuild = command === "build";
   const plugins = [
@@ -266,6 +306,7 @@ export default defineConfig(({ command }) => {
     vitePluginManusDebugCollector(),
     vitePluginStorageProxy(),
     vitePluginAdminStatic(),
+    ...(isProdBuild ? [preloadDetailChunks()] : []),
   ];
   return {
   plugins,

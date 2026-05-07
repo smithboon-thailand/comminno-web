@@ -90,7 +90,7 @@ const EN_SECTIONS: Section[] = [
     blocks: [
       {
         kind: "p",
-        text: "Limited to: Chulalongkorn IT and Faculty staff (need-to-know); Resend (US, transactional email); Vercel/Cloudflare (US, hosting logs); Plausible (EU, anonymous analytics); auditors and legal counsel when required by law. We never sell data, never share with advertisers or data brokers.",
+        text: "Limited to: Chulalongkorn IT and Faculty staff (need-to-know); Resend (US, transactional email); Vercel/Cloudflare (US, hosting logs); Plausible (EU) and Vercel Speed Insights (US) for anonymous analytics; auditors and legal counsel when required by law. We never sell data, never share with advertisers or data brokers.",
       },
     ],
   },
@@ -136,7 +136,7 @@ const EN_SECTIONS: Section[] = [
     blocks: [
       {
         kind: "p",
-        text: 'Strictly necessary (no consent needed): session, language, consent state. Analytics (opt-in via banner): Plausible pageviews. No tracking, advertising, or fingerprinting cookies. Manage anytime via "Cookie Settings" footer link.',
+        text: 'Strictly necessary (no consent needed): session, language, consent state. Analytics (opt-in via banner): Plausible pageviews and Vercel Speed Insights. No tracking, advertising, or fingerprinting cookies. Manage anytime via "Cookie Settings" footer link.',
       },
     ],
   },
@@ -258,7 +258,7 @@ const TH_SECTIONS: Section[] = [
           "เจ้าหน้าที่ฝ่ายไอทีของจุฬาฯ และคณะนิเทศศาสตร์ เฉพาะที่จำเป็นต่อหน้าที่",
           "Resend (สหรัฐอเมริกา) ผู้ให้บริการอีเมลธุรกรรม โอนข้อมูลภายใต้ข้อสัญญามาตรฐาน",
           "Vercel หรือ Cloudflare (สหรัฐอเมริกา) ผู้ให้บริการโฮสต์ เฉพาะ server logs",
-          "Plausible (สหภาพยุโรป) ผู้ให้บริการวิเคราะห์ เฉพาะ pageview ที่ไม่ระบุตัวตน",
+          "Plausible (สหภาพยุโรป) และ Vercel Speed Insights (สหรัฐอเมริกา) ผู้ให้บริการวิเคราะห์ เฉพาะ pageview และประสิทธิภาพเว็บที่ไม่ระบุตัวตน",
           "ผู้ตรวจสอบและที่ปรึกษากฎหมาย เมื่อมีกฎหมายกำหนด หรือเพื่อปกป้องสิทธิอันชอบด้วยกฎหมายของศูนย์ฯ",
         ],
       },
@@ -338,7 +338,7 @@ const TH_SECTIONS: Section[] = [
         kind: "ul",
         items: [
           "คุกกี้ที่จำเป็นอย่างยิ่ง — เซสชัน ภาษาที่เลือก สถานะการยอมรับคุกกี้ (ได้รับยกเว้นทางกฎหมาย ไม่ต้องขอความยินยอม)",
-          "คุกกี้วิเคราะห์ — Plausible สำหรับการนับ pageview แบบเคารพความเป็นส่วนตัว (ต้องเลือกผ่านแบนเนอร์)",
+          "คุกกี้วิเคราะห์ — Plausible และ Vercel Speed Insights สำหรับการนับ pageview และวัดประสิทธิภาพเว็บแบบเคารพความเป็นส่วนตัว (ต้องเลือกผ่านแบนเนอร์)",
           "ไม่มีคุกกี้ติดตาม โฆษณา หรือ fingerprinting ใด ๆ",
         ],
       },

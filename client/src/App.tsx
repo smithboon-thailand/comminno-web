@@ -20,6 +20,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { LocaleProvider, useLocale, withLocale } from "./i18n/LocaleProvider";
 import { SiteShell } from "./components/layout/SiteShell";
 import { CookieConsentProvider } from "./components/consent/CookieConsentProvider";
+import { SpeedInsightsGated } from "./components/analytics/SpeedInsightsGated";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import { redirects } from "./content/redirects";
@@ -122,6 +123,8 @@ function App() {
           <SiteShell>
             <Router />
           </SiteShell>
+          {/* Vercel Speed Insights — gated on analytics consent (PDPA §19). */}
+          <SpeedInsightsGated />
         </CookieConsentProvider>
       </LocaleProvider>
     </ThemeProvider>

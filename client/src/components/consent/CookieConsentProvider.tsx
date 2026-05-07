@@ -99,7 +99,7 @@ export function CookieConsentProvider({
             consentModal: {
               title: "We value your privacy",
               description:
-                "Comm.Inno uses only the cookies needed to remember your language choice. With your consent we also load Plausible — a privacy-friendly analytics service that records page views without storing personal data. You can change your choice anytime via the footer link.",
+                "Comm.Inno uses only the cookies needed to remember your language choice. With your consent we also load Plausible and Vercel Speed Insights — privacy-friendly analytics services that record page views and performance without storing personal data. You can change your choice anytime via the footer link.",
               acceptAllBtn: "Accept all",
               acceptNecessaryBtn: "Reject non-essential",
               showPreferencesBtn: "Manage preferences",
@@ -125,9 +125,9 @@ export function CookieConsentProvider({
                   linkedCategory: "necessary",
                 },
                 {
-                  title: "Analytics (Plausible)",
+                  title: "Analytics (Plausible & Vercel)",
                   description:
-                    "Optional. If enabled, we load Plausible — a cookieless, privacy-friendly analytics service hosted in the EU — to count anonymous page views. No personal data is sent and no cross-site tracking occurs. Disabled by default.",
+                    "Optional. If enabled, we load Plausible and Vercel Speed Insights — cookieless, privacy-friendly analytics services — to count anonymous page views and measure site performance. No personal data is sent and no cross-site tracking occurs. Disabled by default.",
                   linkedCategory: "analytics",
                 },
                 {
@@ -142,7 +142,7 @@ export function CookieConsentProvider({
             consentModal: {
               title: "เราเคารพความเป็นส่วนตัวของคุณ",
               description:
-                "เว็บไซต์ Comm.Inno ใช้คุกกี้เฉพาะเท่าที่จำเป็น เช่น จดจำภาษาที่คุณเลือก หากคุณยินยอม เราจะโหลด Plausible ซึ่งเป็นบริการวิเคราะห์การเข้าชมแบบไม่เก็บข้อมูลส่วนบุคคลเพิ่มเติม คุณสามารถเปลี่ยนการตั้งค่าได้ตลอดเวลาผ่านลิงก์ที่ฟุตเตอร์",
+                "เว็บไซต์ Comm.Inno ใช้คุกกี้เฉพาะเท่าที่จำเป็น เช่น จดจำภาษาที่คุณเลือก หากคุณยินยอม เราจะโหลด Plausible และ Vercel Speed Insights ซึ่งเป็นบริการวิเคราะห์การเข้าชมและประสิทธิภาพเว็บแบบไม่เก็บข้อมูลส่วนบุคคลเพิ่มเติม คุณสามารถเปลี่ยนการตั้งค่าได้ตลอดเวลาผ่านลิงก์ที่ฟุตเตอร์",
               acceptAllBtn: "ยอมรับทั้งหมด",
               acceptNecessaryBtn: "ปฏิเสธคุกกี้ที่ไม่จำเป็น",
               showPreferencesBtn: "ตั้งค่าคุกกี้",
@@ -168,9 +168,9 @@ export function CookieConsentProvider({
                   linkedCategory: "necessary",
                 },
                 {
-                  title: "การวิเคราะห์ (Plausible)",
+                  title: "การวิเคราะห์ (Plausible & Vercel)",
                   description:
-                    "ตัวเลือกเสริม หากเปิดใช้งาน เราจะโหลด Plausible ซึ่งเป็นบริการวิเคราะห์แบบไม่ใช้คุกกี้และโฮสต์ในยุโรป เพื่อนับจำนวนการเข้าชมแบบไม่ระบุตัวตน ไม่มีการส่งข้อมูลส่วนบุคคลและไม่มีการติดตามข้ามเว็บไซต์ — ปิดไว้เป็นค่าเริ่มต้น",
+                    "ตัวเลือกเสริม หากเปิดใช้งาน เราจะโหลด Plausible และ Vercel Speed Insights ซึ่งเป็นบริการวิเคราะห์แบบไม่ใช้คุกกี้ เพื่อนับจำนวนการเข้าชมและวัดประสิทธิภาพเว็บแบบไม่ระบุตัวตน ไม่มีการส่งข้อมูลส่วนบุคคลและไม่มีการติดตามข้ามเว็บไซต์ — ปิดไว้เป็นค่าเริ่มต้น",
                   linkedCategory: "analytics",
                 },
                 {
@@ -202,7 +202,7 @@ export function CookieConsentProvider({
           },
           services: {
             plausible: {
-              label: "Plausible page-view analytics",
+              label: "Plausible & Vercel analytics",
               onAccept: () => loadPlausible(),
               onReject: () => unloadPlausible(),
             },

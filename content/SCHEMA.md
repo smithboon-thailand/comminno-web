@@ -10,15 +10,26 @@
 
 ```
 content/
-├── posts.yml                    # 24 insight / news entries (metadata only)
+├── posts/
+│   └── <slug>.yml               # 24 insight / news entries (metadata only, one file per post)
 ├── post-bodies/
-│   └── <slug>.md                # one file per post — long-form body
-├── services.yml                 # 9 service catalogue entries
-├── about.yml                    # mission, pillars, leadership, partners
-├── categories.yml               # 12 post taxonomy entries
-├── redirects.yml                # 39 legacy Wix → new path redirects
+│   └── <slug>.md                # 24 long-form bodies (joined by matching slug)
+├── services/
+│   └── <slug>.yml               # 9 service catalogue entries (one file per service)
+├── categories/
+│   └── <slug>.yml               # 12 post taxonomy entries (one file per category)
+├── about.yml                    # mission, pillars, leadership, partners (single file)
+├── redirects.yml                # 39 legacy Wix → new path redirects (single file, bulk-edited)
 └── SCHEMA.md                    # this file
 ```
+
+As of commit **#7.5**, posts / services / categories are stored as **per-slug folder collections** (one YAML file per entry). This gives editors:
+
+- **One PR per entry** — changing one post never collides with another editor's parallel edit on a different post.
+- **Clean Sveltia counts** — the sidebar shows `Insights · 24`, not `Insights · 1` (the old `files:` collection was a single virtual entry).
+- **Slug = filename = URL** — the file's basename is the canonical slug; the build script asserts that the in-file `slug:` field matches the filename (or fills it in if missing).
+
+`about.yml` and `redirects.yml` remain single files because they are logically **one document each** (the About page is one page; the redirect table is bulk-edited as a list).
 
 The build pipeline reads these YAML files and emits `client/src/content/*.ts`. Editors **never** touch the generated TS modules.
 
@@ -56,8 +67,8 @@ The site's primary audience is Thai. Field requirements follow this rule:
 
 | Collection | TH fields | EN fields |
 | --- | --- | --- |
-| `posts.yml` | required (`title`, `summary`, `coverAltTh`) | optional (used as a fallback when present) |
-| `services.yml` | required (`titleTh`, `subtitleTh`, `descriptionTh`, `deliverablesTh`, `ctaTh`, `heroAltTh`) | required (English UI sections still need parity) |
+| `posts/<slug>.yml` | required (`title`, `summary`, `coverAltTh`) | optional (used as a fallback when present) |
+| `services/<slug>.yml` | required (`titleTh`, `subtitleTh`, `descriptionTh`, `deliverablesTh`, `ctaTh`, `heroAltTh`) | required (English UI sections still need parity) |
 | `about.yml` | required (every `nameTh`, `centerRoleTh`, `bioTh`, `synergyTh` …) | required (mirror) |
 
 When a translation is genuinely unavailable, set the field to `null` (`~` in YAML) — never leave a stale English string in a Thai slot.
@@ -78,38 +89,42 @@ As of commit **#5b**, image fields are **single canonical URLs**:
 
 | Collection | Field | Replaces |
 | --- | --- | --- |
-| `posts.yml` | `coverImage` | legacy `coverWebp` + `coverJpg` |
-| `services.yml` | `heroImage` | legacy `heroImage` + `heroImageFallback` |
+| `posts/<slug>.yml` | `coverImage` | legacy `coverWebp` + `coverJpg` |
+| `services/<slug>.yml` | `heroImage` | legacy `heroImage` + `heroImageFallback` |
 
 Cloudinary's `f_auto,q_auto` transform negotiates webp / jpg / avif per client at request time, so a separate fallback URL is no longer needed. As of commit **#6.5** the transitional `@deprecated` aliases (`coverWebp` / `coverJpg` / `heroImageFallback`) have been removed from `client/src/content/types.ts` and from all component readers — the schema is now strictly single-field.
 
 ---
 
-## `posts.yml` — Insights / news posts
+## `posts/<slug>.yml` — Insights / news posts
+
+One file per post. Filename is the slug; the build script asserts `slug:` matches.
 
 ```yaml
-- slug: chula-zero-waste              # required, kebab-case, also used as URL & body filename
-  title: Chula Zero Waste              # required (EN, used in cards + nav)
-  titleTh: เครือข่ายจุฬาฯ ลดขยะ        # optional — falls back to title when missing
-  summary: One-sentence teaser…        # required (TH-first audience: shown on cards)
-  date: "2024-03-15"                   # ISO date YYYY-MM-DD or null
-  tags: [campaign, sustainability]     # array of category slugs (see categories.yml)
-  coverFilename: null                  # legacy Wix filename — leave null for new posts
-  coverImage: comminno/insights/<slug> # Cloudinary public_id (single field, #5b)
-  coverAltEn: Conference room…         # short alt text (no "Photo of" prefix)
-  coverAltTh: ห้องประชุม…              # required for accessibility
-  ogDescription: |                     # 2–3 sentences for OG/Twitter cards
-    Long-form description…
+slug: chula-zero-waste                # required, kebab-case, equals filename
+title: Chula Zero Waste                # required (EN, used in cards + nav)
+titleTh: เครือข่ายจุฬาฯ ลดขยะ          # optional — falls back to title when missing
+summary: One-sentence teaser…          # required (TH-first audience: shown on cards)
+date: "2024-03-15"                     # ISO date YYYY-MM-DD or null
+tags: [campaign, sustainability]       # array of category slugs (see categories/)
+coverFilename: null                    # legacy Wix filename — leave null for new posts
+coverImage: comminno/insights/<slug>   # Cloudinary public_id (single field, #5b)
+coverAltEn: Conference room…           # short alt text (no "Photo of" prefix)
+coverAltTh: ห้องประชุม…                # required for accessibility
+ogDescription: |                       # 2–3 sentences for OG/Twitter cards
+  Long-form description…
 ```
 
 The body lives at `content/post-bodies/<slug>.md` as plain markdown. Editors use Sveltia's full-screen markdown widget; the diff is one file per post.
 
 ---
 
-## `services.yml` — Service catalogue
+## `services/<slug>.yml` — Service catalogue
+
+One file per service. Filename equals slug.
 
 ```yaml
-- slug: book-and-printing
+slug: book-and-printing
   titleEn: Books and printed media
   titleTh: หนังสือและสื่อสิ่งพิมพ์
   subtitleEn: Research-grade publications, designed to be read.
@@ -210,15 +225,15 @@ widerTeam: […]                       # legacy plain-text list — keep until U
 
 ---
 
-## `categories.yml` — Post taxonomy
+## `categories/<slug>.yml` — Post taxonomy
 
-Mirrors the original Wix slugs. The `isService` flag distinguishes service categories from editorial ones at render time.
+One file per category. Mirrors the original Wix slugs. The `isService` flag distinguishes service categories from editorial ones at render time.
 
 ```yaml
-- slug: training
-  titleEn: Training
-  titleTh: การฝึกอบรม
-  isService: true
+slug: training
+titleEn: Training
+titleTh: การฝึกอบรม
+isService: true
 ```
 
 ---
@@ -238,9 +253,9 @@ Old Wix paths → new paths. Consumed by `vercel.json` (Phase 1.5) and Next.js m
 
 `scripts/build-content.mjs` (rewired in commit #6) does, in this order:
 
-1. Reads every `*.yml` and `post-bodies/*.md` under `content/`.
+1. Reads every `*.yml` (folder collections under `posts/`, `services/`, `categories/`; single-file `about.yml` and `redirects.yml`) and `post-bodies/*.md`.
 2. Validates against the TS interfaces in `client/src/content/types.ts`.
-3. Emits the AUTO-GENERATED modules under `client/src/content/`.
+3. Emits the AUTO-GENERATED modules under `client/src/content/` — ordering is **alphabetical by slug** for folder collections so diffs stay deterministic across editors.
 
 The generated TS modules are committed to git so Vercel can build the site from a clean checkout without running the script. The CI hook (`pnpm content` in `package.json#scripts.build`) regenerates them on every build to guarantee the YAML and TS are never out of sync.
 

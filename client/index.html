@@ -36,6 +36,12 @@
 
     <!-- Favicon: reuse the official logo SVG (the brand book endorses this). -->
     <link rel="icon" type="image/svg+xml" href="/logo-official.svg" />
+    <!--
+      Preconnect to Cloudinary so the TLS handshake completes before the
+      LCP hero image fetch starts. Saves 200-400 ms on slow-4G profiles.
+      crossorigin is required because Cloudinary is fetched as a CORS image.
+    -->
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
 
     <!--
       Preload the two faces visible above the fold.

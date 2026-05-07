@@ -1,0 +1,12 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: seeds-for-cu-sustainability
+title: Seeds for CU Sustainability
+summary: Creating Project Presentation Videos in Bangkok and Other ProvincesWe produced presentation videos from pre-production to post-production to ensure the best quality.
+date: "2024-06-29"
+tags: []
+coverFilename: 25218b_e8f088f77e1e471db8d8c9fabf27e5fd-mv2.png
+ogDescription: Creating Project Presentation Videos in Bangkok and Other ProvincesWe produced presentation videos from pre-production to post-production to ensure the best quality. Weekly meetings were held to gather feedback from the clients. Ultimately, the project showcased a commitment to societal sustainability, featuring aerial footage and interviews with stakeholders involved in the project.อุทยาน 100ปี final sub engค่ายปลายปี final sub eng
+coverImage: ~

@@ -1,0 +1,15 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: pid-thong-lang-phra-foundation
+title: Pid Thong Lang Phra Foundation
+summary: "Continuing the royal initiativeOnline media production training Persuasion techniques and personality developmentTraining is organized by expert teachers in all 3 areas: 1."
+date: "2024-07-05"
+tags:
+  - communication-design
+  - school
+  - seminar
+coverFilename: 25218b_0546265a29964393967ad1df973bc36b-mv2.jpg
+ogDescription: "Continuing the royal initiativeOnline media production training Persuasion techniques and personality developmentTraining is organized by expert teachers in all 3 areas: 1. Simple online media production. By using powerpoint Present work in progress to everyone. Creating power to drive society 2. Techniques for persuading listeners and 3. Teaching personality development to trainees from the Pid Thong Lang Phra Foundation as well."
+coverImage: ~

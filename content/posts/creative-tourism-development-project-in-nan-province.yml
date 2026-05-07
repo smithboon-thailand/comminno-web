@@ -1,0 +1,15 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: creative-tourism-development-project-in-nan-province
+title: Creative Tourism Development Project in Nan Province
+summary: We organized a workshop to enhance communication skills, starting with registration open to all interested residents of Nan.
+date: "2024-06-29"
+tags:
+  - school
+  - seminar
+  - training
+coverFilename: 25218b_e7bd23371b4f4603b7d65d73bec679e6-mv2.jpg
+ogDescription: We organized a workshop to enhance communication skills, starting with registration open to all interested residents of Nan. The event took place at the Namthong Nan Hotel, where we prepared photography and video equipment, decorative props, and lighting to help participants create more engaging images. The training included both theoretical and practical sessions, ensuring that all attendees gained valuable knowledge.
+coverImage: ~

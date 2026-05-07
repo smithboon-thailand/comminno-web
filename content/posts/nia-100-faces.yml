@@ -1,0 +1,15 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: nia-100-faces
+title: NIA 100 FACES
+summary: We gathered 100 innovators (3 Years) who inspire creativity, presenting them through a website, Instagram, a book, and AR images.https://www.nia100faces.com/
+date: "2024-06-29"
+tags:
+  - book-and-printing
+  - campaign-manage
+  - motion-effect-ar
+coverFilename: 25218b_4caad4d894fc4108b321da6753a27a44-mv2.png
+ogDescription: We gathered 100 innovators (3 Years) who inspire creativity, presenting them through a website, Instagram, a book, and AR images.https://www.nia100faces.com/
+coverImage: ~

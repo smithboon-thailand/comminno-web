@@ -1,0 +1,15 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: chula-communication-arts-strengthens-academic-collaboration-with-keio-university-and-bunkyo-universi
+title: Chula Communication Arts Strengthens Academic Collaboration with Keio University and Bunkyo University
+summary: TOKYO – Faculty members and students from Chulalongkorn University’s Department of Public Relations visited leading institutions in Japan to strengthen international academic ties and foster innovativ
+date: ~
+tags:
+  - school
+coverFilename: ~
+coverAltEn: Delegation from Chulalongkorn University meeting Japanese academic partners in Tokyo
+coverAltTh: คณะผู้แทนจุฬาลงกรณ์มหาวิทยาลัยพบปะพันธมิตรทางวิชาการญี่ปุ่น
+ogDescription: "TOKYO – Faculty members and students from Chulalongkorn University’s Department of Public Relations visited leading institutions in Japan to strengthen international academic ties and foster innovative communication practices.Keio University: Peace Playground Workshop\_On March 11, 2026, the delegation visited Keio University’s Graduate School of Media Design (KMD). Welcomed by Dean Masa Inakage, the group hosted the “Peace Playground: A Workshop on Metaphor & Art” led by Asst. Prof. Dr. Teerada"
+coverImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/chula-keio-bunkyo

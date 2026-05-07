@@ -1,0 +1,15 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: itd
+title: ITD
+summary: "Organize a Meeting to Gather Opinions and Analyze Trends on Various Topics: Digital Commerce and Opportunities for Thai SMEs, the Global Trade War and the Adaptation of Thailand's International Trade "
+date: "2024-07-06"
+tags:
+  - book-and-printing
+  - seminar
+  - research-and-evaluation
+coverFilename: 25218b_3fcbd73e5cd9485b99ddf5f70684b86d-mv2.jpg
+ogDescription: "Organize a Meeting to Gather Opinions and Analyze Trends on Various Topics: Digital Commerce and Opportunities for Thai SMEs, the Global Trade War and the Adaptation of Thailand's International Trade Sector, Business and Human Rights Trends, and the Direction of Thailand's Service Sector Trade to Create Added Value Amidst Changes. Additionally, design and print a book to serve as a tangible outcome of the discussions."
+coverImage: ~

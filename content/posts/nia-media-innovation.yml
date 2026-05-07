@@ -1,0 +1,15 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: nia-media-innovation
+title: NIA Media Innovation
+summary: Report on the Research of the Meaning of “Media Innovation” and Small Projection Mapping DisplayWe compiled research on the meaning of “media innovation” and launched the event, handling all preparati
+date: "2024-06-29"
+tags:
+  - video-production
+  - campaign-manage
+  - research-and-evaluation
+coverFilename: 25218b_537f83ece3da4ce7b69a402fd82c4319-mv2.jpg
+ogDescription: Report on the Research of the Meaning of “Media Innovation” and Small Projection Mapping DisplayWe compiled research on the meaning of “media innovation” and launched the event, handling all preparations, including lighting and sound, and creating a small projection mapping display. Additionally, we invited experts to provide insights on media innovation through interviews during the event.
+coverImage: ~

@@ -1,0 +1,36 @@
+# Service catalogue entry. `descriptionEn` / `descriptionTh` is markdown-safe.
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: video-production
+titleEn: Video production
+titleTh: ผลิตวีดิทัศน์
+subtitleEn: Research findings, made watchable.
+subtitleTh: เปลี่ยนงานวิจัยให้กลายเป็นวิดีโอที่คนอยากดู
+sdgNumber: 9
+descriptionEn: "We produce video content that organisations actually need: introduction films, work-summary reels, educational explainers, and research-dissemination pieces that translate journal-grade findings into 90 seconds a layperson can follow. Every project starts with a script written by someone who understands the source material — usually a researcher on our team. Production runs through our in-house team of editors, motion designers, and Thai/English voice talent."
+descriptionTh: เราผลิตวิดีโอที่องค์กรต้องใช้จริง — วีดิทัศน์แนะนำองค์กร, วีดิทัศน์สรุปผลงาน, วีดิทัศน์การศึกษา และวีดิทัศน์เผยแพร่งานวิจัยที่แปลผลการศึกษาระดับวารสารวิชาการให้กลายเป็น 90 วินาทีที่คนทั่วไปดูเข้าใจ ทุกโปรเจกต์เริ่มจากบทที่เขียนโดยคนเข้าใจเนื้อหา ส่วนใหญ่เป็นนักวิจัยในทีมของเราเอง การผลิตทำโดยทีมในองค์กร ทั้งบรรณาธิการ ผู้ออกแบบโมชัน และพากย์เสียงภาษาไทย-อังกฤษ
+deliverablesEn:
+  - Organisation introduction videos
+  - Company profile videos
+  - Work-summary reels
+  - Educational videos
+  - Research dissemination
+  - Subtitled bilingual versions
+deliverablesTh:
+  - วีดิทัศน์แนะนำองค์กร
+  - วีดิทัศน์โปรไฟล์บริษัท
+  - วีดิทัศน์สรุปผลงาน
+  - วีดิทัศน์เพื่อการศึกษา
+  - วีดิทัศน์เผยแพร่งานวิจัย
+  - ฉบับซับไตเติลสองภาษา
+audienceEn: ~
+audienceTh: ~
+relatedSlugs:
+  - center-of-excellence-in-communication-innovation-launches-groundbreaking-online-course-for-digital-n
+  - comm-art-chula-ce-drives-national-drug-safety-awareness-at-fda-summit
+ctaEn: Brief your video project
+ctaTh: เล่าโปรเจกต์วิดีโอของคุณ
+heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/video-production
+heroAltEn: Cinema camera and lighting on a video production set
+heroAltTh: กล้องถ่ายและไฟถ่ายบนกองถ่ายผลิตวิดีโอ

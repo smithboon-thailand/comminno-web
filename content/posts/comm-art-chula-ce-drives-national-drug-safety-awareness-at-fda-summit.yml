@@ -1,0 +1,15 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: comm-art-chula-ce-drives-national-drug-safety-awareness-at-fda-summit
+title: Comm.Inno drives national drug safety awareness at FDA summit
+summary: Comm.Inno joins the Faculty of Communication Arts and the Food and Drug Administration to drive national drug safety awareness at Thailand’s first FDA summit on rational drug use.
+date: "2025-07-09"
+tags:
+  - innovation-technology
+coverFilename: ~
+coverAltEn: FDA national drug-safety summit exhibition booth and visitors
+coverAltTh: บูธนิทรรศการประชุมระดับชาติเรื่องความปลอดภัยของอย.
+ogDescription: "Communication Innovation Center Drives National Drug Safety Awareness at FDA SummitAssistant Professor Dr. Teerada Chongkolrattanaporn\_and Dr. Kamonrat Kitrungpaisan\_from our Public Relations Department collaborated with the Food and Drug Administration (FDA)\_and Thai Health Promotion Foundation\_to present an interactive exhibition \"กินยาสมเหตุ หายโรคสมผล ทุกคนสมใจ\"\_at Thailand's First National Forum on Rational Drug Use.The event took place July 8-9,"
+coverImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/fda

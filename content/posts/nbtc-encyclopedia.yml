@@ -1,0 +1,15 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: nbtc-encyclopedia
+title: NBTC Encyclopedia
+summary: This encyclopedia compiles important topics, creates connections, explains in language that the younger generation can easily understand, and uses engaging illustrations.We started by gathering feedba
+date: "2024-07-06"
+tags:
+  - book-and-printing
+  - communication-design
+  - school
+coverFilename: 25218b_3400ec2582f248d4abc705149ac7365c-mv2.jpg
+ogDescription: This encyclopedia compiles important topics, creates connections, explains in language that the younger generation can easily understand, and uses engaging illustrations.We started by gathering feedback from both the younger and older generations to ensure that this encyclopedia would be widely read. With the feedback in hand, we created a modern encyclopedia that makes connections, explains topics in an easily understandable way for the younger generation, and uses interesting illustrations. Ad
+coverImage: ~

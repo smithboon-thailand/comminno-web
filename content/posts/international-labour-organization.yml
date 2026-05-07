@@ -1,0 +1,14 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: international-labour-organization
+title: International Labour Organization
+summary: United Nations WorkshopOur team participated in the workshop to promote cooperation for sustainable development with the United Nations and its valuable agenda in Thailand.
+date: "2024-06-21"
+tags:
+  - training
+  - seminar
+coverFilename: 25218b_2c64ead7cabf46dfb3907182edddcf0d-mv2.jpeg
+ogDescription: United Nations WorkshopOur team participated in the workshop to promote cooperation for sustainable development with the United Nations and its valuable agenda in Thailand. We taught various techniques related to text usage, photography, videography, and the use of the TikTok application. These skills were aimed at producing high-quality work for presenting individual and group projects.
+coverImage: ~

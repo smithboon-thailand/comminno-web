@@ -1,0 +1,8 @@
+# Post category (taxonomy). Mirrors original Wix slugs.
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: innovation-technology
+titleEn: Innovation & Technology
+titleTh: นวัตกรรมและเทคโนโลยี
+isService: false

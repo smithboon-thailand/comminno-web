@@ -1,0 +1,37 @@
+# Service catalogue entry. `descriptionEn` / `descriptionTh` is markdown-safe.
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: research-and-evaluation
+titleEn: Research & evaluation
+titleTh: วิจัยและประเมินผล
+subtitleEn: Frameworks, instruments, and reports that hold up to peer review.
+subtitleTh: กรอบ เครื่องมือ และรายงานที่ผ่านการทบทวนโดยผู้เชี่ยวชาญ
+sdgNumber: 17
+descriptionEn: We design research and evaluation projects that work as evidence — defensible methodology, validated instruments, transparent analysis, and reports written so that decision-makers can act on them. Our team holds doctorates in communication, sport science, and political science, and publishes regularly in peer-reviewed journals. Whether you need a baseline survey before a public-health campaign, a process evaluation halfway through a multi-year program, or an impact assessment for a funder, we scope the right design for your question and budget.
+descriptionTh: เราออกแบบโครงการวิจัยและประเมินผลที่ทำงานในฐานะหลักฐาน — มีระเบียบวิธีที่ยืนยันได้ เครื่องมือที่ผ่านการทดสอบความเที่ยง การวิเคราะห์ที่โปร่งใส และรายงานที่เขียนให้ผู้ตัดสินใจนำไปใช้ได้จริง ทีมของเราจบเอกด้านการสื่อสาร วิทยาศาสตร์การกีฬา และรัฐศาสตร์ และตีพิมพ์งานในวารสารที่ผ่านการทบทวนเป็นประจำ ไม่ว่าคุณต้องการสำรวจฐานก่อนเริ่มแคมเปญสาธารณสุข ประเมินกระบวนการกลางทาง หรือประเมินผลกระทบเพื่อรายงานต่อผู้ให้ทุน เราออกแบบให้เหมาะกับคำถามและงบประมาณของคุณ
+deliverablesEn:
+  - Research framework
+  - Evaluation framework
+  - Survey & interview instruments
+  - Quantitative & qualitative analysis
+  - Project outcome evaluation
+  - Evaluation reports
+deliverablesTh:
+  - กรอบวิจัย
+  - กรอบประเมินผล
+  - เครื่องมือสำรวจ
+  - การวิเคราะห์เชิงปริมาณและคุณภาพ
+  - ประเมินผลลัพธ์โครงการ
+  - รายงานประเมินผล
+audienceEn: ~
+audienceTh: ~
+relatedSlugs:
+  - nia-satisfaction-survey-2020
+  - asean-university-network
+  - international-labour-organization
+ctaEn: Scope a research project
+ctaTh: ปรึกษาออกแบบงานวิจัย
+heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/research-and-evaluation
+heroAltEn: Notebook with charts and a laptop showing data analysis — research and evaluation
+heroAltTh: สมุดบันทึกข้อมูลพร้อมแล็ปทอปแสดงผลวิเคราะห์ข้อมูล — งานวิจัยและประเมินผล

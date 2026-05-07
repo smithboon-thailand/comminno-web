@@ -1,0 +1,13 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: nia-satisfaction-survey-2020
+title: NIA Satisfaction Survey 2020
+summary: Customer Satisfaction Survey Using Mixed MethodsWe supported the development of services for the National Innovation Agency (Public Organization) by conducting a customer satisfaction survey using mix
+date: "2024-06-29"
+tags:
+  - research-and-evaluation
+coverFilename: 25218b_70abf2b826a749fab8c5755b58ac9333-mv2.jpg
+ogDescription: Customer Satisfaction Survey Using Mixed MethodsWe supported the development of services for the National Innovation Agency (Public Organization) by conducting a customer satisfaction survey using mixed methods.
+coverImage: ~

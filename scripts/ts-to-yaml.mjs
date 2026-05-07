@@ -1,21 +1,24 @@
 #!/usr/bin/env node
 /**
- * ts-to-yaml.mjs — one-shot migration of canonical TS content modules to YAML.
+ * ts-to-yaml.mjs — reverse pipeline (TS → YAML).
  *
- * Phase 2 r3 commit #5. Reads the live TS modules under
+ * Phase 2 r3 commit #5, updated in #7.5 to emit per-slug folder collections
+ * for posts / services / categories. Reads the live TS modules under
  * client/src/content/, extracts the exported data, and writes it back as
  * canonical YAML under /content/. Idempotent: re-running on the same
  * working tree should produce byte-identical output.
  *
- * Output layout (matches PHASE2_PLAN r3 §2.2):
+ * Output layout (matches PHASE2_PLAN r3 §2.2 + #7.5 split):
  *   content/
- *     posts.yml                 ← metadata (no body)
+ *     posts/<slug>.yml          ← one file per insight post (folder coll.)
  *     post-bodies/<slug>.md     ← long-form body, one file per post
- *     services.yml
- *     about.yml
- *     categories.yml
- *     redirects.yml
+ *     services/<slug>.yml       ← one file per service (folder coll.)
+ *     categories/<slug>.yml     ← one file per category (folder coll.)
+ *     about.yml                 ← single object (one logical page)
+ *     redirects.yml             ← single list (bulk-edited)
  *     SCHEMA.md                 ← architectural rules + field conventions
+ *
+ * Why folders for posts / services / categories: see build-content.mjs.
  *
  * Usage:
  *   pnpm exec tsx scripts/ts-to-yaml.mjs
@@ -23,7 +26,7 @@
  * The script is intentionally invoked through tsx so it can `import()`
  * the .ts modules directly (no regex parsing — lossless by construction).
  */
-import { mkdir, writeFile, rm } from "node:fs/promises";
+import { mkdir, writeFile, rm, readdir, unlink } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -76,9 +79,7 @@ function normalize(value) {
 // As of commit #6.5 the legacy paired image fields (coverWebp / coverJpg /
 // heroImageFallback) have been removed from the schema. Cloudinary's
 // `f_auto,q_auto` transform negotiates webp/jpg/avif per client, so a single
-// canonical `coverImage` / `heroImage` URL is sufficient. ts-to-yaml is now
-// a straight pass-through; if you reintroduce paired fields, add a new
-// collapse helper here and document it in content/SCHEMA.md.
+// canonical `coverImage` / `heroImage` URL is sufficient.
 
 async function ensureDir(dir) {
   await mkdir(dir, { recursive: true });
@@ -93,12 +94,44 @@ async function writeYaml(file, header, data) {
 }
 
 /**
- * Same as writeYaml but wraps `data` (an array) under a single root key, e.g.
- * `posts: [...]`. Sveltia CMS file_collection requires the wrapper because a
- * list widget cannot bind to a bare top-level YAML array (#7.1).
+ * Same as writeYaml but wraps `data` (an array) under a single root key,
+ * e.g. `redirects: [...]`. Sveltia's single-file collection list widget
+ * needs a root-key wrapper; folder collections do not (#7.5).
  */
 async function writeYamlList(file, header, rootKey, list) {
   return writeYaml(file, header, { [rootKey]: list });
+}
+
+/**
+ * Folder-collection writer. Wipes the folder, then writes one
+ * `<slug>.yml` per item. Each file holds a single top-level YAML object
+ * (no root-key wrapper) — that's the Sveltia folder-collection
+ * convention. Returns the total bytes written across the folder.
+ *
+ * @param {string} dir — folder path
+ * @param {string} headerSingular — single-line comment, prepended to each file
+ * @param {Array<{slug: string}>} items — must each have a `slug` field
+ */
+async function writeYamlFolder(dir, headerSingular, items) {
+  // Wipe + recreate so deletions in TS propagate to YAML and there are
+  // never orphan files.
+  if (existsSync(dir)) await rm(dir, { recursive: true, force: true });
+  await ensureDir(dir);
+  let bytes = 0;
+  for (const item of items) {
+    if (!item.slug || typeof item.slug !== "string") {
+      throw new Error(
+        `[ts-to-yaml] folder collection item is missing a string \`slug\` — ` +
+        `cannot determine filename for ${dir}`
+      );
+    }
+    const body = yaml.dump(normalize(item), YAML_OPTS);
+    const text = `# ${headerSingular}\n# Source of truth (commit #7.5+). Edit via /admin or directly in this file;\n# scripts/build-content.mjs reads it and emits client/src/content/*.ts.\n\n${body}`;
+    const file = path.join(dir, `${item.slug}.yml`);
+    await writeFile(file, text, "utf8");
+    bytes += text.length;
+  }
+  return bytes;
 }
 
 async function main() {
@@ -110,14 +143,16 @@ async function main() {
 
   let totalBytes = 0;
 
-  // 1. posts.yml — metadata only, body lives separately.
-  const postsBytes = await writeYamlList(
-    path.join(CONTENT_DIR, "posts.yml"),
-    "Insights / news posts (metadata only — body in content/post-bodies/<slug>.md).",
-    "posts",
+  // 1. posts/<slug>.yml — one file per insight post (folder collection)
+  totalBytes += await writeYamlFolder(
+    path.join(CONTENT_DIR, "posts"),
+    "Insight post (metadata only — body in content/post-bodies/<slug>.md).",
     posts
   );
-  totalBytes += postsBytes;
+
+  // Remove the legacy monolith if it still exists from pre-#7.5 trees.
+  const legacyPostsYml = path.join(CONTENT_DIR, "posts.yml");
+  if (existsSync(legacyPostsYml)) await unlink(legacyPostsYml);
 
   // 2. post-bodies/<slug>.md — one file per post
   let bodyCount = 0;
@@ -142,30 +177,32 @@ async function main() {
     bodyCount += 1;
   }
 
-  // 3. services.yml.
-  totalBytes += await writeYamlList(
-    path.join(CONTENT_DIR, "services.yml"),
-    "Service catalogue (9 entries). Each entry's `descriptionEn` / `descriptionTh` is markdown-safe.",
-    "services",
+  // 3. services/<slug>.yml — one file per service (folder collection)
+  totalBytes += await writeYamlFolder(
+    path.join(CONTENT_DIR, "services"),
+    "Service catalogue entry. `descriptionEn` / `descriptionTh` is markdown-safe.",
     services
   );
+  const legacyServicesYml = path.join(CONTENT_DIR, "services.yml");
+  if (existsSync(legacyServicesYml)) await unlink(legacyServicesYml);
 
-  // 4. about.yml — deeply nested (leadership / faculty2 / researchTeam / partners)
+  // 4. about.yml — single object, deeply nested.
   totalBytes += await writeYaml(
     path.join(CONTENT_DIR, "about.yml"),
     "About page — mission, pillars, leadership tiers, partners.",
     about
   );
 
-  // 5. categories.yml
-  totalBytes += await writeYamlList(
-    path.join(CONTENT_DIR, "categories.yml"),
-    "Post categories (taxonomy). Mirrors original Wix slugs.",
-    "categories",
+  // 5. categories/<slug>.yml — one file per category (folder collection)
+  totalBytes += await writeYamlFolder(
+    path.join(CONTENT_DIR, "categories"),
+    "Post category (taxonomy). Mirrors original Wix slugs.",
     categories
   );
+  const legacyCategoriesYml = path.join(CONTENT_DIR, "categories.yml");
+  if (existsSync(legacyCategoriesYml)) await unlink(legacyCategoriesYml);
 
-  // 6. redirects.yml
+  // 6. redirects.yml — single-file (bulk-edited, no per-entry workflow)
   totalBytes += await writeYamlList(
     path.join(CONTENT_DIR, "redirects.yml"),
     "Legacy Wix → new path redirects. Consumed by vercel.json + (future) middleware.",

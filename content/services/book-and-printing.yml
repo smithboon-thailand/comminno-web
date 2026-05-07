@@ -1,0 +1,37 @@
+# Service catalogue entry. `descriptionEn` / `descriptionTh` is markdown-safe.
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: book-and-printing
+titleEn: Books and printed media
+titleTh: หนังสือและสื่อสิ่งพิมพ์
+subtitleEn: Research-grade publications, designed to be read.
+subtitleTh: งานวิจัยที่ออกแบบให้คนอยากอ่าน
+sdgNumber: 4
+descriptionEn: We synthesise academic research, source visual material, and produce books and printed materials that meet both editorial and design standards. From textbook chapters to public-information booklets, we handle the full pipeline — review, write, design, print, distribute. Each project starts with a literature review and ends with a printed deliverable that organisations and educators actually use. We've produced encyclopaedic volumes for regulators, training handbooks for ministries, and university press editions for academic markets.
+descriptionTh: เราสังเคราะห์งานวิจัยทางวิชาการ รวบรวมภาพประกอบ และผลิตหนังสือกับสื่อสิ่งพิมพ์ที่ผ่านมาตรฐานทั้งด้านบรรณาธิการและการออกแบบ ตั้งแต่บทในตำราเรียน คู่มือเพื่อการสื่อสารสาธารณะ ไปจนถึงเอกสารวิจัยฉบับเต็ม เราดูแลทั้งกระบวนการตั้งแต่ทบทวนวรรณกรรม เขียน ออกแบบ พิมพ์ ไปจนถึงส่งมอบ
+deliverablesEn:
+  - Academic book chapters
+  - Public information booklets
+  - Annual reports
+  - Conference proceedings
+  - Educational textbooks
+  - Field manuals
+deliverablesTh:
+  - บทในตำราเรียน
+  - คู่มือสื่อสารสาธารณะ
+  - รายงานประจำปี
+  - เอกสารสรุปการประชุมวิชาการ
+  - ตำราเพื่อการศึกษา
+  - คู่มือปฏิบัติงานภาคสนาม
+audienceEn: ~
+audienceTh: ~
+relatedSlugs:
+  - nbtc-encyclopedia
+  - seeds-for-cu-sustainability
+  - department-of-disease-control
+ctaEn: Request a publishing consultation
+ctaTh: ขอคำปรึกษาด้านสิ่งพิมพ์
+heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/book-and-printing
+heroAltEn: Open book on a desk with research notes and pens — books and printed media service
+heroAltTh: หนังสือเปิดบนโต๊ะทำงานพร้อมบันทึกงานวิจัย — บริการหนังสือและสิ่งพิมพ์

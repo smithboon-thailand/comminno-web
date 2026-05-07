@@ -1,0 +1,43 @@
+# Service catalogue entry. `descriptionEn` / `descriptionTh` is markdown-safe.
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: communication-design
+titleEn: Communication design
+titleTh: ออกแบบการสื่อสาร
+subtitleEn: Information designed for the people who need it most.
+subtitleTh: สื่อที่ออกแบบเพื่อคนที่ควรเข้าถึงข้อมูลก่อนใคร
+sdgNumber: 10
+descriptionEn: |-
+  Most "communication design" stops at making things look nice. We start by asking: who fails to understand the current version, and why? Then we redesign to remove those barriers — through infographics, posters, social posts, 3D maps, and printed visuals — for audiences whose first language may not be Thai, whose literacy level varies, and whose attention is contested.
+
+  This service maps to SDG 10 because reducing inequality often starts with making information accessible to everyone, not just the already-informed.
+descriptionTh: |-
+  งาน "ออกแบบการสื่อสาร" โดยทั่วไปมักหยุดที่ความสวยงาม แต่เราเริ่มจากคำถามอีกแบบ — "ใครคือคนที่ยังไม่เข้าใจเวอร์ชันปัจจุบัน และเพราะเหตุใด" จากนั้นจึงออกแบบใหม่เพื่อปลดอุปสรรคเหล่านั้นออก ผ่านอินโฟกราฟิก โปสเตอร์ โพสต์โซเชียล แผนที่สามมิติ และสื่อสิ่งพิมพ์ — สำหรับกลุ่มผู้ชมที่ภาษาไทยอาจไม่ใช่ภาษาแรก ระดับการอ่านต่างกัน และความสนใจถูกแย่งจากทุกหน้าจอ
+
+  บริการนี้สอดคล้องกับ SDG 10 เพราะการลดความเหลื่อมล้ำในสังคมมักเริ่มจากเรื่องพื้นฐาน — ทำให้ข้อมูลที่จำเป็นถึงมือทุกคนได้เท่าเทียมกัน ไม่ใช่เฉพาะคนที่เข้าถึงได้อยู่แล้ว
+deliverablesEn:
+  - Infographics
+  - Visual storytelling
+  - Posters & wall graphics
+  - Printed media design
+  - Social media post systems
+  - 3D maps & wayfinding
+deliverablesTh:
+  - อินโฟกราฟิก
+  - การสื่อสารผ่านภาพ
+  - โปสเตอร์และสื่อติดผนัง
+  - การออกแบบสื่อสิ่งพิมพ์
+  - ระบบโพสต์โซเชียลมีเดีย
+  - แผนที่สามมิติและป้ายบอกทาง
+audienceEn: ~
+audienceTh: ~
+relatedSlugs:
+  - chula-zero-waste
+  - ministry-of-natural-resources-and-environment
+  - pid-thong-lang-phra-foundation
+ctaEn: Get a design review
+ctaTh: ขอรีวิวงานออกแบบ
+heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/communication-design
+heroAltEn: Designer's desk with sketches, swatches, and posters — communication design
+heroAltTh: โต๊ะนักออกแบบมีภาพร่าง ตัวอย่างสี และโปสเตอร์ — การออกแบบการสื่อสาร

@@ -1,0 +1,14 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: ministry-of-natural-resources-and-environment
+title: Ministry of Natural Resources and Environment
+summary: Personnel Development Training ProgramOur team conducted a training program for the staff of the Department of Environmental Quality Promotion, Ministry of Natural Resources and Environment.
+date: "2024-06-21"
+tags:
+  - training
+  - seminar
+coverFilename: 25218b_96a67968827a4e05b8d1514670943484-mv2.jpeg
+ogDescription: Personnel Development Training ProgramOur team conducted a training program for the staff of the Department of Environmental Quality Promotion, Ministry of Natural Resources and Environment. The training aimed to enhance their work efficiency by covering techniques for impactful writing and perfect photography. We also recommended equipment that would help elevate the professionalism of their work.
+coverImage: ~

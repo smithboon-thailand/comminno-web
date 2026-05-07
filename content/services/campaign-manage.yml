@@ -1,0 +1,48 @@
+# Service catalogue entry. `descriptionEn` / `descriptionTh` is markdown-safe.
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: campaign-manage
+titleEn: Campaign management
+titleTh: บริหารแคมเปญ
+subtitleEn: Behaviour change, not just brand awareness.
+subtitleTh: เปลี่ยนพฤติกรรมจริง ไม่ใช่แค่ทำให้คนรู้จัก
+sdgNumber: 13
+descriptionEn: |-
+  A campaign isn't a poster series. It's a sustained intervention with a stated behavioural goal, a target audience theory, channel selection, message strategy, and evaluation. We've run campaigns on waste reduction, drug-resistance education, environmental protection, and tourism revival in Nan Province.
+
+  Our process is nine stages: situation analysis → audience profiling → channel selection → core content → key messages → promotional materials → activity design → execution → results synthesis. Every stage produces a document the client owns.
+descriptionTh: |-
+  แคมเปญไม่ใช่โปสเตอร์ที่ทำเป็นชุด แต่คือการสื่อสารต่อเนื่องที่มีเป้าหมายเชิงพฤติกรรมชัดเจน มีทฤษฎีกลุ่มเป้าหมาย กลยุทธ์ช่องทาง กลยุทธ์ข้อความ และระบบประเมินผลรองรับ ที่ผ่านมาเราเคยจัดแคมเปญลดขยะในมหาวิทยาลัย ให้ความรู้เรื่องเชื้อดื้อยาในระดับชาติ ปกป้องสิ่งแวดล้อมร่วมกับภาครัฐ และฟื้นการท่องเที่ยวเชิงสร้างสรรค์ในจังหวัดน่าน
+
+  เราทำงานเป็น 9 ขั้นที่ชัดเจน — วิเคราะห์สถานการณ์ ศึกษากลุ่มเป้าหมาย เลือกช่องทาง สร้างเนื้อหาหลัก กำหนดคีย์เมสเสจ ผลิตสื่อประชาสัมพันธ์ ออกแบบกิจกรรม ดำเนินงาน และสรุปผล — โดยแต่ละขั้นผลิตเอกสารที่ลูกค้าเป็นเจ้าของลิขสิทธิ์เต็มทุกฉบับ
+deliverablesEn:
+  - Situation analysis
+  - Audience study & segmentation
+  - Channel strategy
+  - Core content & key messages
+  - Promotional materials
+  - Activity design
+  - Campaign execution
+  - Results synthesis report
+deliverablesTh:
+  - การวิเคราะห์สถานการณ์
+  - การศึกษาและแบ่งกลุ่มเป้าหมาย
+  - กลยุทธ์ช่องทาง
+  - เนื้อหาหลักและคีย์เมสเสจ
+  - สื่อประชาสัมพันธ์
+  - การออกแบบกิจกรรม
+  - การดำเนินแคมเปญ
+  - รายงานสรุปผล
+audienceEn: ~
+audienceTh: ~
+relatedSlugs:
+  - chula-zero-waste
+  - creative-tourism-development-project-in-nan-province
+  - nia-100-faces
+  - thai-health-promotion-foundation-organises-simple-drug-communication-as-daily-routine-training-by
+ctaEn: Plan your campaign
+ctaTh: เริ่มวางแผนแคมเปญ
+heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/campaign-manage
+heroAltEn: Strategy whiteboard with sticky notes and team collaborating on a campaign
+heroAltTh: กระดานวางแผนกลยุทธ์พร้อมโปสตอิตและทีมงานร่วมระดมสมอง

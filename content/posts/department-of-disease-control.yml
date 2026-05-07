@@ -1,0 +1,15 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: department-of-disease-control
+title: Department of Disease Control
+summary: Workshop on Service Process DesignThe discussion focused on principles of targeted communication and modern media production techniques.
+date: "2024-06-29"
+tags:
+  - school
+  - seminar
+  - training
+coverFilename: 25218b_943a6e13b0094abc843b48445f4a0513-mv2.jpg
+ogDescription: Workshop on Service Process DesignThe discussion focused on principles of targeted communication and modern media production techniques. These topics aimed to help participants build relationships and understanding within the organization, facilitate communication, and enhance the organization’s image.
+coverImage: ~

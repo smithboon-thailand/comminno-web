@@ -1,0 +1,15 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: empowering-youth-leaders
+title: Empowering Youth Leaders
+summary: "Empowering Youth Leaders : A Look Back at Our Recent WorkshopAs the head of our research unit and Vice President of Impulse Bangkok, I had the privilege of facilitating a training workshop for youth l"
+date: "2024-04-28"
+tags:
+  - seminar
+  - training
+  - highlights
+coverFilename: 25218b_40a013d83c714afbb81c7f935ea9ca38-mv2.jpg
+ogDescription: "Empowering Youth Leaders : A Look Back at Our Recent WorkshopAs the head of our research unit and Vice President of Impulse Bangkok, I had the privilege of facilitating a training workshop for youth leaders and mentors from three provinces in southern Thailand. The event, organized by Look South Peace, took place from November 10 to 13, 2023, in Phatthalung province.The workshop aimed to develop the potential of youth leaders and mentors to participate in and create activities that promote sexua"
+coverImage: ~

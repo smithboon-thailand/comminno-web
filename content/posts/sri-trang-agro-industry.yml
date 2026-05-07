@@ -1,0 +1,14 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: sri-trang-agro-industry
+title: Sri Trang Agro-Industry
+summary: "Training course: Creating Online ContentThe team has been invited to attend a training course on online content creation for the employees of Sri Trang Agro-Industry Public Company Limited, in order t"
+date: ~
+tags: []
+coverFilename: ~
+coverAltEn: Corporate employees in an online-content creation workshop
+coverAltTh: พนักงานบริษัทร่วมอบรมการผลิตคอนเทนต์ออนไลน์
+ogDescription: "Training course: Creating Online ContentThe team has been invited to attend a training course on online content creation for the employees of Sri Trang Agro-Industry Public Company Limited, in order to enable them to create video media, screen recordings, for ongoing organizational learning. The training is organized by the Sirindhorn Thai Language Institute, Chulalongkorn University, on July 20-21, 2022, at the Burisriphu Convention Center, Hat Yai Province."
+coverImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/sri-trang

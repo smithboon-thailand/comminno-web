@@ -1,0 +1,35 @@
+# Service catalogue entry. `descriptionEn` / `descriptionTh` is markdown-safe.
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: motion-effect-ar
+titleEn: Motion graphics & AR
+titleTh: โมชันกราฟิกและ AR
+subtitleEn: Make books move. Make packaging speak.
+subtitleTh: ทำให้หนังสือเคลื่อนไหว ทำให้บรรจุภัณฑ์พูดได้
+sdgNumber: 9
+descriptionEn: "Augmented reality turns flat paper into interactive experiences. Scan a textbook page and watch a chemistry reaction play. Point your camera at a public-health poster and a doctor explains it in your language. We design these experiences end-to-end — concept, 3D modelling, animation, and the AR framework that delivers them. Our AR work covers four contexts: AR-on-books for education, AR-on-packaging for product narratives, AR for marketing campaigns, and AR for classroom learning. Every experience runs in the browser — no app install required."
+descriptionTh: "เทคโนโลยี Augmented Reality เปลี่ยนกระดาษให้กลายเป็นประสบการณ์โต้ตอบ — สแกนหน้าตำราเรียนแล้วเห็นปฏิกิริยาเคมีเคลื่อนไหว ส่องกล้องไปที่โปสเตอร์สาธารณสุขแล้วได้ฟังหมออธิบายเป็นภาษาของคุณ เราออกแบบประสบการณ์เหล่านี้ครบวงจร ตั้งแต่แนวคิด การสร้างโมเดล 3 มิติ การทำอนิเมชัน ไปจนถึงเฟรมเวิร์ก AR ที่ทำให้ผู้ใช้เข้าถึง งาน AR ของเราครอบคลุม 4 บริบท: AR บนหนังสือเพื่อการศึกษา · AR บนบรรจุภัณฑ์ · AR สำหรับการตลาด · และ AR ในห้องเรียน ทุกประสบการณ์ทำงานผ่านเบราว์เซอร์ ไม่ต้องดาวน์โหลดแอป"
+deliverablesEn:
+  - AR experiences for printed materials
+  - AR product packaging
+  - AR marketing activations
+  - Classroom AR modules
+  - Motion graphics videos
+  - 3D explainer animations
+deliverablesTh:
+  - AR บนสิ่งพิมพ์
+  - AR บนบรรจุภัณฑ์
+  - AR สำหรับการตลาด
+  - AR ประกอบการสอน
+  - วิดีโอโมชันกราฟิก
+  - อนิเมชันอธิบายแบบ 3 มิติ
+audienceEn: ~
+audienceTh: ~
+relatedSlugs:
+  - nia-media-innovation
+ctaEn: Bring my asset to life
+ctaTh: ขอเริ่มโปรเจกต์ AR
+heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/motion-effect-ar
+heroAltEn: Phone scanning a printed page with augmented reality content layered above it
+heroAltTh: โทรศัพท์สแกนหน้าหนังสือและแสดงเนื้อหา AR ซ้อนขึ้นมา

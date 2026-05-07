@@ -383,3 +383,67 @@ User reviewed plan, approved 95%; 4 structural fixes + 3 additions + 2 question 
 
 ### Commit #8 — Vercel Speed Insights (pending #7 verify)
 ### Commit #9 — EDITORIAL.md handbook (pending #8 verify)
+
+
+---
+
+## Task 9 — #7.5 split single-file collections → folder collections (2026-05-07)
+
+User confirmed Option A: convert posts/services/categories from single-file
+`files:` collections to per-slug folder collections so Sveltia counts entries
+correctly and editorial PRs are scoped to one entry. Redirects + about stay
+single-file (no per-entry editorial workflow).
+
+### Content layout
+- [ ] Split `content/posts.yml` → `content/posts/<slug>.yml` × 24 (flat root, no `posts:` wrapper)
+- [ ] Split `content/services.yml` → `content/services/<slug>.yml` × 9
+- [ ] Split `content/categories.yml` → `content/categories/<slug>.yml` × 12
+- [ ] Delete the three old monolith YAML files
+- [ ] Keep `content/redirects.yml`, `content/about.yml`, `content/post-bodies/*.md` unchanged
+
+### `scripts/build-content.mjs`
+- [ ] Add `readYamlFolder(dir)` helper — reads `*.yml`, sorts by filename, returns array
+- [ ] Swap posts/services/categories readers from `readYamlList` → `readYamlFolder`
+- [ ] Auto-gen header updated: "AUTO-GENERATED FROM content/<x>/ — DO NOT EDIT"
+- [ ] Spot-check: 24 posts / 9 services / 12 categories / 39 redirects in emitted TS
+- [ ] Five-data-point verification (Smith bio, Watsayut, training deliverables, research-and-evaluation SDG=17, Waiphot Chansem)
+
+### `scripts/ts-to-yaml.mjs`
+- [ ] Add `writeYamlFolder(dir, items)` — writes one `<slug>.yml` per item, deletes orphans not in source
+- [ ] Swap posts/services/categories writers
+- [ ] Round-trip stability: `pnpm content` ↔ `pnpm content:reverse` byte-exact
+
+### `client/public/admin/config.yml`
+- [ ] `insights`: convert to `folder: content/posts`, fields inlined at root (slug, title, titleTh, summary, date, tags, coverFilename, coverImage, coverAltEn, coverAltTh, ogDescription)
+- [ ] `services`: convert to `folder: content/services`, fields inlined at root
+- [ ] `categories`: convert to `folder: content/categories`, fields inlined at root
+- [ ] `redirects`, `about`, `insight-bodies`: unchanged
+- [ ] `summary:` template per folder collection for sidebar labels
+
+### Verification
+- [ ] `pnpm content` byte-exact across two runs (sha256 match)
+- [ ] `pnpm exec tsc --noEmit` clean
+- [ ] `pnpm exec vite build` clean
+- [ ] `js-yaml` parses every new `<slug>.yml`
+
+### Commit + checkpoint
+- [ ] Commit #7.5 with full root-cause + verification
+- [ ] `webdev_save_checkpoint`
+- [ ] User verifies /admin: Insights · 24, Services · 9, Categories · 12, Insight bodies · 24, About · 1, Redirects · 1
+
+---
+
+## Task 10 — #8 Vercel Speed Insights + PDPA gating
+
+- [ ] `pnpm add @vercel/speed-insights`
+- [ ] Mount `<SpeedInsights />` in `App.tsx` conditional on `analytics` cookie consent
+- [ ] Verify no `vitals.vercel-insights.com` request before consent
+- [ ] Lighthouse perf check post-deploy
+- [ ] Commit + checkpoint
+
+## Task 11 — #9 EDITORIAL.md handbook (TH primary)
+
+- [ ] Sections: how to log in, propose change (PR), reviewers, image upload, invite collaborator, rollback
+- [ ] TH copy primary, EN secondary
+- [ ] Link from README
+- [ ] Commit + checkpoint

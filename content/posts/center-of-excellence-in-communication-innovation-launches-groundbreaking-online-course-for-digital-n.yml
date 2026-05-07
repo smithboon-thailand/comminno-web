@@ -1,0 +1,14 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: center-of-excellence-in-communication-innovation-launches-groundbreaking-online-course-for-digital-n
+title: Comm.Inno launches groundbreaking online course for digital nomads
+summary: Chula's Communication Arts launches online course for digital nomads in Thailand, starting Aug 1.
+date: "2024-06-19"
+tags:
+  - highlights
+  - school
+coverFilename: 25218b_fc87e081e7bd4bdfa37bcab62e5a441c-mv2.jpg
+ogDescription: Chula's Communication Arts launches online course for digital nomads in Thailand, starting Aug 1. Apply now at www.thesharpener.school
+coverImage: ~

@@ -1,0 +1,45 @@
+# Service catalogue entry. `descriptionEn` / `descriptionTh` is markdown-safe.
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: marketing-event
+titleEn: Marketing events
+titleTh: งานการตลาดและกิจกรรม
+subtitleEn: Launches, activations, and public-facing programs that move audiences in person.
+subtitleTh: งานเปิดตัว กิจกรรมแบรนด์ และโปรแกรมสาธารณะที่สื่อสารใจถึงใจ ในพื้นที่จริง
+sdgNumber: 11
+descriptionEn: |-
+  When you need an audience to feel something, not just read it — that's a marketing event. We design and produce launches, public campaigns, awareness activations, and sustainability-themed community events that bring online communication into physical reality. Stage, lighting, broadcasting, speaker line-up, evaluation — we handle the entire production.
+
+  Our events have driven national drug-safety awareness, community engagement around environmental themes, and academic-industry partnerships visible in mainstream media.
+descriptionTh: |-
+  เมื่องานต้องการให้ผู้ชม "รู้สึก" ไม่ใช่แค่ "รับรู้" — นั่นคือบทบาทของอีเวนต์ เราออกแบบและผลิตงานเปิดตัว แคมเปญสาธารณะ กิจกรรมสร้างความตระหนัก และอีเวนต์ชุมชนธีมความยั่งยืน ที่ดึงการสื่อสารออนไลน์ให้กลายเป็นประสบการณ์จริงในพื้นที่จริง — ตั้งแต่เวที แสง การถ่ายทอดสด รายชื่อวิทยากร ไปจนถึงการประเมินผล เราดูแลทั้งโปรดักชัน
+
+  อีเวนต์ที่เราเคยจัดขับเคลื่อนการรณรงค์ความปลอดภัยทางยาในระดับประเทศ สร้างการมีส่วนร่วมของชุมชนรอบประเด็นสิ่งแวดล้อม และเปิดความร่วมมือวิชาการ-อุตสาหกรรมที่ปรากฏในสื่อกระแสหลัก
+deliverablesEn:
+  - Event design & creative direction
+  - Venue planning & logistics
+  - Speaker & guest coordination
+  - Stage, lighting & decoration
+  - Launch & activation production
+  - Live broadcast (TV & online)
+  - Event outcome evaluation
+deliverablesTh:
+  - ออกแบบงานและทิศทางครีเอทีฟ
+  - จัดสถานที่และโลจิสติกส์
+  - ประสานงานวิทยากรและแขก
+  - เวที แสง และการตกแต่ง
+  - จัดงานเปิดตัวและกิจกรรม
+  - ถ่ายทอดสดผ่านทีวีและออนไลน์
+  - ประเมินผลกิจกรรม
+audienceEn: ~
+audienceTh: ~
+relatedSlugs:
+  - comm-art-chula-ce-drives-national-drug-safety-awareness-at-fda-summit
+  - sri-trang-agro-industry
+  - ministry-of-natural-resources-and-environment
+ctaEn: Design my event
+ctaTh: ออกแบบอีเวนต์ของคุณ
+heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/marketing-event
+heroAltEn: Stage lights and crowd at a public-facing marketing event
+heroAltTh: ไฟเวทีและผู้ชมในงานการตลาดแบบพบผู้ชมจริง

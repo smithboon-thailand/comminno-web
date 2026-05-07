@@ -1,0 +1,13 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: asean-university-network
+title: ASEAN University Network
+summary: We created the Annual Report for ASEAN University Network for the years 2016-2019.We designed the graphics and layout of the annual report with a creative and modern concept that aligns with the organ
+date: "2024-06-21"
+tags:
+  - book-and-printing
+coverFilename: 25218b_2b0f2529e00142aaabbab10e2503df71-mv2.png
+ogDescription: We created the Annual Report for ASEAN University Network for the years 2016-2019.We designed the graphics and layout of the annual report with a creative and modern concept that aligns with the organization’s personality. We provided print-ready files to the printing house, ensuring high-quality printouts. Additionally, we provided smaller file sizes for AUN to upload on their website, allowing for digital viewing of the report as another accessible option.https://anyflip.com/wyzmm/tiog/
+coverImage: ~

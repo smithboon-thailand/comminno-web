@@ -1,0 +1,38 @@
+# Service catalogue entry. `descriptionEn` / `descriptionTh` is markdown-safe.
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: training
+titleEn: Training programs
+titleTh: หลักสูตรอบรม
+subtitleEn: One day. Twelve case studies. Skills your team can use Monday.
+subtitleTh: หนึ่งวัน · 12 กรณีศึกษา · ทักษะที่ทีมคุณใช้ได้ทันทีวันจันทร์
+sdgNumber: 4
+descriptionEn: Our training programs treat learning as a system, not a one-off event. Every program starts with a needs assessment with the client, builds a custom curriculum tied to measurable outcomes, ships a participant manual, runs the sessions, and ends with an evaluation report comparing pre- and post-training competencies. We've designed programs for executive crisis communication, public-health communication, leadership for state enterprises, and youth empowerment. Programs run from one-day intensives to multi-month cohorts.
+descriptionTh: หลักสูตรอบรมของเรามองการเรียนรู้เป็นระบบ ไม่ใช่งานครั้งเดียว ทุกหลักสูตรเริ่มต้นด้วยการประเมินความต้องการกับลูกค้า สร้างหลักสูตรที่ตอบโจทย์เฉพาะพร้อมตัวชี้วัดที่วัดได้ ผลิตคู่มือสำหรับผู้เข้าอบรม จัดอบรม และจบด้วยรายงานประเมินผลที่เปรียบเทียบสมรรถนะก่อน-หลังอบรม เราเคยออกแบบหลักสูตรการสื่อสารวิกฤตให้ผู้บริหาร การสื่อสารด้านสาธารณสุข ภาวะผู้นำสำหรับรัฐวิสาหกิจ และเยาวชนผู้นำการเปลี่ยนแปลง หลักสูตรมีตั้งแต่ 1 วันไปจนถึงหลายเดือน
+deliverablesEn:
+  - Training-needs assessment
+  - Custom curriculum design
+  - Participant manuals
+  - Live training delivery
+  - Pre/post-training evaluation
+  - Certificate program
+deliverablesTh:
+  - ประเมินความต้องการอบรม
+  - ออกแบบหลักสูตรเฉพาะ
+  - คู่มือผู้เข้าอบรม
+  - การอบรมภาคบรรยายและปฏิบัติ
+  - ประเมินก่อน-หลัง
+  - ใบประกาศนียบัตร
+audienceEn: ~
+audienceTh: ~
+relatedSlugs:
+  - center-of-excellence-head-invited-to-lead-executive-crisis-communication-training
+  - the-training-program-for-driving-public-and-social-communication-care-d-plus
+  - empowering-youth-leaders
+  - associate-professor-dr-smith-boonchutima-delivers-leadership-training-at-krungthai-bank
+ctaEn: Discuss a custom program
+ctaTh: ปรึกษาออกแบบหลักสูตร
+heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/training
+heroAltEn: Trainer at a whiteboard leading a workshop with engaged participants
+heroAltTh: วิทยากรบรรยายหน้ากระดาน มีผู้เข้าร่วมอบรมตั้งใจฟัง

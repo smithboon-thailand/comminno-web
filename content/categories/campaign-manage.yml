@@ -1,0 +1,8 @@
+# Post category (taxonomy). Mirrors original Wix slugs.
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: campaign-manage
+titleEn: Campaign Manage
+titleTh: บริหารแคมเปญ
+isService: true

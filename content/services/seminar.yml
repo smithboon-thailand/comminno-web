@@ -1,0 +1,45 @@
+# Service catalogue entry. `descriptionEn` / `descriptionTh` is markdown-safe.
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: seminar
+titleEn: Seminars & forums
+titleTh: สัมมนาและประชุม
+subtitleEn: Convening that produces something — not just a photo opportunity.
+subtitleTh: การประชุมที่ได้ผลลัพธ์เป็นชิ้นเป็นอัน ไม่ใช่แค่ภาพหมู่
+sdgNumber: 17
+descriptionEn: |-
+  We run seminars, expert forums, and stakeholder consultations end-to-end: agenda design, speaker invitations, venue logistics, equipment, live moderation, real-time synthesis, and a written report that captures what the room actually decided.
+
+  The brief usually comes from clients who have hosted events before and got back nothing but feedback forms. Our differentiator is the synthesis — we treat every seminar as a research event with a discussable output, not a content delivery vehicle.
+descriptionTh: |-
+  เราจัดสัมมนา การประชุมผู้เชี่ยวชาญ และเวทีรับฟังผู้มีส่วนได้เสียครบวงจร — ตั้งแต่ออกแบบกำหนดการ เชิญวิทยากร จัดสถานที่และอุปกรณ์ ดำเนินรายการสด สังเคราะห์ข้อมูลขณะประชุม จนถึงเขียนรายงานบันทึกข้อสรุปที่ห้องประชุมเห็นพ้อง
+
+  ลูกค้าที่มาหาเรามักเคยจัดงานแบบเดิม ๆ แล้วได้กลับไปแค่แบบประเมินผู้เข้าร่วม จุดที่เราต่างคือเรามองทุกสัมมนาเป็นกิจกรรมวิจัยที่มีผลผลิตให้นำไปอภิปรายต่อ ไม่ใช่แค่เวทีส่งสาร
+deliverablesEn:
+  - Agenda design
+  - Speaker coordination
+  - Participant invitation
+  - Venue & equipment management
+  - Live moderation & discussion
+  - Real-time synthesis
+  - Meeting reports
+deliverablesTh:
+  - การออกแบบกำหนดการ
+  - การประสานงานวิทยากร
+  - การเชิญผู้เข้าร่วม
+  - จัดสถานที่และอุปกรณ์
+  - ดำเนินรายการและอภิปราย
+  - สังเคราะห์ข้อมูลขณะประชุม
+  - รายงานการประชุม
+audienceEn: ~
+audienceTh: ~
+relatedSlugs:
+  - chula-communication-arts-strengthens-academic-collaboration-with-keio-university-and-bunkyo-universi
+  - associate-professor-dr-smith-boonchutima-delivers-special-lecture-at-professional-treasury-officer
+  - dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-türkiye-for-the-wo
+ctaEn: Plan a seminar
+ctaTh: วางแผนการประชุม
+heroImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/services/seminar
+heroAltEn: Audience listening to a panel of speakers at a seminar
+heroAltTh: ผู้เข้าร่วมฟังวิทยากรบนเวทีสัมมนา

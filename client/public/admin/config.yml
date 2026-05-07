@@ -8,6 +8,15 @@
 #
 # Editorial workflow: every save in /admin opens (or updates) a pull request
 # against `main`. A reviewer merges; Vercel auto-deploys. See EDITORIAL.md.
+#
+# Collection types (#7.5):
+#   • Folder collections (one file per entry) for posts / services /
+#     categories — gives editors 1-PR-per-entry, no merge conflicts on
+#     parallel edits, and proper entry counts in the sidebar.
+#   • Folder collection for insight-bodies (one .md per body, joined to
+#     posts by slug).
+#   • Single-file collections (`files:`) for about (one logical page) and
+#     redirects (bulk-edited list, not per-entry workflow).
 # =============================================================================
 
 backend:
@@ -39,16 +48,12 @@ publish_mode: editorial_workflow
 # -----------------------------------------------------------------------------
 # Media library — Cloudinary unsigned upload
 # -----------------------------------------------------------------------------
-# Editors paste images straight into the markdown widget; Sveltia uploads to
-# the `comminno/uploads` folder using the unsigned preset. The preset enforces
-# allowed formats (jpg, jpeg, png, webp, gif) and folder isolation server-side
-# so a stolen browser session cannot dump arbitrary files.
 media_library:
   name: cloudinary
-  output_filename_only: false             # store the full secure_url, not just the public_id
+  output_filename_only: false
   config:
     cloud_name: dpzdw1bkr
-    upload_preset: comminno-cms-uploads     # unsigned preset; restricted to comminno/uploads + jpg/jpeg/png/webp/gif
+    upload_preset: comminno-cms-uploads
     multiple: false
     folder: comminno/uploads
     use_filename: true
@@ -60,63 +65,50 @@ media_library:
       - png
       - webp
       - gif
-    max_file_size: 8000000                # 8 MB — anything larger should be optimised before upload
+    max_file_size: 8000000
 
-# Default media_folder still required as a fallback when Cloudinary widget is
-# unavailable (e.g. preview iframe). Files land in-repo under content/uploads.
 media_folder: content/uploads
 public_folder: /uploads
 
 # =============================================================================
 # COLLECTIONS
 # =============================================================================
-# Each single-file collection uses Sveltia's `files:` pattern (one entry per
-# YAML file) — that's the documented way to bind one form to one file.
-# Field descriptions are cribbed verbatim (translated for editor context) from
-# content/SCHEMA.md.
-# =============================================================================
 collections:
   # ---------------------------------------------------------------------------
-  # 1. Insights / news posts (24 entries)
+  # 1. Insights / news posts (24 entries — folder collection)
   # ---------------------------------------------------------------------------
-  # `posts.yml` carries metadata only. Bodies live in
-  # `content/post-bodies/<slug>.md` so each post diff is a single file change
-  # and two editors can edit different posts in parallel without merge pain.
   - name: insights
     label: Insights · บทความ
+    label_singular: Insight · บทความ
     description: >
-      Long-form articles, case studies, and project write-ups. The metadata
-      lives here; the body markdown is edited in the "Insight bodies"
-      folder collection (linked by slug).
-    files:
-      - name: posts
-        label: All insight posts
-        file: content/posts.yml
-        format: yml
-        fields:
-          - name: posts
-            label: Posts
-            widget: list
-            summary: '{{fields.title}} ({{fields.slug}})'
-            fields:
-              - { name: slug, label: 'Slug · ตัวระบุใน URL', widget: string, hint: 'kebab-case; also the filename for the body markdown. Do not change after publish.' }
-              - { name: title, label: 'Title (EN) · หัวข้อ (อังกฤษ)', widget: string, hint: 'Required. Sentence case. Used in cards and nav.' }
-              - { name: titleTh, label: 'Title (TH) · หัวข้อ (ไทย)', widget: string, required: false, hint: 'Optional but recommended. Falls back to the EN title when missing.' }
-              - { name: summary, label: 'Summary · สรุปสั้น', widget: text, hint: 'Required. One sentence shown on cards. TH-first audience.' }
-              - { name: date, label: 'Date · วันที่เผยแพร่', widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD', required: false, hint: 'ISO date YYYY-MM-DD. Leave blank if unknown.' }
-              - { name: tags, label: 'Tags · หมวดหมู่', widget: list, default: [], hint: 'Category slugs from the Categories collection (e.g. campaign, sustainability).' }
-              - { name: coverFilename, label: 'Legacy Wix filename', widget: string, required: false, hint: 'Leave blank for new posts. Kept only for posts migrated from the old Wix site.' }
-              - { name: coverImage, label: 'Cover image · ภาพหน้าปก', widget: image, required: false, hint: 'Cloudinary URL or public_id (e.g. comminno/insights/<slug>). Cloudinary auto-negotiates webp/jpg/avif per client.' }
-              - { name: coverAltEn, label: 'Cover alt text (EN) · คำอธิบายภาพ (อังกฤษ)', widget: string, required: false, hint: 'Short, descriptive. No "Photo of" prefix. Required for accessibility.' }
-              - { name: coverAltTh, label: 'Cover alt text (TH) · คำอธิบายภาพ (ไทย)', widget: string, required: false, hint: 'Required for accessibility on Thai routes.' }
-              - { name: ogDescription, label: 'OG description · คำอธิบายสำหรับโซเชียล', widget: text, hint: '2–3 sentences shown when the post is shared on Facebook/Twitter. Sentence case, never auto-generated.' }
+      Long-form articles, case studies, and project write-ups. Metadata only;
+      the body markdown is edited in the "Insight bodies" collection
+      (linked by matching slug).
+    folder: content/posts
+    extension: yml
+    format: yml
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    identifier_field: slug
+    summary: '{{title}} ({{slug}})'
+    sortable_fields: [date, title, slug]
+    fields:
+      - { name: slug, label: 'Slug · ตัวระบุใน URL', widget: string, hint: 'kebab-case; also the filename for the body markdown. Do not change after publish.' }
+      - { name: title, label: 'Title (EN) · หัวข้อ (อังกฤษ)', widget: string, hint: 'Required. Sentence case. Used in cards and nav.' }
+      - { name: titleTh, label: 'Title (TH) · หัวข้อ (ไทย)', widget: string, required: false, hint: 'Optional but recommended. Falls back to the EN title when missing.' }
+      - { name: summary, label: 'Summary · สรุปสั้น', widget: text, hint: 'Required. One sentence shown on cards. TH-first audience.' }
+      - { name: date, label: 'Date · วันที่เผยแพร่', widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD', required: false, hint: 'ISO date YYYY-MM-DD. Leave blank if unknown.' }
+      - { name: tags, label: 'Tags · หมวดหมู่', widget: list, default: [], hint: 'Category slugs from the Categories collection (e.g. campaign-manage, communication-design).' }
+      - { name: coverFilename, label: 'Legacy Wix filename', widget: string, required: false, hint: 'Leave blank for new posts. Kept only for posts migrated from the old Wix site.' }
+      - { name: coverImage, label: 'Cover image · ภาพหน้าปก', widget: image, required: false, hint: 'Cloudinary URL or public_id (e.g. comminno/insights/<slug>). Cloudinary auto-negotiates webp/jpg/avif per client.' }
+      - { name: coverAltEn, label: 'Cover alt text (EN) · คำอธิบายภาพ (อังกฤษ)', widget: string, required: false, hint: 'Short, descriptive. No "Photo of" prefix. Required for accessibility.' }
+      - { name: coverAltTh, label: 'Cover alt text (TH) · คำอธิบายภาพ (ไทย)', widget: string, required: false, hint: 'Required for accessibility on Thai routes.' }
+      - { name: ogDescription, label: 'OG description · คำอธิบายสำหรับโซเชียล', widget: text, hint: '2–3 sentences shown when the post is shared on Facebook/Twitter. Sentence case, never auto-generated.' }
 
   # ---------------------------------------------------------------------------
   # 2. Insight bodies — one markdown file per post (folder collection)
   # ---------------------------------------------------------------------------
-  # Folder collection so editors get Sveltia's full-screen markdown widget
-  # (preview pane + image embed). Filename = post slug; this is the contract
-  # `scripts/build-content.mjs` enforces when joining bodies to posts.yml.
   - name: insight-bodies
     label: Insight bodies · เนื้อหาบทความ
     label_singular: Insight body · เนื้อหาบทความ
@@ -125,7 +117,7 @@ collections:
       the slug in the Insights collection.
     folder: content/post-bodies
     extension: md
-    format: frontmatter                   # body content lives below `slug:` frontmatter
+    format: frontmatter
     create: true
     delete: true
     slug: '{{slug}}'
@@ -135,42 +127,42 @@ collections:
       - { name: body, label: 'Body · เนื้อหา', widget: markdown, hint: 'Full article body. Use ## for section headings; the H1 is rendered automatically from the post title.' }
 
   # ---------------------------------------------------------------------------
-  # 3. Services (9 entries)
+  # 3. Services (9 entries — folder collection)
   # ---------------------------------------------------------------------------
   - name: services
     label: Services · บริการ
+    label_singular: Service · บริการ
     description: >
       The 9 service-catalogue entries shown on /services and /services/<slug>.
       Each service has a primary UN SDG goal that drives its chip colour.
-    files:
-      - name: services
-        label: All services
-        file: content/services.yml
-        format: yml
-        fields:
-          - name: services
-            label: Services
-            widget: list
-            summary: '{{fields.titleEn}} (SDG {{fields.sdgNumber}})'
-            fields:
-              - { name: slug, label: 'Slug', widget: string, hint: 'kebab-case; appears in URL.' }
-              - { name: titleEn, label: 'Title (EN)', widget: string, hint: 'Sentence case.' }
-              - { name: titleTh, label: 'Title (TH)', widget: string, required: false }
-              - { name: subtitleEn, label: 'Subtitle (EN)', widget: text, required: false, hint: 'One-line tagline shown under the title on cards and detail pages.' }
-              - { name: subtitleTh, label: 'Subtitle (TH)', widget: text, required: false }
-              - { name: sdgNumber, label: 'UN SDG goal · เป้าหมาย SDG', widget: number, value_type: int, min: 1, max: 17, hint: '1–17. Drives the SDG chip colour (matches --sdg-{n} in tokens.css).' }
-              - { name: descriptionEn, label: 'Description (EN) · คำอธิบาย', widget: markdown, hint: 'Multi-paragraph long-form copy. Rendered as <p> blocks split on blank lines.' }
-              - { name: descriptionTh, label: 'Description (TH) · คำอธิบาย (ไทย)', widget: markdown }
-              - { name: deliverablesEn, label: 'Deliverables (EN) · ผลงานที่ส่งมอบ', widget: list, field: { name: item, label: Item, widget: string }, hint: 'Bullet list of concrete outputs (typically 4–8 items).' }
-              - { name: deliverablesTh, label: 'Deliverables (TH) · ผลงานที่ส่งมอบ', widget: list, field: { name: item, label: Item, widget: string } }
-              - { name: audienceEn, label: 'Audience (EN)', widget: text, required: false, hint: 'Currently null for MVP — we frame services through deliverables, not audience.' }
-              - { name: audienceTh, label: 'Audience (TH)', widget: text, required: false }
-              - { name: ctaEn, label: 'CTA button (EN) · ปุ่มเชิญชวน', widget: string, required: false, hint: 'Service-specific CTA copy (e.g. "Talk to us about your book").' }
-              - { name: ctaTh, label: 'CTA button (TH) · ปุ่มเชิญชวน', widget: string, required: false }
-              - { name: relatedSlugs, label: 'Related insight slugs · บทความที่เกี่ยวข้อง', widget: list, default: [], required: false, field: { name: slug, label: Slug, widget: string }, hint: 'Insight-post slugs to surface as case studies on this service detail page.' }
-              - { name: heroImage, label: 'Hero image · ภาพหลัก', widget: image, required: false, hint: 'Cloudinary URL or public_id (e.g. comminno/services/<slug>).' }
-              - { name: heroAltEn, label: 'Hero alt (EN)', widget: string, required: false, hint: 'Required for accessibility.' }
-              - { name: heroAltTh, label: 'Hero alt (TH)', widget: string, required: false }
+    folder: content/services
+    extension: yml
+    format: yml
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    identifier_field: slug
+    summary: '{{titleEn}} (SDG {{sdgNumber}})'
+    sortable_fields: [titleEn, sdgNumber, slug]
+    fields:
+      - { name: slug, label: 'Slug', widget: string, hint: 'kebab-case; appears in URL.' }
+      - { name: titleEn, label: 'Title (EN)', widget: string, hint: 'Sentence case.' }
+      - { name: titleTh, label: 'Title (TH)', widget: string, required: false }
+      - { name: subtitleEn, label: 'Subtitle (EN)', widget: text, required: false, hint: 'One-line tagline shown under the title on cards and detail pages.' }
+      - { name: subtitleTh, label: 'Subtitle (TH)', widget: text, required: false }
+      - { name: sdgNumber, label: 'UN SDG goal · เป้าหมาย SDG', widget: number, value_type: int, min: 1, max: 17, hint: '1–17. Drives the SDG chip colour (matches --sdg-{n} in tokens.css).' }
+      - { name: descriptionEn, label: 'Description (EN) · คำอธิบาย', widget: markdown, hint: 'Multi-paragraph long-form copy. Rendered as <p> blocks split on blank lines.' }
+      - { name: descriptionTh, label: 'Description (TH) · คำอธิบาย (ไทย)', widget: markdown }
+      - { name: deliverablesEn, label: 'Deliverables (EN) · ผลงานที่ส่งมอบ', widget: list, field: { name: item, label: Item, widget: string }, hint: 'Bullet list of concrete outputs (typically 4–8 items).' }
+      - { name: deliverablesTh, label: 'Deliverables (TH) · ผลงานที่ส่งมอบ', widget: list, field: { name: item, label: Item, widget: string } }
+      - { name: audienceEn, label: 'Audience (EN)', widget: text, required: false, hint: 'Currently null for MVP — we frame services through deliverables, not audience.' }
+      - { name: audienceTh, label: 'Audience (TH)', widget: text, required: false }
+      - { name: ctaEn, label: 'CTA button (EN) · ปุ่มเชิญชวน', widget: string, required: false, hint: 'Service-specific CTA copy (e.g. "Talk to us about your book").' }
+      - { name: ctaTh, label: 'CTA button (TH) · ปุ่มเชิญชวน', widget: string, required: false }
+      - { name: relatedSlugs, label: 'Related insight slugs · บทความที่เกี่ยวข้อง', widget: list, default: [], required: false, field: { name: slug, label: Slug, widget: string }, hint: 'Insight-post slugs to surface as case studies on this service detail page.' }
+      - { name: heroImage, label: 'Hero image · ภาพหลัก', widget: image, required: false, hint: 'Cloudinary URL or public_id (e.g. comminno/services/<slug>).' }
+      - { name: heroAltEn, label: 'Hero alt (EN)', widget: string, required: false, hint: 'Required for accessibility.' }
+      - { name: heroAltTh, label: 'Hero alt (TH)', widget: string, required: false }
 
   # ---------------------------------------------------------------------------
   # 4. About — single-file collection (mission + tiers + partners)
@@ -333,31 +325,31 @@ collections:
             hint: 'Plain bilingual name list. Kept until UI refactor.'
 
   # ---------------------------------------------------------------------------
-  # 5. Categories (12 entries)
+  # 5. Categories (12 entries — folder collection)
   # ---------------------------------------------------------------------------
   - name: categories
     label: Categories · หมวดหมู่
+    label_singular: Category · หมวดหมู่
     description: >
       Post taxonomy. The `isService` flag distinguishes service categories
       from editorial ones at render time.
-    files:
-      - name: categories
-        label: All categories
-        file: content/categories.yml
-        format: yml
-        fields:
-          - name: categories
-            label: Categories
-            widget: list
-            summary: '{{fields.titleEn}} ({{fields.slug}})'
-            fields:
-              - { name: slug, widget: string, label: 'Slug', hint: 'kebab-case; matches the tag values used in posts.' }
-              - { name: titleEn, widget: string, label: 'Title (EN)' }
-              - { name: titleTh, widget: string, required: false, label: 'Title (TH)' }
-              - { name: isService, widget: boolean, default: false, label: 'Is a service?', hint: 'True for the 9 service categories; false for editorial taxonomies (highlights, school, etc.).' }
+    folder: content/categories
+    extension: yml
+    format: yml
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    identifier_field: slug
+    summary: '{{titleEn}} ({{slug}})'
+    sortable_fields: [titleEn, slug]
+    fields:
+      - { name: slug, widget: string, label: 'Slug', hint: 'kebab-case; matches the tag values used in posts.' }
+      - { name: titleEn, widget: string, label: 'Title (EN)' }
+      - { name: titleTh, widget: string, required: false, label: 'Title (TH)' }
+      - { name: isService, widget: boolean, default: false, label: 'Is a service?', hint: 'True for the 9 service categories; false for editorial taxonomies (highlights, school, etc.).' }
 
   # ---------------------------------------------------------------------------
-  # 6. Redirects (39 entries)
+  # 6. Redirects — single-file collection (39 entries, bulk-edited)
   # ---------------------------------------------------------------------------
   - name: redirects
     label: Redirects · เปลี่ยนเส้นทาง URL

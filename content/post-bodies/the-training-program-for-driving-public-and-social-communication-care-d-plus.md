@@ -1,3 +1,6 @@
+---
+---
+
 Chulalongkorn University, in collaboration with the Ministry of Public Health, organizes the launch event for the training program for driving public and social communication (Care D+).
 
 Based on the government's policy aiming to provide all Thai people with equitable access to quality healthcare services, the Ministry of Public Health has established 13 operational priorities. These priorities are designed to develop a healthcare system that addresses problem-solving, strengthens foundational systems, and utilizes health to drive the country's economy. Effective communication among patients, relatives, and healthcare personnel is emphasized as a key focus area by the Ministry of Public Health and designated as one of the Quick Wins to be expedited for visible results within 100 days. This urgency stems from the fact that over 90% of conflicts and complaints arise due to communication breakdowns, discrepancies, or inadequate crisis communication management, leading to grievances, lawsuits, and significant impacts on the morale and motivation of healthcare personnel.

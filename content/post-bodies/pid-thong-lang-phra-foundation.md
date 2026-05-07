@@ -1,3 +1,6 @@
+---
+---
+
 Continuing the royal initiativeOnline media production training Persuasion techniques and personality development
 
 Training is organized by expert teachers in all 3 areas:

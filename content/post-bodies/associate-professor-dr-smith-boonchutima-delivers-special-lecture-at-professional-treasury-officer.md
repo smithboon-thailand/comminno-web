@@ -1,3 +1,6 @@
+---
+---
+
 Today (August 6, 2025), Associate Professor Dr. Smith Boonchutima from the Faculty of Communication Arts, Chulalongkorn University, delivered a special lecture on "Communication Techniques for Administration and Public Relations" at the 15th Professional Treasury Officer Program, organized by the Fiscal Policy Research Institute Foundation.
 
 The lecture covered key topics including communication strategy in government organizations, information management in the digital age, crisis communication, and the application of modern technology in public relations. The session was attended by 60 government executives from various agencies.

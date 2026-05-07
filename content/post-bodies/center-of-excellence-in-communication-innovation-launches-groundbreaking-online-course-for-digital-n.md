@@ -1,3 +1,6 @@
+---
+---
+
 Comm.Inno — the Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability, Faculty of Communication Arts, Chulalongkorn University — is proud to announce the launch of "Media & Communication for Transnational Citizens," an innovative online course designed for digital nomads and global talents in Thailand.
 
 Assoc. Prof. Smith Boonchutima, Ph.D., who was assigned by the Faculty of Communication Arts to head the project, developed the 12-month program to equip participants with essential skills for effective communication and cultural understanding in Thailand.

@@ -1,3 +1,6 @@
+---
+---
+
 Empowering Youth Leaders : A Look Back at Our Recent Workshop
 
 As the head of our research unit and Vice President of Impulse Bangkok, I had the privilege of facilitating a training workshop for youth leaders and mentors from three provinces in southern Thailand. The event, organized by Look South Peace, took place from November 10 to 13, 2023, in Phatthalung province.

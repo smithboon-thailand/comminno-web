@@ -118,9 +118,14 @@ for (const post of posts) {
     );
   }
   const raw = readFileSync(join(BODIES, `${post.slug}.md`), "utf8");
+  // Strip the leading YAML front matter block (added in #7.2 so Sveltia's
+  // folder-collection `yaml-frontmatter` parser accepts the file). We don't
+  // currently bind any frontmatter fields — it's strictly a parser shim —
+  // so the body the runtime sees is unchanged from pre-#7.2.
+  const noFrontMatter = raw.replace(/^---\r?\n([\s\S]*?\r?\n)?---\r?\n+/, "");
   // Strip a single trailing newline (POSIX EOF) so the embedded string
   // matches what the legacy pipeline emitted.
-  postBodies[post.slug] = raw.replace(/\n$/, "");
+  postBodies[post.slug] = noFrontMatter.replace(/\n$/, "");
 }
 
 const bodiesTS =

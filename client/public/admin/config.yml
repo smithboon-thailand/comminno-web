@@ -43,9 +43,6 @@ publish_mode: editorial_workflow
 # the `comminno/uploads` folder using the unsigned preset. The preset enforces
 # allowed formats (jpg, jpeg, png, webp, gif) and folder isolation server-side
 # so a stolen browser session cannot dump arbitrary files.
-#
-# The preset name is swapped in via a tiny follow-up commit once Smith
-# finishes creating it in Cloudinary console.
 media_library:
   name: cloudinary
   output_filename_only: false             # store the full secure_url, not just the public_id
@@ -73,8 +70,10 @@ public_folder: /uploads
 # =============================================================================
 # COLLECTIONS
 # =============================================================================
-# Each collection maps 1:1 onto a YAML file in `content/`. Field descriptions
-# are cribbed verbatim (translated for editor context) from content/SCHEMA.md.
+# Each single-file collection uses Sveltia's `files:` pattern (one entry per
+# YAML file) — that's the documented way to bind one form to one file.
+# Field descriptions are cribbed verbatim (translated for editor context) from
+# content/SCHEMA.md.
 # =============================================================================
 collections:
   # ---------------------------------------------------------------------------
@@ -83,42 +82,37 @@ collections:
   # `posts.yml` carries metadata only. Bodies live in
   # `content/post-bodies/<slug>.md` so each post diff is a single file change
   # and two editors can edit different posts in parallel without merge pain.
-  #
-  # Sveltia natively supports this split via two collections that share a
-  # slug — `insights` for metadata and `insight-bodies` for the markdown.
   - name: insights
     label: Insights · บทความ
-    label_singular: Insight · บทความ
     description: >
       Long-form articles, case studies, and project write-ups. The metadata
       lives here; the body markdown is edited in the "Insight bodies"
-      collection (linked by slug).
-    file: content/posts.yml
-    type: file_collection                 # Sveltia extension: edit one YAML file containing an array
-    format: yml
-    create: true
-    delete: true
-    fields:
+      folder collection (linked by slug).
+    files:
       - name: posts
-        label: Posts
-        widget: list
-        # Use slug as the visible label so the editor sees a meaningful list.
-        summary: '{{fields.title}} ({{fields.slug}})'
+        label: All insight posts
+        file: content/posts.yml
+        format: yml
         fields:
-          - { name: slug, label: 'Slug · ตัวระบุใน URL', widget: string, hint: 'kebab-case; also the filename for the body markdown. Do not change after publish.' }
-          - { name: title, label: 'Title (EN) · หัวข้อ (อังกฤษ)', widget: string, hint: 'Required. Sentence case. Used in cards and nav.' }
-          - { name: titleTh, label: 'Title (TH) · หัวข้อ (ไทย)', widget: string, required: false, hint: 'Optional but recommended. Falls back to the EN title when missing.' }
-          - { name: summary, label: 'Summary · สรุปสั้น', widget: text, hint: 'Required. One sentence shown on cards. TH-first audience.' }
-          - { name: date, label: 'Date · วันที่เผยแพร่', widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD', required: false, hint: 'ISO date YYYY-MM-DD. Leave blank if unknown.' }
-          - { name: tags, label: 'Tags · หมวดหมู่', widget: list, default: [], hint: 'Category slugs from the Categories collection (e.g. campaign, sustainability).' }
-          - { name: coverFilename, label: 'Legacy Wix filename', widget: string, required: false, hint: 'Leave blank for new posts. Kept only for posts migrated from the old Wix site.' }
-          - { name: coverImage, label: 'Cover image · ภาพหน้าปก', widget: image, required: false, hint: 'Cloudinary URL or public_id (e.g. comminno/insights/<slug>). Cloudinary auto-negotiates webp/jpg/avif per client.' }
-          - { name: coverAltEn, label: 'Cover alt text (EN) · คำอธิบายภาพ (อังกฤษ)', widget: string, required: false, hint: 'Short, descriptive. No "Photo of" prefix. Required for accessibility.' }
-          - { name: coverAltTh, label: 'Cover alt text (TH) · คำอธิบายภาพ (ไทย)', widget: string, required: false, hint: 'Required for accessibility on Thai routes.' }
-          - { name: ogDescription, label: 'OG description · คำอธิบายสำหรับโซเชียล', widget: text, hint: '2–3 sentences shown when the post is shared on Facebook/Twitter. Sentence case, never auto-generated.' }
+          - name: posts
+            label: Posts
+            widget: list
+            summary: '{{fields.title}} ({{fields.slug}})'
+            fields:
+              - { name: slug, label: 'Slug · ตัวระบุใน URL', widget: string, hint: 'kebab-case; also the filename for the body markdown. Do not change after publish.' }
+              - { name: title, label: 'Title (EN) · หัวข้อ (อังกฤษ)', widget: string, hint: 'Required. Sentence case. Used in cards and nav.' }
+              - { name: titleTh, label: 'Title (TH) · หัวข้อ (ไทย)', widget: string, required: false, hint: 'Optional but recommended. Falls back to the EN title when missing.' }
+              - { name: summary, label: 'Summary · สรุปสั้น', widget: text, hint: 'Required. One sentence shown on cards. TH-first audience.' }
+              - { name: date, label: 'Date · วันที่เผยแพร่', widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD', required: false, hint: 'ISO date YYYY-MM-DD. Leave blank if unknown.' }
+              - { name: tags, label: 'Tags · หมวดหมู่', widget: list, default: [], hint: 'Category slugs from the Categories collection (e.g. campaign, sustainability).' }
+              - { name: coverFilename, label: 'Legacy Wix filename', widget: string, required: false, hint: 'Leave blank for new posts. Kept only for posts migrated from the old Wix site.' }
+              - { name: coverImage, label: 'Cover image · ภาพหน้าปก', widget: image, required: false, hint: 'Cloudinary URL or public_id (e.g. comminno/insights/<slug>). Cloudinary auto-negotiates webp/jpg/avif per client.' }
+              - { name: coverAltEn, label: 'Cover alt text (EN) · คำอธิบายภาพ (อังกฤษ)', widget: string, required: false, hint: 'Short, descriptive. No "Photo of" prefix. Required for accessibility.' }
+              - { name: coverAltTh, label: 'Cover alt text (TH) · คำอธิบายภาพ (ไทย)', widget: string, required: false, hint: 'Required for accessibility on Thai routes.' }
+              - { name: ogDescription, label: 'OG description · คำอธิบายสำหรับโซเชียล', widget: text, hint: '2–3 sentences shown when the post is shared on Facebook/Twitter. Sentence case, never auto-generated.' }
 
   # ---------------------------------------------------------------------------
-  # 2. Insight bodies — one markdown file per post
+  # 2. Insight bodies — one markdown file per post (folder collection)
   # ---------------------------------------------------------------------------
   # Folder collection so editors get Sveltia's full-screen markdown widget
   # (preview pane + image embed). Filename = post slug; this is the contract
@@ -131,7 +125,7 @@ collections:
       the slug in the Insights collection.
     folder: content/post-bodies
     extension: md
-    format: frontmatter                   # body content lives below an empty frontmatter block
+    format: frontmatter                   # body content lives below `slug:` frontmatter
     create: true
     delete: true
     slug: '{{slug}}'
@@ -145,46 +139,42 @@ collections:
   # ---------------------------------------------------------------------------
   - name: services
     label: Services · บริการ
-    label_singular: Service · บริการ
     description: >
       The 9 service-catalogue entries shown on /services and /services/<slug>.
       Each service has a primary UN SDG goal that drives its chip colour.
-    file: content/services.yml
-    type: file_collection
-    format: yml
-    create: false
-    delete: false                         # the count is a deliberate editorial decision
-    fields:
+    files:
       - name: services
-        label: Services
-        widget: list
-        summary: '{{fields.titleEn}} (SDG {{fields.sdgNumber}})'
+        label: All services
+        file: content/services.yml
+        format: yml
         fields:
-          - { name: slug, label: 'Slug', widget: string, hint: 'kebab-case; appears in URL.' }
-          - { name: titleEn, label: 'Title (EN)', widget: string, hint: 'Sentence case.' }
-          - { name: titleTh, label: 'Title (TH)', widget: string, required: false }
-          - { name: subtitleEn, label: 'Subtitle (EN)', widget: text, required: false, hint: 'One-line tagline shown under the title on cards and detail pages.' }
-          - { name: subtitleTh, label: 'Subtitle (TH)', widget: text, required: false }
-          - { name: sdgNumber, label: 'UN SDG goal · เป้าหมาย SDG', widget: number, value_type: int, min: 1, max: 17, hint: '1–17. Drives the SDG chip colour (matches --sdg-{n} in tokens.css).' }
-          - { name: descriptionEn, label: 'Description (EN) · คำอธิบาย', widget: markdown, hint: 'Multi-paragraph long-form copy. Rendered as <p> blocks split on blank lines.' }
-          - { name: descriptionTh, label: 'Description (TH) · คำอธิบาย (ไทย)', widget: markdown }
-          - { name: deliverablesEn, label: 'Deliverables (EN) · ผลงานที่ส่งมอบ', widget: list, field: { name: item, label: Item, widget: string }, hint: 'Bullet list of concrete outputs (typically 4–8 items).' }
-          - { name: deliverablesTh, label: 'Deliverables (TH) · ผลงานที่ส่งมอบ', widget: list, field: { name: item, label: Item, widget: string } }
-          - { name: audienceEn, label: 'Audience (EN)', widget: text, required: false, hint: 'Currently null for MVP — we frame services through deliverables, not audience.' }
-          - { name: audienceTh, label: 'Audience (TH)', widget: text, required: false }
-          - { name: ctaEn, label: 'CTA button (EN) · ปุ่มเชิญชวน', widget: string, required: false, hint: 'Service-specific CTA copy (e.g. "Talk to us about your book").' }
-          - { name: ctaTh, label: 'CTA button (TH) · ปุ่มเชิญชวน', widget: string, required: false }
-          - { name: relatedSlugs, label: 'Related insight slugs · บทความที่เกี่ยวข้อง', widget: list, default: [], required: false, field: { name: slug, label: Slug, widget: string }, hint: 'Insight-post slugs to surface as case studies on this service detail page.' }
-          - { name: heroImage, label: 'Hero image · ภาพหลัก', widget: image, required: false, hint: 'Cloudinary URL or public_id (e.g. comminno/services/<slug>).' }
-          - { name: heroAltEn, label: 'Hero alt (EN)', widget: string, required: false, hint: 'Required for accessibility.' }
-          - { name: heroAltTh, label: 'Hero alt (TH)', widget: string, required: false }
+          - name: services
+            label: Services
+            widget: list
+            summary: '{{fields.titleEn}} (SDG {{fields.sdgNumber}})'
+            fields:
+              - { name: slug, label: 'Slug', widget: string, hint: 'kebab-case; appears in URL.' }
+              - { name: titleEn, label: 'Title (EN)', widget: string, hint: 'Sentence case.' }
+              - { name: titleTh, label: 'Title (TH)', widget: string, required: false }
+              - { name: subtitleEn, label: 'Subtitle (EN)', widget: text, required: false, hint: 'One-line tagline shown under the title on cards and detail pages.' }
+              - { name: subtitleTh, label: 'Subtitle (TH)', widget: text, required: false }
+              - { name: sdgNumber, label: 'UN SDG goal · เป้าหมาย SDG', widget: number, value_type: int, min: 1, max: 17, hint: '1–17. Drives the SDG chip colour (matches --sdg-{n} in tokens.css).' }
+              - { name: descriptionEn, label: 'Description (EN) · คำอธิบาย', widget: markdown, hint: 'Multi-paragraph long-form copy. Rendered as <p> blocks split on blank lines.' }
+              - { name: descriptionTh, label: 'Description (TH) · คำอธิบาย (ไทย)', widget: markdown }
+              - { name: deliverablesEn, label: 'Deliverables (EN) · ผลงานที่ส่งมอบ', widget: list, field: { name: item, label: Item, widget: string }, hint: 'Bullet list of concrete outputs (typically 4–8 items).' }
+              - { name: deliverablesTh, label: 'Deliverables (TH) · ผลงานที่ส่งมอบ', widget: list, field: { name: item, label: Item, widget: string } }
+              - { name: audienceEn, label: 'Audience (EN)', widget: text, required: false, hint: 'Currently null for MVP — we frame services through deliverables, not audience.' }
+              - { name: audienceTh, label: 'Audience (TH)', widget: text, required: false }
+              - { name: ctaEn, label: 'CTA button (EN) · ปุ่มเชิญชวน', widget: string, required: false, hint: 'Service-specific CTA copy (e.g. "Talk to us about your book").' }
+              - { name: ctaTh, label: 'CTA button (TH) · ปุ่มเชิญชวน', widget: string, required: false }
+              - { name: relatedSlugs, label: 'Related insight slugs · บทความที่เกี่ยวข้อง', widget: list, default: [], required: false, field: { name: slug, label: Slug, widget: string }, hint: 'Insight-post slugs to surface as case studies on this service detail page.' }
+              - { name: heroImage, label: 'Hero image · ภาพหลัก', widget: image, required: false, hint: 'Cloudinary URL or public_id (e.g. comminno/services/<slug>).' }
+              - { name: heroAltEn, label: 'Hero alt (EN)', widget: string, required: false, hint: 'Required for accessibility.' }
+              - { name: heroAltTh, label: 'Hero alt (TH)', widget: string, required: false }
 
   # ---------------------------------------------------------------------------
-  # 4. About — single-file collection
+  # 4. About — single-file collection (mission + tiers + partners)
   # ---------------------------------------------------------------------------
-  # Mission, pillars, three team tiers, and partners all live in one file
-  # because they're rendered together on /about. Tier 1 (leadership) is the
-  # only tier with full bios + publications.
   - name: about
     label: About page · หน้าแนะนำศูนย์
     description: >
@@ -347,45 +337,43 @@ collections:
   # ---------------------------------------------------------------------------
   - name: categories
     label: Categories · หมวดหมู่
-    label_singular: Category · หมวดหมู่
     description: >
       Post taxonomy. The `isService` flag distinguishes service categories
       from editorial ones at render time.
-    file: content/categories.yml
-    type: file_collection
-    format: yml
-    create: true
-    delete: true
-    fields:
+    files:
       - name: categories
-        label: Categories
-        widget: list
-        summary: '{{fields.titleEn}} ({{fields.slug}})'
+        label: All categories
+        file: content/categories.yml
+        format: yml
         fields:
-          - { name: slug, widget: string, label: 'Slug', hint: 'kebab-case; matches the tag values used in posts.' }
-          - { name: titleEn, widget: string, label: 'Title (EN)' }
-          - { name: titleTh, widget: string, required: false, label: 'Title (TH)' }
-          - { name: isService, widget: boolean, default: false, label: 'Is a service?', hint: 'True for the 9 service categories; false for editorial taxonomies (highlights, school, etc.).' }
+          - name: categories
+            label: Categories
+            widget: list
+            summary: '{{fields.titleEn}} ({{fields.slug}})'
+            fields:
+              - { name: slug, widget: string, label: 'Slug', hint: 'kebab-case; matches the tag values used in posts.' }
+              - { name: titleEn, widget: string, label: 'Title (EN)' }
+              - { name: titleTh, widget: string, required: false, label: 'Title (TH)' }
+              - { name: isService, widget: boolean, default: false, label: 'Is a service?', hint: 'True for the 9 service categories; false for editorial taxonomies (highlights, school, etc.).' }
 
   # ---------------------------------------------------------------------------
   # 6. Redirects (39 entries)
   # ---------------------------------------------------------------------------
   - name: redirects
     label: Redirects · เปลี่ยนเส้นทาง URL
-    label_singular: Redirect · เปลี่ยนเส้นทาง URL
     description: >
       Old Wix paths → new paths. Consumed by vercel.json so legacy bookmarks
       and external backlinks keep working.
-    file: content/redirects.yml
-    type: file_collection
-    format: yml
-    create: true
-    delete: true
-    fields:
+    files:
       - name: redirects
-        label: Redirects
-        widget: list
-        summary: '{{fields.from}} → {{fields.to}}'
+        label: All redirects
+        file: content/redirects.yml
+        format: yml
         fields:
-          - { name: from, widget: string, label: 'From (legacy path)', hint: 'Path on the old Wix site, e.g. /post/chula-zero-waste.' }
-          - { name: to, widget: string, label: 'To (new path)', hint: 'Path on the new site, e.g. /insights/chula-zero-waste.' }
+          - name: redirects
+            label: Redirects
+            widget: list
+            summary: '{{fields.from}} → {{fields.to}}'
+            fields:
+              - { name: from, widget: string, label: 'From (legacy path)', hint: 'Path on the old Wix site, e.g. /post/chula-zero-waste.' }
+              - { name: to, widget: string, label: 'To (new path)', hint: 'Path on the new site, e.g. /insights/chula-zero-waste.' }

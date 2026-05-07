@@ -2,51 +2,52 @@
 # Source of truth (commit #5+). Edit via /admin or directly in this file;
 # scripts/build-content.mjs reads it and emits client/src/content/*.ts.
 
-- slug: book-and-printing
-  titleEn: Book & Printing
-  titleTh: หนังสือและสิ่งพิมพ์
-  isService: true
-- slug: campaign-manage
-  titleEn: Campaign Manage
-  titleTh: บริหารแคมเปญ
-  isService: true
-- slug: communication-design
-  titleEn: Communication Design
-  titleTh: ออกแบบการสื่อสาร
-  isService: true
-- slug: highlights
-  titleEn: Highlights
-  titleTh: ไฮไลต์
-  isService: false
-- slug: innovation-technology
-  titleEn: Innovation & Technology
-  titleTh: นวัตกรรมและเทคโนโลยี
-  isService: false
-- slug: marketing-event
-  titleEn: Marketing Event
-  titleTh: อีเวนต์การตลาด
-  isService: true
-- slug: motion-effect-ar
-  titleEn: Motion Effect & AR
-  titleTh: Motion Effect และ AR
-  isService: true
-- slug: research-and-evaluation
-  titleEn: Research & Evaluation
-  titleTh: วิจัยและประเมินผล
-  isService: true
-- slug: school
-  titleEn: Education
-  titleTh: การศึกษา
-  isService: false
-- slug: seminar
-  titleEn: Seminar
-  titleTh: สัมมนา
-  isService: true
-- slug: training
-  titleEn: Training
-  titleTh: ฝึกอบรม
-  isService: true
-- slug: video-production
-  titleEn: Video Production
-  titleTh: งานวิดีโอ
-  isService: true
+categories:
+  - slug: book-and-printing
+    titleEn: Book & Printing
+    titleTh: หนังสือและสิ่งพิมพ์
+    isService: true
+  - slug: campaign-manage
+    titleEn: Campaign Manage
+    titleTh: บริหารแคมเปญ
+    isService: true
+  - slug: communication-design
+    titleEn: Communication Design
+    titleTh: ออกแบบการสื่อสาร
+    isService: true
+  - slug: highlights
+    titleEn: Highlights
+    titleTh: ไฮไลต์
+    isService: false
+  - slug: innovation-technology
+    titleEn: Innovation & Technology
+    titleTh: นวัตกรรมและเทคโนโลยี
+    isService: false
+  - slug: marketing-event
+    titleEn: Marketing Event
+    titleTh: อีเวนต์การตลาด
+    isService: true
+  - slug: motion-effect-ar
+    titleEn: Motion Effect & AR
+    titleTh: Motion Effect และ AR
+    isService: true
+  - slug: research-and-evaluation
+    titleEn: Research & Evaluation
+    titleTh: วิจัยและประเมินผล
+    isService: true
+  - slug: school
+    titleEn: Education
+    titleTh: การศึกษา
+    isService: false
+  - slug: seminar
+    titleEn: Seminar
+    titleTh: สัมมนา
+    isService: true
+  - slug: training
+    titleEn: Training
+    titleTh: ฝึกอบรม
+    isService: true
+  - slug: video-production
+    titleEn: Video Production
+    titleTh: งานวิดีโอ
+    isService: true

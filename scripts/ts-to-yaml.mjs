@@ -92,6 +92,15 @@ async function writeYaml(file, header, data) {
   return text.length;
 }
 
+/**
+ * Same as writeYaml but wraps `data` (an array) under a single root key, e.g.
+ * `posts: [...]`. Sveltia CMS file_collection requires the wrapper because a
+ * list widget cannot bind to a bare top-level YAML array (#7.1).
+ */
+async function writeYamlList(file, header, rootKey, list) {
+  return writeYaml(file, header, { [rootKey]: list });
+}
+
 async function main() {
   await ensureDir(CONTENT_DIR);
   const bodiesDir = path.join(CONTENT_DIR, "post-bodies");
@@ -102,9 +111,10 @@ async function main() {
   let totalBytes = 0;
 
   // 1. posts.yml — metadata only, body lives separately.
-  const postsBytes = await writeYaml(
+  const postsBytes = await writeYamlList(
     path.join(CONTENT_DIR, "posts.yml"),
     "Insights / news posts (metadata only — body in content/post-bodies/<slug>.md).",
+    "posts",
     posts
   );
   totalBytes += postsBytes;
@@ -126,9 +136,10 @@ async function main() {
   }
 
   // 3. services.yml.
-  totalBytes += await writeYaml(
+  totalBytes += await writeYamlList(
     path.join(CONTENT_DIR, "services.yml"),
     "Service catalogue (9 entries). Each entry's `descriptionEn` / `descriptionTh` is markdown-safe.",
+    "services",
     services
   );
 
@@ -140,16 +151,18 @@ async function main() {
   );
 
   // 5. categories.yml
-  totalBytes += await writeYaml(
+  totalBytes += await writeYamlList(
     path.join(CONTENT_DIR, "categories.yml"),
     "Post categories (taxonomy). Mirrors original Wix slugs.",
+    "categories",
     categories
   );
 
   // 6. redirects.yml
-  totalBytes += await writeYaml(
+  totalBytes += await writeYamlList(
     path.join(CONTENT_DIR, "redirects.yml"),
     "Legacy Wix → new path redirects. Consumed by vercel.json + (future) middleware.",
+    "redirects",
     redirects
   );
 

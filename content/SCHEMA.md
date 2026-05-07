@@ -24,6 +24,32 @@ The build pipeline reads these YAML files and emits `client/src/content/*.ts`. E
 
 ---
 
+## Root-key wrapper (commit #7.1)
+
+Four collections are stored as **a single root key whose value is the array of records**, not as a bare top-level array. This is required by Sveltia CMS — its `file_collection` list widget cannot bind to a bare top-level YAML array.
+
+| File | Root key | Item shape |
+| --- | --- | --- |
+| `posts.yml` | `posts:` | array of post metadata records |
+| `services.yml` | `services:` | array of service records |
+| `categories.yml` | `categories:` | array of taxonomy records |
+| `redirects.yml` | `redirects:` | array of `{ from, to }` records |
+
+`about.yml` is a **single object** (not a list) so it does not need a wrapper — its top-level keys (`missionEn`, `leadership`, `partners`, …) are themselves the schema.
+
+```yaml
+# correct — file is { posts: [...] }
+posts:
+  - slug: chula-zero-waste
+    title: Chula Zero Waste
+    …
+  - slug: …
+```
+
+`scripts/build-content.mjs` enforces this in **strict mode**: a missing or non-array root key throws immediately so an editor can never accidentally ship an empty collection. `scripts/ts-to-yaml.mjs` emits the wrapper automatically; round-tripping (`pnpm exec tsx scripts/ts-to-yaml.mjs && pnpm content`) is byte-stable.
+
+---
+
 ## Bilingual policy (TH-first)
 
 The site's primary audience is Thai. Field requirements follow this rule:

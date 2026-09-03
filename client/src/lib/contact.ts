@@ -23,3 +23,27 @@ export const CENTER_EMAIL = "comm.inno@chula.ac.th";
 
 /** `mailto:` target for links and buttons. */
 export const CENTER_EMAIL_HREF = `mailto:${CENTER_EMAIL}` as const;
+
+/**
+ * The centre's telephone number — same single-source rule as the address above.
+ *
+ * Confirmed as +66 2 218 2163. The number previously written here and on the
+ * contact page was +66 (0)2 218 2215, which does not match the number the
+ * centre publishes on its live site. Both were hand-typed in two places, which
+ * is the same failure mode that put a wrong email in ten places.
+ *
+ * Formatted from one digit string so a future change cannot update one
+ * rendering and miss another.
+ */
+const PHONE_DIGITS = "022182163";
+
+/** `+66 2 218 2163` — the display form used on the page. */
+export const CENTER_PHONE_DISPLAY =
+  `+66 ${PHONE_DIGITS.slice(1, 2)} ${PHONE_DIGITS.slice(2, 5)} ${PHONE_DIGITS.slice(5)}` as const;
+
+/**
+ * `+66-2-218-2163` — the machine-readable form for schema.org `telephone`,
+ * written with hyphens as the schema.org examples show.
+ */
+export const CENTER_PHONE_SCHEMA =
+  `+66-${PHONE_DIGITS.slice(1, 2)}-${PHONE_DIGITS.slice(2, 5)}-${PHONE_DIGITS.slice(5)}` as const;

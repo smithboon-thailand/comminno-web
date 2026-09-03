@@ -42,6 +42,7 @@ None of the top-tier findings are architectural. They are configuration values, 
 | 6.3 | "Thai spelling pending verification" badges shown publicly beside real names | **High** | Low |
 | 7.1 | Analytics reports to the staging domain — production traffic data is lost | **High** | Low |
 | 8.1 | Admin CMS loads an unpinned third-party script with no SRI | **High** | Low |
+| 5.4 | Center email published as `comminno@` (no dot) in 12 places — enquiries bounce silently | **High** | Low |
 | 9.1 | Contact form accepts empty submissions (`noValidate` with no JS validation) | **Medium** | Low |
 | 6.4 | Misspelled name in a public URL, contradicting the project's own rule | **Medium** | Medium |
 | 6.5 | Same academic's surname romanised two different ways on the site | **Medium** | Low |
@@ -53,6 +54,8 @@ None of the top-tier findings are architectural. They are configuration values, 
 | 8.3 | No Content-Security-Policy header | **Medium** | Low |
 | 8.4 | Session/network-logging debug collector shipped in the production bundle | **Medium** | Low |
 | 11.1 | Post schema has no Thai summary or body field — bilingual parity unreachable | **Medium** | Medium |
+| 5.5 | Center phone published as +66 2 218 2215; the real line is +66 2 218 2163 | **Medium** | Low |
+| 5.3 | Privacy §7 states security commitments nobody has verified | **Medium** | Low |
 | 9.2 | No scroll-to-top on navigation | **Low** | Low |
 | 9.3 | `.tag-brand-blue` utility fails WCAG AA at 2.89:1 | **Low** | Low |
 | 9.4 | Dark mode half-built: no toggle, no auto-detect, hardcoded white surfaces | **Low** | Medium |

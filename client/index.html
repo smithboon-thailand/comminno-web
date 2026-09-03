@@ -25,9 +25,35 @@
     <meta name="theme-color" content="#BD212D" />
 
     <!--
+      REMOVE THIS TAG BEFORE THIS SITE TAKES A REAL DOMAIN.
+
+      Every domain this project serves today is a *.vercel.app URL
+      (comminno-web.vercel.app plus two deployment aliases), and the staging copy
+      at comminno-go6lmsuy.manus.space serves the same build. Meanwhile the
+      centre's live site is www.cominnocenter.com. So three public copies of one
+      organisation's content compete for the same search results — and two of
+      them additionally declare the canonical below, which tells a search engine
+      that the authoritative home of the centre's content is a temporary preview
+      host. This tag stops that while the question of which site is canonical is
+      still open.
+
+      robots.txt deliberately still says `Allow: /`. Blocking crawlers with
+      `Disallow: /` would be counterproductive: a page a crawler cannot fetch is
+      a page whose noindex it can never read, so anything already indexed would
+      simply stay indexed. Allow the crawl, serve the noindex, let it drop out —
+      and only then consider disallowing.
+    -->
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!--
       Baseline canonical — the SPA's usePageMeta hook overrides this per-page on mount.
       Set to the TH home (default locale) so Lighthouse sees a valid canonical before
       JS executes. hreflang alternates declare both language versions.
+
+      NOTE: these four URLs point at the Manus staging host. While the noindex
+      above is in place that is inert, but it must be settled before the tag is
+      removed — otherwise the site goes straight back to naming a preview host as
+      its canonical.
     -->
     <link rel="canonical" href="https://comminno-go6lmsuy.manus.space/th" />
     <link rel="alternate" hreflang="th" href="https://comminno-go6lmsuy.manus.space/th" />

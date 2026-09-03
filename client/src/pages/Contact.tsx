@@ -33,7 +33,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { LocaleLink } from "@/i18n/LocaleLink";
 import { services as serviceCatalog } from "@/content/services";
 import { ArrowRight, MapPin, Mail, Phone, CheckCircle2 } from "lucide-react";
-import { CENTER_EMAIL } from "@/lib/contact";
+import { CENTER_EMAIL, CENTER_PHONE_DISPLAY } from "@/lib/contact";
 
 const ENDPOINT =
   import.meta.env.VITE_CONTACT_ENDPOINT ?? "https://formspree.io/f/PLACEHOLDER";
@@ -356,7 +356,7 @@ export default function Contact() {
                   aria-hidden="true"
                 />
                 <span style={{ fontSize: "0.875rem" }}>
-                  {t.phoneLabel}: +66 (0)2 218 2215
+                  {t.phoneLabel}: {CENTER_PHONE_DISPLAY}
                 </span>
               </p>
             </div>

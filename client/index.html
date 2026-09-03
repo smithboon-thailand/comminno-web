@@ -82,6 +82,12 @@
     <!--
       Site-wide Organization JSON-LD (page-specific JSON-LD is added via
       usePageMeta).  Hand-written; do not auto-generate.
+
+      The email below must stay in sync with CENTER_EMAIL in
+      client/src/lib/contact.ts, which every other occurrence imports. This
+      static document cannot import a module, so it is the one place the
+      address and the telephone number are written out by hand — note the dot in
+      the address: comm.inno@, not comminno@.
     -->
     <script type="application/ld+json">
     {

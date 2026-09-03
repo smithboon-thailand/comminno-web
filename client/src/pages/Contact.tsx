@@ -32,13 +32,13 @@ import { usePageMeta } from "@/i18n/PageMeta";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { LocaleLink } from "@/i18n/LocaleLink";
 import { services as serviceCatalog } from "@/content/services";
+import { ArrowRight, MapPin, Mail, Phone, CheckCircle2 } from "lucide-react";
 import {
   CENTER_EMAIL,
+  CENTER_PHONE_DISPLAY,
   CENTER_PHONE_TH,
-  CENTER_PHONE_EN,
   CENTER_PHONE_E164,
-} from "@/config/contact";
-import { ArrowRight, MapPin, Mail, Phone, CheckCircle2 } from "lucide-react";
+} from "@/lib/contact";
 
 const ENDPOINT =
   import.meta.env.VITE_CONTACT_ENDPOINT ?? "https://formspree.io/f/PLACEHOLDER";
@@ -117,16 +117,16 @@ const COPY = {
     submitting: "กำลังส่ง…",
     successTitle: "ขอบคุณครับ/ค่ะ — ส่งข้อความเรียบร้อย",
     successBody:
-      "ทีมศูนย์ฯ จะตอบกลับภายใน 5 วันทำการ หากเรื่องเร่งด่วน ติดต่อได้ที่ comm.inno@chula.ac.th",
+      `ทีมศูนย์ฯ จะตอบกลับภายใน 5 วันทำการ หากเรื่องเร่งด่วน ติดต่อได้ที่ ${CENTER_EMAIL}`,
     successAgain: "ส่งข้อความเพิ่มเติม",
     errorGeneric:
-      "ส่งข้อความไม่สำเร็จ กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ตแล้วลองใหม่ หรืออีเมลตรงไปที่ comm.inno@chula.ac.th",
+      `ส่งข้อความไม่สำเร็จ กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ตแล้วลองใหม่ หรืออีเมลตรงไปที่ ${CENTER_EMAIL}`,
     errorIncomplete: "กรุณากรอกข้อมูลให้ครบทุกช่องก่อนส่งข้อความ",
     errorEmail: "รูปแบบอีเมลไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง",
     errorCooldown: "กรุณารอสักครู่ก่อนส่งข้อความถัดไป",
     errorHourly: "ส่งข้อความได้สูงสุด 5 ครั้งต่อชั่วโมง โปรดลองใหม่ภายหลัง",
     errorPlaceholder:
-      "ปลายทางฟอร์ม (Formspree) ยังไม่ถูกตั้งค่า — ฝ่ายเทคนิคกำลังเชื่อมต่อ ในระหว่างนี้กรุณาส่งอีเมลถึง comm.inno@chula.ac.th",
+      `ปลายทางฟอร์ม (Formspree) ยังไม่ถูกตั้งค่า — ฝ่ายเทคนิคกำลังเชื่อมต่อ ในระหว่างนี้กรุณาส่งอีเมลถึง ${CENTER_EMAIL}`,
     metaDesc:
       "ติดต่อ Comm.Inno (ศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน) จุฬาลงกรณ์มหาวิทยาลัย — อาคารมงกุฎสมมติ คณะนิเทศศาสตร์ ปทุมวัน กรุงเทพฯ 10330",
   },
@@ -159,21 +159,20 @@ const COPY = {
     submitting: "Sending…",
     successTitle: "Thanks — your message is on its way",
     successBody:
-      "We'll reply within five working days. For anything urgent, email comm.inno@chula.ac.th directly.",
+      `We'll reply within five working days. For anything urgent, email ${CENTER_EMAIL} directly.`,
     successAgain: "Send another message",
     errorGeneric:
-      "We couldn't send your message. Check your connection and try again, or email comm.inno@chula.ac.th.",
+      `We couldn't send your message. Check your connection and try again, or email ${CENTER_EMAIL}.`,
     errorIncomplete: "Please fill in every field before sending your message.",
     errorEmail: "That email address doesn't look right — please check it.",
     errorCooldown: "Please wait a few seconds before sending another message.",
     errorHourly: "You can send up to 5 messages per hour. Please try again later.",
     errorPlaceholder:
-      "The form endpoint (Formspree) hasn't been wired up yet — engineering is on it. Meanwhile please email comm.inno@chula.ac.th.",
+      `The form endpoint (Formspree) hasn't been wired up yet — engineering is on it. Meanwhile please email ${CENTER_EMAIL}.`,
     metaDesc:
       "Reach Comm.Inno — the Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability, Faculty of Communication Arts, Chulalongkorn University. Mongkut Sammitr Building, Pathumwan, Bangkok 10330.",
   },
 } as const;
-
 
 
 export default function Contact() {
@@ -396,7 +395,7 @@ export default function Contact() {
                     style={{ color: "var(--ink)" }}
                     className="hover:underline"
                   >
-                    {locale === "th" ? CENTER_PHONE_TH : CENTER_PHONE_EN}
+                    {locale === "th" ? CENTER_PHONE_TH : CENTER_PHONE_DISPLAY}
                   </a>
                 </span>
               </p>

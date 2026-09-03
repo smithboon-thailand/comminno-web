@@ -130,14 +130,22 @@ if (existsSync(redirectsPath)) {
   }
 }
 
-// ── 3. Unresolved placeholder tokens (warning) ───────────────────────────────
-// The live privacy notice still carries [dpo@…], [+66 2 218 ____] and [DATE].
-// Those four values are the center's to supply; once they land, move this
-// block into `errors` so a placeholder can never be published again.
-const PLACEHOLDERS = [/\[DATE\]/, /\[วันที่\]/, /\[dpo@/, /_{4,}\]/, /formspree\.io\/f\/PLACEHOLDER/];
+// ── 3. Unresolved placeholder tokens ─────────────────────────────────────────
+// The privacy notice shipped publicly with [dpo@…], [+66 2 218 ____] and
+// [DATE] unresolved, under a banner admitting it was unreviewed, while the
+// contact form took PDPA consent (audit finding 5.1). The center supplied all
+// four on 2026-09-03, so these are ERRORS now: a legal notice must never go
+// out with a blank in it again.
+const PLACEHOLDER_ERRORS = [/\[DATE\]/, /\[วันที่\]/, /\[dpo@/, /_{4,}\]/];
+// Still outstanding, so still only a warning. Promote it the same way once the
+// real Formspree endpoint is configured.
+const PLACEHOLDER_WARNINGS = [/formspree\.io\/f\/PLACEHOLDER/];
 for (const rel of ["client/src/pages/Privacy.tsx", "client/src/pages/Contact.tsx"]) {
   const body = read(rel);
-  for (const re of PLACEHOLDERS) {
+  for (const re of PLACEHOLDER_ERRORS) {
+    if (re.test(body)) errors.push(`${rel}: unresolved placeholder ${re.source} — a published legal notice must not contain a blank`);
+  }
+  for (const re of PLACEHOLDER_WARNINGS) {
     if (re.test(body)) warnings.push(`${rel}: unresolved placeholder ${re.source}`);
   }
 }

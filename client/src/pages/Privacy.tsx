@@ -1,15 +1,19 @@
 /**
  * Privacy — /th/privacy & /en/privacy
  *
- * Full bilingual PDPA notice spliced from comminno_phase2_copy/privacy_policy.md.
- * Sections 1–12 mirror the canonical document. Bracketed [...] tokens remain
- * in the prose until the center confirms the real values:
- *   • [dpo@comminno.center]      — DPO email
- *   • [+66 2 218 ____] / [02-218-____] — DPO phone
- *   • [DATE] / [วันที่]          — first publish + last-updated dates
+ * Full bilingual PDPA notice. Sections 1-12 mirror the canonical document.
  *
- * The "Pending PDPA review" banner stays visible while ANY of those tokens
- * is still in the body. Drop the banner when all four tokens are filled.
+ * The four placeholder tokens this file used to carry — DPO email, DPO phone,
+ * and the effective / last-updated dates — were confirmed by the center on
+ * 2026-09-03 and are now real values (audit finding 5.1). The "Pending PDPA
+ * review" banner that warned about them has been removed with them.
+ *
+ * Section 7 states security commitments made publicly on the center's behalf.
+ * It is deliberately written to what is verifiable today; the stronger claims
+ * it used to carry (encryption at rest, an annual audit by university IT, a
+ * 72-hour PDPC breach notification) are awaiting confirmation from
+ * Chulalongkorn IT and should be restored, in full, once that confirmation
+ * lands. Do not add a security claim here that nobody has verified.
  */
 import { useLocale } from "@/i18n/LocaleProvider";
 import { usePageMeta } from "@/i18n/PageMeta";
@@ -34,7 +38,7 @@ const EN_SECTIONS: Section[] = [
     blocks: [
       {
         kind: "p",
-        text: 'The Center is a research unit within the Faculty of Communication Arts, Chulalongkorn University. Office: Mongkut Sammitr Building, Faculty of Communication Arts, Chulalongkorn University, 254 Phaya Thai Road, Wang Mai, Pathum Wan, Bangkok 10330. For privacy inquiries: [dpo@comminno.center].',
+        text: 'The Center is a research unit within the Faculty of Communication Arts, Chulalongkorn University. Office: Mongkut Sammitr Building, Faculty of Communication Arts, Chulalongkorn University, 254 Phaya Thai Road, Wang Mai, Pathum Wan, Bangkok 10330. For privacy inquiries: comm.inno@chula.ac.th.',
       },
     ],
   },
@@ -116,7 +120,7 @@ const EN_SECTIONS: Section[] = [
     blocks: [
       {
         kind: "p",
-        text: 'By emailing [dpo@comminno.center] you can: be informed, access, rectify, erase ("right to be forgotten"), restrict processing, port your data, object to processing, withdraw consent, and lodge a complaint with the PDPC at https://www.pdpc.or.th/. We respond to all requests within 30 days.',
+        text: 'By emailing comm.inno@chula.ac.th you can: be informed, access, rectify, erase ("right to be forgotten"), restrict processing, port your data, object to processing, withdraw consent, and lodge a complaint with the PDPC at https://www.pdpc.or.th/. We respond to all requests within 30 days.',
       },
     ],
   },
@@ -126,7 +130,7 @@ const EN_SECTIONS: Section[] = [
     blocks: [
       {
         kind: "p",
-        text: "TLS 1.3 in transit; encrypted at rest; role-based access; annual security audit by university IT; breach notification to PDPC within 72 hours.",
+        text: "All traffic to this site is encrypted in transit over HTTPS (TLS 1.3). Access to form submissions is limited to authorised Center staff on a need-to-know basis, and our hosting and form providers hold the data under their own security controls. In the event of a personal-data breach, we will notify the PDPC and affected individuals as required by the PDPA. Further measures — including encryption at rest and a periodic security review with Chulalongkorn University IT — are being confirmed with the University, and this section will be updated to state them precisely once that is done.",
       },
     ],
   },
@@ -156,7 +160,7 @@ const EN_SECTIONS: Section[] = [
     blocks: [
       {
         kind: "p",
-        text: "Not directed at children under 13. We do not knowingly collect children's data. Contact [dpo@comminno.center] to delete inadvertently collected data.",
+        text: "Not directed at children under 13. We do not knowingly collect children's data. Contact comm.inno@chula.ac.th to delete inadvertently collected data.",
       },
     ],
   },
@@ -176,7 +180,7 @@ const EN_SECTIONS: Section[] = [
     blocks: [
       {
         kind: "p",
-        text: "Data Protection Officer, Comm.Inno (Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability). Email: [dpo@comminno.center]. Phone: [+66 2 218 ____].",
+        text: "Data Protection Officer, Comm.Inno (Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability). Email: comm.inno@chula.ac.th. Phone: +66 2 218 2163.",
       },
     ],
   },
@@ -189,7 +193,7 @@ const TH_SECTIONS: Section[] = [
     blocks: [
       {
         kind: "p",
-        text: "ศูนย์ฯ เป็นหน่วยงานวิจัยในสังกัดคณะนิเทศศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย สำนักงานตั้งอยู่ที่ อาคารมงกุฎสมมติ คณะนิเทศศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย เลขที่ 254 ถนนพญาไท แขวงวังใหม่ เขตปทุมวัน กรุงเทพมหานคร 10330 หากมีข้อสงสัยเกี่ยวกับข้อมูลส่วนบุคคล ติดต่อเจ้าหน้าที่คุ้มครองข้อมูล (DPO) ทางอีเมล [dpo@comminno.center]",
+        text: "ศูนย์ฯ เป็นหน่วยงานวิจัยในสังกัดคณะนิเทศศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย สำนักงานตั้งอยู่ที่ อาคารมงกุฎสมมติ คณะนิเทศศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย เลขที่ 254 ถนนพญาไท แขวงวังใหม่ เขตปทุมวัน กรุงเทพมหานคร 10330 หากมีข้อสงสัยเกี่ยวกับข้อมูลส่วนบุคคล ติดต่อเจ้าหน้าที่คุ้มครองข้อมูล (DPO) ทางอีเมล comm.inno@chula.ac.th",
       },
     ],
   },
@@ -295,7 +299,7 @@ const TH_SECTIONS: Section[] = [
     blocks: [
       {
         kind: "p",
-        text: "ท่านสามารถใช้สิทธิต่อไปนี้โดยไม่มีค่าใช้จ่าย ผ่านการส่งอีเมลถึง [dpo@comminno.center]",
+        text: "ท่านสามารถใช้สิทธิต่อไปนี้โดยไม่มีค่าใช้จ่าย ผ่านการส่งอีเมลถึง comm.inno@chula.ac.th",
       },
       {
         kind: "ul",
@@ -321,11 +325,11 @@ const TH_SECTIONS: Section[] = [
       {
         kind: "ul",
         items: [
-          "เข้ารหัสระหว่างส่งด้วย HTTPS / TLS 1.3 ในทุกฟอร์ม",
-          "เข้ารหัสฟิลด์ที่ละเอียดอ่อนในระดับฐานข้อมูล",
-          "ควบคุมการเข้าถึงตามบทบาท เฉพาะเจ้าหน้าที่ที่ได้รับอนุญาต",
-          "ทบทวนความปลอดภัยประจำปีโดยฝ่ายไอทีของมหาวิทยาลัย",
-          "หากเกิดเหตุละเมิดข้อมูล เราจะแจ้ง สคส. ภายใน 72 ชั่วโมง และแจ้งผู้ใช้ที่ได้รับผลกระทบโดยไม่ชักช้า",
+          "เข้ารหัสข้อมูลระหว่างส่งด้วย HTTPS / TLS 1.3 ทุกหน้าและทุกแบบฟอร์ม",
+          "จำกัดการเข้าถึงข้อมูลจากแบบฟอร์มเฉพาะเจ้าหน้าที่ของศูนย์ฯ ที่ได้รับอนุญาตและเท่าที่จำเป็นต่อหน้าที่",
+          "ผู้ให้บริการโฮสต์และผู้ให้บริการรับข้อมูลจากแบบฟอร์มมีมาตรการรักษาความปลอดภัยของตนเอง",
+          "หากเกิดเหตุละเมิดข้อมูลส่วนบุคคล เราจะแจ้งสำนักงานคณะกรรมการคุ้มครองข้อมูลส่วนบุคคลและผู้ที่ได้รับผลกระทบตามที่ PDPA กำหนด",
+          "มาตรการเพิ่มเติม ได้แก่ การเข้ารหัสข้อมูลขณะจัดเก็บ และการทบทวนความปลอดภัยร่วมกับฝ่ายเทคโนโลยีสารสนเทศของจุฬาลงกรณ์มหาวิทยาลัยเป็นระยะ อยู่ระหว่างการยืนยันกับมหาวิทยาลัย และจะปรับข้อความส่วนนี้ให้ตรงตามข้อเท็จจริงเมื่อยืนยันแล้ว",
         ],
       },
     ],
@@ -365,7 +369,7 @@ const TH_SECTIONS: Section[] = [
     blocks: [
       {
         kind: "p",
-        text: "เว็บไซต์นี้ไม่ได้มุ่งเป้าหมายไปที่เด็กอายุต่ำกว่า 13 ปี เราไม่ได้มีเจตนาเก็บข้อมูลจากเด็ก หากท่านพบว่าเราเก็บข้อมูลของเด็กโดยไม่ตั้งใจ กรุณาแจ้งที่ [dpo@comminno.center] เพื่อให้เราดำเนินการลบทันที",
+        text: "เว็บไซต์นี้ไม่ได้มุ่งเป้าหมายไปที่เด็กอายุต่ำกว่า 13 ปี เราไม่ได้มีเจตนาเก็บข้อมูลจากเด็ก หากท่านพบว่าเราเก็บข้อมูลของเด็กโดยไม่ตั้งใจ กรุณาแจ้งที่ comm.inno@chula.ac.th เพื่อให้เราดำเนินการลบทันที",
       },
     ],
   },
@@ -385,7 +389,7 @@ const TH_SECTIONS: Section[] = [
     blocks: [
       {
         kind: "p",
-        text: "สำหรับคำถาม คำขอ และข้อร้องเรียนเกี่ยวกับความเป็นส่วนตัว ติดต่อเจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล (DPO) Comm.Inno (ศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน) อีเมล: [dpo@comminno.center] โทรศัพท์: [02-218-____]",
+        text: "สำหรับคำถาม คำขอ และข้อร้องเรียนเกี่ยวกับความเป็นส่วนตัว ติดต่อเจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล (DPO) Comm.Inno (ศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน) อีเมล: comm.inno@chula.ac.th โทรศัพท์: 0 2218 2163",
       },
     ],
   },
@@ -397,9 +401,6 @@ const COPY = {
     lede: "นโยบายฉบับเต็มตาม พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล (PDPA) พ.ศ. 2562",
     crumbHome: "หน้าแรก",
     crumbSelf: "นโยบายความเป็นส่วนตัว",
-    pendingTitle: "อยู่ระหว่างทบทวนทางกฎหมาย",
-    pendingBody:
-      "นโยบายฉบับนี้เป็นร่างที่ใช้ได้ทั่วไป ระหว่างรอยืนยันอีเมล DPO เบอร์โทร และวันที่มีผลบังคับจากศูนย์ฯ ส่วนที่อยู่ในวงเล็บ [...] จะถูกแทนที่ด้วยข้อมูลจริงเมื่อได้รับการรับรองจากฝ่ายกฎหมาย",
     intro:
       'ศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน (Comm.Inno) (ต่อไปนี้เรียกว่า "ศูนย์ฯ" หรือ "เรา") ให้ความสำคัญกับความเป็นส่วนตัวของท่าน และมุ่งคุ้มครองข้อมูลส่วนบุคคลของท่านอย่างเคร่งครัด นโยบายฉบับนี้ชี้แจงวิธีที่เราเก็บรวบรวม ใช้ จัดเก็บ เปิดเผย และปกป้องข้อมูล พร้อมระบุสิทธิของท่านตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (ต่อไปนี้เรียกว่า "PDPA")',
     effective: "วันที่มีผลบังคับ",
@@ -413,9 +414,6 @@ const COPY = {
     lede: "Full PDPA-compliant notice for Comm.Inno — the Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability.",
     crumbHome: "Home",
     crumbSelf: "Privacy policy",
-    pendingTitle: "Pending PDPA review",
-    pendingBody:
-      "This is the bilingual policy in active use. The bracketed [...] tokens (DPO email, phone number, effective dates) are pending final confirmation from the center's legal team and will be replaced with real values shortly.",
     intro:
       'The Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability (the "Center", "we", "us") respects your privacy and is committed to protecting your personal data. This privacy policy explains how we collect, use, store, share, and protect personal data, and the rights you have under Thailand\'s Personal Data Protection Act B.E. 2562 (2019) ("PDPA").',
     effective: "Effective date",
@@ -520,26 +518,6 @@ export default function Privacy() {
       />
 
       <article className="container py-12 md:py-16 max-w-3xl">
-        {/* Pending PDPA review banner — kept until bracketed tokens are replaced. */}
-        <div
-          role="note"
-          className="rounded-xl border p-5 md:p-6 mb-10"
-          style={{
-            borderColor: "color-mix(in srgb, var(--warning) 35%, #fff)",
-            backgroundColor: "color-mix(in srgb, var(--warning) 8%, #fff)",
-          }}
-        >
-          <h2
-            className="font-display text-lg md:text-xl mb-2"
-            style={{ color: "var(--ink)" }}
-          >
-            {t.pendingTitle}
-          </h2>
-          <p style={{ color: "var(--ink)", lineHeight: 1.6 }}>
-            {t.pendingBody}
-          </p>
-        </div>
-
         {/* Effective + Last-updated metadata. Real values come from the center. */}
         <dl
           className="mb-8 grid gap-2 text-sm"
@@ -547,11 +525,19 @@ export default function Privacy() {
         >
           <div className="flex gap-2">
             <dt className="font-semibold">{t.effective}:</dt>
-            <dd>{locale === "th" ? "[วันที่]" : "[DATE]"}</dd>
+            <dd>
+              <time dateTime="2026-09-01">
+                {locale === "th" ? "1 กันยายน 2569" : "1 September 2026"}
+              </time>
+            </dd>
           </div>
           <div className="flex gap-2">
             <dt className="font-semibold">{t.updated}:</dt>
-            <dd>{locale === "th" ? "[วันที่]" : "[DATE]"}</dd>
+            <dd>
+              <time dateTime="2026-09-03">
+                {locale === "th" ? "3 กันยายน 2569" : "3 September 2026"}
+              </time>
+            </dd>
           </div>
         </dl>
 

@@ -213,7 +213,7 @@ export const about: About = {
       "centerRoleTh": "อาจารย์/นักวิจัยประจำศูนย์",
       "centerRoleEn": "Center Faculty · Research Affiliate",
       "facultyRoleTh": "อาจารย์ภาควิชาการประชาสัมพันธ์ และรองคณบดีฝ่ายบริการวิชาการและเชื่อมโยงสังคม คณะนิเทศศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย",
-      "facultyRoleEn": "Lecturer, Department of Public Relations · Assistant Dean for Academic Services and Social Engagement, Faculty of Communication Arts, Chulalongkorn University",
+      "facultyRoleEn": "Lecturer, Department of Public Relations · Deputy Dean for Academic Services and Social Engagement, Faculty of Communication Arts, Chulalongkorn University",
       "email": "watsayut.k@chula.ac.th",
       "bioTh": "อ. ดร. วรรษยุต คงจันทร์ เชี่ยวชาญด้านการประชาสัมพันธ์เพื่อสุขภาพ การสื่อสารความขัดแย้ง การออกแบบบอร์ดเกมเพื่อเปลี่ยนพฤติกรรม และการสื่อสารสุขภาพในกลุ่ม LGBTQ+ ผลงานเด่นรวมถึงหลักสูตร \"Public Relations for Public Health\" ของคณะนิเทศฯ ที่ใช้บอร์ดเกมเป็นเครื่องมือเรียนรู้ และเป็นผู้ออกแบบเกมสนทนาประเด็นสังคมร่วมกับ ThaiPBS The Active",
       "bioEn": "Dr. Watsayut Kongchan focuses on public relations for public health, conflict communication, behavior-change board-game design, and LGBTQ+ health communication. He created the flagship course \"Public Relations for Public Health\" which integrates board-game design as a behavior-change tool, and designs games for sensitive-topic dialogue with ThaiPBS The Active.",
@@ -247,25 +247,23 @@ export const about: About = {
     },
     {
       "slug": "wanwisa",
-      "nameTh": "วรรณวิสา เวชประสิทธิ์",
-      "nameEn": "Wanwisa Wetchprasit",
+      "nameTh": "วันวิสา เวชประสิทธิ์",
+      "nameEn": "Wanwisa Wechprasith",
       "photo": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/team/wanwisa",
       "photoFallback": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/team/wanwisa",
-      "photoAlt": "Wanwisa Wetchprasit",
+      "photoAlt": "Wanwisa Wechprasith",
       "roleTh": "ผู้ช่วยนักวิจัย",
-      "roleEn": "Research Assistant",
-      "thaiSpellingPending": true
+      "roleEn": "Research Assistant"
     },
     {
       "slug": "chanapa",
       "nameTh": "ชนาภา อิทธิอมรกุลชัย",
-      "nameEn": "Chanapa Itthiamornkulchai",
+      "nameEn": "Chanapa Itdhiamornkulchai",
       "photo": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/team/chanapa",
       "photoFallback": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/team/chanapa",
-      "photoAlt": "Chanapa Itthiamornkulchai",
+      "photoAlt": "Chanapa Itdhiamornkulchai",
       "roleTh": "ผู้ช่วยนักวิจัย",
-      "roleEn": "Research Assistant",
-      "thaiSpellingPending": true
+      "roleEn": "Research Assistant"
     },
     {
       "slug": "supatra",
@@ -318,8 +316,7 @@ export const about: About = {
       "photoFallback": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/team/pornpavee",
       "photoAlt": "Pornpavee Thiuthipsakul",
       "roleTh": "นักออกแบบมัลติมีเดีย",
-      "roleEn": "Multimedia Designer",
-      "thaiSpellingPending": true
+      "roleEn": "Multimedia Designer"
     }
   ],
   "partners": [
@@ -358,13 +355,13 @@ export const about: About = {
     {
       "slug": "watsayut",
       "name": "Watsayut Kongchan, Ph.D.",
-      "role": "Center Faculty · Asst. Dean for Academic Services and Social Engagement"
+      "role": "Center Faculty · Deputy Dean for Academic Services and Social Engagement"
     }
   ],
   "widerTeam": [
     "Achara Bunchum",
-    "Wanwisa Wetchprasit",
-    "Chanapa Itthiamornkulchai",
+    "Wanwisa Wechprasith",
+    "Chanapa Itdhiamornkulchai",
     "Supatra Petchree",
     "Akasit Sumana",
     "Hrut Sitthipuwabun",

@@ -562,7 +562,11 @@ why `check-routes.mjs` exists.
 | 4.6 — raw category slugs | **Fixed.** Insight cards render the localized category title. |
 | 9.1 — blank form submissions | **Fixed.** `noValidate` removed and `onSubmit` re-checks every required field plus email shape, with bilingual error copy. |
 | Routing had no test | **Fixed.** `scripts/check-routes.mjs` compiles `vercel.json` with the same matcher Vercel uses and asserts every canonical URL, every legacy URL, and that junk paths still 404. It caught a real self-redirect loop (`/th/about` to itself) in the first generated table. |
-| 5.1 — privacy placeholders | **Blocked on the center.** Needs four values: DPO email, DPO phone, effective date, last-updated date. Flagged as a CI warning until supplied; promote to a hard error once they land. |
+| 5.1 — privacy placeholders | **Fixed.** The center supplied all four on 2026-09-03: DPO `comm.inno@chula.ac.th`, phone `+66 2 218 2163`, effective 2026-09-01, last updated 2026-09-03. The "Pending PDPA review" banner is gone, and `check-content.mjs` now treats a reintroduced bracket token in the notice as a hard error, negative-tested. |
+| 5.3 — §7 security claims | **Softened, pending confirmation.** The center is checking with Chulalongkorn IT. Until then §7 states only what is verifiable — TLS 1.3 in transit, need-to-know access, processors' own controls, PDPA breach notification — and says plainly that encryption at rest and a periodic University IT review are being confirmed. Restore the fuller wording once IT confirms; do not add an unverified security claim back. |
+| 6.3 — pending badges | **Half closed.** Three of six names resolved: วันวิสา เวชประสิทธิ์ / Wanwisa Wechprasith and Chanapa Itdhiamornkulchai corrected, Pornpavee Thiuthipsakul confirmed correct. Supatra, Hrut and Thavin remain unverified and keep the flag. |
+| 6.7 — role titles | **Half closed.** รองคณบดี is **Deputy Dean** per the center — applied. Teerada's two conflicting center roles are still unresolved. |
+| 3.3 — domain | **Deferred, deliberately.** `SITE_ORIGIN` stays on the live Vercel host. The center's intended permanent home is a `chula.ac.th` subdomain, to be decided later; it is one environment variable when that happens. |
 | 3.2 — staging indexable | **Blocked.** `noindex` on `comminno-go6lmsuy.manus.space` is Manus hosting configuration, outside this repository. |
 | 12.2 — repo description | **Blocked.** GitHub metadata, not a file — must be edited in repository settings. |
 

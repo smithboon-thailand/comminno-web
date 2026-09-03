@@ -296,11 +296,26 @@ function preloadDetailChunks(): Plugin {
   };
 }
 
-// The *.manus.space site is a staging copy, not the canonical public website.
-// Manus builds do not set Vercel's built-in VERCEL=1 environment variable, so
-// this build-only plugin adds a crawler directive to the shared SPA document
-// only for Manus-hosted output. GitHub/Vercel builds remain unchanged, and the
-// canonical https://www.cominnocenter.com site is not part of this project.
+// Every host this project deploys to is a preview host, so none of them should
+// be indexed. The centre's public website is https://www.cominnocenter.com,
+// which is built from a different repository entirely; this project currently
+// serves only *.manus.space and *.vercel.app URLs. Leaving any of them
+// crawlable puts a second and third copy of the same organisation's content
+// into search results, competing with the real site and showing readers
+// whichever copy happens to rank — and both copies additionally declare a
+// canonical pointing at the Manus staging URL, which tells a crawler that a
+// temporary preview host is the authoritative home of the centre's content.
+//
+// This started as a Manus-only guard keyed on Vercel's built-in VERCEL=1, but
+// the reasoning applies identically to the Vercel deployment: it is a preview
+// host too. Gate it on the deployment target rather than on the builder if this
+// project ever takes a real domain — and settle the canonical above before
+// doing so, or the site will go straight back to naming a preview host.
+//
+// robots.txt deliberately stays `Allow: /`. Blocking crawlers with
+// `Disallow: /` would be counterproductive: a page a crawler cannot fetch is a
+// page whose noindex it can never read, so anything already indexed would
+// simply stay indexed. Allow the crawl, serve the noindex, let it drop out.
 function stagingNoIndex(): Plugin {
   return {
     name: "comminno-staging-noindex",
@@ -325,7 +340,7 @@ function stagingNoIndex(): Plugin {
 
 export default defineConfig(({ command }) => {
   const isProdBuild = command === "build";
-  const isManusHostedBuild = isProdBuild && process.env.VERCEL !== "1";
+
   const plugins = [
     react(),
     tailwindcss(),
@@ -334,7 +349,7 @@ export default defineConfig(({ command }) => {
     vitePluginManusDebugCollector(),
     vitePluginStorageProxy(),
     vitePluginAdminStatic(),
-    ...(isManusHostedBuild ? [stagingNoIndex()] : []),
+    ...(isProdBuild ? [stagingNoIndex()] : []),
     ...(isProdBuild ? [preloadDetailChunks()] : []),
   ];
   return {

@@ -57,6 +57,10 @@ const FORBIDDEN_HOSTS = [/comminno-go6lmsuy\.manus\.space/, /manus\.space/];
 // tried. `(?<!\.)` lets the correct form through while catching the bad one.
 const FORBIDDEN_STRINGS = [
   { re: /(?<!\.)comminno@chula\.ac\.th/, why: "the center's email is comm.inno@chula.ac.th WITH a dot — read it from client/src/config/contact.ts" },
+  // The center's number is +66 2 218 2163 (the Department of Public Relations
+  // line). 2215 was published on the contact page and in the Organization
+  // JSON-LD and is superseded.
+  { re: /218[\s\-]?2215/, why: "the center's phone is +66 2 218 2163 — read it from client/src/config/contact.ts" },
 ];
 const distArg = process.argv.indexOf("--dist");
 const DIST = distArg !== -1 ? process.argv[distArg + 1] : "dist/public";

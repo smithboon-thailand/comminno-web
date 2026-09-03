@@ -180,7 +180,7 @@ const EN_SECTIONS: Section[] = [
     blocks: [
       {
         kind: "p",
-        text: "Data Protection Officer, Comm.Inno (Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability). Email: comm.inno@chula.ac.th. Phone: +66 2 218 2163.",
+        text: "Data Protection Officer, Comm.Inno (Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability). Email: comm.inno@chula.ac.th. Phone: +66 2 218 2163 — this line is answered by the Department of Public Relations, Faculty of Communication Arts, who take the message and pass it to the Center. Email reaches us directly and is the faster route for a request about your data.",
       },
     ],
   },
@@ -389,7 +389,7 @@ const TH_SECTIONS: Section[] = [
     blocks: [
       {
         kind: "p",
-        text: "สำหรับคำถาม คำขอ และข้อร้องเรียนเกี่ยวกับความเป็นส่วนตัว ติดต่อเจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล (DPO) Comm.Inno (ศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน) อีเมล: comm.inno@chula.ac.th โทรศัพท์: 0 2218 2163",
+        text: "สำหรับคำถาม คำขอ และข้อร้องเรียนเกี่ยวกับความเป็นส่วนตัว ติดต่อเจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล (DPO) Comm.Inno (ศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน) อีเมล: comm.inno@chula.ac.th โทรศัพท์: 0 2218 2163 ซึ่งเป็นหมายเลขของภาควิชาการประชาสัมพันธ์ คณะนิเทศศาสตร์ โดยเจ้าหน้าที่ภาควิชาฯ จะรับเรื่องและส่งต่อมายังศูนย์ฯ หากเป็นคำขอเกี่ยวกับข้อมูลส่วนบุคคลของท่าน การติดต่อทางอีเมลจะถึงศูนย์ฯ โดยตรงและรวดเร็วกว่า",
       },
     ],
   },

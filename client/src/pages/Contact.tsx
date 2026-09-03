@@ -32,7 +32,12 @@ import { usePageMeta } from "@/i18n/PageMeta";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { LocaleLink } from "@/i18n/LocaleLink";
 import { services as serviceCatalog } from "@/content/services";
-import { CENTER_EMAIL, CENTER_PHONE_DISPLAY } from "@/config/contact";
+import {
+  CENTER_EMAIL,
+  CENTER_PHONE_TH,
+  CENTER_PHONE_EN,
+  CENTER_PHONE_E164,
+} from "@/config/contact";
 import { ArrowRight, MapPin, Mail, Phone, CheckCircle2 } from "lucide-react";
 
 const ENDPOINT =
@@ -96,6 +101,8 @@ const COPY = {
     addr4: "กรุงเทพฯ 10330",
     emailLabel: "อีเมล",
     phoneLabel: "โทรศัพท์",
+    phoneNote:
+      "เจ้าหน้าที่ภาควิชาการประชาสัมพันธ์ คณะนิเทศศาสตร์ เป็นผู้รับสายและส่งเรื่องต่อมายังศูนย์ฯ",
     formTitle: "ส่งข้อความ",
     nameLabel: "ชื่อ-นามสกุล",
     emailFieldLabel: "อีเมล",
@@ -136,6 +143,8 @@ const COPY = {
     addr4: "Pathumwan, Bangkok 10330, Thailand",
     emailLabel: "Email",
     phoneLabel: "Phone",
+    phoneNote:
+      "Answered by the Department of Public Relations, Faculty of Communication Arts, who pass enquiries on to the Center.",
     formTitle: "Send a message",
     nameLabel: "Full name",
     emailFieldLabel: "Email",
@@ -381,8 +390,26 @@ export default function Contact() {
                   aria-hidden="true"
                 />
                 <span style={{ fontSize: "0.875rem" }}>
-                  {t.phoneLabel}: {CENTER_PHONE_DISPLAY}
+                  {t.phoneLabel}:{" "}
+                  <a
+                    href={`tel:${CENTER_PHONE_E164}`}
+                    style={{ color: "var(--ink)" }}
+                    className="hover:underline"
+                  >
+                    {locale === "th" ? CENTER_PHONE_TH : CENTER_PHONE_EN}
+                  </a>
                 </span>
+              </p>
+              <p
+                className="mt-1.5"
+                style={{
+                  color: "var(--ink-muted)",
+                  fontSize: "0.78rem",
+                  lineHeight: 1.5,
+                  paddingLeft: "1.9rem",
+                }}
+              >
+                {t.phoneNote}
               </p>
             </div>
           </aside>

@@ -32,6 +32,7 @@ import { useEffect } from "react";
 import * as CookieConsent from "vanilla-cookieconsent";
 import "vanilla-cookieconsent/dist/cookieconsent.css";
 import { useLocale } from "@/i18n/LocaleProvider";
+import { CENTER_EMAIL } from "@/lib/contact";
 
 const PLAUSIBLE_DOMAIN = "comminno-go6lmsuy.manus.space";
 const PLAUSIBLE_SCRIPT_ID = "plausible-script";
@@ -133,7 +134,7 @@ export function CookieConsentProvider({
                 {
                   title: "Contact us",
                   description:
-                    'For questions about this notice or to exercise your PDPA rights, write to <a href="mailto:comminno@chula.ac.th">comminno@chula.ac.th</a>. The full privacy policy is available <a href="/en/privacy">here</a>.',
+                    `For questions about this notice or to exercise your PDPA rights, write to <a href="mailto:${CENTER_EMAIL}">${CENTER_EMAIL}</a>. The full privacy policy is available <a href="/en/privacy">here</a>.`,
                 },
               ],
             },
@@ -176,7 +177,7 @@ export function CookieConsentProvider({
                 {
                   title: "ติดต่อเรา",
                   description:
-                    'หากมีคำถามเกี่ยวกับนโยบายนี้หรือต้องการใช้สิทธิตาม PDPA โปรดติดต่อ <a href="mailto:comminno@chula.ac.th">comminno@chula.ac.th</a> และดูนโยบายฉบับเต็มได้ <a href="/th/privacy">ที่นี่</a>',
+                    `หากมีคำถามเกี่ยวกับนโยบายนี้หรือต้องการใช้สิทธิตาม PDPA โปรดติดต่อ <a href="mailto:${CENTER_EMAIL}">${CENTER_EMAIL}</a> และดูนโยบายฉบับเต็มได้ <a href="/th/privacy">ที่นี่</a>`,
                 },
               ],
             },

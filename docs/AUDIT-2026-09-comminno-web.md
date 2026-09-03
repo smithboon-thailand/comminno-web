@@ -537,8 +537,11 @@ Recommended CI additions, in rough order of value per line of code:
 
 ### Remediation status
 
-Sprint 1 was applied on 2026-09-03 in the same branch as this report. Verified
-by `tsc --noEmit`, a clean `vite build`, and a scan of the actual build output.
+Sprints 1 and 2 were applied on 2026-09-03 in the same branch as this report.
+Verified by `tsc --noEmit`, a clean `vite build`, the two new guard scripts, and
+a scan of the actual build output. Not verified against a live URL: Vercel
+preview deployments on this project sit behind deployment protection, which is
+why `check-routes.mjs` exists.
 
 | Finding | Status |
 |---|---|
@@ -550,6 +553,15 @@ by `tsc --noEmit`, a clean `vite build`, and a scan of the actual build output.
 | 4.3 — uncovered legacy paths | **Fixed** at the client-redirect layer: `/about`, `/contact`, `/insights` added to the redirect map. Still soft redirects until 4.2 moves them into `vercel.json`. |
 | 6.3 — pending badges | **Partly fixed.** The badges no longer render publicly. The six Thai spellings still need verification by the center; the flags stay in `content/about.yml` as the editorial to-do and `check-content.mjs` reports them. |
 | 11.3 — no content validation in CI | **Fixed.** `scripts/check-content.mjs` runs in CI after the build. Hard-fails on a staging host in shipped output or a slug reference that resolves to nothing; warns on the open content items. Negative-tested. |
+| 4.2 · 4.1 — soft redirects, no real 404 | **Fixed.** `scripts/build-vercel-routes.mjs` writes the redirect and rewrite tables into `vercel.json`: 72 real 308s at the edge, replacing files Vercel never read. The blanket `/(.*)` rewrite is gone — rewrites now match only the route shapes the app serves, so unknown shapes get a genuine 404 with a branded `client/public/404.html`. An unknown *slug* under a valid shape still reaches the SPA (deliberate: enumerating slugs would 404 any CMS-added post), and the NotFound view now carries `noindex`. |
+| 6.1 — truncated content | **Fixed.** All 15 summaries and OG descriptions rewritten by hand from the original Wix article text preserved in `content/data/all_pages.json` — nothing invented. The "Associate Professor Dr." cut-offs, the run-together sentences and the leaked video filenames are gone. |
+| 6.2 — undated posts | **Partly fixed.** Two of three dated from their own sources: Keio 2026-03-15 (the Wix publication date) and Sri Trang 2022-07-20 (the course date in its own text). The third has no date evidence anywhere and stays flagged. |
+| 6.4 — misspelled slug | **Fixed.** Renamed to `...boonchutima...`, with a redirect from the old spelling so shared links survive. |
+| 6.5 — name romanisation | **Fixed.** The Thai source reads the surname as กิจรุ่งไพศาล, which romanises as Kijrungpaisarn and matches the About-page citation — so "Kitrungpaisan" was the outlier, not the citation. Normalised. |
+| 4.5 — broken social cards | **Fixed.** A real 1200x630 PNG (`client/public/og-image.png`, rendered from `scripts/og/og-image.template.html`) replaces the relative-path SVG. `usePageMeta` now emits absolute `og:image`/`twitter:image`, and article pages declare `og:type: article` and use their own cover. |
+| 4.6 — raw category slugs | **Fixed.** Insight cards render the localized category title. |
+| 9.1 — blank form submissions | **Fixed.** `noValidate` removed and `onSubmit` re-checks every required field plus email shape, with bilingual error copy. |
+| Routing had no test | **Fixed.** `scripts/check-routes.mjs` compiles `vercel.json` with the same matcher Vercel uses and asserts every canonical URL, every legacy URL, and that junk paths still 404. It caught a real self-redirect loop (`/th/about` to itself) in the first generated table. |
 | 5.1 — privacy placeholders | **Blocked on the center.** Needs four values: DPO email, DPO phone, effective date, last-updated date. Flagged as a CI warning until supplied; promote to a hard error once they land. |
 | 3.2 — staging indexable | **Blocked.** `noindex` on `comminno-go6lmsuy.manus.space` is Manus hosting configuration, outside this repository. |
 | 12.2 — repo description | **Blocked.** GitHub metadata, not a file — must be edited in repository settings. |
@@ -574,7 +586,7 @@ the scripts) — no code edit.
 | Fix the two broken redirect destinations and the training service's dead `relatedSlugs` | 4.4 |
 | Add `noindex` to staging | 3.2 |
 
-### Sprint 2 — Migration integrity (2–3 days)
+### Sprint 2 — Migration integrity (2–3 days) — *applied, see status above*
 
 | Task | Fixes |
 |---|---|

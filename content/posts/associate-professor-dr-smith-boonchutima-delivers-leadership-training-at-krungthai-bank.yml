@@ -1,0 +1,15 @@
+# Insight post (metadata only — body in content/post-bodies/<slug>.md).
+# Source of truth (commit #7.5+). Edit via /admin or directly in this file;
+# scripts/build-content.mjs reads it and emits client/src/content/*.ts.
+
+slug: associate-professor-dr-smith-boonchutima-delivers-leadership-training-at-krungthai-bank
+title: Associate Professor Dr. Smith Boonchutima Delivers Leadership Training at Krungthai Bank
+summary: "Assoc. Prof. Smith Boonchutima led \"The Art of Communication & Influencing\" for middle managers at Krungthai Bank, part of Sasin's Leadership Acceleration Program."
+date: "2025-07-23"
+tags:
+  - training
+coverFilename: ~
+coverAltEn: Banking executives in a leadership training workshop
+coverAltTh: ผู้บริหารธนาคารร่วมอบรมภาวะผู้นำ
+ogDescription: "On 23 July 2025, Assoc. Prof. Smith Boonchutima was keynote speaker for the Leadership Acceleration Program at Krungthai Bank, on the theme \"The Art of Communication & Influencing\". The day covered organisational communication, information management, word-of-mouth and rumour, presentation skills, conflict management and crisis communication, closing with digital public relations and hands-on practice using AI tools for news writing. The programme was organised by Sasin Graduate Institute of Business Administration."
+coverImage: https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/krungthai

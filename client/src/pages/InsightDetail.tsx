@@ -49,6 +49,10 @@ export default function InsightDetail() {
   const safeTitle = post?.title ?? "Article not found";
   const summary = post?.summary ?? "";
   usePageMeta({
+    // Article pages declared og:type "website" like every other page, and had
+    // no card image of their own (audit finding 4.5).
+    type: "article",
+    image: post?.coverImage ?? undefined,
     title: safeTitle,
     description:
       post?.ogDescription || summary ||

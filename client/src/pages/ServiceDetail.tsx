@@ -99,6 +99,9 @@ export default function ServiceDetail() {
     : "The service page you are looking for could not be found.";
 
   usePageMeta({
+    // Use the service's own hero as the social card rather than the site-wide
+    // fallback (audit finding 4.5).
+    image: service?.heroImage ?? undefined,
     title: safeTitle,
     description: metaDesc,
     path: service ? `/${locale}/services/${service.slug}` : undefined,

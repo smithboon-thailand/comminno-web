@@ -318,7 +318,7 @@ export const services: readonly ServiceWithCopy[] = [
       "center-of-excellence-head-invited-to-lead-executive-crisis-communication-training",
       "the-training-program-for-driving-public-and-social-communication-care-d-plus",
       "empowering-youth-leaders",
-      "associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank"
+      "associate-professor-dr-smith-boonchutima-delivers-leadership-training-at-krungthai-bank"
     ],
     "ctaEn": "Discuss a custom program",
     "ctaTh": "ปรึกษาออกแบบหลักสูตร",

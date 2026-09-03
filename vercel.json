@@ -6,32 +6,436 @@
   "installCommand": "pnpm install --frozen-lockfile",
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/admin", "destination": "/admin/index.html" },
-    { "source": "/admin/(.*)", "destination": "/admin/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/admin",
+      "destination": "/admin/index.html"
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": "/admin/$1"
+    },
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/:locale(th|en)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/:locale(th|en)/:section(about|services|insights|contact|privacy)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/:locale(th|en)/:section(services|insights)/:slug",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
-        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains; preload" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
       ]
     },
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/fonts/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/about",
+      "destination": "/th/about",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/th/contact",
+      "permanent": true
+    },
+    {
+      "source": "/insights",
+      "destination": "/th/insights",
+      "permanent": true
+    },
+    {
+      "source": "/about/teerada-ne",
+      "destination": "/th/about#teerada",
+      "permanent": true
+    },
+    {
+      "source": "/th/about/teerada-ne",
+      "destination": "/th/about#teerada",
+      "permanent": true
+    },
+    {
+      "source": "/en/about/teerada-ne",
+      "destination": "/en/about#teerada",
+      "permanent": true
+    },
+    {
+      "source": "/blank",
+      "destination": "/th/about#smith",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/book-printing",
+      "destination": "/th/services/book-and-printing",
+      "permanent": true
+    },
+    {
+      "source": "/th/insights/categories/book-printing",
+      "destination": "/th/services/book-and-printing",
+      "permanent": true
+    },
+    {
+      "source": "/en/insights/categories/book-printing",
+      "destination": "/en/services/book-and-printing",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/campaign-manage",
+      "destination": "/th/services/campaign-manage",
+      "permanent": true
+    },
+    {
+      "source": "/th/insights/categories/campaign-manage",
+      "destination": "/th/services/campaign-manage",
+      "permanent": true
+    },
+    {
+      "source": "/en/insights/categories/campaign-manage",
+      "destination": "/en/services/campaign-manage",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/communication-design",
+      "destination": "/th/services/communication-design",
+      "permanent": true
+    },
+    {
+      "source": "/th/insights/categories/communication-design",
+      "destination": "/th/services/communication-design",
+      "permanent": true
+    },
+    {
+      "source": "/en/insights/categories/communication-design",
+      "destination": "/en/services/communication-design",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/highlights",
+      "destination": "/th/insights?category=highlights",
+      "permanent": true
+    },
+    {
+      "source": "/th/insights/categories/highlights",
+      "destination": "/th/insights?category=highlights",
+      "permanent": true
+    },
+    {
+      "source": "/en/insights/categories/highlights",
+      "destination": "/en/insights?category=highlights",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/innovation-technology",
+      "destination": "/th/insights?category=innovation-technology",
+      "permanent": true
+    },
+    {
+      "source": "/th/insights/categories/innovation-technology",
+      "destination": "/th/insights?category=innovation-technology",
+      "permanent": true
+    },
+    {
+      "source": "/en/insights/categories/innovation-technology",
+      "destination": "/en/insights?category=innovation-technology",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/marketing-event",
+      "destination": "/th/services/marketing-event",
+      "permanent": true
+    },
+    {
+      "source": "/th/insights/categories/marketing-event",
+      "destination": "/th/services/marketing-event",
+      "permanent": true
+    },
+    {
+      "source": "/en/insights/categories/marketing-event",
+      "destination": "/en/services/marketing-event",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/motion-effect-ar",
+      "destination": "/th/services/motion-effect-ar",
+      "permanent": true
+    },
+    {
+      "source": "/th/insights/categories/motion-effect-ar",
+      "destination": "/th/services/motion-effect-ar",
+      "permanent": true
+    },
+    {
+      "source": "/en/insights/categories/motion-effect-ar",
+      "destination": "/en/services/motion-effect-ar",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/research-evaluation",
+      "destination": "/th/services/research-and-evaluation",
+      "permanent": true
+    },
+    {
+      "source": "/th/insights/categories/research-evaluation",
+      "destination": "/th/services/research-and-evaluation",
+      "permanent": true
+    },
+    {
+      "source": "/en/insights/categories/research-evaluation",
+      "destination": "/en/services/research-and-evaluation",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/school",
+      "destination": "/th/insights?category=school",
+      "permanent": true
+    },
+    {
+      "source": "/th/insights/categories/school",
+      "destination": "/th/insights?category=school",
+      "permanent": true
+    },
+    {
+      "source": "/en/insights/categories/school",
+      "destination": "/en/insights?category=school",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/seminar",
+      "destination": "/th/services/seminar",
+      "permanent": true
+    },
+    {
+      "source": "/th/insights/categories/seminar",
+      "destination": "/th/services/seminar",
+      "permanent": true
+    },
+    {
+      "source": "/en/insights/categories/seminar",
+      "destination": "/en/services/seminar",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/training",
+      "destination": "/th/services/training",
+      "permanent": true
+    },
+    {
+      "source": "/th/insights/categories/training",
+      "destination": "/th/services/training",
+      "permanent": true
+    },
+    {
+      "source": "/en/insights/categories/training",
+      "destination": "/en/services/training",
+      "permanent": true
+    },
+    {
+      "source": "/insights/categories/video-production",
+      "destination": "/th/services/video-production",
+      "permanent": true
+    },
+    {
+      "source": "/th/insights/categories/video-production",
+      "destination": "/th/services/video-production",
+      "permanent": true
+    },
+    {
+      "source": "/en/insights/categories/video-production",
+      "destination": "/en/services/video-production",
+      "permanent": true
+    },
+    {
+      "source": "/post/__itd",
+      "destination": "/th/insights/itd",
+      "permanent": true
+    },
+    {
+      "source": "/post/asean-university-network",
+      "destination": "/th/insights/asean-university-network",
+      "permanent": true
+    },
+    {
+      "source": "/insights/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank",
+      "destination": "/th/insights/associate-professor-dr-smith-boonchutima-delivers-leadership-training-at-krungthai-bank",
+      "permanent": true
+    },
+    {
+      "source": "/th/insights/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank",
+      "destination": "/th/insights/associate-professor-dr-smith-boonchutima-delivers-leadership-training-at-krungthai-bank",
+      "permanent": true
+    },
+    {
+      "source": "/en/insights/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank",
+      "destination": "/en/insights/associate-professor-dr-smith-boonchutima-delivers-leadership-training-at-krungthai-bank",
+      "permanent": true
+    },
+    {
+      "source": "/post/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank",
+      "destination": "/th/insights/associate-professor-dr-smith-boonchutima-delivers-leadership-training-at-krungthai-bank",
+      "permanent": true
+    },
+    {
+      "source": "/post/associate-professor-dr-smith-boonchutima-delivers-special-lecture-at-professional-treasury-officer",
+      "destination": "/th/insights/associate-professor-dr-smith-boonchutima-delivers-special-lecture-at-professional-treasury-officer",
+      "permanent": true
+    },
+    {
+      "source": "/post/center-of-excellence-head-invited-to-lead-executive-crisis-communication-training",
+      "destination": "/th/insights/center-of-excellence-head-invited-to-lead-executive-crisis-communication-training",
+      "permanent": true
+    },
+    {
+      "source": "/post/center-of-excellence-in-communication-innovation-launches-groundbreaking-online-course-for-digital-n",
+      "destination": "/th/insights/center-of-excellence-in-communication-innovation-launches-groundbreaking-online-course-for-digital-n",
+      "permanent": true
+    },
+    {
+      "source": "/post/chula-communication-arts-strengthens-academic-collaboration-with-keio-university-and-bunkyo-universi",
+      "destination": "/th/insights/chula-communication-arts-strengthens-academic-collaboration-with-keio-university-and-bunkyo-universi",
+      "permanent": true
+    },
+    {
+      "source": "/post/chula-zero-waste",
+      "destination": "/th/insights/chula-zero-waste",
+      "permanent": true
+    },
+    {
+      "source": "/post/comm-art-chula-ce-drives-national-drug-safety-awareness-at-fda-summit",
+      "destination": "/th/insights/comm-art-chula-ce-drives-national-drug-safety-awareness-at-fda-summit",
+      "permanent": true
+    },
+    {
+      "source": "/post/creative-tourism-development-project-in-nan-province",
+      "destination": "/th/insights/creative-tourism-development-project-in-nan-province",
+      "permanent": true
+    },
+    {
+      "source": "/post/department-of-disease-control",
+      "destination": "/th/insights/department-of-disease-control",
+      "permanent": true
+    },
+    {
+      "source": "/post/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-türkiye-for-the-wo",
+      "destination": "/th/insights/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-türkiye-for-the-wo",
+      "permanent": true
+    },
+    {
+      "source": "/post/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-t%C3%BCrkiye-for-the-wo",
+      "destination": "/th/insights/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-türkiye-for-the-wo",
+      "permanent": true
+    },
+    {
+      "source": "/post/empowering-youth-leaders",
+      "destination": "/th/insights/empowering-youth-leaders",
+      "permanent": true
+    },
+    {
+      "source": "/post/international-labour-organization",
+      "destination": "/th/insights/international-labour-organization",
+      "permanent": true
+    },
+    {
+      "source": "/post/ministry-of-natural-resources-and-environment",
+      "destination": "/th/insights/ministry-of-natural-resources-and-environment",
+      "permanent": true
+    },
+    {
+      "source": "/post/nbtc-encyclopedia",
+      "destination": "/th/insights/nbtc-encyclopedia",
+      "permanent": true
+    },
+    {
+      "source": "/post/nia-100-faces",
+      "destination": "/th/insights/nia-100-faces",
+      "permanent": true
+    },
+    {
+      "source": "/post/nia-media-innovation",
+      "destination": "/th/insights/nia-media-innovation",
+      "permanent": true
+    },
+    {
+      "source": "/post/nia-satisfaction-survey-2020",
+      "destination": "/th/insights/nia-satisfaction-survey-2020",
+      "permanent": true
+    },
+    {
+      "source": "/post/pid-thong-lang-phra-foundation",
+      "destination": "/th/insights/pid-thong-lang-phra-foundation",
+      "permanent": true
+    },
+    {
+      "source": "/post/seeds-for-cu-sustainability",
+      "destination": "/th/insights/seeds-for-cu-sustainability",
+      "permanent": true
+    },
+    {
+      "source": "/post/sri-trang-agro-industry",
+      "destination": "/th/insights/sri-trang-agro-industry",
+      "permanent": true
+    },
+    {
+      "source": "/post/thai-health-promotion-foundation-organises-simple-drug-communication-as-daily-routine-training-by",
+      "destination": "/th/insights/thai-health-promotion-foundation-organises-simple-drug-communication-as-daily-routine-training-by",
+      "permanent": true
+    },
+    {
+      "source": "/post/the-training-program-for-driving-public-and-social-communication-care-d-plus",
+      "destination": "/th/insights/the-training-program-for-driving-public-and-social-communication-care-d-plus",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/th/privacy",
+      "permanent": true
     }
   ]
 }

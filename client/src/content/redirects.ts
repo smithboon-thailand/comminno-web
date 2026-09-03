@@ -78,8 +78,12 @@ export const redirects: readonly Redirect[] = [
     "to": "/insights/asean-university-network"
   },
   {
+    "from": "/insights/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank",
+    "to": "/insights/associate-professor-dr-smith-boonchutima-delivers-leadership-training-at-krungthai-bank"
+  },
+  {
     "from": "/post/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank",
-    "to": "/insights/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank"
+    "to": "/insights/associate-professor-dr-smith-boonchutima-delivers-leadership-training-at-krungthai-bank"
   },
   {
     "from": "/post/associate-professor-dr-smith-boonchutima-delivers-special-lecture-at-professional-treasury-officer",
@@ -112,6 +116,10 @@ export const redirects: readonly Redirect[] = [
   {
     "from": "/post/department-of-disease-control",
     "to": "/insights/department-of-disease-control"
+  },
+  {
+    "from": "/post/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-türkiye-for-the-wo",
+    "to": "/insights/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-türkiye-for-the-wo"
   },
   {
     "from": "/post/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-t%C3%BCrkiye-for-the-wo",

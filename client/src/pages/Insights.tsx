@@ -9,7 +9,7 @@
 import { useMemo } from "react";
 import { useLocation } from "wouter";
 import { posts } from "@/content/posts";
-import { categories } from "@/content/categories";
+import { categories, categoriesBySlug } from "@/content/categories";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { usePageMeta } from "@/i18n/PageMeta";
 import { LocaleLink } from "@/i18n/LocaleLink";
@@ -222,7 +222,18 @@ export default function Insights() {
                         color: "var(--ink-muted)",
                       }}
                     >
-                      {p.tags[0]}
+                      {/* Render the category's localized title, not the raw
+                          slug. Cards previously showed "book-and-printing" and
+                          "research-and-evaluation" verbatim, in both locales
+                          (audit finding 4.6). InsightDetail already did this
+                          correctly; the index simply never used the lookup. */}
+                      {(() => {
+                        const cat = categoriesBySlug.get(p.tags[0]);
+                        if (!cat) return p.tags[0];
+                        return locale === "th"
+                          ? cat.titleTh ?? cat.titleEn
+                          : cat.titleEn;
+                      })()}
                     </span>
                   )}
                 </div>

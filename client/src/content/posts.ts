@@ -5,19 +5,19 @@ export const posts: readonly PostMeta[] = [
   {
     "slug": "asean-university-network",
     "title": "ASEAN University Network",
-    "summary": "We created the Annual Report for ASEAN University Network for the years 2016-2019.We designed the graphics and layout of the annual report with a creative and modern concept that aligns with the organ",
+    "summary": "We designed and produced the ASEAN University Network annual report for 2016–2019, from concept and layout through to print-ready files.",
     "date": "2024-06-21",
     "tags": [
       "book-and-printing"
     ],
     "coverFilename": "25218b_2b0f2529e00142aaabbab10e2503df71-mv2.png",
-    "ogDescription": "We created the Annual Report for ASEAN University Network for the years 2016-2019.We designed the graphics and layout of the annual report with a creative and modern concept that aligns with the organization’s personality. We provided print-ready files to the printing house, ensuring high-quality printouts. Additionally, we provided smaller file sizes for AUN to upload on their website, allowing for digital viewing of the report as another accessible option.https://anyflip.com/wyzmm/tiog/",
+    "ogDescription": "Comm.Inno designed and produced the ASEAN University Network annual report covering 2016–2019. We developed a creative, modern layout matched to the organisation's personality, supplied print-ready files to the printer, and prepared compressed versions for digital reading on the AUN website.",
     "coverImage": null
   },
   {
-    "slug": "associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank",
+    "slug": "associate-professor-dr-smith-boonchutima-delivers-leadership-training-at-krungthai-bank",
     "title": "Associate Professor Dr. Smith Boonchutima Delivers Leadership Training at Krungthai Bank",
-    "summary": "Today (July 23, 2025), Associate Professor Dr.",
+    "summary": "Assoc. Prof. Smith Boonchutima led \"The Art of Communication & Influencing\" for middle managers at Krungthai Bank, part of Sasin's Leadership Acceleration Program.",
     "date": "2025-07-23",
     "tags": [
       "training"
@@ -25,13 +25,13 @@ export const posts: readonly PostMeta[] = [
     "coverFilename": null,
     "coverAltEn": "Banking executives in a leadership training workshop",
     "coverAltTh": "ผู้บริหารธนาคารร่วมอบรมภาวะผู้นำ",
-    "ogDescription": "Today (July 23, 2025), Associate Professor Dr. Smith Boonchutima served as a keynote speaker for the Leadership Acceleration Program, designed to enhance management skills for middle-level executives at Krungthai Bank Public Company Limited. The training focused on \"The Art of Communication & Influencing.\"The comprehensive program covered organizational communication, information management, informal communication channels (word-of-mouth and rumors), presentation skills, conflict management, and",
+    "ogDescription": "On 23 July 2025, Assoc. Prof. Smith Boonchutima was keynote speaker for the Leadership Acceleration Program at Krungthai Bank, on the theme \"The Art of Communication & Influencing\". The day covered organisational communication, information management, word-of-mouth and rumour, presentation skills, conflict management and crisis communication, closing with digital public relations and hands-on practice using AI tools for news writing. The programme was organised by Sasin Graduate Institute of Business Administration.",
     "coverImage": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/krungthai"
   },
   {
     "slug": "associate-professor-dr-smith-boonchutima-delivers-special-lecture-at-professional-treasury-officer",
     "title": "Associate Professor Dr. Smith Boonchutima Delivers Special Lecture at Professional Treasury Officer Program",
-    "summary": "Today (August 6, 2025), Associate Professor Dr.",
+    "summary": "Assoc. Prof. Smith Boonchutima lectured 60 government executives on communication techniques for administration and public relations at the 15th Professional Treasury Officer Program.",
     "date": "2025-08-06",
     "tags": [
       "training"
@@ -39,7 +39,7 @@ export const posts: readonly PostMeta[] = [
     "coverFilename": null,
     "coverAltEn": "Speaker addressing executive treasury officers in a formal seminar setting",
     "coverAltTh": "วิทยากรบรรยายผู้บริหารสายการคลังในงานสัมมนาเชิงบริหาร",
-    "ogDescription": "Today (August 6, 2025), Associate Professor Dr. Smith Boonchutima from the Faculty of Communication Arts, Chulalongkorn University, delivered a special lecture on \"Communication Techniques for Administration and Public Relations\" at the 15th Professional Treasury Officer Program, organized by the Fiscal Policy Research Institute Foundation.The lecture covered key topics including communication strategy in government organizations, information management in the digital age, crisis communication,",
+    "ogDescription": "On 6 August 2025, Assoc. Prof. Smith Boonchutima delivered a special lecture on \"Communication Techniques for Administration and Public Relations\" at the 15th Professional Treasury Officer Program, organised by the Fiscal Policy Research Institute Foundation. The session covered communication strategy in government organisations, information management in the digital age, crisis communication, and the application of modern technology in public relations. Sixty government executives from a range of agencies attended.",
     "coverImage": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/treasury"
   },
   {
@@ -73,21 +73,21 @@ export const posts: readonly PostMeta[] = [
   {
     "slug": "chula-communication-arts-strengthens-academic-collaboration-with-keio-university-and-bunkyo-universi",
     "title": "Chula Communication Arts Strengthens Academic Collaboration with Keio University and Bunkyo University",
-    "summary": "TOKYO – Faculty members and students from Chulalongkorn University’s Department of Public Relations visited leading institutions in Japan to strengthen international academic ties and foster innovativ",
-    "date": null,
+    "summary": "A Chulalongkorn delegation visited Keio University and Bunkyo University in Tokyo to run a joint peace-communication workshop and open talks on exchanges and joint research.",
+    "date": "2026-03-15",
     "tags": [
       "school"
     ],
     "coverFilename": null,
     "coverAltEn": "Delegation from Chulalongkorn University meeting Japanese academic partners in Tokyo",
     "coverAltTh": "คณะผู้แทนจุฬาลงกรณ์มหาวิทยาลัยพบปะพันธมิตรทางวิชาการญี่ปุ่น",
-    "ogDescription": "TOKYO – Faculty members and students from Chulalongkorn University’s Department of Public Relations visited leading institutions in Japan to strengthen international academic ties and foster innovative communication practices.Keio University: Peace Playground Workshop On March 11, 2026, the delegation visited Keio University’s Graduate School of Media Design (KMD). Welcomed by Dean Masa Inakage, the group hosted the “Peace Playground: A Workshop on Metaphor & Art” led by Asst. Prof. Dr. Teerada",
+    "ogDescription": "In March 2026, faculty and students from Chulalongkorn's Department of Public Relations visited two leading Japanese institutions. At Keio University's Graduate School of Media Design, Asst. Prof. Teerada Chongkolrattanaporn led the workshop \"Peace Playground: A Workshop on Metaphor & Art\", with a lecture by Assoc. Prof. Shutaro Takeda. At Bunkyo University, faculty met Professor Masato Koizumi to discuss student exchanges, curriculum development and joint international research.",
     "coverImage": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/chula-keio-bunkyo"
   },
   {
     "slug": "chula-zero-waste",
     "title": "Chula Zero Waste",
-    "summary": "Create a Campaign Prototype for Reducing Waste in the University Led by Students, Emphasizing Fun, Brightness, Simplicity, and Practicality.The Action Plan for Sustainable Management of Solid and Haza",
+    "summary": "A student-led campaign prototype for cutting waste at Chulalongkorn University — built to be fun, bright, simple and practical.",
     "date": "2024-07-06",
     "tags": [
       "campaign-manage",
@@ -95,13 +95,13 @@ export const posts: readonly PostMeta[] = [
       "marketing-event"
     ],
     "coverFilename": "25218b_f9cc2a2218e0428bb5d13c02be940a08-mv2.jpg",
-    "ogDescription": "Create a Campaign Prototype for Reducing Waste in the University Led by Students, Emphasizing Fun, Brightness, Simplicity, and Practicality.The Action Plan for Sustainable Management of Solid and Hazardous Waste at Chulalongkorn University (Chula Zero Waste) (2017-2021) aims to reduce waste within the university by at least 30% by 2021. The plan includes 6 programs and 18 projects, implemented through the collaboration of the Environmental Research Institute, the Office of Physical System Manage",
+    "ogDescription": "Comm.Inno created a student-led campaign prototype for reducing waste at Chulalongkorn University, designed around four principles: fun, brightness, simplicity and practicality. It supports the Chula Zero Waste action plan for sustainable management of solid and hazardous waste (2017–2021), which set out to cut university waste by at least 30% through six programmes and eighteen projects, run with the Environmental Research Institute, the Office of Physical System Management and partner networks across the university.",
     "coverImage": null
   },
   {
     "slug": "comm-art-chula-ce-drives-national-drug-safety-awareness-at-fda-summit",
     "title": "Comm.Inno drives national drug safety awareness at FDA summit",
-    "summary": "Comm.Inno joins the Faculty of Communication Arts and the Food and Drug Administration to drive national drug safety awareness at Thailand’s first FDA summit on rational drug use.",
+    "summary": "Comm.Inno brought an interactive rational-drug-use exhibition to Thailand's first National Forum on Rational Drug Use, with the FDA and ThaiHealth.",
     "date": "2025-07-09",
     "tags": [
       "innovation-technology"
@@ -109,7 +109,7 @@ export const posts: readonly PostMeta[] = [
     "coverFilename": null,
     "coverAltEn": "FDA national drug-safety summit exhibition booth and visitors",
     "coverAltTh": "บูธนิทรรศการประชุมระดับชาติเรื่องความปลอดภัยของอย.",
-    "ogDescription": "Communication Innovation Center Drives National Drug Safety Awareness at FDA SummitAssistant Professor Dr. Teerada Chongkolrattanaporn and Dr. Kamonrat Kitrungpaisan from our Public Relations Department collaborated with the Food and Drug Administration (FDA) and Thai Health Promotion Foundation to present an interactive exhibition \"กินยาสมเหตุ หายโรคสมผล ทุกคนสมใจ\" at Thailand's First National Forum on Rational Drug Use.The event took place July 8-9,",
+    "ogDescription": "Asst. Prof. Teerada Chongkolrattanaporn and Dr. Kamonrat Kijrungpaisarn worked with the Food and Drug Administration and the Thai Health Promotion Foundation to present the interactive exhibition \"กินยาสมเหตุ หายโรคสมผล ทุกคนสมใจ\" at Thailand's first National Forum on Rational Drug Use, held 8–9 July 2025 at Centara Life Government Complex, Bangkok. Healthcare professionals and the public took part through educational games and discussion of proper medication use. The exhibition is part of the center's research project on communication for medication use to reduce kidney-disease risk, funded by ThaiHealth.",
     "coverImage": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/fda"
   },
   {
@@ -143,7 +143,7 @@ export const posts: readonly PostMeta[] = [
   {
     "slug": "dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-türkiye-for-the-wo",
     "title": "Dr. Teerada of Chulalongkorn University Leads Workshop Preparing Thai Students in Türkiye for the Workforce",
-    "summary": "On 4 - 5 July 2025, Assistant Professor Dr.",
+    "summary": "Asst. Prof. Teerada Chongkolrattanaporn led a two-day workshop in Istanbul preparing Thai students in Türkiye for the transition into professional work.",
     "date": "2025-07-05",
     "tags": [
       "training"
@@ -151,13 +151,13 @@ export const posts: readonly PostMeta[] = [
     "coverFilename": null,
     "coverAltEn": "Workshop participants and speaker in Istanbul preparing Thai students for the workforce",
     "coverAltTh": "ผู้เข้าร่วมปฏิบัติการในเวิร์กช็อปที่อิสตันบูลเตรียมความพร้อมสู่ตลาดแรงงานของนักศึกษาไทย",
-    "ogDescription": "On 4 - 5 July 2025, Assistant Professor Dr. Teerada Chongkolrattanaporn, Head of the Department of Public Relations, Faculty of Communication Arts, Chulalongkorn University, honored an event in Istanbul as the key speaker for the project, “Preparing Thai Students in Türkiye to the World of Work.”Dr. Teerada shared her expertise and essential skills to empower Thai students nearing graduation for a confident transition into the professional world. Her lecture covered crucial topics such as basic",
+    "ogDescription": "On 4–5 July 2025, Asst. Prof. Teerada Chongkolrattanaporn, Head of the Department of Public Relations, was the key speaker for \"Preparing Thai Students in Türkiye to the World of Work\" in Istanbul. Her sessions covered basic communication and negotiation techniques, resumé writing, self-introduction, and practical interview skills. The project was organised by the Royal Thai Embassy in Ankara and opened by H.E. Mr. Apirat Sugondhabhirom, Ambassador of Thailand to the Republic of Türkiye.",
     "coverImage": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/turkiye"
   },
   {
     "slug": "empowering-youth-leaders",
     "title": "Empowering Youth Leaders",
-    "summary": "Empowering Youth Leaders : A Look Back at Our Recent WorkshopAs the head of our research unit and Vice President of Impulse Bangkok, I had the privilege of facilitating a training workshop for youth l",
+    "summary": "A four-day workshop in Phatthalung equipping youth leaders and mentors from three southern provinces to design, run and evaluate their own well-being activities.",
     "date": "2024-04-28",
     "tags": [
       "seminar",
@@ -165,7 +165,7 @@ export const posts: readonly PostMeta[] = [
       "highlights"
     ],
     "coverFilename": "25218b_40a013d83c714afbb81c7f935ea9ca38-mv2.jpg",
-    "ogDescription": "Empowering Youth Leaders : A Look Back at Our Recent WorkshopAs the head of our research unit and Vice President of Impulse Bangkok, I had the privilege of facilitating a training workshop for youth leaders and mentors from three provinces in southern Thailand. The event, organized by Look South Peace, took place from November 10 to 13, 2023, in Phatthalung province.The workshop aimed to develop the potential of youth leaders and mentors to participate in and create activities that promote sexua",
+    "ogDescription": "The head of Comm.Inno's research unit facilitated a training workshop for youth leaders and mentors from three provinces in southern Thailand, held 10–13 November 2023 in Phatthalung and organised by Look South Peace. The workshop built participants' ability to plan, implement and evaluate activities promoting sexual, physical and mental well-being for young people, and to collaborate with other organisations.",
     "coverImage": null
   },
   {
@@ -184,7 +184,7 @@ export const posts: readonly PostMeta[] = [
   {
     "slug": "itd",
     "title": "ITD",
-    "summary": "Organize a Meeting to Gather Opinions and Analyze Trends on Various Topics: Digital Commerce and Opportunities for Thai SMEs, the Global Trade War and the Adaptation of Thailand's International Trade ",
+    "summary": "Expert roundtables on digital commerce, the global trade war, business and human rights, and Thai services trade — turned into a printed book.",
     "date": "2024-07-06",
     "tags": [
       "book-and-printing",
@@ -192,7 +192,7 @@ export const posts: readonly PostMeta[] = [
       "research-and-evaluation"
     ],
     "coverFilename": "25218b_3fcbd73e5cd9485b99ddf5f70684b86d-mv2.jpg",
-    "ogDescription": "Organize a Meeting to Gather Opinions and Analyze Trends on Various Topics: Digital Commerce and Opportunities for Thai SMEs, the Global Trade War and the Adaptation of Thailand's International Trade Sector, Business and Human Rights Trends, and the Direction of Thailand's Service Sector Trade to Create Added Value Amidst Changes. Additionally, design and print a book to serve as a tangible outcome of the discussions.",
+    "ogDescription": "Comm.Inno organised a series of meetings for ITD to gather expert opinion and analyse trends across four themes: digital commerce and the opportunity for Thai SMEs, the global trade war and the adaptation of Thailand's international trade sector, business and human rights, and the direction of Thailand's services trade in creating added value amid change. We also designed and printed a book as the tangible output of the discussions.",
     "coverImage": null
   },
   {
@@ -211,7 +211,7 @@ export const posts: readonly PostMeta[] = [
   {
     "slug": "nbtc-encyclopedia",
     "title": "NBTC Encyclopedia",
-    "summary": "This encyclopedia compiles important topics, creates connections, explains in language that the younger generation can easily understand, and uses engaging illustrations.We started by gathering feedba",
+    "summary": "An encyclopedia rebuilt for a younger readership — plain language, strong illustrations, and video for those who would rather listen.",
     "date": "2024-07-06",
     "tags": [
       "book-and-printing",
@@ -219,7 +219,7 @@ export const posts: readonly PostMeta[] = [
       "school"
     ],
     "coverFilename": "25218b_3400ec2582f248d4abc705149ac7365c-mv2.jpg",
-    "ogDescription": "This encyclopedia compiles important topics, creates connections, explains in language that the younger generation can easily understand, and uses engaging illustrations.We started by gathering feedback from both the younger and older generations to ensure that this encyclopedia would be widely read. With the feedback in hand, we created a modern encyclopedia that makes connections, explains topics in an easily understandable way for the younger generation, and uses interesting illustrations. Ad",
+    "ogDescription": "Comm.Inno produced an encyclopedia that gathers key topics, draws the connections between them, and explains them in language a younger generation reads easily. We began by gathering feedback from both younger and older readers to make sure the result would be widely read, then built a modern edition around engaging illustrations, with accompanying video for those who prefer to listen.",
     "coverImage": null
   },
   {
@@ -239,7 +239,7 @@ export const posts: readonly PostMeta[] = [
   {
     "slug": "nia-media-innovation",
     "title": "NIA Media Innovation",
-    "summary": "Report on the Research of the Meaning of “Media Innovation” and Small Projection Mapping DisplayWe compiled research on the meaning of “media innovation” and launched the event, handling all preparati",
+    "summary": "Research into what \"media innovation\" actually means, launched with a full event production and a small projection-mapping display.",
     "date": "2024-06-29",
     "tags": [
       "video-production",
@@ -247,19 +247,19 @@ export const posts: readonly PostMeta[] = [
       "research-and-evaluation"
     ],
     "coverFilename": "25218b_537f83ece3da4ce7b69a402fd82c4319-mv2.jpg",
-    "ogDescription": "Report on the Research of the Meaning of “Media Innovation” and Small Projection Mapping DisplayWe compiled research on the meaning of “media innovation” and launched the event, handling all preparations, including lighting and sound, and creating a small projection mapping display. Additionally, we invited experts to provide insights on media innovation through interviews during the event.",
+    "ogDescription": "Comm.Inno compiled research on the meaning of \"media innovation\" and produced the launch event end to end, handling preparations including lighting and sound and creating a small projection-mapping display. We also invited experts to give their perspective on media innovation in interviews during the event.",
     "coverImage": null
   },
   {
     "slug": "nia-satisfaction-survey-2020",
     "title": "NIA Satisfaction Survey 2020",
-    "summary": "Customer Satisfaction Survey Using Mixed MethodsWe supported the development of services for the National Innovation Agency (Public Organization) by conducting a customer satisfaction survey using mix",
+    "summary": "A mixed-methods customer satisfaction survey supporting service development at the National Innovation Agency.",
     "date": "2024-06-29",
     "tags": [
       "research-and-evaluation"
     ],
     "coverFilename": "25218b_70abf2b826a749fab8c5755b58ac9333-mv2.jpg",
-    "ogDescription": "Customer Satisfaction Survey Using Mixed MethodsWe supported the development of services for the National Innovation Agency (Public Organization) by conducting a customer satisfaction survey using mixed methods.",
+    "ogDescription": "Comm.Inno supported the development of services at the National Innovation Agency (Public Organization) by conducting a customer satisfaction survey using mixed methods.",
     "coverImage": null
   },
   {
@@ -279,23 +279,25 @@ export const posts: readonly PostMeta[] = [
   {
     "slug": "seeds-for-cu-sustainability",
     "title": "Seeds for CU Sustainability",
-    "summary": "Creating Project Presentation Videos in Bangkok and Other ProvincesWe produced presentation videos from pre-production to post-production to ensure the best quality.",
+    "summary": "Project presentation videos shot in Bangkok and the provinces, from pre-production through post, including aerial footage and stakeholder interviews.",
     "date": "2024-06-29",
     "tags": [],
     "coverFilename": "25218b_e8f088f77e1e471db8d8c9fabf27e5fd-mv2.png",
-    "ogDescription": "Creating Project Presentation Videos in Bangkok and Other ProvincesWe produced presentation videos from pre-production to post-production to ensure the best quality. Weekly meetings were held to gather feedback from the clients. Ultimately, the project showcased a commitment to societal sustainability, featuring aerial footage and interviews with stakeholders involved in the project.อุทยาน 100ปี final sub engค่ายปลายปี final sub eng",
+    "ogDescription": "Comm.Inno produced project presentation videos from pre-production through to post-production, with weekly meetings to gather client feedback at every stage. The finished films showcase the project's commitment to social sustainability, featuring aerial footage and interviews with the stakeholders involved.",
     "coverImage": null
   },
   {
     "slug": "sri-trang-agro-industry",
     "title": "Sri Trang Agro-Industry",
-    "summary": "Training course: Creating Online ContentThe team has been invited to attend a training course on online content creation for the employees of Sri Trang Agro-Industry Public Company Limited, in order t",
-    "date": null,
-    "tags": [],
+    "summary": "An online content-creation course for Sri Trang Agro-Industry employees, building in-house video and screen-recording skills for ongoing organisational learning.",
+    "date": "2022-07-20",
+    "tags": [
+      "training"
+    ],
     "coverFilename": null,
     "coverAltEn": "Corporate employees in an online-content creation workshop",
     "coverAltTh": "พนักงานบริษัทร่วมอบรมการผลิตคอนเทนต์ออนไลน์",
-    "ogDescription": "Training course: Creating Online ContentThe team has been invited to attend a training course on online content creation for the employees of Sri Trang Agro-Industry Public Company Limited, in order to enable them to create video media, screen recordings, for ongoing organizational learning. The training is organized by the Sirindhorn Thai Language Institute, Chulalongkorn University, on July 20-21, 2022, at the Burisriphu Convention Center, Hat Yai Province.",
+    "ogDescription": "Comm.Inno delivered a training course on online content creation for employees of Sri Trang Agro-Industry Public Company Limited, enabling them to produce video and screen-recorded material for ongoing organisational learning. The course was organised by the Sirindhorn Thai Language Institute, Chulalongkorn University, and held on 20–21 July 2022 at the Buri Sriphu Convention Center, Hat Yai.",
     "coverImage": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/sri-trang"
   },
   {
@@ -316,7 +318,7 @@ export const posts: readonly PostMeta[] = [
   {
     "slug": "the-training-program-for-driving-public-and-social-communication-care-d-plus",
     "title": "The training program for driving public and social communication, Care D Plus.",
-    "summary": "Chulalongkorn University, in collaboration with the Ministry of Public Health, organizes the launch event for the training program for driving public and social communication (Care D+).Based on the go",
+    "summary": "Chulalongkorn and the Ministry of Public Health launched Care D+, a national programme building compassionate communication between healthcare staff, patients and families.",
     "date": "2024-04-28",
     "tags": [
       "marketing-event",
@@ -326,7 +328,7 @@ export const posts: readonly PostMeta[] = [
     "coverFilename": null,
     "coverAltEn": "Healthcare workers in a Care D+ communication training programme",
     "coverAltTh": "บุคลากรสาธารณสุขร่วมอบรมหลักสูตร Care D+ ด้านการสื่อสาร",
-    "ogDescription": "Chulalongkorn University, in collaboration with the Ministry of Public Health, organizes the launch event for the training program for driving public and social communication (Care D+).Based on the government's policy aiming to provide all Thai people with equitable access to quality healthcare services, the Ministry of Public Health has established 13 operational priorities. These priorities are designed to develop a healthcare system that addresses problem-solving, strengthens foundational sys",
+    "ogDescription": "Chulalongkorn University, in collaboration with the Ministry of Public Health, launched the Care D+ training programme for driving public and social communication. It answers a Ministry priority designated a 100-day Quick Win: more than 90% of conflicts and complaints in the health system arise from communication breakdowns or inadequate crisis communication. The Care D Plus team — the \"Heartfelt Team\" — works in every healthcare unit to build empathy, understanding and mutual respect between patients, relatives and healthcare personnel, with Chulalongkorn providing the communication training.",
     "coverImage": "https://res.cloudinary.com/dpzdw1bkr/image/upload/f_auto,q_auto/comminno/insights/care-d-plus"
   }
 ] as const;

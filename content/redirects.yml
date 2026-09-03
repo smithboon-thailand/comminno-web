@@ -44,8 +44,13 @@ redirects:
     to: /insights/itd
   - from: /post/asean-university-network
     to: /insights/asean-university-network
+  # The post was published under a misspelling of the center head's name
+  # (Boonchotima). The slug is corrected; this keeps every already-shared link
+  # to the old spelling working (audit finding 6.4).
+  - from: /insights/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank
+    to: /insights/associate-professor-dr-smith-boonchutima-delivers-leadership-training-at-krungthai-bank
   - from: /post/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank
-    to: /insights/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank
+    to: /insights/associate-professor-dr-smith-boonchutima-delivers-leadership-training-at-krungthai-bank
   - from: /post/associate-professor-dr-smith-boonchutima-delivers-special-lecture-at-professional-treasury-officer
     to: /insights/associate-professor-dr-smith-boonchutima-delivers-special-lecture-at-professional-treasury-officer
   - from: /post/center-of-excellence-head-invited-to-lead-executive-crisis-communication-training
@@ -62,6 +67,11 @@ redirects:
     to: /insights/creative-tourism-development-project-in-nan-province
   - from: /post/department-of-disease-control
     to: /insights/department-of-disease-control
+  # This slug contains a literal "ü". Browsers percent-encode it in the request
+  # path, but links and crawlers may carry either form, so both are mapped
+  # (audit finding 4.4).
+  - from: /post/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-türkiye-for-the-wo
+    to: /insights/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-türkiye-for-the-wo
   - from: /post/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-t%C3%BCrkiye-for-the-wo
     to: /insights/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-türkiye-for-the-wo
   - from: /post/empowering-youth-leaders

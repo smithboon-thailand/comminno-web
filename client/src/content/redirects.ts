@@ -2,6 +2,18 @@
 import type { Redirect } from "./types";
 export const redirects: readonly Redirect[] = [
   {
+    "from": "/about",
+    "to": "/about"
+  },
+  {
+    "from": "/contact",
+    "to": "/contact"
+  },
+  {
+    "from": "/insights",
+    "to": "/insights"
+  },
+  {
     "from": "/about/teerada-ne",
     "to": "/about#teerada"
   },
@@ -66,6 +78,10 @@ export const redirects: readonly Redirect[] = [
     "to": "/insights/asean-university-network"
   },
   {
+    "from": "/insights/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank",
+    "to": "/insights/associate-professor-dr-smith-boonchutima-delivers-leadership-training-at-krungthai-bank"
+  },
+  {
     "from": "/post/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank",
     "to": "/insights/associate-professor-dr-smith-boonchutima-delivers-leadership-training-at-krungthai-bank"
   },
@@ -102,8 +118,12 @@ export const redirects: readonly Redirect[] = [
     "to": "/insights/department-of-disease-control"
   },
   {
+    "from": "/post/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-türkiye-for-the-wo",
+    "to": "/insights/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-türkiye-for-the-wo"
+  },
+  {
     "from": "/post/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-t%C3%BCrkiye-for-the-wo",
-    "to": "/insights/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-t%C3%BCrkiye-for-the-wo"
+    "to": "/insights/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-türkiye-for-the-wo"
   },
   {
     "from": "/post/empowering-youth-leaders",

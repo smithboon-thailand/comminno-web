@@ -9,6 +9,7 @@
  * BreadcrumbList everywhere).
  */
 import { useEffect } from "react";
+import { SITE_ORIGIN } from "@/config/site";
 
 export interface PageMetaInput {
   /** Final <title>. Will be suffixed with " · Comm.Inno" automatically. */
@@ -19,11 +20,35 @@ export interface PageMetaInput {
   path?: string;
   /** Optional structured-data payload(s) injected as application/ld+json. */
   jsonLd?: object | object[];
+  /**
+   * og:type. Defaults to "website"; article pages should pass "article".
+   * Every page used to declare "website", including the 24 insight posts.
+   */
+  type?: "website" | "article";
+  /**
+   * Absolute or root-relative URL of the social card image. Defaults to the
+   * site-wide card. Root-relative values are resolved against SITE_ORIGIN —
+   * Open Graph requires an absolute URL, and a relative one silently yields
+   * no image at all (audit finding 4.5).
+   */
+  image?: string;
 }
 
 const SUFFIX = " · Comm.Inno";
-const SITE_ORIGIN =
-  typeof window !== "undefined" ? window.location.origin : "https://comminno.example";
+
+/**
+ * Canonical/OG URLs are built from the configured public origin, never from
+ * `window.location.origin`. Deriving them from the live location meant every
+ * Vercel preview deployment self-canonicalised, so a preview URL could be
+ * indexed as a competing copy of the real page (audit finding 3.1).
+ */
+const ORIGIN = SITE_ORIGIN;
+
+/** Site-wide social card. 1200x630 PNG — see scripts/og/README.md. */
+const DEFAULT_OG_IMAGE = `${ORIGIN}/og-image.png`;
+
+const absolute = (url: string) =>
+  /^https?:\/\//.test(url) ? url : `${ORIGIN}${url.startsWith("/") ? "" : "/"}${url}`;
 
 const DATA_KEY = "data-comminno-meta";
 const JSONLD_KEY = "data-comminno-jsonld";
@@ -91,28 +116,40 @@ function setJsonLd(payload: object | object[] | undefined) {
   }
 }
 
-export function usePageMeta({ title, description, path, jsonLd }: PageMetaInput) {
+export function usePageMeta({
+  title,
+  description,
+  path,
+  jsonLd,
+  type = "website",
+  image,
+}: PageMetaInput) {
   useEffect(() => {
     const fullTitle = title.includes("Comm.Inno") ? title : `${title}${SUFFIX}`;
     document.title = fullTitle;
 
     setNameMeta("description", description);
 
-    setProp("og:type", "website");
+    setProp("og:type", type);
     setProp("og:site_name", "Comm.Inno");
     setProp("og:title", fullTitle);
     setProp("og:description", description);
 
+    const card = image ? absolute(image) : DEFAULT_OG_IMAGE;
+    setProp("og:image", card);
+    setProp("og:image:alt", fullTitle);
+
     setNameMeta("twitter:card", "summary_large_image");
     setNameMeta("twitter:title", fullTitle);
     setNameMeta("twitter:description", description);
+    setNameMeta("twitter:image", card);
 
     if (path) {
-      const url = `${SITE_ORIGIN}${path}`;
+      const url = `${ORIGIN}${path}`;
       setProp("og:url", url);
       setCanonical(url);
     }
 
     setJsonLd(jsonLd);
-  }, [title, description, path, jsonLd]);
+  }, [title, description, path, jsonLd, type, image]);
 }

@@ -48,23 +48,42 @@ const REDIRECT_MAP: Record<string, string> = Object.fromEntries(
   redirects.map((r) => [r.from.replace(/\/+$/, "") || "/", r.to]),
 );
 
-/** Catch legacy Wix paths (no locale prefix) and 301 to the new equivalent. */
+/**
+ * Resolve a legacy path against the redirect map.
+ *
+ * Some legacy slugs contain non-ASCII characters (e.g. the Türkiye workshop
+ * post). Browsers percent-encode those in `location.pathname`, while the
+ * redirect map may hold either form depending on how the entry was authored,
+ * so a single literal lookup missed one of the two (audit finding 4.4). Try
+ * the raw path first, then its decoded form.
+ */
+function resolveRedirect(path: string): string | undefined {
+  const stripped = path.replace(/\/+$/, "") || "/";
+  const direct = REDIRECT_MAP[stripped];
+  if (direct) return direct;
+  try {
+    return REDIRECT_MAP[decodeURIComponent(stripped)];
+  } catch {
+    // Malformed percent-encoding — nothing more to try.
+    return undefined;
+  }
+}
+
+/** Catch legacy Wix paths (no locale prefix) and send them to the new equivalent. */
 function RedirectHandler() {
   const [path, navigate] = useLocation();
   const { locale } = useLocale();
+  const target = resolveRedirect(path);
 
   useEffect(() => {
-    const stripped = path.replace(/\/+$/, "") || "/";
-    const target = REDIRECT_MAP[stripped];
     if (target) {
       navigate(withLocale(target, locale), { replace: true });
     }
-  }, [path, locale, navigate]);
+  }, [target, locale, navigate]);
 
   // If we have a known redirect we're navigating away — render nothing.
   // Otherwise, fall through to NotFound.
-  const stripped = path.replace(/\/+$/, "") || "/";
-  if (REDIRECT_MAP[stripped]) return null;
+  if (target) return null;
   return <NotFound />;
 }
 

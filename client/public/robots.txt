@@ -7,4 +7,4 @@ Allow: /
 # crawlers.
 Disallow: /admin/
 
-Sitemap: https://comminno-go6lmsuy.manus.space/sitemap.xml
+Sitemap: https://comminno-web.vercel.app/sitemap.xml

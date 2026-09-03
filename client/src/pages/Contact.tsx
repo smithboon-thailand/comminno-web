@@ -33,7 +33,12 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { LocaleLink } from "@/i18n/LocaleLink";
 import { services as serviceCatalog } from "@/content/services";
 import { ArrowRight, MapPin, Mail, Phone, CheckCircle2 } from "lucide-react";
-import { CENTER_EMAIL, CENTER_PHONE_DISPLAY } from "@/lib/contact";
+import {
+  CENTER_EMAIL,
+  CENTER_PHONE_DISPLAY,
+  CENTER_PHONE_TH,
+  CENTER_PHONE_E164,
+} from "@/lib/contact";
 
 const ENDPOINT =
   import.meta.env.VITE_CONTACT_ENDPOINT ?? "https://formspree.io/f/PLACEHOLDER";
@@ -96,6 +101,8 @@ const COPY = {
     addr4: "กรุงเทพฯ 10330",
     emailLabel: "อีเมล",
     phoneLabel: "โทรศัพท์",
+    phoneNote:
+      "เจ้าหน้าที่ภาควิชาการประชาสัมพันธ์ คณะนิเทศศาสตร์ เป็นผู้รับสายและส่งเรื่องต่อมายังศูนย์ฯ",
     formTitle: "ส่งข้อความ",
     nameLabel: "ชื่อ-นามสกุล",
     emailFieldLabel: "อีเมล",
@@ -114,6 +121,8 @@ const COPY = {
     successAgain: "ส่งข้อความเพิ่มเติม",
     errorGeneric:
       `ส่งข้อความไม่สำเร็จ กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ตแล้วลองใหม่ หรืออีเมลตรงไปที่ ${CENTER_EMAIL}`,
+    errorIncomplete: "กรุณากรอกข้อมูลให้ครบทุกช่องก่อนส่งข้อความ",
+    errorEmail: "รูปแบบอีเมลไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง",
     errorCooldown: "กรุณารอสักครู่ก่อนส่งข้อความถัดไป",
     errorHourly: "ส่งข้อความได้สูงสุด 5 ครั้งต่อชั่วโมง โปรดลองใหม่ภายหลัง",
     errorPlaceholder:
@@ -134,6 +143,8 @@ const COPY = {
     addr4: "Pathumwan, Bangkok 10330, Thailand",
     emailLabel: "Email",
     phoneLabel: "Phone",
+    phoneNote:
+      "Answered by the Department of Public Relations, Faculty of Communication Arts, who pass enquiries on to the Center.",
     formTitle: "Send a message",
     nameLabel: "Full name",
     emailFieldLabel: "Email",
@@ -152,6 +163,8 @@ const COPY = {
     successAgain: "Send another message",
     errorGeneric:
       `We couldn't send your message. Check your connection and try again, or email ${CENTER_EMAIL}.`,
+    errorIncomplete: "Please fill in every field before sending your message.",
+    errorEmail: "That email address doesn't look right — please check it.",
     errorCooldown: "Please wait a few seconds before sending another message.",
     errorHourly: "You can send up to 5 messages per hour. Please try again later.",
     errorPlaceholder:
@@ -160,6 +173,7 @@ const COPY = {
       "Reach Comm.Inno — the Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability, Faculty of Communication Arts, Chulalongkorn University. Mongkut Sammitr Building, Pathumwan, Bangkok 10330.",
   },
 } as const;
+
 
 export default function Contact() {
   const { locale } = useLocale();
@@ -210,6 +224,25 @@ export default function Contact() {
     // Honeypot — silently swallow as success so bots can't probe.
     if (form.company_url.trim().length > 0) {
       setStatus("success");
+      return;
+    }
+
+    // Defence in depth: never rely on the browser alone. A blank or malformed
+    // submission must not reach Formspree or show the success card.
+    const missing =
+      !form.name.trim() ||
+      !form.email.trim() ||
+      !form.org.trim() ||
+      !form.service ||
+      !form.message.trim();
+    if (missing) {
+      setStatus("error");
+      setErrorKey("errorIncomplete");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.trim())) {
+      setStatus("error");
+      setErrorKey("errorEmail");
       return;
     }
 
@@ -356,8 +389,26 @@ export default function Contact() {
                   aria-hidden="true"
                 />
                 <span style={{ fontSize: "0.875rem" }}>
-                  {t.phoneLabel}: {CENTER_PHONE_DISPLAY}
+                  {t.phoneLabel}:{" "}
+                  <a
+                    href={`tel:${CENTER_PHONE_E164}`}
+                    style={{ color: "var(--ink)" }}
+                    className="hover:underline"
+                  >
+                    {locale === "th" ? CENTER_PHONE_TH : CENTER_PHONE_DISPLAY}
+                  </a>
                 </span>
+              </p>
+              <p
+                className="mt-1.5"
+                style={{
+                  color: "var(--ink-muted)",
+                  fontSize: "0.78rem",
+                  lineHeight: 1.5,
+                  paddingLeft: "1.9rem",
+                }}
+              >
+                {t.phoneNote}
               </p>
             </div>
           </aside>
@@ -403,7 +454,14 @@ export default function Contact() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={onSubmit} className="grid gap-4" noValidate>
+              // NOTE: no `noValidate` here. It used to be set, which switched
+              // off native validation for every field; since onSubmit checked
+              // only the consent box and the rate limit, a user could tick
+              // consent and submit an entirely blank enquiry, and be shown the
+              // success card (audit finding 9.1). Native validation is on, and
+              // onSubmit re-checks the same fields so the guarantee does not
+              // depend on the browser.
+              <form onSubmit={onSubmit} className="grid gap-4">
                 {/* Honeypot — visually hidden, never tab-stop */}
                 <div
                   aria-hidden="true"

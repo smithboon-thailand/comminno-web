@@ -1,0 +1,102 @@
+<!doctype html>
+<!--
+  Static 404 page.
+
+  vercel.json's rewrites now match only the route shapes the SPA actually
+  serves, so an unknown shape falls through to Vercel's 404 handling, which
+  serves this file with a real HTTP 404 status. Previously "/(.*)" rewrote
+  every path to index.html and every URL on the site returned 200, including
+  paths that never existed (audit finding 4.1).
+
+  This is deliberately a static, dependency-free page: it must render correctly
+  without the SPA bundle, since the SPA is exactly what did not match. It is
+  bilingual because the site has no locale context at this point.
+-->
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>ไม่พบหน้านี้ · Page not found · Comm.Inno</title>
+    <meta name="theme-color" content="#BD212D" />
+    <link rel="icon" type="image/svg+xml" href="/logo-official.svg" />
+    <style>
+      :root {
+        --paper: #fafaf8;
+        --ink: #0f1419;
+        --slate: #4a5568;
+        --brand-red: #bd212d;
+        --mist: #e2e8f0;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.25rem;
+        padding: 2rem 1.25rem;
+        text-align: center;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "IBM Plex Sans Thai Looped", Inter, -apple-system,
+          BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+      }
+      img { height: 40px; width: auto; }
+      .code {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--brand-red);
+        margin: 0;
+      }
+      h1 {
+        font-family: "DM Serif Display", Georgia, serif;
+        font-weight: 400;
+        font-size: clamp(1.75rem, 5vw, 2.75rem);
+        line-height: 1.15;
+        margin: 0;
+        max-width: 20ch;
+      }
+      p.lede { margin: 0; max-width: 44ch; color: var(--slate); }
+      p.lede + p.lede { margin-top: -0.5rem; }
+      .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 0.5rem; }
+      a.btn {
+        display: inline-block;
+        padding: 0.7rem 1.4rem;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1.5px solid var(--brand-red);
+      }
+      a.primary { background: var(--brand-red); color: #fff; }
+      a.secondary { background: transparent; color: var(--brand-red); }
+      @media (prefers-color-scheme: dark) {
+        :root { --paper: #0f1419; --ink: #f5f1e8; --slate: #c2d0e0; --brand-red: #e17078; }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="/th" aria-label="Comm.Inno">
+      <img src="/logo-official.svg" alt="Comm.Inno" width="141" height="40" />
+    </a>
+    <p class="code">404</p>
+    <h1>ไม่พบหน้าที่คุณกำลังมองหา</h1>
+    <p class="lede">
+      หน้านี้อาจถูกย้าย เปลี่ยนชื่อ หรือไม่มีอยู่แล้ว ลองกลับไปหน้าแรกหรือดูบทความทั้งหมด
+    </p>
+    <p class="lede">
+      <strong>Page not found.</strong> This page may have moved, been renamed,
+      or never existed. Try the homepage or browse all insights.
+    </p>
+    <div class="actions">
+      <a class="btn primary" href="/th">หน้าแรก · Home</a>
+      <a class="btn secondary" href="/th/insights">บทความ · Insights</a>
+    </div>
+  </body>
+</html>

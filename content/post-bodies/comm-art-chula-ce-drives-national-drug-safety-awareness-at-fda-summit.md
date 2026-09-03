@@ -8,7 +8,7 @@ Assistant Professor Dr. Teerada Chongkolrattanaporn
 
 and
 
-Dr. Kamonrat Kitrungpaisan
+Dr. Kamonrat Kijrungpaisarn
 
 from our Public Relations Department collaborated with the
 

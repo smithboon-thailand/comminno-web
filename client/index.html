@@ -29,10 +29,10 @@
       Set to the TH home (default locale) so Lighthouse sees a valid canonical before
       JS executes. hreflang alternates declare both language versions.
     -->
-    <link rel="canonical" href="https://comminno-go6lmsuy.manus.space/th" />
-    <link rel="alternate" hreflang="th" href="https://comminno-go6lmsuy.manus.space/th" />
-    <link rel="alternate" hreflang="en" href="https://comminno-go6lmsuy.manus.space/en" />
-    <link rel="alternate" hreflang="x-default" href="https://comminno-go6lmsuy.manus.space/th" />
+    <link rel="canonical" href="https://comminno-web.vercel.app/th" />
+    <link rel="alternate" hreflang="th" href="https://comminno-web.vercel.app/th" />
+    <link rel="alternate" hreflang="en" href="https://comminno-web.vercel.app/en" />
+    <link rel="alternate" hreflang="x-default" href="https://comminno-web.vercel.app/th" />
 
     <!-- Favicon: reuse the official logo SVG (the brand book endorses this). -->
     <link rel="icon" type="image/svg+xml" href="/logo-official.svg" />
@@ -55,11 +55,29 @@
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="/fonts/plex-sans-thai-looped-thai-400.woff2" />
 
-    <!-- Open Graph (basic, manually authored) -->
+    <!--
+      Open Graph / Twitter (manually authored).
+
+      og:image must be an ABSOLUTE url to a raster image. It used to be the
+      relative path "/logo-official.svg": Open Graph requires absolute URLs, and
+      Facebook, LinkedIn, X and LINE all refuse SVG — so every share of every
+      page produced a card with no image (audit finding 4.5). usePageMeta
+      overrides title/description/type per page but deliberately leaves the
+      image alone, so this one is the site-wide fallback.
+    -->
+    <meta property="og:site_name" content="Comm.Inno" />
     <meta property="og:title" content="Comm.Inno · Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability" />
     <meta property="og:description" content="Communication that listens. Innovation that improves life." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/logo-official.svg" />
+    <meta property="og:url" content="https://comminno-web.vercel.app/th" />
+    <meta property="og:image" content="https://comminno-web.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Comm.Inno — Communication that listens. Innovation that improves life." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Comm.Inno · Center of Excellence in Communication Innovation" />
+    <meta name="twitter:description" content="Communication that listens. Innovation that improves life." />
+    <meta name="twitter:image" content="https://comminno-web.vercel.app/og-image.png" />
 
     <!--
       Site-wide Organization JSON-LD (page-specific JSON-LD is added via
@@ -77,8 +95,8 @@
       "@type": "Organization",
       "name": "Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability",
       "alternateName": "Comm.Inno",
-      "url": "https://comminno-go6lmsuy.manus.space",
-      "logo": "https://comminno-go6lmsuy.manus.space/logo-official.svg",
+      "url": "https://comminno-web.vercel.app",
+      "logo": "https://comminno-web.vercel.app/logo-official.svg",
       "parentOrganization": {
         "@type": "CollegeOrUniversity",
         "name": "Faculty of Communication Arts, Chulalongkorn University",

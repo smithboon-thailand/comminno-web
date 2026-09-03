@@ -55,3 +55,20 @@ jobs:
           test -f dist/public/index.html
           test -d dist/public/assets
           echo "OK: dist/public/index.html present, /assets present"
+
+      # Content and deploy-config guardrails. Runs AFTER the build so it can
+      # scan the shipped output, not just the sources. Fails on a staging host
+      # reaching production or on a slug reference that resolves to nothing;
+      # everything else it finds is reported as a non-blocking warning.
+      # See scripts/check-content.mjs and docs/AUDIT-2026-09-comminno-web.md.
+      - name: Content checks
+        run: node scripts/check-content.mjs
+
+      # Routing guardrails. Vercel preview deployments on this project sit
+      # behind deployment protection, so a routing change cannot be verified
+      # against a live URL before merge. This compiles vercel.json's source
+      # patterns with the same matcher Vercel uses and asserts that every
+      # canonical URL reaches the SPA, every legacy URL redirects somewhere
+      # real, no redirect self-loops or chains, and junk paths still 404.
+      - name: Route checks
+        run: node scripts/check-routes.mjs

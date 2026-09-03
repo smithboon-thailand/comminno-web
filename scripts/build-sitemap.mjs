@@ -10,13 +10,17 @@
 import { writeFileSync, readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { SITE_ORIGIN } from "./site-origin.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const OUT = join(ROOT, "client/public/sitemap.xml");
 
-// Domain — overridable via env so we can swap from manus.space → vercel.app → cominnocenter.com
-const DOMAIN = process.env.SITE_DOMAIN || "https://comminno-go6lmsuy.manus.space";
+// Public origin. Single source of truth lives in scripts/site-origin.mjs and
+// its client twin client/src/config/site.ts — the default used to be the
+// staging host, which put all 78 sitemap entries on manus.space (audit
+// finding 3.1). Override with SITE_ORIGIN at the cominnocenter.com cutover.
+const DOMAIN = SITE_ORIGIN;
 const NOW = new Date().toISOString().slice(0, 10);
 
 // Pull slugs out of the emitted TS modules with a tiny string parse — avoids importing TS from Node.

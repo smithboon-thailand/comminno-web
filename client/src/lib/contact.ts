@@ -47,3 +47,25 @@ export const CENTER_PHONE_DISPLAY =
  */
 export const CENTER_PHONE_SCHEMA =
   `+66-${PHONE_DIGITS.slice(1, 2)}-${PHONE_DIGITS.slice(2, 5)}-${PHONE_DIGITS.slice(5)}` as const;
+
+/**
+ * `+6622182163` — E.164, for `tel:` hrefs. A `tel:` link must carry digits and
+ * a leading `+` only; spaces or brackets break it on some dialers. Derived from
+ * the same digit string so it cannot drift from the display forms.
+ */
+export const CENTER_PHONE_E164 = `+66${PHONE_DIGITS.slice(1)}` as const;
+
+/**
+ * `0 2218 2163` — the domestic grouping Thai readers expect, used on `/th`.
+ * The international form above is used on `/en`. Same digits, two conventions:
+ * a Thai reader scanning `+66 2 218 2163` has to mentally re-group it.
+ */
+export const CENTER_PHONE_TH =
+  `${PHONE_DIGITS.slice(0, 1)} ${PHONE_DIGITS.slice(1, 5)} ${PHONE_DIGITS.slice(5)}` as const;
+
+/**
+ * Data Protection Officer. The centre routes privacy requests to the same
+ * inbox and the same line — see the privacy notice, which also explains that
+ * the line is answered by the Department of Public Relations, who relay.
+ */
+export const DPO_EMAIL = CENTER_EMAIL;

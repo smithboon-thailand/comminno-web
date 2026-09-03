@@ -32,9 +32,14 @@ import { useEffect } from "react";
 import * as CookieConsent from "vanilla-cookieconsent";
 import "vanilla-cookieconsent/dist/cookieconsent.css";
 import { useLocale } from "@/i18n/LocaleProvider";
+import { SITE_DOMAIN } from "@/config/site";
 import { CENTER_EMAIL } from "@/lib/contact";
 
-const PLAUSIBLE_DOMAIN = "comminno-go6lmsuy.manus.space";
+// Plausible attributes every event by this `data-domain`. It used to be
+// hardcoded to the staging host, so all consented production pageviews were
+// filed against the staging property and the live site had no traffic data
+// (audit finding 7.1). It now tracks whatever origin the site is served from.
+const PLAUSIBLE_DOMAIN = SITE_DOMAIN;
 const PLAUSIBLE_SCRIPT_ID = "plausible-script";
 
 /** Inject Plausible's script tag once. Idempotent. */

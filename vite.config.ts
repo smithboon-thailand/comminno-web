@@ -296,8 +296,36 @@ function preloadDetailChunks(): Plugin {
   };
 }
 
+// The *.manus.space site is a staging copy, not the canonical public website.
+// Manus builds do not set Vercel's built-in VERCEL=1 environment variable, so
+// this build-only plugin adds a crawler directive to the shared SPA document
+// only for Manus-hosted output. GitHub/Vercel builds remain unchanged, and the
+// canonical https://www.cominnocenter.com site is not part of this project.
+function stagingNoIndex(): Plugin {
+  return {
+    name: "comminno-staging-noindex",
+    apply: "build",
+    transformIndexHtml: {
+      order: "pre",
+      handler() {
+        return [
+          {
+            tag: "meta",
+            attrs: {
+              name: "robots",
+              content: "noindex, nofollow",
+            },
+            injectTo: "head",
+          },
+        ];
+      },
+    },
+  };
+}
+
 export default defineConfig(({ command }) => {
   const isProdBuild = command === "build";
+  const isManusHostedBuild = isProdBuild && process.env.VERCEL !== "1";
   const plugins = [
     react(),
     tailwindcss(),
@@ -306,6 +334,7 @@ export default defineConfig(({ command }) => {
     vitePluginManusDebugCollector(),
     vitePluginStorageProxy(),
     vitePluginAdminStatic(),
+    ...(isManusHostedBuild ? [stagingNoIndex()] : []),
     ...(isProdBuild ? [preloadDetailChunks()] : []),
   ];
   return {

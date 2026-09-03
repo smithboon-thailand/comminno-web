@@ -9,6 +9,7 @@
  * BreadcrumbList everywhere).
  */
 import { useEffect } from "react";
+import { SITE_ORIGIN } from "@/config/site";
 
 export interface PageMetaInput {
   /** Final <title>. Will be suffixed with " · Comm.Inno" automatically. */
@@ -22,8 +23,14 @@ export interface PageMetaInput {
 }
 
 const SUFFIX = " · Comm.Inno";
-const SITE_ORIGIN =
-  typeof window !== "undefined" ? window.location.origin : "https://comminno.example";
+
+/**
+ * Canonical/OG URLs are built from the configured public origin, never from
+ * `window.location.origin`. Deriving them from the live location meant every
+ * Vercel preview deployment self-canonicalised, so a preview URL could be
+ * indexed as a competing copy of the real page (audit finding 3.1).
+ */
+const ORIGIN = SITE_ORIGIN;
 
 const DATA_KEY = "data-comminno-meta";
 const JSONLD_KEY = "data-comminno-jsonld";
@@ -108,7 +115,7 @@ export function usePageMeta({ title, description, path, jsonLd }: PageMetaInput)
     setNameMeta("twitter:description", description);
 
     if (path) {
-      const url = `${SITE_ORIGIN}${path}`;
+      const url = `${ORIGIN}${path}`;
       setProp("og:url", url);
       setCanonical(url);
     }

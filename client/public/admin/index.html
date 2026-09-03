@@ -75,13 +75,31 @@
       <small>Sveltia CMS · Comm.Inno · sign in with GitHub</small>
     </div>
     <!--
-      Pinned to ^0.42 (verified during commit #0 smoke test on the
-      cms/smoke-test-fallback branch). To upgrade: bump the tag, smoke-test on
-      a feature branch, and redeploy.
+      Pinned to an EXACT version with a Subresource Integrity hash.
+
+      This previously read `@sveltia/cms@^0.42`, a semver *range*: unpkg served
+      whatever the newest 0.42.x was at load time, so the code running in an
+      editor's browser could change with no commit to this repository — on the
+      one page where that editor holds a GitHub OAuth token with write access
+      (audit finding 8.1). There was no integrity hash either, so a tampered
+      or compromised CDN response would simply have executed.
+
+      With the exact pin plus `integrity`, the browser refuses to run the
+      script unless the bytes hash to exactly what we verified. `crossorigin`
+      is required for SRI to be enforced on a cross-origin script.
+
+      To upgrade: fetch the new file, recompute the hash with
+        curl -sL https://unpkg.com/@sveltia/cms@<VERSION>/dist/sveltia-cms.js \
+          | openssl dgst -sha384 -binary | openssl base64 -A
+      update both the URL and the integrity value in the same commit, then
+      smoke-test on a feature branch before merging. Never widen the version
+      back to a range.
     -->
     <script
       type="module"
-      src="https://unpkg.com/@sveltia/cms@^0.42/dist/sveltia-cms.js"
+      src="https://unpkg.com/@sveltia/cms@0.42.2/dist/sveltia-cms.js"
+      integrity="sha384-CUmz8eMZLCc+45k8W+QKATPT6SvWeEuZncHCs4bwiKbW8raalroW/A7vxSQvqLxW"
+      crossorigin="anonymous"
     ></script>
   </body>
 </html>

@@ -1,3 +1,6 @@
+/about	/about	301
+/contact	/contact	301
+/insights	/insights	301
 /about/teerada-ne	/about#teerada	301
 /blank	/about#smith	301
 /insights/categories/book-printing	/services/book-and-printing	301
@@ -14,7 +17,7 @@
 /insights/categories/video-production	/services/video-production	301
 /post/__itd	/insights/itd	301
 /post/asean-university-network	/insights/asean-university-network	301
-/post/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank	/insights/associate-professor-dr-smith-boonchutima-delivers-leadership-training-at-krungthai-bank	301
+/post/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank	/insights/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank	301
 /post/associate-professor-dr-smith-boonchutima-delivers-special-lecture-at-professional-treasury-officer	/insights/associate-professor-dr-smith-boonchutima-delivers-special-lecture-at-professional-treasury-officer	301
 /post/center-of-excellence-head-invited-to-lead-executive-crisis-communication-training	/insights/center-of-excellence-head-invited-to-lead-executive-crisis-communication-training	301
 /post/center-of-excellence-in-communication-innovation-launches-groundbreaking-online-course-for-digital-n	/insights/center-of-excellence-in-communication-innovation-launches-groundbreaking-online-course-for-digital-n	301
@@ -23,7 +26,7 @@
 /post/comm-art-chula-ce-drives-national-drug-safety-awareness-at-fda-summit	/insights/comm-art-chula-ce-drives-national-drug-safety-awareness-at-fda-summit	301
 /post/creative-tourism-development-project-in-nan-province	/insights/creative-tourism-development-project-in-nan-province	301
 /post/department-of-disease-control	/insights/department-of-disease-control	301
-/post/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-t%C3%BCrkiye-for-the-wo	/insights/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-t%C3%BCrkiye-for-the-wo	301
+/post/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-t%C3%BCrkiye-for-the-wo	/insights/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-türkiye-for-the-wo	301
 /post/empowering-youth-leaders	/insights/empowering-youth-leaders	301
 /post/international-labour-organization	/insights/international-labour-organization	301
 /post/ministry-of-natural-resources-and-environment	/insights/ministry-of-natural-resources-and-environment	301

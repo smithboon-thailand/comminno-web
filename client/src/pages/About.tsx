@@ -47,9 +47,6 @@ type AboutCopy = {
   contactLabel: string;
   synergyLabel: string;
   websiteLabel: string;
-  orcidPending: string;
-  scholarPending: string;
-  spellingPending: string;
   metaDesc: string;
 };
 
@@ -79,9 +76,6 @@ const COPY: Record<"th" | "en", AboutCopy> = {
     contactLabel: "ผู้ประสานงาน",
     synergyLabel: "จุดเชื่อมโยงกับศูนย์",
     websiteLabel: "เว็บไซต์",
-    orcidPending: "ORCID เร็วๆ นี้",
-    scholarPending: "Google Scholar เร็วๆ นี้",
-    spellingPending: "การสะกดภาษาไทยอยู่ระหว่างยืนยัน",
     metaDesc:
       "Comm.Inno คือศูนย์เชี่ยวชาญเฉพาะทางด้านนวัตกรรมการสื่อสารเพื่อการพัฒนาคุณภาพชีวิตและความยั่งยืน คณะนิเทศศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย พบทีมผู้บริหาร 3 ท่าน อาจารย์ประจำศูนย์ ทีมวิจัย 8 ท่าน และพันธมิตรเชิงยุทธศาสตร์",
   },
@@ -111,9 +105,6 @@ const COPY: Record<"th" | "en", AboutCopy> = {
     contactLabel: "Bridge contact",
     synergyLabel: "Synergy with the center",
     websiteLabel: "Website",
-    orcidPending: "ORCID coming soon",
-    scholarPending: "Scholar coming soon",
-    spellingPending: "Thai spelling pending verification",
     metaDesc:
       "Comm.Inno is the Center of Excellence in Communication Innovation for the Development of Quality of Life and Sustainability at the Faculty of Communication Arts, Chulalongkorn University — meet the three center leaders, faculty, an eight-person research team, and strategic partners.",
   },
@@ -166,15 +157,7 @@ function ProfileIcon({ kind }: { kind: "orcid" | "scholar" | "rg" | "linkedin" |
 }
 
 /** ORCID / Scholar / etc. icon-buttons under a person's name. */
-function ProfileLinks({
-  links,
-  pendingOrcidLabel,
-  pendingScholarLabel,
-}: {
-  links: TeamMember["links"];
-  pendingOrcidLabel: string;
-  pendingScholarLabel: string;
-}) {
+function ProfileLinks({ links }: { links: TeamMember["links"] }) {
   const items: Array<{ kind: Parameters<typeof ProfileIcon>[0]["kind"]; href: string; label: string }> = [];
   if (links.orcid) items.push({ kind: "orcid", href: links.orcid, label: "ORCID" });
   if (links.scholar) items.push({ kind: "scholar", href: links.scholar, label: "Google Scholar" });
@@ -203,26 +186,13 @@ function ProfileLinks({
           </a>
         </li>
       ))}
-      {links.orcidPending && (
-        <li>
-          <span
-            className="inline-flex items-center rounded-full border px-3 py-1 text-xs italic"
-            style={{ borderColor: "var(--mist)", color: "var(--ink-muted)", backgroundColor: "var(--brand-paper)" }}
-          >
-            {pendingOrcidLabel}
-          </span>
-        </li>
-      )}
-      {links.scholarPending && (
-        <li>
-          <span
-            className="inline-flex items-center rounded-full border px-3 py-1 text-xs italic"
-            style={{ borderColor: "var(--mist)", color: "var(--ink-muted)", backgroundColor: "var(--brand-paper)" }}
-          >
-            {pendingScholarLabel}
-          </span>
-        </li>
-      )}
+      {/*
+        `orcidPending` / `scholarPending` rendered "ORCID coming soon" and
+        "Scholar coming soon" pills. Like the Thai-spelling flag above, these
+        advertise unfinished internal work on a public faculty page (audit
+        finding 6.3). Omit the slot instead of filling it with a placeholder;
+        the flags remain in content/about.yml as the editorial to-do.
+      */}
     </ul>
   );
 }
@@ -357,8 +327,6 @@ function PersonCard({
           )}
           <ProfileLinks
             links={member.links}
-            pendingOrcidLabel={t.orcidPending}
-            pendingScholarLabel={t.scholarPending}
           />
         </div>
       </div>
@@ -450,11 +418,9 @@ function PersonCard({
 function ResearchTeamCard({
   member,
   locale,
-  pendingLabel,
 }: {
   member: ResearchStaff;
   locale: "th" | "en";
-  pendingLabel: string;
 }) {
   const primary = locale === "th" ? member.nameTh : member.nameEn;
   const secondary = locale === "th" ? member.nameEn : member.nameTh;
@@ -484,11 +450,14 @@ function ResearchTeamCard({
       >
         {role}
       </p>
-      {member.thaiSpellingPending && locale === "th" && (
-        <p className="mt-2 text-[11px] italic" style={{ color: "var(--ink-muted)" }}>
-          {pendingLabel}
-        </p>
-      )}
+      {/*
+        `thaiSpellingPending` used to render a visible "Thai spelling pending
+        verification" line next to six named colleagues, so the page publicly
+        stated that the center had not verified how its own staff's names are
+        spelled (audit finding 6.3). The flag is editorial state, not visitor
+        copy: it stays in content/about.yml and in the CMS so editors can see
+        what still needs checking, but it no longer renders.
+      */}
     </li>
   );
 }
@@ -734,7 +703,6 @@ export default function About() {
                   key={m.slug}
                   member={m}
                   locale={locale}
-                  pendingLabel={t.spellingPending}
                 />
               ))}
             </ul>

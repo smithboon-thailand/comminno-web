@@ -37,9 +37,9 @@ backend:
     openAuthoring: '{{message}} (via /admin)'
 
 # Public site URLs — used for "View live" links inside the studio.
-site_url: https://comminno-go6lmsuy.manus.space
-display_url: https://comminno-go6lmsuy.manus.space
-logo_url: https://comminno-go6lmsuy.manus.space/logo-official.svg
+site_url: https://comminno-web.vercel.app
+display_url: https://comminno-web.vercel.app
+logo_url: https://comminno-web.vercel.app/logo-official.svg
 
 # editorial_workflow=branch routes every save through a PR. Combined with the
 # repo's required-review rule, no single editor can publish unilaterally.

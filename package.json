@@ -11,6 +11,7 @@
     "start": "NODE_ENV=production node dist/index.js",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
+    "check:content": "node scripts/check-content.mjs",
     "format": "prettier --write ."
   },
   "dependencies": {

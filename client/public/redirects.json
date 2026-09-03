@@ -1,6 +1,21 @@
 {
   "redirects": [
     {
+      "source": "/about",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/insights",
+      "destination": "/insights",
+      "permanent": true
+    },
+    {
       "source": "/about/teerada-ne",
       "destination": "/about#teerada",
       "permanent": true
@@ -82,7 +97,7 @@
     },
     {
       "source": "/post/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank",
-      "destination": "/insights/associate-professor-dr-smith-boonchutima-delivers-leadership-training-at-krungthai-bank",
+      "destination": "/insights/associate-professor-dr-smith-boonchotima-delivers-leadership-training-at-krungthai-bank",
       "permanent": true
     },
     {
@@ -127,7 +142,7 @@
     },
     {
       "source": "/post/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-t%C3%BCrkiye-for-the-wo",
-      "destination": "/insights/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-t%C3%BCrkiye-for-the-wo",
+      "destination": "/insights/dr-teerada-of-chulalongkorn-university-leads-workshop-preparing-thai-students-in-türkiye-for-the-wo",
       "permanent": true
     },
     {

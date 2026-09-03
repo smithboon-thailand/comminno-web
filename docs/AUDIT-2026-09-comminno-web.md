@@ -58,6 +58,7 @@ None of the top-tier findings are architectural. They are configuration values, 
 | 9.4 | Dark mode half-built: no toggle, no auto-detect, hardcoded white surfaces | **Low** | Medium |
 | 6.6 | "This section is coming in the next sprint" — internal jargon in user-facing copy | **Low** | Low |
 | 12.1 | 51 of 53 UI components and both server/Express dependencies are dead code | **Low** | Medium |
+| 12.2 | GitHub repository description misstates the stack as Next.js + next-intl | **Low** | Low |
 
 ---
 
@@ -304,6 +305,24 @@ Conduct a name sweep across all content and adopt one romanisation per person, r
 - The Contact page's `errorPlaceholder` string reads *"The form endpoint (Formspree) hasn't been wired up yet — engineering is on it."* This exposes an internal status and a vendor name to end users. It should read as a neutral "the form is temporarily unavailable, please email us" message.
 - `PageMeta.ts` carries a `https://comminno.example` placeholder origin as its SSR fallback.
 
+### 6.9 — The public repository description misstates the stack *(Low)*
+
+The GitHub repository description — public text, shown on the repo page and in
+search results — reads:
+
+> Bilingual TH/EN marketing site (MVP) for the Center of Excellence in
+> Communication Innovation… **Next.js 15 App Router + Tailwind v4 + next-intl.**
+> · Built with Manus
+
+The project is React 19 + Vite 7 + Wouter + `react-intl`. The README documents
+that the center approved moving off Next.js on 2026-05-04, so the description
+contradicts the project's own documentation, and the "Built with Manus" tag is
+a leftover from the scaffolding phase. It is the same staleness pattern as 3.3
+and 6.7, on the surface a prospective collaborator or contributor sees first.
+
+Fix: edit the description in the repository settings (it is GitHub metadata,
+not a file in the tree, so it cannot be changed by a pull request).
+
 ### 6.7 — Claims requiring verification and a refresh policy *(Medium — informational)*
 
 The About page makes a number of specific, checkable claims that are almost certainly accurate today but will silently rot:
@@ -516,7 +535,33 @@ Recommended CI additions, in rough order of value per line of code:
 
 ## 12. Prioritised remediation roadmap
 
-### Sprint 1 — Stop the bleeding (½–1 day, highest return in the report)
+### Remediation status
+
+Sprint 1 was applied on 2026-09-03 in the same branch as this report. Verified
+by `tsc --noEmit`, a clean `vite build`, and a scan of the actual build output.
+
+| Finding | Status |
+|---|---|
+| 3.1 · 7.1 · 3.3 — origin hardcoding | **Fixed.** All hosts now derive from `SITE_ORIGIN` (`client/src/config/site.ts` / `scripts/site-origin.mjs`). Canonical, hreflang, JSON-LD, `robots.txt`, all 78 sitemap entries, the CMS config, the Plausible domain and `usePageMeta` updated. `usePageMeta` no longer derives the canonical from `window.location.origin`, so preview deployments stop self-canonicalising. |
+| 5.2 — wrong processors disclosed | **Fixed.** Privacy §4 and §9 now disclose Formspree and Cloudinary (TH and EN) and no longer name Resend or Cloudflare. |
+| 8.4 · 10.1 — shipped session logger | **Fixed.** `client/public/__manus__/` and its Vite plugin deleted; confirmed absent from the build and no `unload` handler remains in shipped output. |
+| 8.1 — unpinned CMS script | **Fixed.** Pinned to `@sveltia/cms@0.42.2` with a verified SHA-384 SRI hash and `crossorigin`. |
+| 4.4 — broken slug references | **Fixed.** Both redirect destinations and the training service's `relatedSlugs` now resolve; redirect lookup also tolerates percent-encoded non-ASCII slugs. |
+| 4.3 — uncovered legacy paths | **Fixed** at the client-redirect layer: `/about`, `/contact`, `/insights` added to the redirect map. Still soft redirects until 4.2 moves them into `vercel.json`. |
+| 6.3 — pending badges | **Partly fixed.** The badges no longer render publicly. The six Thai spellings still need verification by the center; the flags stay in `content/about.yml` as the editorial to-do and `check-content.mjs` reports them. |
+| 11.3 — no content validation in CI | **Fixed.** `scripts/check-content.mjs` runs in CI after the build. Hard-fails on a staging host in shipped output or a slug reference that resolves to nothing; warns on the open content items. Negative-tested. |
+| 5.1 — privacy placeholders | **Blocked on the center.** Needs four values: DPO email, DPO phone, effective date, last-updated date. Flagged as a CI warning until supplied; promote to a hard error once they land. |
+| 3.2 — staging indexable | **Blocked.** `noindex` on `comminno-go6lmsuy.manus.space` is Manus hosting configuration, outside this repository. |
+| 12.2 — repo description | **Blocked.** GitHub metadata, not a file — must be edited in repository settings. |
+
+One assumption to confirm: `SITE_ORIGIN` defaults to `https://comminno-web.vercel.app`,
+the currently live production host. At the `cominnocenter.com` cutover this becomes a
+single environment-variable change (`VITE_SITE_ORIGIN` for the app, `SITE_ORIGIN` for
+the scripts) — no code edit.
+
+
+
+### Sprint 1 — Stop the bleeding (½–1 day, highest return in the report) — *applied, see status above*
 
 | Task | Fixes |
 |---|---|

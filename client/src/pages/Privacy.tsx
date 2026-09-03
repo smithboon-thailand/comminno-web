@@ -90,7 +90,7 @@ const EN_SECTIONS: Section[] = [
     blocks: [
       {
         kind: "p",
-        text: "Limited to: Chulalongkorn IT and Faculty staff (need-to-know); Resend (US, transactional email); Vercel/Cloudflare (US, hosting logs); Plausible (EU) and Vercel Speed Insights (US) for anonymous analytics; auditors and legal counsel when required by law. We never sell data, never share with advertisers or data brokers.",
+        text: "Limited to: Chulalongkorn IT and Faculty staff (need-to-know); Formspree (US) — receives the name, email, organisation, service interest and message you submit through the contact form; Vercel (US, hosting and server logs); Cloudinary (US, image delivery — receives your IP address and browser user-agent when a page loads an image); Plausible (EU) and Vercel Speed Insights (US) for anonymous analytics; auditors and legal counsel when required by law. We never sell data, never share with advertisers or data brokers.",
       },
     ],
   },
@@ -146,7 +146,7 @@ const EN_SECTIONS: Section[] = [
     blocks: [
       {
         kind: "p",
-        text: "Resend, Vercel, Cloudflare operate outside Thailand under PDPA-compliant standard contractual clauses with protection equivalent to PDPA standards.",
+        text: "Formspree, Vercel and Cloudinary operate outside Thailand (United States). Plausible operates in the European Union. Transfers to these providers rely on standard contractual clauses and on providers whose protection is equivalent to PDPA standards.",
       },
     ],
   },
@@ -256,8 +256,9 @@ const TH_SECTIONS: Section[] = [
         kind: "ul",
         items: [
           "เจ้าหน้าที่ฝ่ายไอทีของจุฬาฯ และคณะนิเทศศาสตร์ เฉพาะที่จำเป็นต่อหน้าที่",
-          "Resend (สหรัฐอเมริกา) ผู้ให้บริการอีเมลธุรกรรม โอนข้อมูลภายใต้ข้อสัญญามาตรฐาน",
-          "Vercel หรือ Cloudflare (สหรัฐอเมริกา) ผู้ให้บริการโฮสต์ เฉพาะ server logs",
+          "Formspree (สหรัฐอเมริกา) ผู้ให้บริการรับข้อมูลจากแบบฟอร์มติดต่อ ได้รับชื่อ อีเมล องค์กร บริการที่สนใจ และข้อความที่ท่านกรอก โอนข้อมูลภายใต้ข้อสัญญามาตรฐาน",
+          "Vercel (สหรัฐอเมริกา) ผู้ให้บริการโฮสต์ เฉพาะ server logs",
+          "Cloudinary (สหรัฐอเมริกา) ผู้ให้บริการจัดส่งรูปภาพ ได้รับหมายเลข IP และข้อมูลเบราว์เซอร์ (user-agent) เมื่อหน้าเว็บเรียกดูรูปภาพ",
           "Plausible (สหภาพยุโรป) และ Vercel Speed Insights (สหรัฐอเมริกา) ผู้ให้บริการวิเคราะห์ เฉพาะ pageview และประสิทธิภาพเว็บที่ไม่ระบุตัวตน",
           "ผู้ตรวจสอบและที่ปรึกษากฎหมาย เมื่อมีกฎหมายกำหนด หรือเพื่อปกป้องสิทธิอันชอบด้วยกฎหมายของศูนย์ฯ",
         ],
@@ -354,7 +355,7 @@ const TH_SECTIONS: Section[] = [
     blocks: [
       {
         kind: "p",
-        text: "ผู้ให้บริการบางราย (Resend, Vercel, Cloudflare) ประกอบกิจการนอกประเทศไทย เรายึดหลักประกันที่สอดคล้องกับ PDPA รวมถึงข้อสัญญามาตรฐาน และเลือกผู้ให้บริการที่มีระดับการคุ้มครองข้อมูลเทียบเท่ามาตรฐานของ PDPA",
+        text: "ผู้ให้บริการบางราย ได้แก่ Formspree, Vercel และ Cloudinary ประกอบกิจการในสหรัฐอเมริกา ส่วน Plausible ประกอบกิจการในสหภาพยุโรป เรายึดหลักประกันที่สอดคล้องกับ PDPA รวมถึงข้อสัญญามาตรฐาน และเลือกผู้ให้บริการที่มีระดับการคุ้มครองข้อมูลเทียบเท่ามาตรฐานของ PDPA",
       },
     ],
   },

@@ -49,6 +49,15 @@ function walk(dir, out = []) {
 // search engines that staging held the authoritative copy of every page and
 // every analytics event was filed against the staging property.
 const FORBIDDEN_HOSTS = [/comminno-go6lmsuy\.manus\.space/, /manus\.space/];
+// The center's address is comm.inno@chula.ac.th WITH a dot. The no-dot form was
+// published in 12 places across three files — contact page, both form success
+// states, both error states, the cookie banner in both languages, and the
+// Organization JSON-LD (audit finding 5.4). A wrong address fails silently in
+// the worst way: the sender gets a bounce and the center never learns anyone
+// tried. `(?<!\.)` lets the correct form through while catching the bad one.
+const FORBIDDEN_STRINGS = [
+  { re: /(?<!\.)comminno@chula\.ac\.th/, why: "the center's email is comm.inno@chula.ac.th WITH a dot — read it from client/src/config/contact.ts" },
+];
 const distArg = process.argv.indexOf("--dist");
 const DIST = distArg !== -1 ? process.argv[distArg + 1] : "dist/public";
 const distPath = join(ROOT, DIST);
@@ -63,15 +72,24 @@ if (existsSync(distPath)) {
     } catch {
       continue; // binary asset
     }
+    let flagged = false;
     for (const re of FORBIDDEN_HOSTS) {
       if (re.test(body)) {
         errors.push(
           `staging host ${re.source} found in shipped file ${relative(ROOT, file)} — ` +
             `derive the origin from client/src/config/site.ts or SITE_ORIGIN instead`,
         );
+        flagged = true;
         break;
       }
     }
+    for (const { re, why } of FORBIDDEN_STRINGS) {
+      if (re.test(body)) {
+        errors.push(`${relative(ROOT, file)} contains ${re.source} — ${why}`);
+        flagged = true;
+      }
+    }
+    void flagged;
   }
 } else {
   warnings.push(

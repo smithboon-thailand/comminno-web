@@ -138,7 +138,7 @@ export function CookieConsentProvider({
                 {
                   title: "Contact us",
                   description:
-                    'For questions about this notice or to exercise your PDPA rights, write to <a href="mailto:comminno@chula.ac.th">comminno@chula.ac.th</a>. The full privacy policy is available <a href="/en/privacy">here</a>.',
+                    'For questions about this notice or to exercise your PDPA rights, write to <a href="mailto:comm.inno@chula.ac.th">comm.inno@chula.ac.th</a>. The full privacy policy is available <a href="/en/privacy">here</a>.',
                 },
               ],
             },
@@ -181,7 +181,7 @@ export function CookieConsentProvider({
                 {
                   title: "ติดต่อเรา",
                   description:
-                    'หากมีคำถามเกี่ยวกับนโยบายนี้หรือต้องการใช้สิทธิตาม PDPA โปรดติดต่อ <a href="mailto:comminno@chula.ac.th">comminno@chula.ac.th</a> และดูนโยบายฉบับเต็มได้ <a href="/th/privacy">ที่นี่</a>',
+                    'หากมีคำถามเกี่ยวกับนโยบายนี้หรือต้องการใช้สิทธิตาม PDPA โปรดติดต่อ <a href="mailto:comm.inno@chula.ac.th">comm.inno@chula.ac.th</a> และดูนโยบายฉบับเต็มได้ <a href="/th/privacy">ที่นี่</a>',
                 },
               ],
             },

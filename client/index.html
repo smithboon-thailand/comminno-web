@@ -64,6 +64,11 @@
     <!--
       Site-wide Organization JSON-LD (page-specific JSON-LD is added via
       usePageMeta).  Hand-written; do not auto-generate.
+
+      The email below must stay in sync with CENTER_EMAIL in
+      client/src/lib/contact.ts, which every other occurrence imports. This
+      static document cannot import a module, so it is the one place the
+      address is written out by hand — note the dot: comm.inno@, not comminno@.
     -->
     <script type="application/ld+json">
     {
@@ -86,7 +91,7 @@
         "postalCode": "10330",
         "addressCountry": "TH"
       },
-      "email": "comminno@chula.ac.th",
+      "email": "comm.inno@chula.ac.th",
       "telephone": "+66-2-218-2215"
     }
     </script>
